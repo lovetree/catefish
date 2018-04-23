@@ -1,0 +1,148 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    },
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+      
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    },
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+     
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    },
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+     
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    },
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+      
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    },
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    },
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+     
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    },
+    {
+      "gameid": "1",
+      "username": "2016-12-31",
+      "usernickname": "admin",
+      "money": "0",
+     
+      "gameoffice": "index.html",
+      "win":"192.168.0.1",
+      "lose":"后台",
+      "he": "index.html",
+      "tao":"192.168.0.1",
+      "loginprice":"后台",
+      "gametime":"192.168.0.1",
+      "linetime":"后台",
+      "ingame": "index.html",
+      "lastlogintime":"后台",
+      "lastloginlocation":"后台"
+    }
+  ]
+}

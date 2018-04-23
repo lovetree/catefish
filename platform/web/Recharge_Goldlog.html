@@ -1,0 +1,216 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>标题</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">金币交易明细</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">		
+                        <input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="新增" data-ctrl-btn="newAction"/>
+                        <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" data-ctrl-btn="deleteAction"/>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>id</th>
+<th>交易流水号</th>
+<th>流水时间</th>
+<th>渠道ID</th>
+<th>赠送方ID</th>
+<th>转赠金币数量</th>
+<th>接收方类型</th>
+<th>接收方ID</th>
+<th>类型</th>
+<th>状态</th>
+<th>创建时间</th>
+
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="id"/>
+            <table id="tab" border="0" width="100%">
+                <tr><td>id：<input class="form-control" name="type" type="text" placeholder="id" ></td><td class="pad-l">交易流水号：<input class="form-control" name="price" type="text" placeholder="交易流水号" ></td></tr>
+
+<tr><td>流水时间：<input class="form-control" name="type" type="text" placeholder="流水时间" ></td><td class="pad-l">渠道ID：<input class="form-control" name="price" type="text" placeholder="渠道ID" ></td></tr>
+
+<tr><td>赠送方ID：<input class="form-control" name="type" type="text" placeholder="赠送方ID" ></td><td class="pad-l">转赠金币数量：<input class="form-control" name="price" type="text" placeholder="转赠金币数量" ></td></tr>
+
+<tr><td>接收方类型：<input class="form-control" name="type" type="text" placeholder="接收方类型" ></td><td class="pad-l">接收方ID：<input class="form-control" name="price" type="text" placeholder="接收方ID" ></td></tr>
+
+<tr><td>类型：<input class="form-control" name="type" type="text" placeholder="类型" ></td><td class="pad-l">状态：<input class="form-control" name="price" type="text" placeholder="状态" ></td></tr>
+
+<tr><td>创建时间：<input class="form-control" name="type" type="text" placeholder="创建时间" ></td><td class="pad-l">状态：<input class="form-control" name="price" type="text" placeholder="状态" ></td></tr>
+
+            
+                <tr>
+                    <td colspan="2" style="padding-top:20px;">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div></body></html><script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">$(function () {
+        var table = $('#example').dataTableAjax("Recharge/Goldlog/list", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+            {'mDataProp':'id'},
+{'mDataProp':'trade_flow'},
+{'mDataProp':'trade_at'},
+{'mDataProp':'channel_id'},
+{'mDataProp':'presentor_id'},
+{'mDataProp':'gold_present'},
+{'mDataProp':'receiver_type'},
+{'mDataProp':'reveiver_id'},
+{'mDataProp':'trade_type'},
+{'mDataProp':'status'},
+{'mDataProp':'create_at'},
+
+                {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+                        return '&nbsp;<button data-ctrl-btn="editAction">编辑</button>';
+                    }}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.id);
+$(row).data('data-trade_flow', data.trade_flow);
+$(row).data('data-trade_at', data.trade_at);
+$(row).data('data-channel_id', data.channel_id);
+$(row).data('data-presentor_id', data.presentor_id);
+$(row).data('data-gold_present', data.gold_present);
+$(row).data('data-receiver_type', data.receiver_type);
+$(row).data('data-reveiver_id', data.reveiver_id);
+$(row).data('data-trade_type', data.trade_type);
+$(row).data('data-status', data.status);
+$(row).data('data-create_at', data.create_at);
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('Recharge/Goldlog/delete', {
+            msg_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+function newAction(){
+        editAction(true);
+    }
+
+function editAction(bNew){
+        var msg_id = $(this).parents('tr').data('data-id');var msg_trade_flow = $(this).parents('tr').data('data-trade_flow');var msg_trade_at = $(this).parents('tr').data('data-trade_at');var msg_channel_id = $(this).parents('tr').data('data-channel_id');var msg_presentor_id = $(this).parents('tr').data('data-presentor_id');var msg_gold_present = $(this).parents('tr').data('data-gold_present');var msg_receiver_type = $(this).parents('tr').data('data-receiver_type');var msg_reveiver_id = $(this).parents('tr').data('data-reveiver_id');var msg_trade_type = $(this).parents('tr').data('data-trade_type');var msg_status = $(this).parents('tr').data('data-status');var msg_create_at = $(this).parents('tr').data('data-create_at');
+        var dialog = $('.edit-box form').dialog({
+            title: '标题 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=msg_id]').attr('value', msg_id);$(this).find('input[name=msg_trade_flow]').attr('value', msg_trade_flow);$(this).find('input[name=msg_trade_at]').attr('value', msg_trade_at);$(this).find('input[name=msg_channel_id]').attr('value', msg_channel_id);$(this).find('input[name=msg_presentor_id]').attr('value', msg_presentor_id);$(this).find('input[name=msg_gold_present]').attr('value', msg_gold_present);$(this).find('input[name=msg_receiver_type]').attr('value', msg_receiver_type);$(this).find('input[name=msg_reveiver_id]').attr('value', msg_reveiver_id);$(this).find('input[name=msg_trade_type]').attr('value', msg_trade_type);$(this).find('input[name=msg_status]').attr('value', msg_status);$(this).find('input[name=msg_create_at]').attr('value', msg_create_at);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                      var txt=$(this).val();
+                      if($.trim(txt)==""){
+                          num++;
+                      }
+                });
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                
+                $form.ajaxSubmit({
+                    url: 'Recharge/Goldlog/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

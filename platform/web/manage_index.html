@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>管理首页</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <style>
+        table td{height: 45px;}
+        .fon{font-size: 16px; line-height: 18px;}
+        .cor2{color:#f77043;}
+        .cor3{color:#949494; font-size: 12px;}
+        table a:visited,table a:active{text-decoration: none;}
+        span.span{background-color:#afd9ee; display: inline-block; height:16px; width:4px; vertical-align: middle;}
+        a.th-btn{display: inline-block; color: #333; border:1px solid #ccc; padding:7px 13px; cursor:pointer;}
+        div.bin-box p{line-height: 35px; margin-top: 22px;}
+        div.box-min{padding-left: 15px; padding-right: 15px; margin-bottom:15px; line-height: 30px;}
+        .mar-l2{margin-left: 20px !important;}
+        .dis-none{display: none;}
+
+        .pad{padding:10px;}
+        .bor{border:1px solid #ddd;}
+        td.info div{margin-bottom:2px;}
+        .mar2{margin:10px 0 15px 0;}
+        .mar3{margin-bottom:30px;}
+        table.tab2 td{padding-left:5px;}
+        a.btn-sy{width: 98px; text-align: center; padding:7px 0;}
+        a.wid2{width:70px;}
+        a.mar4{margin:20px 0 10px 0;}
+        .lef-box{float:left; width:50%;}
+        .rit-box{float:left; width:250px;}
+        .rit-box img{width: 200px;}
+        .wid3{width:100%; clear:both;}
+    </style>
+</head>
+
+<body style="background: #FFF;">
+<div class="header">
+    <h1 class="page-title">管理首页</h1>
+</div>
+<form method="post" id="form_head" action="">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="block span6">
+                <div class="lef-box" id="lef-box">
+                    <div class="pad bor mar3">
+                        <table width="100%" style="margin-bottom:10px;">
+                            <tr>
+                               <td valign="top" width="110px"><img src="images/user.jpg" width="100px" height="100px"></td>
+                                <td class="info">
+                                    <div>昵称：冰雨</div>
+                                    <div>微信号：asdf12334</div>
+                                    <div>GameID：123456</div>
+                                    <div>渠道ID：343455</div>
+                                    <div>账号余额：230049</div>
+                                    <div>金币余额：100 <a href="#" class="mar-l2">充值</a></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="fon mar2"><span class="span"></span> 综合统计</div>
+                    <table class="tab2 mar3" width="100%" border="1" bordercolor="#ccc">
+                        <tr>
+                            <td>注册总人数：1069（人）</td>
+                            <td>当天注册人数：1（人）</td>
+                        </tr>
+                        <tr>
+                            <td>财富总额：2774,7993,2599（金币）（ 银行金币：1376,7386,8921（金币）  钱包金币：1398,0606,3678（金币））</td>
+                            <td>所有在线用户总数：0（人）</td>
+                        </tr>
+                        <tr>
+                            <td>汇总服务费/税收：0（金币）</td>
+                            <td>今日服务费/税收：0（金币）</td>
+                        </tr>
+                        <tr>
+                            <td>第三方充值汇总：X.00（元）</td>
+                            <td>微信今日充值汇总：X.00（元） 支付宝今日充值汇总：X.00（元）</td>
+                        </tr>
+                        <tr>
+                            <td>网银充值汇总：10（元）</td>
+                            <td>网银今日充值汇总：xxx（元）</td>
+                        </tr>
+                    </table>
+                    <div class="pad bor mar3">
+                        <div class="fon mar2"><span class="span"></span> 返利余额：0.00元</div>
+                        <table width="100%" style="margin-bottom:10px;">
+                            <tr>
+                                <td><a class="th-btn" href="#">兑换现金</a></td>
+                                <td><a class="th-btn" href="#">兑换金币</a></td>
+                                <td><a class="th-btn" href="#">返利记录</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pad bor">
+                        <div class="fon mar2"><span class="span"></span> 返利余额：0.00元</div>
+                        <table width="100%" style="margin-bottom:10px;">
+                            <tr>
+                                <td><a class="th-btn btn-sy" href="#">业绩收支明细</a></td>
+                                <td><a class="th-btn btn-sy" href="#">新增玩家查询</a></td>
+                                <td><a class="th-btn btn-sy wid2" href="#">转赠记录</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="rit-box pad bor mar-l2" id="rit-box">
+                    <div class="fon mar2"><span class="span"></span> 我的推广</div>
+                    <img src="images/timg.jpg" style="margin-bottom:15px">
+                    <div class="fon mar2"><span class="span"></span> 个人推广</div>
+                    <input class="form-control">
+                    <div class=" text-center"><a href="#" class="th-btn btn-sy mar4">复制</a></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<footer>
+    <hr>
+    <p>&copy; 2017 一指赢</p>
+</footer>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+    $(function(){
+        if($(window).width()<768){
+            $('#lef-box,#rit-box').addClass('wid3');
+            $('#lef-box').addClass('mar3');
+            $('#rit-box').removeClass('mar-l2');
+        }
+    });
+    $(window).resize(function () {
+        if($(window).width()<768){
+            $('#lef-box,#rit-box').addClass('wid3');
+            $('#lef-box').addClass('mar3');
+            $('#rit-box').removeClass('mar-l2');
+        }
+    });
+</script>
+</body>
+
+</html>

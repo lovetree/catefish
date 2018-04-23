@@ -1,0 +1,222 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>银行记录</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">银行记录</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="今天" data-ctrl-btn="newAction"/>
+                        <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="昨天" data-ctrl-btn="deleteAction"/>
+                        <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="本周" data-ctrl-btn="deleteAction"/>
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>id</th>
+                                <th>交易类型</th>
+                                <th>交易前现金</th>
+                                <th>交易后现金</th>
+                                <th>交易前银行</th>
+                                <th>交易后银行</th>
+                                <th>交易金币</th>
+                                <th>服务费</th>
+                                <th>操作场所</th>
+                                <th>游戏ID</th>
+                                <th>房间ID</th>
+                                <th>备注</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="id"/>
+            <table id="tab" border="0" width="100%">
+                <tr><td>id：<input class="form-control" name="type" type="text" placeholder="id" ></td><td class="pad-l">交易类型：<input class="form-control" name="price" type="text" placeholder="交易类型" ></td></tr>
+
+<tr><td>交易前现金：<input class="form-control" name="type" type="text" placeholder="交易前现金" ></td><td class="pad-l">交易后现金：<input class="form-control" name="price" type="text" placeholder="交易后现金" ></td></tr>
+
+<tr><td>交易前银行：<input class="form-control" name="type" type="text" placeholder="交易前银行" ></td><td class="pad-l">交易后银行：<input class="form-control" name="price" type="text" placeholder="交易后银行" ></td></tr>
+
+<tr><td>交易金币：<input class="form-control" name="type" type="text" placeholder="交易金币" ></td><td class="pad-l">服务费：<input class="form-control" name="price" type="text" placeholder="服务费" ></td></tr>
+
+<tr><td>操作场所：<input class="form-control" name="type" type="text" placeholder="操作场所" ></td><td class="pad-l">游戏ID：<input class="form-control" name="price" type="text" placeholder="游戏ID" ></td></tr>
+
+<tr><td>房间ID：<input class="form-control" name="type" type="text" placeholder="房间ID" ></td><td class="pad-l">备注：<input class="form-control" name="price" type="text" placeholder="备注" ></td></tr>
+
+<tr><td>创建时间：<input class="form-control" name="type" type="text" placeholder="创建时间" ></td><td class="pad-l">更新时间：<input class="form-control" name="price" type="text" placeholder="更新时间" ></td></tr>
+
+            
+                <tr>
+                    <td colspan="2" style="padding-top:20px;">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div></body></html><script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">$(function () {
+        var table = $('#example').dataTableAjax("Player/Bank/list", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+                {'mDataProp':'id'},
+                {'mDataProp':'trade_type'},
+                {'mDataProp':'cash_before'},
+                {'mDataProp':'cash_after'},
+                {'mDataProp':'bank_before'},
+                {'mDataProp':'bank_after'},
+                {'mDataProp':'gold_trade'},
+                {'mDataProp':'service_fee'},
+                {'mDataProp':'operate_address'},
+                {'mDataProp':'game_id'},
+                {'mDataProp':'room_id'},
+                {'mDataProp':'remark'},
+                {'mDataProp':'created_at'},
+                {'mDataProp':'updated_at'},
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.id);
+                $(row).data('data-trade_type', data.trade_type);
+                $(row).data('data-cash_before', data.cash_before);
+                $(row).data('data-cash_after', data.cash_after);
+                $(row).data('data-bank_before', data.bank_before);
+                $(row).data('data-bank_after', data.bank_after);
+                $(row).data('data-gold_trade', data.gold_trade);
+                $(row).data('data-service_fee', data.service_fee);
+                $(row).data('data-operate_address', data.operate_address);
+                $(row).data('data-game_id', data.game_id);
+                $(row).data('data-room_id', data.room_id);
+                $(row).data('data-remark', data.remark);
+                $(row).data('data-created_at', data.created_at);
+                $(row).data('data-updated_at', data.updated_at);
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('Player/Bank/delete', {
+            msg_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+function newAction(){
+        editAction(true);
+    }
+
+function editAction(bNew){
+        var msg_id = $(this).parents('tr').data('data-id');var msg_trade_type = $(this).parents('tr').data('data-trade_type');var msg_cash_before = $(this).parents('tr').data('data-cash_before');var msg_cash_after = $(this).parents('tr').data('data-cash_after');var msg_bank_before = $(this).parents('tr').data('data-bank_before');var msg_bank_after = $(this).parents('tr').data('data-bank_after');var msg_gold_trade = $(this).parents('tr').data('data-gold_trade');var msg_service_fee = $(this).parents('tr').data('data-service_fee');var msg_operate_address = $(this).parents('tr').data('data-operate_address');var msg_game_id = $(this).parents('tr').data('data-game_id');var msg_room_id = $(this).parents('tr').data('data-room_id');var msg_remark = $(this).parents('tr').data('data-remark');var msg_created_at = $(this).parents('tr').data('data-created_at');var msg_updated_at = $(this).parents('tr').data('data-updated_at');
+        var dialog = $('.edit-box form').dialog({
+            title: '标题 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=msg_id]').attr('value', msg_id);$(this).find('input[name=msg_trade_type]').attr('value', msg_trade_type);$(this).find('input[name=msg_cash_before]').attr('value', msg_cash_before);$(this).find('input[name=msg_cash_after]').attr('value', msg_cash_after);$(this).find('input[name=msg_bank_before]').attr('value', msg_bank_before);$(this).find('input[name=msg_bank_after]').attr('value', msg_bank_after);$(this).find('input[name=msg_gold_trade]').attr('value', msg_gold_trade);$(this).find('input[name=msg_service_fee]').attr('value', msg_service_fee);$(this).find('input[name=msg_operate_address]').attr('value', msg_operate_address);$(this).find('input[name=msg_game_id]').attr('value', msg_game_id);$(this).find('input[name=msg_room_id]').attr('value', msg_room_id);$(this).find('input[name=msg_remark]').attr('value', msg_remark);$(this).find('input[name=msg_created_at]').attr('value', msg_created_at);$(this).find('input[name=msg_updated_at]').attr('value', msg_updated_at);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                      var txt=$(this).val();
+                      if($.trim(txt)==""){
+                          num++;
+                      }
+                });
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                
+                $form.ajaxSubmit({
+                    url: 'Player/Bank/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

@@ -1,0 +1,178 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>登录IP查询</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">登录IP查询</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+                    <table class="table display block-body collapse in" id="example">
+                        <select class="input_btn_h" id="channeltype" name="channeltype">
+                            <option value="username">按用户帐号</option>
+                            <option value="nickname">按用户昵称</option>
+                        </select>
+                        <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                            <span class="input-group-addon">日期</span>
+                            <input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" type="text">
+                        </div>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <input type="button" name="btntoday" id="btntoday" val="0" class="input_btn_h input-table" value="今天" data-ctrl-btn="todayAction"/>
+                        <input type="button" name="btnyes" id="btnyes" val="0" class="input_btn_h input-table" value="昨天" data-ctrl-btn="yesAction"/>
+                        <input type="button" name="btnweek" id="btnweek" val="0" class="input_btn_h input-table" value="本周" data-ctrl-btn="weekAction"/>
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>id</th>
+                                <th>游戏ID</th>
+                                <th>用户帐号</th>
+                                <th>用户昵称</th>
+                                <th>登录时间</th>
+                                <th>登录IP</th>
+                                <th>地点</th>
+                                <th>登录类型</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="id"/>
+            <table id="tab" border="0" width="100%">
+                <tr><td>id：<input class="form-control" name="type" type="text" placeholder="id" ></td><td class="pad-l">游戏ID：<input class="form-control" name="price" type="text" placeholder="游戏ID" ></td></tr>
+
+<tr><td>用户帐号：<input class="form-control" name="type" type="text" placeholder="用户帐号" ></td><td class="pad-l">用户昵称：<input class="form-control" name="price" type="text" placeholder="用户昵称" ></td></tr>
+
+<tr><td>登录时间：<input class="form-control" name="type" type="text" placeholder="登录时间" ></td><td class="pad-l">登录IP：<input class="form-control" name="price" type="text" placeholder="登录IP" ></td></tr>
+
+<tr><td>地点：<input class="form-control" name="type" type="text" placeholder="地点" ></td><td class="pad-l">登录类型：<input class="form-control" name="price" type="text" placeholder="登录类型" ></td></tr>
+
+<tr><td class="pad-l">登录类型：<input class="form-control" name="price" type="text" placeholder="登录类型" ></td></tr>
+
+            
+                <tr>
+                    <td colspan="2" style="padding-top:20px;">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div></body></html>
+<script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">$(function () {
+        var table = $('#example').dataTableAjax("Player/Loginlog/list", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+            			{'mDataProp':'id'},
+			{'mDataProp':'game_id'},
+			{'mDataProp':'usrename'},
+			{'mDataProp':'nickname'},
+			{'mDataProp':'login_time'},
+			{'mDataProp':'login_ip'},
+			{'mDataProp':'address'},
+			{'mDataProp':'login_type'}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                			$(row).data('data-id', data.id);
+			$(row).data('data-game_id', data.game_id);
+			$(row).data('data-usrename', data.usrename);
+			$(row).data('data-nickname', data.nickname);
+			$(row).data('data-login_time', data.login_time);
+			$(row).data('data-login_ip', data.login_ip);
+			$(row).data('data-address', data.address);
+			$(row).data('data-login_type', data.login_type);
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                },
+                'query_type': function () {
+                    return $("#channeltype option:checked").val();
+                },
+                'start_time': function () {
+                    return $("#j_Date1").val();
+                },
+                'end_time': function () {
+                    return $("#j_Date2").val();
+                },
+                'query_today': function () {
+                    return $("#btntoday").attr('val');
+                },
+                'query_yes': function () {
+                    return $("#btnyes").attr('val');
+                },
+                'query_week': function () {
+                    return $("#btnweek").attr('val');
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        //查询
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+        //今天
+        $('input[type=button][id=btntoday]').click(function () {
+            $("#btntoday").attr('val', 1)
+            $("#btnyes").attr('val', 0);
+            $("#btnweek").attr('val', 0);
+            table_reload();
+        });
+        //昨天
+        $('input[type=button][id=btnyes]').click(function () {
+            $("#btntoday").attr('val', 0)
+            $("#btnyes").attr('val', 1);
+            $("#btnweek").attr('val', 0);
+            table_reload();
+        });
+        //本周
+        $('input[type=button][id=btnweek]').click(function () {
+            $("#btntoday").attr('val', 0)
+            $("#btnyes").attr('val', 0);
+            $("#btnweek").attr('val', 1);
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+            $("#btntoday").attr('val', 0)
+            $("#btnyes").attr('val', 0);
+            $("#btnweek").attr('val', 0);
+        };
+    });
+</script>

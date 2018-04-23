@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>公告管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/tables.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/j.dt.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <style>
+        table#tab input,table#tab textarea{
+            margin-top:5px;
+        }
+        table#tab td{ height: 70px;}
+    </style>
+</head>
+
+<body class="" style="background: #FFFFFF;">
+<div class="header">
+    <h1 class="page-title">公告管理</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6">
+            <table class="table display block-body collapse in" id="example">
+                <input type="button" name="btnadd" id="btnadd" onclick="window.location.href='gamemt/notice/edit'" class="input_btn_h input-table" value="新增" />
+                <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" data-ctrl-btn="deleteAction"/>
+                <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                <thead class="theadtbody">
+                <tr>
+                    <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                    <th>ID</th>
+                    <th>标题</th>
+                    <th>类型</th>
+                    <th>发布人</th>
+                    <th>发布时间</th>
+                    <th>状态</th>
+                    <th>管理</th>
+                </tr>
+                </thead>
+                <tbody class="theadtbody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer><hr></footer>
+</body>
+
+</html>
+
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+
+<script type="text/javascript">
+    function inp(){
+        var tr="^[0-9]*$";
+    }
+    function insetprop(){
+        var $parent = $(this).parents('#edit_message');
+        $.post('system/item/list',{
+            },function(json){
+                var data=json.data;
+                if(!data){
+                     return;
+                 }
+                var txt='<p>'+
+                    '<select class="form-control sel inssel">'+
+                    '</select> '+
+                    '<input class="form-control wid" type="text" placeholder="数量" value="1" onkeyup=this.value=this.value.replace(/\D/g,""); onafterpaste=this.value=this.value.replace(/\D/g,""); >'+
+                    '<label class="delspan" data-ctrl-btn="deletprop">删除</label>'+
+                    '</p>';
+                $parent.find('#selbox').append(txt);
+                var $sel=$parent.find('.inssel:last');
+                $.each(data,function(index,obj){
+                    $sel.append('<option value="'+obj.item_id+'">'+obj.name+'</option>');
+                });
+
+            },'json');
+
+
+    }
+
+    function deletprop(){
+        $(this).parents('p').remove();
+    }
+
+    $(function () {
+        var table = $('#example').dataTableAjax(notice, {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+                {'mDataProp': 'id'},
+                {'mDataProp': 'title'},
+                {'mDataProp': 'source', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                        if (sData == 0){
+                            $(nTd).text('公告');
+                        }else if(sData == 1){
+                            $(nTd).text('活动');
+                        }else if(sData == 2){
+                            $(nTd).text('心的攻略');
+                        }
+                    }
+                },
+                {'mDataProp': 'updated_uid'},
+                {'mDataProp': 'u_time'},
+                {'mDataProp': 'status', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).text(sData == 1 ? '启用' : '禁用');
+                    }
+                },
+                {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+                    return '<button data-ctrl-btn="editAction">编辑</button>';
+                }}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.goods_id);
+                $(row).data('data-img', data.img_url);
+                $(row).data('data-name', data.name);
+                $(row).data('data-show-name', data.show_name);
+                $(row).data('data-type', data.type);
+                $(row).data('data-desc', data.desc);
+                $(row).data('data-total_price', data.total_price);
+                $(row).data('data-start_time', data.start_time);
+                $(row).data('data-end_time', data.end_time);
+                $(row).data('data-item',data.items);
+
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+
+    });
+
+
+    function setActive() {
+        var msg_id = $(this).parents('tr').data('data-id');
+        var status = $(this).attr('rel');
+        $.post('system/goods/active', {
+            goods_id: msg_id,
+            status: status
+        }, function (json) {
+            if (json.result == 0) {
+                alert('修改成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+    function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('gamemt/notice/delete', {
+            id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+    function newAction(){
+        editAction(true);
+    }
+
+    function editAction(bNew){
+        $('#selbox').html('');
+        var g_id = $(this).parents('tr').data('data-id');
+        var img = $(this).parents('tr').data('data-img');
+        var name = $(this).parents('tr').data('data-name');
+        var show_name = $(this).parents('tr').data('data-show-name');
+        var item_count = $(this).parents('tr').data('data-item_count');
+        var type = $(this).parents('tr').data('data-type');
+        var desc = $(this).parents('tr').data('data-desc');
+        var price = $(this).parents('tr').data('data-total_price');
+        var start_time = $(this).parents('tr').data('data-start_time');
+        var end_time = $(this).parents('tr').data('data-end_time');
+        var item = $(this).parents('tr').data('data-item');
+
+        var dialog="";
+        if(item){
+            var txt='<p>'+
+                '<select class="form-control sel inssel">'+
+                '</select> '+
+                '<input class="form-control wid" type="text" placeholder="数量"'+'onkeyup=this.value=this.value.replace(/\D/g,"")'+'onafterpaste=this.value=this.value.replace(/\D/g,"");>'+
+                '<label class="delspan" data-ctrl-btn="deletprop">删除</label>'+
+                '</p>';
+            var $selbox=$('#selbox');
+            $.post('system/item/list',{
+            },function(json){
+                var data=json.data;
+                if(!data) {
+                    return;
+                }
+                $.each(item,function(index,obj) {
+                    $selbox.append(txt);
+                    var $sel=$selbox.find('.inssel:last');
+                    $.each(data,function(index,obj){
+                        $sel.append('<option value="'+obj.item_id+'">'+obj.name+'</option>');
+                    });
+                    $selbox.find('.inssel:last option[value="'+obj.item_id+'"]').attr('selected','selected');
+                    $selbox.find('input:last').attr('value',obj.item_count);
+                });
+
+
+                dialog = $('.edit-box form').dialog({
+                    title: '系统消息 - ' + (bNew ? '新增' : '修改'),
+                    nl2br: false
+                }, function () {
+                    $(this).attr('id', 'edit_message');
+                    if(!bNew){
+                        $(this).find('input[name=goods_id]').attr('value', g_id);
+                        $(this).find('input[name=name]').attr('value', name);
+                        $(this).find('input[name=show_name]').attr('value', show_name);
+                        $(this).find('input[name=type]').attr('value', type);
+                        $(this).find('textarea[name=desc]').text(desc);
+                        $(this).find('input[name=price]').attr('value', price);
+                        $(this).find('input[name=start_time]').attr('value', start_time);
+                        $(this).find('input[name=end_time]').attr('value', end_time);
+                    }
+                });
+            },'json');
+
+        }else{
+            dialog = $('.edit-box form').dialog({
+                title: '系统消息 - ' + (bNew ? '新增' : '修改'),
+                nl2br: false
+            }, function () {
+                $(this).attr('id', 'edit_message');
+                if(!bNew){
+                    $(this).find('input[name=goods_id]').attr('value', g_id);
+                    $(this).find('input[name=name]').attr('value', name);
+                    $(this).find('input[name=show_name]').attr('value', show_name);
+                    $(this).find('input[name=type]').attr('value', type);
+                    $(this).find('textarea[name=desc]').text(desc);
+                    $(this).find('input[name=price]').attr('value', price);
+                    $(this).find('input[name=start_time]').attr('value', start_time);
+                    $(this).find('input[name=end_time]').attr('value', end_time);
+                }
+            });
+        }
+
+
+        //setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                    if($(this).attr('name')=='type')
+                        return false;
+                    if($.trim($(this).val())==""){
+                        num++;
+                    }
+                });
+                var file=$form.find('input[type=file]').val();
+                var txt=$form.find('textarea').val();
+                if($.trim(file)==""||$.trim(txt)==""||$form.find('p').size()==0){
+                    num++;
+                }
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                var starttime=$form.find('input[name=start_time]').val();
+                var endtime=$form.find('input[name=end_time]').val();
+                var start=new Date(starttime.replace("-","/").replace("-","/"));
+                var end=new Date(endtime.replace("-","/").replace("-","/"));
+                if(start>end||start==end){
+                    alert('下架时间必须大于上架时间！');
+                    return false;
+                }
+                var list=[];
+                $form.find('p').each(function(){
+                      var id=$(this).find('select').val();
+                      var count=$(this).find('input').val();
+                      list.push({item_id:id,item_count:count});
+                });
+                $form.ajaxSubmit({
+                    url: 'system/goods/save',
+                    dataType: 'json',
+                    data:{items:list},
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        //}, 200);
+    }
+</script>

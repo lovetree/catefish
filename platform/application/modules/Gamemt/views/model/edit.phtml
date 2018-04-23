@@ -1,0 +1,137 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">模块名称：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" name="name" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['name'] : ""?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">模块类型：</label>
+                            <div class="col-sm-10">
+                                <span class="red">约束类型整数值，与其他值不可重复</span><br>
+                                <input type="text" id="m_type" name="m_type" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['m_type'] : ""?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">模块状态：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="status" type="radio" value="0" class="ace" checked="checked"/>
+                                    <span class="lbl">隐藏</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="status" type="radio" value="1" 
+                                           class="ace" <?php echo $info && $info['status'] == 1 ? 'checked':''?>>
+                                    <span class="lbl">显示</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="status" type="radio" value="2" 
+                                           class="ace" <?php echo $info && $info['status'] == 2 ? 'checked':''?>>
+                                    <span class="lbl">维护中</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                m_type: {
+                    required: true,
+                    number:true
+                }
+            },
+            messages: {
+                name: {
+                    required: '不可为空'
+                },
+                m_type: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    'status': $("input[name='status']:checked").val(),
+                    'name': $('#name').val(),
+                    'm_type': $('#m_type').val()
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/model/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

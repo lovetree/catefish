@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>index</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .wrap{
+            padding-top:20px;
+            padding-left:15px;
+        }
+        #div1{
+            font-size:15px;
+            color:#999;
+        }
+        #div2{
+            margin:40px auto;
+            text-align:center;
+        }
+        #div2>div{
+            width:200px;
+            height:200px;
+            border:1px solid #000000;
+            border-radius:5px;
+            margin:0 auto;
+        }
+        #div2>div>img{
+            width:200px;
+            height:200px;
+            border:1px solid #000000;
+            border-radius:5px;
+            margin:0 auto;
+        }
+        #div2>h4{
+            color:#5cb85c;
+        }
+        #div2>p{
+            margin-top:15px;
+            font-size:15px;
+            color:#999;
+        }
+        #div2>p>span{
+            color:#5cb85c;
+        }
+        #div3{
+            padding-top:100px;
+        }
+    </style>
+</head>
+<body class="container">
+<div class="row">
+    <div class="col-xs-12 wrap">
+        <div id="div1">充值类型选择</div>
+        <div id="div2">
+            <h4>快汇宝支付</h4>
+            <div id="icon"><img src="img/icon.png" alt=""></div>
+            <p>当前充值：<span id="amount"></span>&nbsp;元</p>
+            <p>用户ID：<span id="userid"></span></p>
+        </div>
+        <div id="div3">
+            <h5>付款操作说明：</h5>
+            <span style="color:red">1.请将此二维码图片到手机微信扫描或长按识别打开充值；</span></br>
+            <span style="color:red">2.请转账后填写附言你的玩家ID号码；</span></br>
+            <span style="color:red">3.有任何问题请联系我们客服人员；</span></br>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    var amount = location.search.split('&')[0].split('=')[1];
+    var user_id = location.search.split('&')[1].split('=')[1];
+    $("#userid").text(user_id);
+    $("#amount").text(amount);
+</script>
+</html>

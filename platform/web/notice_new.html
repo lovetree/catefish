@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="skin/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="skin/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="skin/css/ace.min.css" />
+        <link rel="stylesheet" href="skin/css/skin.css" />
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="skin/css/font-awesome-ie7.min.css" />
+	<![endif]-->
+
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="skin/css/ace-ie.min.css" />
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script src="skin/js/html5shiv.js"></script>
+	<script src="skin/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+    <div class="header">
+        <h4 class="page-title">添加公告</h4>
+    </div>
+    <div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+	<div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">公告标题：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="title" name="title" class="col-xs-10 col-sm-5">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">公告图片：</label>
+                            <div class="col-sm-10">
+                                <img src="files/official.jpg" class="image"  style="max-height:100px;" />
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">公告内容：</label>
+                            <div class="col-sm-10">
+                                <div id="editer"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">发布时间：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="times" type="radio" value="1" class="ace" checked="checked"/>
+                                    <span class="lbl">立即</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="times" type="radio" value="0" class="ace" >
+                                    <span class="lbl">定时</span>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                                <i class="icon-calendar bigger-110"></i>
+                                        </span>
+                                        <input class="col-sm-3" type="text" name="avttime" id="avttime" value="" readonly>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">公告属性：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="attribute" type="radio" value="0" class="ace" checked="checked"/>
+                                    <span class="lbl">普通</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="attribute" type="radio" value="1" class="ace" >
+                                    <span class="lbl">限时</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="attribute" type="radio" value="2" class="ace" >
+                                    <span class="lbl">总置顶</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="attribute" type="radio" value="3" class="ace" >
+                                    <span class="lbl">推荐</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="attribute" type="radio" value="4" class="ace" >
+                                    <span class="lbl">热门</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="skin/js/jquery-1.10.2.min.js"></script>
+<script src="skin/js/bootstrap.min.js"></script>
+<script src="skin/js/jquery.slimscroll.min.js"></script>
+<script src="skin/js/bootbox.min.js"></script>
+<script src="skin/js/plugs.js"></script>
+<script src="skin/js/ace-extra.min.js"></script>
+<script src="skin/js/ace.min.js"></script>
+</body>
+</html>
+<link rel="stylesheet" href="skin/umeditor/themes/default/css/umeditor.css" />
+<script src="skin/umeditor/umeditor.config.js"></script>
+<script src="skin/umeditor/umeditor.min.js"></script>
+<script src="skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="skin/css/daterangepicker.css" />
+<script src="skin/js/moment.min.js"></script>
+<script src="skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                title: {
+                    required: true
+                }
+            },
+            messages: {
+                title: {
+                    required: '请输入文章标题'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                if ($("input[name='imgshow']:checked").val() != 1) {
+                    showMsg('请选择缩略图', true);
+                    return;
+                }
+                var params = {
+                    'title': $('#title').val(),
+                    'author': $('#author').val(),
+                    'sort': $('#sort').val(),
+                    'desc': $('#desc').val(),
+                    'content': cnt.getContent(),
+                    'img_show': $("input[name='imgshow']:checked").val(),
+                    'image': $('.image').attr('src')
+                }
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.status == 1) {
+                            showMsg(msg.message, function () {
+                                window.location.href = ""
+                            });
+                        } else {
+                            showMsg(msg.message, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

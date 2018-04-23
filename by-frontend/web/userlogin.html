@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="top">
+    <ul>
+        <a href="index.html" target="_parent"><li class="down">首页<p>HOME</p></li></a>
+        <a href="gamedown.html" target="_parent"><li>游戏下载<p>DOWNLOAD</p></li></a>
+        <a href="recharge.html" target="_parent"><li>账户充值<p>RECHARGE</p></li></a>
+        <a href="newnotice.html" target="_parent"><li>新闻公告<p>NEW NOTICE</p></li></a>
+        <a href="basicdata.html" target="_parent"><li>会员中心<p>VIP</p></li></a>
+        <a href="gameStr.html" target="_parent"><li>心得攻略 <p>GAME STRATEGY</p></li></a>
+        <a href="servicehelp.html" target="_parent"><li>客服帮助<p>SERVICE</p></li></a>
+    </ul>
+</div>
+    <div class="box2">
+        <div class="min">
+            <div class="lef fla-l lef-rel">
+                <img src="images/5_07.png">
+                <div class="use-img b-z">
+                    <img id="header-img" class="user_avatar" src="" width="100px" height="100px">
+                </div>
+                <div class="bot">
+                    <p class="p1 borb txt-cen fon3 user_name">游客</p>
+                    <ul class="b-z bort">
+                        <li class="fla-l bor-l user_diamond">钻石：<span>0</span></li>
+                        <li class="fla-l bor-r user_score">积分：<span>0</span></li>
+                    </ul>
+                    <a class="txt-cen cor dis a1 fon3" href="recharge.html">游戏充值</a>
+                    <div class="cor">
+                        <a class="b-z bort borb" href="basicdata.html">基本信息<span class="fla-r">></span></a>
+                        <a class="b-z bort borb" href="updatedata.html">修改资料<span class="fla-r">></span></a>
+                        <a class="b-z bort" href="payrecord.html">充值记录<span class="fla-r">></span></a>
+                        <a class="b-z borb" href="updatepass.html">修改密码<span class="fla-r">></span></a>
+                        <a class="b-z bort borb" href="sethead.html">设置头像<span class="fla-r">></span></a>
+                    </div>
+                    <a class="txt-cen cor a1 a2 fon" href="index.html">退出登录</a>
+                </div>
+            </div>
+
+            <div class="rit fla-r">
+                <div class="rit-l fla-l flash3">
+                    <div class="flashScroll" id="flashScroll">
+
+                    </div>
+                    <ul class="flash3But" id="flash3But">
+
+                    </ul>
+                </div>
+                <div class="rit-r fla-r fon">
+                    <p class="titl"><span class="fon2">游戏公告</span><span class="cor2 fon3">&nbsp;&nbsp;/&nbsp;&nbsp;活动中心</span><span class="cur" href="#"><span class="fla-r fon">更多<img src="images/sy_08.png"></span></span></p>
+                    <div class="new-d" id="new-d">
+
+                    </div>
+                </div>
+                <div class="flex"></div>
+                <div class="rit-cen">
+                    <p><span class="fon5 fon-wet">最新游戏</span><sapn class="cor2 fon">&nbsp;&nbsp;/&nbsp;&nbsp;NEW GAME</sapn></p>
+                    <div class="rit-cen-box">
+                        <div class="box-w" id="box-w">
+
+                        </div>
+                    </div>
+                    <img src="images/sy_13.png" class="img-l img-btn" onclick="btnlef()"><img src="images/sy_14.png" class="img-r img-btn" onclick="btnrit()">
+                </div>
+                <div class="rit-box3 fla-l">
+                    <a href=""><img src="images/sy_16.png"></a>
+                    <div class="fon">
+                        <a href=""><img src="images/sy_19.png">聊聊鱼阵刷分效率的问题。</a>
+                        <a href=""><img src="images/sy_19.png">教你怎么捕鱼抢龙！</a>
+                        <a href=""><img src="images/sy_19.png">让你们看看怎么玩德州。</a>
+                        <a href=""><img src="images/sy_19.png">速射炮高级场刷金经验！</a>
+                        <a href=""><img src="images/sy_19.png">捕鱼快速圈钱攻略。</a>
+                        <a href=""><img src="images/sy_19.png">各类鱼分值汇总</a>
+                        <a class="bor-no" href=""><img src="images/sy_19.png">捕鱼获取大量金币方法</a>
+                    </div>
+                </div>
+                <div class="rit-box3 fla-r">
+                    <a href=""><img src="images/sy_17.png"></a>
+                    <a href=""><img src="images/sy_18.png" class="fla-r"></a>
+                    <div class="fon a-hei">
+                        <div class="lists-group">
+                            <a class="lists" href="###"><img src="images/sy_19.png">如何下载安装游戏</a>
+                            <div class="content active">1</div>
+                        </div>
+                        <div class="lists-gorup">
+                            <a class="lists" href="###"><img src="images/sy_19.png">游戏可以手机平板和电脑同时玩吗？</a>
+                            <div class="content">2</div>
+                        </div>
+                        <div class="lists-group">
+                            <a class="lists" href="###"><img src="images/sy_19.png">我在网站充值了钻石可以在游戏中使用吗</a>
+                            <div class="content">3</div>
+                        </div>
+                        <div class="lists-group">
+                            <a class="lists" href="###"><img src="images/sy_19.png">游戏商城中购买问题</a>
+                            <div class="content">4</div>
+                        </div>
+                        <div class="lists-group">
+                            <a class="lists" href="###"><img src="images/sy_19.png">积分怎么兑换</a>
+                            <div class="content">5</div>
+                        </div>
+                        <div class="lists-gorup">
+                            <a class="lists" class="bor-no" href="###"><img src="images/sy_19.png">防沉迷生效时间</a>
+                            <div class="content">6</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex"></div>
+            </div>
+        </div>
+    </div>
+    <div class="flex"></div>
+    <img src="images/sy_02.png" id="fla-img">
+    <iframe src="bottom.html" width="100%" height="226px" frameborder="0" border="0" style="margin-top:55px;"></iframe>
+
+<!--qq咨询-->
+<div id="open">
+    <img id="open-fixed" src="images/fixed_3.png" alt="">
+</div>
+
+<div id="parent">
+    <div id="close-"><a id="close" href="###">X</a></div>
+    <div id="ins">
+        <div id="title-fixed">在线<span>QQ</span>咨询</div>
+        <div id="con-fixed">
+            <img src="images/bear_.png" alt="">
+            <div class="qq-fixed">
+                <div>联系客服</div>
+                <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2852371661&amp;site=qq&amp;menu=yes">2852371661</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/index.js"></script>
+<script>
+    $(function(){
+
+        console.log(sessionStorage.headerUrl);
+        var headerUrl = sessionStorage.headerUrl;
+        if(typeof headerUrl != "undefined") {
+            $("#header-img").attr("src", headerUrl);
+        }
+
+        var userData = $.cookie('userData');
+        if(userData==null){
+        	alert("请先登录");
+            window.location.href = 'membercenter.html';
+        }else{
+            var headerUrl = sessionStorage.headerUrl;
+            if(typeof headerUrl != "undefined") {
+                avatar = headerUrl;
+            }else{
+                avatar = userData.user_avatar;
+            }
+            var userData = JSON.parse($.cookie('userData'));
+            $('.user_score span').html(userData.user_score);
+            $('.user_diamond span').html(userData.user_diamond);
+            $('.user_name').html(userData.nickname);
+            $('.user_avatar').attr('src',avatar);
+        }
+
+
+		//折叠扇
+        $(".content").hide();
+        $(".active").show();
+        $(".lists").click(function(){
+            $(".content").hide(500);
+            $(this).parent().children(".content").show(500);
+        });
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+	"total": 20,
+  "data": [
+    {
+    	"cztime":"1",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    },
+    {
+    	"cztime":"2",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    },
+    {
+    	"cztime":"2",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    },
+    {
+    	"cztime":"2",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    },
+    {
+    	"cztime":"2",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    },
+    {
+    	"cztime":"2",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    },
+    {
+    	"cztime":"2",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    },
+    {
+    	"cztime":"2",
+      "czservice": "21321",
+      "czaccount": "2016-12-31",
+      "czgameid": "12"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>个人信息</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.form.js"></script>
+
+        <style>
+            .avatar{
+                position: absolute;
+                z-index: 1000;
+                width: 100px;
+                height: 100px;
+                left: 0px;
+                top: -100px;
+                overflow: hidden;
+                padding: 2px;
+                border: solid 2px #666;
+                border-radius: 5px;
+                background: #f2f2f2;
+            }
+            .avatar img{
+                border: none;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active">
+                <a href="#User" data-toggle="tab" data-ctrl-btn="init_baseinfo">
+                    基本信息</a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="User">
+
+                <form class="form-horizontal" role="form" data-ctrl-form method="post" action="player/user/save_baseinfo">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">ID号码:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" name="userid"  type="text" readonly data-ctrl-render="user_id" />
+                            </div>
+                            <label class="col-sm-1 control-label">用户名:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" type="text" readonly data-ctrl-render="username" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">用户昵称:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  name="nickname" type="text" data-ctrl-render="nickname" />
+                            </div>
+                            <label class="col-sm-1 control-label">登陆密码:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control"  name="password" type="text" value='******' />
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-sm-1 control-label">身份证号:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" name="idcard"  type="text" data-ctrl-render="idcard" />
+                            </div>
+                            <label class="col-sm-1 control-label">个性签名:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" name="signature"  type="text" data-ctrl-render="signature"/>
+                            </div>
+                            <label class="col-sm-1 control-label">性别:</label>
+                            <div class="col-sm-1">
+                                <select name="gender" class="form-control" data-ctrl-render="gender">
+                                    <option value="0">未知</option>
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">头像:</label>
+                            <div class="col-sm-2">
+                                <div class="avatar" style="display: none;">
+                                    <img data-ctrl-render="avatar">
+                                </div>
+                                <input class="form-control avatar-input" name="avatar" type="text" data-ctrl-render="avatar">
+                            </div>
+                            <label class="col-sm-1 control-label">冻结原因:</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" readonly data-ctrl-render="freeze_comment">
+                            </div>
+                        </div>
+                        <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                            <label class="col-sm-1 control-label" for=""><h3>登陆信息</h3></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">大厅登陆次数:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" data-ctrl-render="login_times"  type="text" readonly>
+                            </div>
+                            <label class="col-sm-1 control-label" for="">在线时长共计:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" data-ctrl-render="online_time"  type="text" readonly>
+                            </div>
+                            <label class="col-sm-1 control-label" for="">游戏时长共计:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" data-ctrl-render="game_time"  type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-sm-1 control-label" for="">最后登陆时间:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" data-ctrl-render="last_time"  type="text" readonly>
+                            </div>
+                            <label class="col-sm-1 control-label" for="">最后登录地址:</label>
+                            <div class="col-sm-3">
+                                <input class="form-control ip2addr" data-ctrl-render="last_ip"  type="text" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">注册时间:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" data-ctrl-render="reg_time"  type="text" readonly>
+                            </div>
+                            <label class="col-sm-1 control-label" for="">注册机器:</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" data-ctrl-render="reg_hardcode"  type="text" readonly>
+                            </div>
+                            <label class="col-sm-1 control-label" for="">注册手机:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" data-ctrl-render="reg_phone"  type="text" readonly>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for=""></label>
+                            <div class="col-sm-10">
+                                <input type="submit" value="保存" class="form-control">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/date.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </body>
+
+
+    <script>
+        $(function () {
+            $('ul.nav-tabs li.active [data-ctrl-btn][data-toggle]').trigger('click');
+
+            //form
+            $('[data-ctrl-form]').submit(function () {
+                $(this).ajaxSubmit({
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert('修改成功');
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+
+            //事件
+            $('.avatar-input').hover(function () {
+                $('.avatar img').attr('src', $(this).val());
+                $('.avatar').show();
+            }, function () {
+                $('.avatar').hide();
+            });
+        });
+
+        //初始化基本信息数据
+        function init_baseinfo() {
+            var uid = getQueryString('uid');
+            if (!uid) {
+                console.log('无参数');
+                return false;
+            }
+            var container = $(this).attr('href').substr(1);
+            //获取数据
+            $.post('player/user/detail', {
+                userid: uid,
+                type: 'baseinfo'
+            }, function (json) {
+                if (json.result == 0) {
+                    render(container, json.data);
+                } else {
+                    alert(json.msg);
+                }
+            }, 'json');
+        }
+
+        //数据渲染
+        function render(container, data) {
+            $('[data-ctrl-render]').each(function () {
+                var key = $(this).attr('data-ctrl-render');
+                var value = data[key];
+                if (value) {
+                    if ($(this).is('input')) {
+                        $(this).val(value);
+                    } else if ($(this).is('select')) {
+                        $(this).find('option[value=' + value + ']').attr('selected', true);
+                    } else if ($(this).is('img')) {
+                        $(this).attr('src', value);
+                    }
+                    //获取IP地址
+                    if ($(this).hasClass('ip2addr')) {
+                        ip2addr.call(this, value, function (addr) {
+                            $(this).val(addr + '(' + $(this).val() + ')');
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+
+</html>

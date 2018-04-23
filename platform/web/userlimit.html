@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>用户限制</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+		<script type="text/javascript" src="js/jquery.form.js"></script>
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+			<div class="header">
+
+				<h1 class="page-title">用户限制</h1>
+			</div>
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">
+
+							<input type="button" value="查询" name="btntype" id="btntype" class="btn btn-default input_btn_h">
+							<input type="button" name="btndj" id="btndj" value="新增" data-toggle="modal" data-target="#myModal" onclick="send(1);" class="btn btn-default input_btn_h">
+							<input type="button" name="btnjd" id="btnjd" value="删除" onclick="send(2);" class="btn btn-default input_btn_h">
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check" id="checkAll" onclick="check_all();"></th>
+									<th>序号</th>
+									<th>管理</th>
+									<th>限制字符</th>
+									<th>失效时间</th>
+									<th>录入时间</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax(userlimit, {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'ordering': false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check' id='checkbox-check' class='check' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'userid',
+									}, {
+										'mDataProp': 'usermanage',
+									}, {
+										'mDataProp': 'xzzf',
+									}, {
+										'mDataProp': 'sxsj',
+									}, {
+										'mDataProp': 'lrsj',
+									}],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+
+			<!-- 冻结弹窗 -->
+			<form class="form-horizontal" method="post" action="#" role="form">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="form-group">
+								<label for="">限制用户名:</label>
+								<input type="text" class="form-control" id="djreason" placeholder="用户名" name="djreason">
+							</div>
+							<div class="input-group input-large date-picker input-daterange input-table" data-date-format="yyyy-mm-dd ">
+								<span class="input-group-addon">日期</span>
+								<input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" value="2016-12-01" type="text">
+								<input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="startdate" value="2016-12-01" type="hidden">
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="submit" id="btndjreason" class="btn btn-primary">确定</button>
+							</div>
+							<input type="hidden" name="" id="userdj" value="" />
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<script type="text/javascript">
+				function send(num) {
+					var $check = $('input[type=checkbox][class=check]:checked').val();
+					$("#userid").val(num);
+					$("#userdj").val(num);
+					$("#userjd").val(num);
+					$("#addhuiyuan").val(num);
+				};
+			</script>
+			<script type="text/javascript" src="js/date.js"></script>
+			<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>

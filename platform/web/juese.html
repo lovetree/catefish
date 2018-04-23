@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>角色管理</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+        <script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+
+        <div class="header">
+            <h4 class="page-title" >角色管理</h4>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+                    <form method="post"></form>
+                    <table class="table display block-body collapse in" id="example">
+                        <input type="button" name="btntype" id="btntype" onclick="todo('1')" class="input_btn_h input-table" value="新建" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th>角色ID</th>
+                                <th>角色名</th>
+                                <th>状态</th>
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+
+                    </table>
+                    <script type="text/javascript">
+                        $(function () {
+                            var table = $('#example').dataTableAjax("admin/role/list", {
+                                'bLengthChange': false,
+                                'iDisplayLength': 10,
+                                'searching': true,
+                                'processing': true,
+                                'serverSide': true,
+                                "autoWidth": false,
+                                'ordering': false,
+                                'aoColumns': [
+                                    {
+                                        'mDataProp': 'jueseid',
+                                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                            $(nTd).html(oData.role_id);
+                                        }
+                                    },
+                                    {
+                                        'mDataProp': 'juesename',
+                                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                            $(nTd).html(oData.name);
+                                        }
+                                    },
+                                    {
+                                        'mDataProp': 'area',
+                                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                            $(nTd).html(oData.status == 1 ? '正常' : '禁用');
+                                        }
+                                    },
+                                    {
+                                        'mDataProp': 'management',
+                                        "render": function (data, type, oData, meta) {
+                                            var btn = oData.status == 1 ? '<button data-ctrl-btn="setActive" rel="0">禁用</button>' : '<button data-ctrl-btn="setActive" rel="1">启用</button>';
+                                            return btn + '&nbsp;<button data-ctrl-btn="editPerms">设置</button>&nbsp;<button data-ctrl-btn="deleteAction">删除</button>';
+                                        }
+                                    }
+                                ],
+                                createdRow: function (row, data, dataIndex) {
+                                    $(row).data('line-data', data);
+                                },
+                                postData: {
+                                    'query': function () {
+                                        return $('input[aria-controls=example][type=search]').val();
+                                    }
+                                }
+                            });
+                            $('input[aria-controls=example][type=search]').unbind();
+                            $('input[aria-controls=example][type=search]').keyup(function (e) {
+                                if (e.keyCode === 13) {
+                                    table.reload();
+                                }
+                            });
+
+                            window.table_reload = function () {
+                                $('input[aria-controls=example][type=search]').focus();
+                                table.reload();
+                            };
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer><hr></footer>
+
+        <script src="js/jquery.form.js"></script>
+        <script src="js/juicer-min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript">
+                        function todo(type) {
+                            BootstrapDialog.show({
+                                title: '新建角色',
+                                message: $("#juese_box_xj").clone().show().get(0).outerHTML,
+                                buttons: [{
+                                        label: '取消',
+                                        cssClass: 'btn btn-danger',
+                                        action: function (dialog) {
+                                            dialog.close();
+                                        }
+                                    }, {
+                                        label: '确定',
+                                        cssClass: 'btn btn-primary',
+                                        action: function (dialog) {
+                                            var juese = dialog.getModalBody().find('input[name=juesename]').val();
+                                            if($.trim(juese)==""){
+                                                alert('请填写角色名！');
+                                                return false;
+                                            }
+                                            ajaxActionjsxj.call(dialog, juese);
+                                        }
+                                    }]
+                            })
+
+                        }
+
+                        function ajaxActionjsxj(juese) {
+                            var self = this;
+                            var ajaxUrl = 'admin/role/save';
+                            $.post(ajaxUrl, {
+                                name: juese
+                            },
+                                    function (data) {
+                                        //							  BootstrapDialog.alert(data);
+                                        if (data.result == 0) {
+                                            alert("新建成功！");
+                                            self && self.close();
+                                            table_reload();
+                                        } else {
+                                            alert(data.msg);
+                                        }
+                                    },
+                                    'json');
+                        }
+
+
+                        function ajaxActionjsbj(juese) {
+                            var self = this;
+                            var ajaxUrl = 'admin/role/save';
+                            $.post(ajaxUrl, {
+                                role_id: juese,
+                            },
+                                    function (data) {
+                                        //							  BootstrapDialog.alert(data);
+                                        if (data.result == 0) {
+                                            alert("编辑成功！");
+                                            self && self.close();
+                                        } else {
+                                            alert(data.msg);
+                                        }
+
+                                    },
+                                    'json');
+                        }
+
+                        function editPerms() {
+                            var data = $(this).parents('tr').data('line-data');
+                            var root_dom;
+                            initAllPerms(data.role_id, function (json) {
+
+                                var dialog = $('.juese_xjs form').dialog({
+                                    title: '设置 - ' + data.name
+                                }, function () {
+                                    $(this).attr('id', 'set_perms');
+                                    $(this).find('input[name=role_id]').attr('value', data.role_id);
+                                    $(this).find('input[name=role_name]').attr('value', data.name);
+                                    //渲染初始数据
+                                    render_perm.call(this, json);
+                                });
+                                setTimeout(function () {
+                                    var $form = $('form[id=set_perms]');
+                                    //初始化form
+                                    $form.submit(function () {
+                                        var name=$form.find('input[name=role_name]').val();
+                                        if($.trim(name)==""){
+                                            alert('请填写角色名！');
+                                            return false;
+                                        }
+                                        $form.ajaxSubmit({
+                                            url: 'admin/role/setperms',
+                                            dataType: 'json',
+                                            success: function (json) {
+                                                if (json.result == 0) {
+                                                    window.perms[data.role_id] = null;
+                                                    alert('修改成功');
+                                                    dialog.close();
+                                                    table_reload();
+                                                } else {
+                                                    alert(json.msg);
+                                                }
+                                            }
+                                        });
+                                        return false;
+                                    });
+                                }, 200);
+
+                            });
+
+                        }
+
+                        function initAllPerms(role_id, func) {
+                            if (window.my_perms) {
+                                loadRolePerm(role_id, function (json) {
+                                    if (typeof (func) === 'function') {
+                                        func(json);
+                                    }
+                                });
+
+                            } else {
+                                $.post('admin/role/perms', {
+                                    available: 1
+                                }, function (json) {
+                                    window.my_perms = json.data;
+                                    var html = '';
+                                    $(".perms_list").juicer('#tpl_perms', json);
+                                    loadRolePerm(role_id, function (json) {
+                                        if (typeof (func) === 'function') {
+                                            func(json);
+                                        }
+                                    });
+                                }, 'json');
+                            }
+                        }
+
+                        function loadRolePerm(id, func) {
+                            window.perms || (window.perms = []);
+                            if (window.perms[id]) {
+                                if (typeof (func) === 'function') {
+                                    func(window.perms[id]);
+                                }
+                            } else {
+                                $.post('admin/role/perm', {
+                                    role_id: id
+                                }, function (json) {
+                                    window.perms[id] = json.data;
+                                    if (typeof (func) === 'function') {
+                                        func(json.data);
+                                    }
+                                }, 'json');
+                            }
+                        }
+
+                        function render_perm(data) {
+                            var self = this;
+                            $(data).each(function () {
+                                var $dom = $(self).find('input[value="' + this + '"]');
+                                $dom.attr('checked', true);
+                                refreshPerm.call($dom);
+                            });
+                        }
+
+                        function setActive() {
+                            var data = $(this).parents('tr').data('line-data');
+                            var status = $(this).attr('rel');
+                            $.post('admin/role/active', {
+                                role_id: data.role_id,
+                                status: status
+                            }, function (json) {
+                                if (json.result == 0) {
+                                    alert('修改成功');
+                                    table_reload();
+                                } else {
+                                    alert(json.msg);
+                                }
+                            }, 'json');
+                        }
+
+                        function refreshPerm() {
+                            var $parent = $(this).parents('form');
+                            var perms_list = [];
+                            $parent.find('.perm_item:checked').each(function () {
+                                perms_list.push($(this).val()); //role_id
+                            });
+                            $parent.find('input[name=perms]').val(perms_list.join(','));
+                        }
+
+
+                        $(function () {
+                            $(document).on('click', '.perm_item', function () {
+                                refreshPerm.call(this);
+                            });
+                        });
+
+                        function deleteAction() {
+                            var data = $(this).parents('tr').data('line-data');
+                            if (!confirm('确认删除角色[ ' + data.name + ' ]')) {
+                                return false;
+                            }
+                            $.post('admin/role/delete', {role_id: data.role_id}, function (json) {
+                                if (json.result == 0) {
+                                    table_reload();
+                                } else {
+                                    alert(json.msg);
+                                }
+                            }, 'json');
+                        }
+
+        </script>
+        <div class="juese_xj">
+            <form method="get" style="display: none;" id="juese_box_xj" action="" >角色名:<input  type="text" name="juesename" class="form-control"></form>
+        </div>
+
+        <div class="juese_xjs" style="display: none;">
+            <form method="post">
+                <input type="hidden" name="role_id">
+                <input type="hidden" name="perms">
+                <div>
+                    <input type='text' name='role_name' class="form-control"/>
+                </div>
+                <div class="perms_list"></div>
+                <input type='submit' value='提交' class="form-control"/>
+            </form>
+        </div>
+
+    </body>
+
+</html>
+
+
+<script type="text/template" id="tpl_perms">
+    <div class='perms_box' style="max-height: 450px;overflow-y: auto;border: solid 1px #999;padding: 5px;">
+    {@each data as it}
+    <div style="margin:10px 0;font-size:16px;font-weight:600;">${it.name}</div>
+    {@each it.sub as li}
+    <div>
+    ${li.label}
+    {@if li.r==1}
+    <input type="checkbox" class='perm_item' value="${li.value}.0"><span>查看</span>
+    {@/if}
+    {@if li.w==1}
+    <input type="checkbox" class='perm_item' value="${li.value}.1"><span>编辑</span>
+    {@/if}
+    </div>
+    {@/each}
+    {@/each}
+    </div>
+</script>

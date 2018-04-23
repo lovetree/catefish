@@ -1,0 +1,267 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>标题</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+        <style>
+            table#tab input,table#tab textarea{
+                margin-top:5px;
+            }
+            table#tab td{ height: 70px;}
+            table#tab .pad-l{padding-left:30px;}
+            table#tab .sel{float:left; border-radius:0px; margin-bottom:5px; max-width:200px; margin-right:30px;}
+            table#tab .wid{width:100px; margin:0 10px 5px 0; float:left; vertical-align:middle;}
+            table#tab .delspan{cursor:pointer; font-size:12px; font-weight:normal;}
+            table#tab td.seltd{ border: 1px solid #ccc;}
+            table#tab div.box{ max-height:150px; overflow-y:auto; padding:10px 0 5px 10px;}
+            table#tab span.inser{border: 1px solid #ccc; font-size:12px; padding:3px 10px; float:right; cursor:pointer;}
+            table#tab textarea.tex{ height:70px; line-height:20px;  padding:5px 7px; resize:none; border-radius:0px;}
+        </style>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">标题</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">		
+                        <input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="新增" data-ctrl-btn="newAction"/>
+                        <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" data-ctrl-btn="deleteAction"/>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                								<th>id</th>
+								<th>携带金币</th>
+								<th>钱柜金币</th>
+								<th>总金币</th>
+								<th>在线送金币</th>
+								<th>签到</th>
+								<th>推广</th>
+								<th>注册</th>
+								<th>后台赠送</th>
+								<th>绑定手机领取</th>
+								<th>充值奖励</th>
+								<th>游戏税收</th>
+								<th>系统输赢</th>
+								<th>道具购买</th>
+								<th>购买礼物</th>
+								<th>商城</th>
+								<th>日总结</th>
+
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="id"/>
+            <table id="tab" border="0" width="100%">
+                <tr><td>钱柜金币：<input class="form-control" name="钱柜金币" type="text" placeholder="钱柜金币" ></td>
+<td class="pad-l">总金币：<input class="form-control" name="总金币" type="text" placeholder="总金币" ></td></tr>
+
+<tr><td>在线送金币：<input class="form-control" name="在线送金币" type="text" placeholder="在线送金币" ></td>
+<td class="pad-l">签到：<input class="form-control" name="签到" type="text" placeholder="签到" ></td></tr>
+
+<tr><td>推广：<input class="form-control" name="推广" type="text" placeholder="推广" ></td>
+<td class="pad-l">注册：<input class="form-control" name="注册" type="text" placeholder="注册" ></td></tr>
+
+<tr><td>后台赠送：<input class="form-control" name="后台赠送" type="text" placeholder="后台赠送" ></td>
+<td class="pad-l">绑定手机领取：<input class="form-control" name="绑定手机领取" type="text" placeholder="绑定手机领取" ></td></tr>
+
+<tr><td>充值奖励：<input class="form-control" name="充值奖励" type="text" placeholder="充值奖励" ></td>
+<td class="pad-l">游戏税收：<input class="form-control" name="游戏税收" type="text" placeholder="游戏税收" ></td></tr>
+
+<tr><td>系统输赢：<input class="form-control" name="系统输赢" type="text" placeholder="系统输赢" ></td>
+<td class="pad-l">道具购买：<input class="form-control" name="道具购买" type="text" placeholder="道具购买" ></td></tr>
+
+<tr><td>购买礼物：<input class="form-control" name="购买礼物" type="text" placeholder="购买礼物" ></td>
+<td class="pad-l">商城：<input class="form-control" name="商城" type="text" placeholder="商城" ></td></tr>
+
+<tr><td>日总结：<input class="form-control" name="日总结" type="text" placeholder="日总结" ></td>
+<td class="pad-l">商城：<input class="form-control" name="商城" type="text" placeholder="商城" ></td></tr>
+
+            
+                <tr>
+                    <td colspan="2" style="padding-top:20px;">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div></body></html>
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript">
+$(function () {
+        var table = $('#example').dataTableAjax("admin/Sysstat/list", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+            			{'mDataProp':'id'},
+			{'mDataProp':'gold_self'},
+			{'mDataProp':'gold_safe'},
+			{'mDataProp':'gold_total'},
+			{'mDataProp':'gold_present'},
+			{'mDataProp':'sign'},
+			{'mDataProp':'promotion'},
+			{'mDataProp':'register'},
+			{'mDataProp':'admin_present'},
+			{'mDataProp':'received_phone_bind'},
+			{'mDataProp':'prize_for_recharge'},
+			{'mDataProp':'game_tax'},
+			{'mDataProp':'sys_losewin'},
+			{'mDataProp':'tool_buy'},
+			{'mDataProp':'gift_buy'},
+			{'mDataProp':'market'},
+			{'mDataProp':'day_sum'},
+
+                {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+                        return '&nbsp;<button data-ctrl-btn="editAction">编辑</button>';
+                    }}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                			$(row).data('data-id', data.id);
+			$(row).data('data-gold_self', data.gold_self);
+			$(row).data('data-gold_safe', data.gold_safe);
+			$(row).data('data-gold_total', data.gold_total);
+			$(row).data('data-gold_present', data.gold_present);
+			$(row).data('data-sign', data.sign);
+			$(row).data('data-promotion', data.promotion);
+			$(row).data('data-register', data.register);
+			$(row).data('data-admin_present', data.admin_present);
+			$(row).data('data-received_phone_bind', data.received_phone_bind);
+			$(row).data('data-prize_for_recharge', data.prize_for_recharge);
+			$(row).data('data-game_tax', data.game_tax);
+			$(row).data('data-sys_losewin', data.sys_losewin);
+			$(row).data('data-tool_buy', data.tool_buy);
+			$(row).data('data-gift_buy', data.gift_buy);
+			$(row).data('data-market', data.market);
+			$(row).data('data-day_sum', data.day_sum);
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('admin/Sysstat/delete', {
+            id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+function newAction(){
+        editAction(true);
+    }
+
+function editAction(bNew){
+        var msg_id = $(this).parents('tr').data('data-id');var msg_gold_self = $(this).parents('tr').data('data-gold_self');var msg_gold_safe = $(this).parents('tr').data('data-gold_safe');var msg_gold_total = $(this).parents('tr').data('data-gold_total');var msg_gold_present = $(this).parents('tr').data('data-gold_present');var msg_sign = $(this).parents('tr').data('data-sign');var msg_promotion = $(this).parents('tr').data('data-promotion');var msg_register = $(this).parents('tr').data('data-register');var msg_admin_present = $(this).parents('tr').data('data-admin_present');var msg_received_phone_bind = $(this).parents('tr').data('data-received_phone_bind');var msg_prize_for_recharge = $(this).parents('tr').data('data-prize_for_recharge');var msg_game_tax = $(this).parents('tr').data('data-game_tax');var msg_sys_losewin = $(this).parents('tr').data('data-sys_losewin');var msg_tool_buy = $(this).parents('tr').data('data-tool_buy');var msg_gift_buy = $(this).parents('tr').data('data-gift_buy');var msg_market = $(this).parents('tr').data('data-market');var msg_day_sum = $(this).parents('tr').data('data-day_sum');
+        var dialog = $('.edit-box form').dialog({
+            title: '标题 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=id]').attr('value', msg_id);$(this).find('input[name=gold_self]').attr('value', msg_gold_self);$(this).find('input[name=gold_safe]').attr('value', msg_gold_safe);$(this).find('input[name=gold_total]').attr('value', msg_gold_total);$(this).find('input[name=gold_present]').attr('value', msg_gold_present);$(this).find('input[name=sign]').attr('value', msg_sign);$(this).find('input[name=promotion]').attr('value', msg_promotion);$(this).find('input[name=register]').attr('value', msg_register);$(this).find('input[name=admin_present]').attr('value', msg_admin_present);$(this).find('input[name=received_phone_bind]').attr('value', msg_received_phone_bind);$(this).find('input[name=prize_for_recharge]').attr('value', msg_prize_for_recharge);$(this).find('input[name=game_tax]').attr('value', msg_game_tax);$(this).find('input[name=sys_losewin]').attr('value', msg_sys_losewin);$(this).find('input[name=tool_buy]').attr('value', msg_tool_buy);$(this).find('input[name=gift_buy]').attr('value', msg_gift_buy);$(this).find('input[name=market]').attr('value', msg_market);$(this).find('input[name=day_sum]').attr('value', msg_day_sum);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                      var txt=$(this).val();
+                      if($.trim(txt)==""){
+                          num++;
+                      }
+                });
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                
+                $form.ajaxSubmit({
+                    url: 'admin/Sysstat/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

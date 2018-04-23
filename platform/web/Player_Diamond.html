@@ -1,0 +1,188 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>钻石管理</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">钻石管理</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <select class="input_btn_h" id="channeltype" name="channeltype">
+                            <option value="id">按用户ID</option>
+                            <option value="gold_above">按用户钻石大于等于</option>
+                            <option value="gold_below">按用户钻石小于等于</option>
+                            <!--<option value="username">按用户帐号</option>-->
+                            <!--<option value="nickname">按用户昵称</option>-->
+                        </select>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th>玩家ID</th>
+                                <th>玩家账号</th>
+                                <th>玩家昵称</th>
+                                <th>钻石</th>
+                                <th>更新时间</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="id"/>
+            <table id="tab" border="0" width="100%">
+                <tr><td>id：<input class="form-control" name="type" type="text" placeholder="id" ></td><td class="pad-l">游戏ID：<input class="form-control" name="price" type="text" placeholder="游戏ID" ></td></tr>
+
+                <tr><td>用户帐号：<input class="form-control" name="type" type="text" placeholder="用户帐号" ></td><td class="pad-l">交易前钻石：<input class="form-control" name="price" type="text" placeholder="交易前钻石" ></td></tr>
+
+                <tr><td>交易事件：<input class="form-control" name="type" type="text" placeholder="交易事件" ></td><td class="pad-l">用户昵称：<input class="form-control" name="price" type="text" placeholder="用户昵称" ></td></tr>
+
+                <tr><td>交易后钻石：<input class="form-control" name="type" type="text" placeholder="交易后钻石" ></td><td class="pad-l">交易钻石：<input class="form-control" name="price" type="text" placeholder="交易钻石" ></td></tr>
+
+                <tr><td>操作地址：<input class="form-control" name="type" type="text" placeholder="操作地址" ></td><td class="pad-l">创建时间：<input class="form-control" name="price" type="text" placeholder="创建时间" ></td></tr>
+
+                <tr><td>最后更新：<input class="form-control" name="type" type="text" placeholder="最后更新" ></td><td class="pad-l">备注：<input class="form-control" name="price" type="text" placeholder="备注" ></td></tr>
+
+            
+                <tr>
+                    <td colspan="2" style="padding-top:20px;">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div></body></html><script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">$(function () {
+        var table = $('#example').dataTableAjax('Player/diamond/list', {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'user_id'},
+                {'mDataProp': 'username'},
+                {'mDataProp': 'nickname'},
+                {'mDataProp': 'credit'},
+                {'mDataProp': 'update_date'}
+            ],
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                },
+                'query_type': function () {
+                    return $("#channeltype option:checked").val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('Player/diamond/delete', {
+            msg_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+function newAction(){
+        editAction(true);
+    }
+
+function editAction(bNew){
+        var msg_id = $(this).parents('tr').data('data-id');var msg_game_id = $(this).parents('tr').data('data-game_id');var msg_username = $(this).parents('tr').data('data-username');var msg_diamonds_before = $(this).parents('tr').data('data-diamonds_before');var msg_trade_event = $(this).parents('tr').data('data-trade_event');var msg_nickname = $(this).parents('tr').data('data-nickname');var msg_diamonds_after = $(this).parents('tr').data('data-diamonds_after');var msg_dismonds_trade = $(this).parents('tr').data('data-dismonds_trade');var msg_operate_address = $(this).parents('tr').data('data-operate_address');var msg_created_at = $(this).parents('tr').data('data-created_at');var msg_updated_at = $(this).parents('tr').data('data-updated_at');var msg_remark = $(this).parents('tr').data('data-remark');
+        var dialog = $('.edit-box form').dialog({
+            title: '标题 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=msg_id]').attr('value', msg_id);$(this).find('input[name=msg_game_id]').attr('value', msg_game_id);$(this).find('input[name=msg_username]').attr('value', msg_username);$(this).find('input[name=msg_diamonds_before]').attr('value', msg_diamonds_before);$(this).find('input[name=msg_trade_event]').attr('value', msg_trade_event);$(this).find('input[name=msg_nickname]').attr('value', msg_nickname);$(this).find('input[name=msg_diamonds_after]').attr('value', msg_diamonds_after);$(this).find('input[name=msg_dismonds_trade]').attr('value', msg_dismonds_trade);$(this).find('input[name=msg_operate_address]').attr('value', msg_operate_address);$(this).find('input[name=msg_created_at]').attr('value', msg_created_at);$(this).find('input[name=msg_updated_at]').attr('value', msg_updated_at);$(this).find('input[name=msg_remark]').attr('value', msg_remark);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                      var txt=$(this).val();
+                      if($.trim(txt)==""){
+                          num++;
+                      }
+                });
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                
+                $form.ajaxSubmit({
+                    url: 'Player/diamond/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>商品管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/tables.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/j.dt.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <style>
+        table#tab input,table#tab textarea{
+            margin-top:5px;
+        }
+        table#tab td{ height: 70px;}
+        table#tab .pad-l{padding-left:30px;}
+        table#tab .sel{float:left; border-radius:0px; margin-bottom:5px; max-width:200px; margin-right:30px;}
+        table#tab .wid{width:100px; margin:0 10px 5px 0; float:left; vertical-align:middle;}
+        table#tab .delspan{cursor:pointer; font-size:12px; font-weight:normal;}
+        table#tab td.seltd{ border: 1px solid #ccc;}
+        table#tab div.box{ max-height:150px; overflow-y:auto; padding:10px 0 5px 10px;}
+        table#tab span.inser{border: 1px solid #ccc; font-size:12px; padding:3px 10px; float:right; cursor:pointer;}
+        table#tab textarea.tex{ height:70px; line-height:20px;  padding:5px 7px; resize:none; border-radius:0px;}
+    </style>
+</head>
+
+<body class="" style="background: #FFFFFF;">
+<div class="header">
+    <h1 class="page-title">商品管理</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6">
+            <table class="table display block-body collapse in" id="example">
+                <input type="button" onclick="javascript:window.location.reload();" class="input_btn_h input-table" value="刷新" data-ctrl-btn="newAction"/>
+                <input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="新增" data-ctrl-btn="newAction"/>
+                <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" data-ctrl-btn="deleteAction"/>
+                <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                <thead class="theadtbody">
+                <tr>
+                    <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                    <th>ID</th>
+                    <th>商品名称</th>
+                    <th>商品显示名称</th>
+                    <th>爱贝商品编号</th>
+                    <th>商品来源</th>
+                    <th>商品类型</th>
+                    <th>等值数量</th>
+                    <th>描述</th>
+                    <th>包含的道具</th>
+                    <th>总价格(元)</th>
+                    <th>上架时间</th>
+                    <th>下架时间</th>
+                    <th>创建时间</th>
+                    <th>状态</th>
+                    <th>管理</th>
+                </tr>
+                </thead>
+                <tbody class="theadtbody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer><hr></footer>
+
+<div style="display: none;" class="edit-box">
+    <form method="post">
+        <input type="hidden" name="id"/>
+        <table id="tab" border="0" width="100%">
+            <tr>
+                <td colspan="2">
+                    <input type="file" class="form-control" name="file" style="border-radius:0px;">
+                </td>
+            </tr>
+            <tr>
+                <td>商品来源：<input class="form-control" name="source" type="text" placeholder="商品来源"></td>
+            </tr>
+            <tr>
+                <td>商品名称：<input class="form-control" name="name" type="text" placeholder="商品名称"></td>
+                <td class="pad-l">等值数量：<input class="form-control" name="worth" type="text" placeholder="等值数量"></td>
+            </tr>
+            <tr>
+                <td>商品显示名称：<input class="form-control" name="show_name" type="text" placeholder="商品显示名称"></td>
+                <td  class="pad-l">爱贝商品编号：<input class="form-control" name="aibei_waresid" type="text" placeholder="爱贝商品编号"></td>
+            </tr>
+            <tr>
+                <td>商品类型：<input class="form-control" name="type" type="text" placeholder="商品类型" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+                <td class="pad-l">总价格(分)：<input class="form-control" name="price" type="text" placeholder="总价格" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></td>
+            </tr>
+            <tr>
+                <td>上架时间：<input class="form-control input-xs input" widget-date="1" name="start_time" type="text" data-input></td>
+                <td class="pad-l">下架时间：<input class="form-control input-xs input" widget-date="2" name="end_time" type="text" data-input></td>
+            </tr>
+            <tr><td colspan="2" style="height:35px;"><span class="">道具：</span><span class="inser" data-ctrl-btn="insetprop">新增</span></td></tr>
+            <tr class="twid">
+                <td class="seltd" colspan="2">
+                    <div class="box" id="selbox"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-top:20px;">
+                    <div class="form-group">
+                        <input type="button" onclick="submitForm()" class="form-control" value="提交">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+</body>
+
+</html>
+
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<!--<script type="text/javascript" src="js/date.js"></script>-->
+
+<script type="text/javascript">
+
+    function submitForm(){
+        var $form = $('form[id=edit_message]');
+        var list=[];
+        $form.find('p').each(function(){
+            var id=$(this).find('select').val();
+            var count=$(this).find('input').val();
+            list.push({item_id:id,item_count:count});
+        });
+
+        $form.ajaxSubmit({
+            url: 'system/goods/save',
+            dataType: 'json',
+            data:{items:list},
+            success: function (json) {
+                if (json.result == 0) {
+                    alert("操作成功");
+                    dialog.close();
+                    table_reload();
+                } else {
+                    alert(json.msg);
+                }
+            }
+        });
+        return false;
+    }
+
+    function inp(){
+        var tr="^[0-9]*$";
+    }
+    function insetprop(){
+        var $parent = $(this).parents('#edit_message');
+        $.post('system/item/list',{
+            },function(json){
+                var data=json.data;
+                if(!data){
+                     return;
+                 }
+                var txt='<p>'+
+                    '<select class="form-control sel inssel">'+
+                    '</select> '+
+                    '<input class="form-control wid" type="text" placeholder="数量" value="1" onkeyup=this.value=this.value.replace(/\D/g,""); onafterpaste=this.value=this.value.replace(/\D/g,""); >'+
+                    '<label class="delspan" data-ctrl-btn="deletprop">删除</label>'+
+                    '</p>';
+                $parent.find('#selbox').append(txt);
+                var $sel=$parent.find('.inssel:last');
+                $.each(data,function(index,obj){
+                    $sel.append('<option value="'+obj.item_id+'">'+obj.name+'</option>');
+                });
+
+            },'json');
+
+
+    }
+
+    function deletprop(){
+        $(this).parents('p').remove();
+    }
+    var dialog="";
+    $(function () {
+        var table = $('#example').dataTableAjax(good, {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                }
+                },
+                {'mDataProp': 'id'},
+                {'mDataProp': 'name'},
+                {'mDataProp': 'show_name'},
+                {'mDataProp': 'aibei_waresid'},
+                {'mDataProp': 'source', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        if (oData.source == 0){
+                            $(nTd).html("大厅商城");
+                        }
+                        if (oData.source == 1){
+                            $(nTd).html("捕鱼商城");
+                        }
+                        if (oData.source == 2){
+                            $(nTd).html("web商城");
+                        }
+                    }
+                },
+                {'mDataProp': 'type', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        if (oData.source == 0){
+                            if (oData.type == 0){
+                                $(nTd).html("钻石");
+                            }
+                            if (oData.type == 1){
+                                $(nTd).html("金币");
+                            }
+                            if (oData.type == 2){
+                                $(nTd).html("一指赢积分");
+                            }
+                            if (oData.type == 3){
+                                $(nTd).html("积分兑钻石");
+                            }
+                        }
+
+                        if (oData.source == 1){
+                            if (oData.type == 0){
+                                $(nTd).html("金币");
+                            }
+                            if (oData.type == 1){
+                                $(nTd).html("绿宝石");
+                            }
+                        }
+                    }
+                },
+                {'mDataProp': 'worth'},
+                {'mdataprop': 'desc'},
+                {'mDataProp': 'items', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                    var str="";
+                    if (sData) {
+                        $.each(sData,function(index,obj){
+                            var txt=obj.item_name+"-"+obj.item_count;
+                            if(index>0){
+                                txt="，"+txt;
+                            }
+                            str=str+txt;
+                        });
+                        if(str.length>20){
+                            var str2=str.substring(0,19);
+                            $(nTd).text(str2+"...");
+                            return;
+                        }
+                        $(nTd).text(str);
+                    }
+                }},
+                {'mDataProp': 'status', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).text(oData.total_price / 100);
+                    }
+                },
+                {'mDataProp': 'start_time'},
+                {'mDataProp': 'end_time'},
+                {'mDataProp': 'created_time'},
+                {'mDataProp': 'status', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).text(sData == 1 ? '启用' : '禁用');
+                    }
+                },
+                {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+                    var btn = oData.status == 1 ? '<button data-ctrl-btn="setActive" rel="0">禁用</button>' : '<button data-ctrl-btn="setActive" rel="1">启用</button>';
+                    return btn + '&nbsp;<button data-ctrl-btn="editAction">编辑</button>';
+                }}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.id);
+                $(row).data('data-img', data.img_url);
+                $(row).data('data-name', data.name);
+                $(row).data('data-source', data.source);
+                $(row).data('data-show-name', data.show_name);
+                $(row).data('data-type', data.type);
+                $(row).data('data-desc', data.desc);
+                $(row).data('data-total_price', data.total_price);
+                $(row).data('data-start_time', data.start_time);
+                $(row).data('data-end_time', data.end_time);
+                $(row).data('data-item',data.items);
+                $(row).data('data-worth',data.worth);
+                $(row).data('data-aibei_waresid',data.aibei_waresid);
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+
+    });
+
+
+    function setActive() {
+        var msg_id = $(this).parents('tr').data('data-id');
+        var status = $(this).attr('rel');
+        $.post('system/goods/active', {
+            id: msg_id,
+            status: status
+        }, function (json) {
+            if (json.result == 0) {
+                alert('修改成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+    function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('system/goods/delete', {
+            goods_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+    function newAction(){
+        editAction(true);
+    }
+
+    function editAction(bNew){
+        $('#selbox').html('');
+        var g_id = $(this).parents('tr').data('data-id');
+        var img = $(this).parents('tr').data('data-img');
+        var name = $(this).parents('tr').data('data-name');
+        var source = $(this).parents('tr').data('data-source');
+        var show_name = $(this).parents('tr').data('data-show-name');
+        var item_count = $(this).parents('tr').data('data-item_count');
+        var type = $(this).parents('tr').data('data-type');
+        var desc = $(this).parents('tr').data('data-desc');
+        var price = $(this).parents('tr').data('data-total_price');
+        var start_time = $(this).parents('tr').data('data-start_time');
+        var end_time = $(this).parents('tr').data('data-end_time');
+        var item = $(this).parents('tr').data('data-item');
+        var worth = $(this).parents('tr').data('data-worth');
+        var aibei_waresid = $(this).parents('tr').data('data-aibei_waresid');
+
+        if(item){
+            var txt='<p>'+
+                '<select class="form-control sel inssel">'+
+                '</select> '+
+                '<input class="form-control wid" type="text" placeholder="数量"'+'onkeyup=this.value=this.value.replace(/\D/g,"")'+'onafterpaste=this.value=this.value.replace(/\D/g,"");>'+
+                '<label class="delspan" data-ctrl-btn="deletprop">删除</label>'+
+                '</p>';
+            var $selbox=$('#selbox');
+            $.post('system/item/list',{
+            },function(json){
+                var data=json.data;
+                if(!data) {
+                    return;
+                }
+                $.each(item,function(index,obj) {
+                    $selbox.append(txt);
+                    var $sel=$selbox.find('.inssel:last');
+                    $.each(data,function(index,obj){
+                        $sel.append('<option value="'+obj.item_id+'">'+obj.name+'</option>');
+                    });
+                    $selbox.find('.inssel:last option[value="'+obj.item_id+'"]').attr('selected','selected');
+                    $selbox.find('input:last').attr('value',obj.item_count);
+                });
+
+
+                dialog = $('.edit-box form').dialog({
+                    title: '系统消息 - ' + (bNew ? '新增' : '修改'),
+                    nl2br: false
+                }, function () {
+                    $(this).attr('id', 'edit_message');
+                    if(!bNew){
+                        $(this).find('input[name=id]').attr('value', g_id);
+                        $(this).find('input[name=name]').attr('value', name);
+                        $(this).find('input[name=source]').attr('value', source);
+                        $(this).find('input[name=show_name]').attr('value', show_name);
+                        $(this).find('input[name=worth]').attr('value', worth);
+                        $(this).find('input[name=aibei_waresid]').attr('value', aibei_waresid);
+                        $(this).find('input[name=type]').attr('value', type);
+                        $(this).find('textarea[name=desc]').text(desc);
+                        $(this).find('input[name=price]').attr('value', price);
+                        $(this).find('input[name=start_time]').attr('value', start_time);
+                        $(this).find('input[name=end_time]').attr('value', end_time);
+                    }
+                });
+            },'json');
+
+        }else{
+            dialog = $('.edit-box form').dialog({
+                title: '系统消息 - ' + (bNew ? '新增' : '修改'),
+                nl2br: false
+            }, function () {
+                $(this).attr('id', 'edit_message');
+                if(!bNew){
+                    $(this).find('input[name=id]').attr('value', g_id);
+                    $(this).find('input[name=name]').attr('value', name);
+                    $(this).find('input[name=source]').attr('value', source);
+                    $(this).find('input[name=show_name]').attr('value', show_name);
+                    $(this).find('input[name=worth]').attr('value', worth);
+                    $(this).find('input[name=aibei_waresid]').attr('value', aibei_waresid);
+                    $(this).find('input[name=type]').attr('value', type);
+                    $(this).find('textarea[name=desc]').text(desc);
+                    $(this).find('input[name=price]').attr('value', price);
+                    $(this).find('input[name=start_time]').attr('value', start_time);
+                    $(this).find('input[name=end_time]').attr('value', end_time);
+                }
+            });
+        }
+    }
+</script>

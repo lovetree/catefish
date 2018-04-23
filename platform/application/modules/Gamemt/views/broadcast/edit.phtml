@@ -1,0 +1,215 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">广播内容：</label>
+                            <div class="col-sm-10">
+                                <textarea id="content" style="height: 200px;" name="content" class="col-xs-10 col-sm-5"><?php echo $info ? $info['content'] : ''?></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">次数：</label>
+                            <div class="col-sm-10">
+                                <span>默认0无限制发送</span><br>
+                                <input type="text" id="times" name="times" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['times'] : 0?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">2次广播间隔(秒)：</label>
+                            <div class="col-sm-10">
+                                <span>默认0无时间间隔</span><br>
+                                <input type="text" id="intervals" name="intervals" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['intervals'] : 0?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动时间：</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                            <i class="icon-calendar bigger-110"></i>
+                                    </span>
+                                    <?php if($info): ?>
+                                    <input class="col-sm-5" type="text" name="avttime" id="avttime" value="<?php echo str_replace('-','/',date('Y-m-d H:i',$info['start_time'])).' - '.str_replace('-','/',date('Y-m-d H:i',$info['end_time'])); ?>" readonly>
+                                    <?php else : ?>
+                                    <input class="col-sm-5" type="text" name="avttime" id="avttime" value="<?php echo date('Y/m/d').' - '.date("Y/m/d",strtotime("+7 day")); ?>" readonly>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">广播来源：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="source" type="radio" value="0" class="ace" checked="checked"/>
+                                    <span class="lbl">大厅广播</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="1" 
+                                           class="ace" <?php echo $info && $info['source'] == 1 ? 'checked':''?>>
+                                    <span class="lbl">捕鱼大厅</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="2" 
+                                           class="ace" <?php echo $info && $info['source'] == 2 ? 'checked':''?>>
+                                    <span class="lbl">21点大厅</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="3" 
+                                           class="ace" <?php echo $info && $info['source'] == 3 ? 'checked':''?>>
+                                    <span class="lbl">德州大厅</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="4" 
+                                           class="ace" <?php echo $info && $info['source'] == 4 ? 'checked':''?>>
+                                    <span class="lbl">牛牛大厅</span>
+                                </label>
+                                <br>
+                                <label>
+                                    <input name="source" type="radio" value="5" 
+                                           class="ace" <?php echo $info && $info['source'] == 5 ? 'checked':''?>>
+                                    <span class="lbl">捕鱼游戏</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="6" 
+                                           class="ace" <?php echo $info && $info['source'] == 6 ? 'checked':''?>>
+                                    <span class="lbl">21点游戏</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="7" 
+                                           class="ace" <?php echo $info && $info['source'] == 7 ? 'checked':''?>>
+                                    <span class="lbl">德州游戏</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="8" 
+                                           class="ace" <?php echo $info && $info['source'] == 8 ? 'checked':''?>>
+                                    <span class="lbl">牛牛游戏</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                content: {
+                    required: true
+                },
+                times: {
+                    required: true,
+                    number:true
+                },
+                intervals: {
+                    required: true,
+                    number:true
+                },
+                avttime: {
+                    required: true
+                }
+            },
+            messages: {
+                content: {
+                    required: '不可为空'
+                },
+                times: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                intervals: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                avttime: {
+                    required: '不可为空'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    'content': $('#content').val(),
+                    'times': $('#times').val(),
+                    'intervals': $('#intervals').val(),
+                    'source': $("input[name='source']:checked").val(),
+                    'avttime' : $('#avttime').val()
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/broadcast/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

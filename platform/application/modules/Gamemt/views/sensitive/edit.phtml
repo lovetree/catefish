@@ -1,0 +1,141 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <?php if(!$info):?>
+                    <form class="form-horizontal" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">批量添加：</label>
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <span>说明：敏感字一行一个</span><br>
+                                <span class="btn btn-file">
+                                    <input type="file" name="files" id="files">
+                                </span>
+                                <span class="fileupload-preview"></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button class="btn btn-primary" id="batch_submit">
+                                <i class="icon-ok"></i>
+                                批量添加
+                            </button>
+                            <a class="btn" href="javascript:history.go(-1);">
+                                <i class="icon-undo"></i>
+                                取消
+                            </a>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <?php endif;?>
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">敏感字：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" name="name" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['name'] : ""?>'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/ajaxfileupload.js"></script>
+<script type="text/javascript">
+    $(".fileupload-exists").click(function(){
+        $("#files").val("");
+    });
+    $("#batch_submit").click(function(){
+        if ($("#files").val() == ""){
+                showMsg("请选择文件",true);return;
+        }
+        if($("#files").val().substring($("#files").val().length - 4,$("#files").val().length) != ".txt"){
+                showMsg("请选择正确的txt文件",true);return;
+        }
+        $.ajaxFileUpload({
+            url: '/gamemt/sensitive/upload', //用于文件上传的服务器端请求地址
+            secureuri: false, //是否需要安全协议，一般设置为false
+            fileElementId: 'files', //文件上传域的ID
+            dataType: 'json', //返回值类型 一般设置为json
+            success: function (msg)  //服务器成功响应处理函数
+            {
+                if (msg.result == 0) {
+                    showMsg("成功",function(){
+                        history.go(-1);
+                    });
+                }else{
+                    showMsg(msg.msg, true);
+                }
+            }
+        });
+    });
+    $(function () {
+        $("#form").validate({
+            rules: {
+                name: {
+                    required: true
+                }
+            },
+            messages: {
+                name: {
+                    required: '不可为空'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    'name': $('#name').val()
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/sensitive/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

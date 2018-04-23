@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>系统信息</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+        <div class="header">
+            <h1 class="page-title">系统信息</h1>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">		
+                        <input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="新增" data-ctrl-btn="newAction"/>
+                        <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" data-ctrl-btn="deleteAction"/>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>ID</th>
+                                <th>消息内容</th>
+                                <th>开始时间</th>
+                                <th>结束时间</th>
+                                <th>状态</th>
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <footer><hr></footer>
+    </div>
+
+    <div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="msg_id"/>
+            <div>
+                消息内容
+                <input type="text" class="form-control" name="content" placeholder="消息内容">
+            </div>
+            <br/>
+            <div>
+                日期范围
+                <div class="clearfix">
+                    <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd " style="width: 70%;">
+                        <span class="input-group-addon">日期</span>
+                        <input class="form-control input-xs input" widget-date="1" name="start_time" type="text" data-input>
+                        <span class="input-group-addon">至</span>
+                        <input class="form-control input-xs input" widget-date="2" name="end_time" type="text" data-input>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" class="form-control" value="提交">
+            </div>
+        </form>
+    </div>
+    
+</body>
+
+</html>
+
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var table = $('#example').dataTableAjax(sysadmin, {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+                {'mDataProp': 'id'},
+                {'mDataProp': 'content'},
+                {'mDataProp': 'start_time'},
+                {'mDataProp': 'end_time'},
+                {'mDataProp': 'status', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html(sData == 1 ? '启用' : '禁用');
+                    }
+                },
+                {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+                        var btn = oData.status == 1 ? '<button data-ctrl-btn="setActive" rel="0">禁用</button>' : '<button data-ctrl-btn="setActive" rel="1">启用</button>';
+                        return btn + '&nbsp;<button data-ctrl-btn="editAction">编辑</button>';
+                    }}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.id);
+                $(row).data('data-content', data.content);
+                $(row).data('data-start_time', data.start_time);
+                $(row).data('data-end_time', data.end_time);
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+
+    });
+
+
+
+    function setActive() {
+        var msg_id = $(this).parents('tr').data('data-id');
+        var status = $(this).attr('rel');
+        $.post('system/message/active', {
+            msg_id: msg_id,
+            status: status
+        }, function (json) {
+            if (json.result == 0) {
+                alert('修改成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+    function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('system/message/delete', {
+            msg_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+    
+    function newAction(){
+        editAction(true);
+    }
+    
+    function editAction(bNew){
+        var msg_id = $(this).parents('tr').data('data-id');
+        var content = $(this).parents('tr').data('data-content');
+        var start_time = $(this).parents('tr').data('data-start_time');
+        var end_time = $(this).parents('tr').data('data-end_time');
+        var dialog = $('.edit-box form').dialog({
+            title: '系统消息 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=msg_id]').attr('value', msg_id);
+                $(this).find('input[name=content]').attr('value', content);
+                $(this).find('input[name=start_time]').attr('value', start_time);
+                $(this).find('input[name=end_time]').attr('value', end_time);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                      var txt=$(this).val();
+                      if($.trim(txt)==""){
+                          num++;
+                      }
+                });
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                var starttime=$form.find('input[name=start_time]').val();
+                var endtime=$form.find('input[name=end_time]').val();
+                var start=new Date(starttime.replace("-","/").replace("-","/"));
+                var end=new Date(endtime.replace("-","/").replace("-","/"));
+                if(start>end||start==end){
+                    alert('结束日期必须大于开始日期！');
+                    return false;
+                }
+                $form.ajaxSubmit({
+                    url: 'system/message/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

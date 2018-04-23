@@ -1,0 +1,171 @@
+<?php include_once VIEW_COMMON . "header.php"; ?>
+<style>
+    .agent{
+        width:400px;
+        border: 1px #eeeeee solid;
+        padding:10px 5px;
+        margin:5px 0px;
+        background-color: #eeeeee;
+    }
+    .form-group.has-error .error{
+        float: none !important;
+    }
+</style>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" id="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">所有房间：</label>
+                                <div class="col-sm-10">
+                                    <span class="red">取值：-200  -  200之间</span><br>
+                                    <input type="text" id="controlfactor" name="controlfactor" 
+                                           class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['controlfactor'] : 0?>'>
+                                </div>
+                            </div>
+                            <?php
+                                $room = json_decode($info['room'], TRUE);
+                            ?>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">房间1：</label>
+                                <div class="col-sm-10">
+                                    <span class="red">取值：-200  -  200之间</span><br>
+                                    <input type="text" id="room1" name="room1" 
+                                           class="col-xs-10 col-sm-5" value='<?php echo $info ? $room['room1'] : 0?>'>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">房间2：</label>
+                                <div class="col-sm-10">
+                                    <span class="red">取值：-200  -  200之间</span><br>
+                                    <input type="text" id="room2" name="room2" 
+                                           class="col-xs-10 col-sm-5" value='<?php echo $info ? $room['room2'] : 0?>'>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">房间3：</label>
+                                <div class="col-sm-10">
+                                    <span class="red">取值：-200  -  200之间</span><br>
+                                    <input type="text" id="room3" name="room3" 
+                                           class="col-xs-10 col-sm-5" value='<?php echo $info ? $room['room3'] : 0?>'>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">房间4：</label>
+                                <div class="col-sm-10">
+                                    <span class="red">取值：-200  -  200之间</span><br>
+                                    <input type="text" id="room4" name="room4" 
+                                           class="col-xs-10 col-sm-5" value='<?php echo $info ? $room['room4'] : 0?>'>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button class="btn btn-primary" type="submit" id="save">
+                                        <i class="icon-ok"></i>
+                                        保存
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON . "footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        
+        $("#form").validate({
+            rules: {
+                controlfactor: {
+                    required: true,
+                    range:[-200,200]
+                },
+                room1: {
+                    required: true,
+                    range:[-200,200]
+                },
+                room2: {
+                    required: true,
+                    range:[-200,200]
+                },
+                room3: {
+                    required: true,
+                    range:[-200,200]
+                },
+                room4: {
+                    required: true,
+                    range:[-200,200]
+                }
+            },
+            messages: {
+                controlfactor: {
+                    required: '不可为空',
+                    range: '整数介于-200到200之间'
+                },
+                room1: {
+                    required: '不可为空',
+                    range: '整数介于-200到200之间'
+                },
+                room2: {
+                    required: '不可为空',
+                    range: '整数介于-200到200之间'
+                },
+                room3: {
+                    required: '不可为空',
+                    range: '整数介于-200到200之间'
+                },
+                room4: {
+                    required: '不可为空',
+                    range: '整数介于-200到200之间'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {};
+                params.controlfactor = $("#controlfactor").val();
+                params.room1 = $("#room1").val();
+                params.room2 = $("#room2").val();
+                params.room3 = $("#room3").val();
+                params.room4 = $("#room4").val();
+                
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/fish/ajaxCoe",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                window.location.reload();
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>系统设置</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <style>
+        .text-l{text-align:left !important;}
+        div.span-btn input{width:85px; text-align: center; padding:7px 0; display: inline-block; margin:7px 20px 10px 0;}
+        h3.span-txt{margin-left:10px; margin-top:30px;}
+        h3.span-txt div{ margin-bottom:10px;}
+        label.lab2{font-weight:inherit !important; margin-right: inherit !important;}
+        .btn-on{background-color: #ddd; border:1px solid #ddd;}
+        .dis-no{display: none;}
+        .cor{color:red; font-size: 12px;}
+    </style>
+
+</head>
+
+<body>
+<ul id="myTab" class="nav nav-tabs">
+    <li>
+        <a href="#login" data-toggle="tab">系统设置</a>
+    </li>
+    <li>
+        <a href="#deposit" data-toggle="tab">存取条件</a>
+    </li>
+    <li>
+        <a href="#bank" data-toggle="tab">钱柜服务</a>
+    </li>
+    <li>
+        <a href="#withdraw" data-toggle="tab">取款税率</a>
+    </li>
+    <li>
+        <a href="#recharge" data-toggle="tab">充值比率</a>
+    </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <!--登录服务begin-->
+    <div class="tab-pane fade in active" id="login">
+
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                    <label class="control-label" for=""><h3>系统设置</h3></label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">平台版本:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="text" name="login_plat_ver">
+                    </div>
+                    <!--<label class="col-sm-2 control-label" for="">填入0-1000的整数</label>-->
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">登录服务:</label>
+                    <input type="radio" name="login_service" value="open">开启 <input type="radio" value="close" name="login_service">关闭
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">备注:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control"  type="text" name="remark">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <div class="col-sm-2">
+                        <input type="submit" name="btnsave" value="提交" id="" class="">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!--登录服务end-->
+
+    <!--存取条件begin-->
+    <div class="tab-pane fade in " id="deposit">
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                    <label class="control-label" for=""><h3>存取条件</h3></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">存取条件:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="text" name="deposit_low_limit">
+                    </div>
+                    <input type="radio" name="deposit_con" value="1">整数存取 <input type="radio" value="2" name="deposit_con">大于可存
+                </div>
+
+                <div class="form-group">
+                    <span class="col-sm-1" ></span>
+                    <label class="col-sm-5 control-label" style="color: blue;" for="">
+                    整数存取，存取时必须是该数值的整数；大于可存，存款时必须大于此数才能存。
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">备注:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control"  type="text" name="remark">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for=""></label>
+                    <div class="col-sm-2">
+                        <input type="submit" name="btnsave" value="提交" class="">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!--存取条件end-->
+
+    <!--钱柜服务begin-->
+    <div class="tab-pane fade in" id="bank">
+
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                    <label class="control-label" for=""><h3>钱柜服务</h3></label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">钱柜服务:</label>
+                    <input type="radio" name="bank_service" value="open">开启 <input type="radio" value="close" name="bank_service">关闭
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">备注:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control"  type="text" name="remark">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <div class="col-sm-2">
+                        <input type="submit" name="btnsave" value="提交" id="" class="">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!--钱柜服务end-->
+
+    <!--取款税率begin-->
+    <div class="tab-pane fade in" id="withdraw">
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                    <label class="control-label" for=""><h3>取款税率</h3></label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">取款税率:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="text" name="withdraw_tax_rate">
+                    </div>
+                    <!--<label class="col-sm-2 control-label" for="">填入0-1000的整数</label>-->
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">备注:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control"  type="text" name="remark">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label"></label>
+                    <div class="col-sm-2">
+                        <input type="submit" name="btnsave" value="提交" id="" class="">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!--取款税率end-->
+
+    <!--充值比率begin-->
+    <div class="tab-pane fade in" id="recharge">
+        <form class="form-horizontal" role="form">
+            <fieldset>
+                <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                    <label class="control-label" for=""><h3>充值比率</h3></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">充值比率:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="text" name="recharge_rate">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for="">备注:</label>
+                    <div class="col-sm-2">
+                        <input class="form-control"  type="text" name="remark">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-1 control-label" for=""></label>
+                    <div class="col-sm-2">
+                        <input type="submit" name="btnsave" value="提交" class="">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <!--充值比率end-->
+</div>
+
+<footer><hr></footer>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script>
+$(function(){
+    //获取全部配置数据
+    $.get('gamemt/sysconfig/getconfig', function(res){
+        var data = res.data;
+        //存取条件
+        if(data.deposit_con.value == 1){
+            $("input[name=deposit_con]")[0].checked = true;
+        }else if(data.deposit_con.value == 2){
+            $("input[name=deposit_con]")[1].checked = true;
+        }
+        //删除已使用的数据
+        delete data.deposit_con;
+
+        //钱柜服务
+        if(data.bank_service.value == 'open'){
+            $("input[name=bank_service]")[0].checked = true;
+        }else if(data.bank_service.value == 'close'){
+            $("input[name=bank_service]")[1].checked = true;
+        }
+        //设置备注
+        $('.tab-pan, #bank').find('input[name=remark]').val(data.bank_service.remark);
+        //删除已使用的数据
+        delete data.bank_service;
+
+        //钱柜服务
+        if(data.login_service.value == 'open'){
+            $("input[name=login_service]")[0].checked = true;
+        }else if(data.login_service.value == 'close'){
+            $("input[name=login_service]")[1].checked = true;
+        }
+        //设置备注
+        $('.tab-pan, #login').find('input[name=remark]').val(data.login_service.remark);
+        //删除已使用的数据
+        delete data.login_service;
+
+        for(var code in data){
+            var tempArr = code.split('_');
+            if($('.tab-pan, #'+tempArr[0]).length > 0
+                    && $('.tab-pan, #'+tempArr[0]).find('input[name='+code+']').length > 0){
+                $('.tab-pan, #'+tempArr[0]).find('input[name='+code+']').val(data[code].value);
+                //显示remark
+                if($('.tab-pan, #'+tempArr[0]).find('input[name=remark]').length > 0){
+                    $('.tab-pan, #'+tempArr[0]).find('input[name=remark]').val(data[code].remark);
+                }
+            }
+        }
+    }, 'json');
+
+    //提交事件绑定
+    $(".tab-pane").find("input[type=submit]").click(function(){
+           var parent = $(this).parent().parent().parent().parent().parent().attr("id");
+           switch (parent){
+               //存取条件
+               case "deposit":
+                   var deposit_con = $("input[name=deposit_con]:checked").val();
+                   var deposit_low_limit = $("input[name=deposit_low_limit]").val();
+                   var remark = $(this).parent().parent().parent().find("input[name=remark]").val();
+                   var data = {
+                        deposit_con:deposit_con,
+                        deposit_low_limit:deposit_low_limit,
+                        remark:remark
+                   };
+                   postData(data);
+                   break;
+               //钱柜服务
+               case "bank":
+                   var bank_service = $("input[name=bank_service]:checked").val();
+                   var remark = $(this).parent().parent().parent().find("input[name=remark]").val();
+                   var data = {
+                       bank_service:bank_service,
+                       remark:remark
+                   };
+                   postData(data);
+                   break;
+
+               //取款税率
+               case "withdraw":
+                   var withdraw_tax_rate = $("input[name=withdraw_tax_rate]").val();
+                   var remark = $(this).parent().parent().parent().find("input[name=remark]").val();
+                   var data = {
+                       withdraw_tax_rate:withdraw_tax_rate,
+                       remark:remark
+                   };
+                   postData(data);
+                   break;
+
+               //登录服务
+               case "login":
+                   var login_service = $("input[name=login_service]:checked").val();
+                   var remark = $(this).parent().parent().parent().find("input[name=remark]").val();
+                   var login_plat_ver =   $("input[name=login_plat_ver]").val();
+                   var data = {
+                       login_plat_ver:login_plat_ver,
+                       login_service:login_service,
+                       remark:remark
+                   };
+                   postData(data);
+                   break;
+
+               //充值比率
+               case "recharge":
+                   var recharge_rate = $("input[name=recharge_rate]").val();
+                   var remark = $(this).parent().parent().parent().find("input[name=remark]").val();
+                   var data = {
+                       recharge_rate:recharge_rate,
+                       remark:remark
+                   };
+                   postData(data);
+                   break;
+           }
+
+          return false;
+    });
+});
+
+function postData(data){
+    $.post('gamemt/sysconfig/save',  data,  function(res){
+        if(res.result == 0){
+            alert("修改成功");
+        }else{
+            alert("修改失败");
+        }
+    }, 'json');
+}
+</script>
+</body>
+
+</html>

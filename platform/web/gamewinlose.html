@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>比赛战绩</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+			<div class="header">
+
+				<h1 class="page-title">比赛战绩</h1>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in " id="example">
+							<div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+								<span class="input-group-addon">日期</span>
+								<input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" value="2016-12-01" type="text">
+								<span class="input-group-addon">至</span>
+								<input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" value="2016-12-20" type="text">
+							</div>
+							<select class="input_btn_h" id="channeltype" name="channeltype">
+								<option value="123456">所有游戏</option>
+								<option value="498126">转转麻将</option>
+								<option value="498126">牛牛</option>
+							</select>
+							<select class="input_btn_h" id="channelnum" name="channelnum">
+								<option value="1">比赛编号</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+							<thead class="theadtbody">
+								<tr>
+									<th>游戏ID</th>
+									<th>用户名</th>
+									<th>昵称</th>
+									<th>比赛编号</th>
+									<th>比赛排行</th>
+									<th>比赛得分</th>
+									<th>奖励经验</th>
+									<th>奖励金币</th>
+									<th>比赛房间</th>
+									<th>IP</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax(gamewinlose, {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									'ordering': false,
+									'aoColumns': [{
+										'mDataProp': 'userid',
+									}, {
+										'mDataProp': 'gamename',
+										'render': function(data, type, full, meta) {
+											return '<a href="member_user.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'usernickname',
+									}, {
+										'mDataProp': 'usergamenum',
+									}, {
+										'mDataProp': 'userph',
+									}, {
+										'mDataProp': 'userdf',
+									}, {
+										'mDataProp': 'userjy',
+									}, {
+										'mDataProp': 'userjb',
+									}, {
+										'mDataProp': 'userfj',
+									}, {
+										'mDataProp': 'userip',
+									}],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										},
+										'selected': function() {
+											return $("#channeltype option:checked").val();
+										},
+										'selectednum': function() {
+											return $("#channelnum option:checked").val();
+										},
+										'datastart': function() {
+											return $("#j_Date1").val();
+										},
+										'dataend': function() {
+											return $("#j_Date2").val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/date.js"></script>
+			<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>一指赢运营后台</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-dialog.min.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>	
+        <script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+        <script type="text/javascript" src="js/jquery.form.js"></script>
+        <script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+    </head>
+
+    <body style="background: #FFFFFF;">
+
+
+        <!-- 导航结束 -->
+        <div class="header">
+
+            <h1 class="page-title">用户管理</h1>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+                    <table class="table display block-body collapse in" id="example">
+                        <select class="input_btn_h" id="channeltype" name="channeltype">
+                            <option value="username">用户账号</option>
+                            <option value="nickname">昵称</option>
+                            <option value="wx_unionid">用户ID</option>
+                            <option value="phone">手机号</option>
+                            <option value="lock">冻结用户</option>
+                        </select>
+                        <input type="button" onclick="javascript:window.location.reload();" value="刷新" name="btn-query" class="btn btn-default input_btn_h">
+                        <input type="button" value="查询" name="btn-query" id="btn-query" class="btn btn-default input_btn_h">
+                       <!-- <input type="button" name="btndelete" onclick="todo('shanchu')" value="删除" id="btndelete"   class="btn btn-default input_btn_h">
+                        <input type="button" name="btndj" onclick="todo('1')" id="btndj" value="冻结"   class="btn btn-default input_btn_h">
+                        <input type="button" name="btnjd" onclick="todo('0')" id="btnjd" value="解冻"   class="btn btn-default input_btn_h"> -->
+                        <!--<input type="button" name="btnjb" onclick="todo('add_gold')" id="btnjd" value="添加金币"   class="btn btn-default input_btn_h">-->
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" name="check" id="checkAll" onclick="check_all();"></th>
+                                <th>用户标识</th>
+                                <th>一指赢ID</th>
+                                <th>用户账号</th>
+                                <th>昵称</th>
+                                <!--<th>性别</th>-->
+                                <!--<th>认证实名</th>-->
+                                <!--<th>身份证号</th>-->
+                                <!--<th>注册时间</th>-->
+                                <!--<th>注册IP</th>-->
+                                <!--<th>注册地址</th>-->
+                                <th>登陆次数</th>
+                                <th>最后登录时间</th>
+                                <th>最后登录IP</th>
+                                <th>最后登录地址</th>
+                                <th>状态</th>
+                                <th>冻结原因</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer><hr></footer>
+
+        <div class="modal fade" id="Modal_userinfo">
+            <div class="modal-dialog" >  
+                <div class="modal-content">  
+                    <div class="modal-header">  
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+                        <h4 class="modal-title" id="NoPermissionModalLabel">个人信息</h4>  
+                    </div>  
+                    <div class="modal-body" style='padding: 0;margin: 0;'>  
+                        <iframe id="iframe_userinfo" width="100%" height="50%" frameborder="0" style='position: relative; height: 75vh;'></iframe>  
+                    </div>  
+                    <div class="modal-footer">  
+                        <button class="btn btn-default"  type="button" data-dismiss="modal" aria-hidden="true" >关闭</button>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>
+
+        <script type="text/javascript">
+            var lastip ;
+            var table;
+            function setIP(ip) {
+                ip = $('#'+ip).val();
+                lastip = ip;
+                table.reload();
+            }
+            $(function () {
+
+                 table = $('#example').dataTableAjax(user, {
+                    'bLengthChange': false,
+                    'iDisplayLength': 10,
+                    'searching': true,
+                    'processing': true,
+                    'serverSide': true,
+                    "autoWidth": false,
+                    'aoColumns': [
+                        {'mDataProp': 'name', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).html("<input type='checkbox' name='check' class='check' value='" + oData.userid + "'>");
+                            }
+                        },
+                        {'mDataProp': 'userid'},
+                        {'mDataProp': 'wx_unionid'},
+                        {'mDataProp': 'username', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).html('<a href="/player/user/info?id=' + oData.userid + '">' + sData + '</a>');
+                            }},
+                        {'mDataProp': 'usernickname'},
+//                        {'mDataProp': 'usersex', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+//                                $(nTd).html(sData == 1 ? '男' : sData == 2 ? '女' : '');
+//                            }
+//                        },
+//                        {'mDataProp': 'realname'},
+//                        {'mDataProp': 'idcard'},
+//                        {'mDataProp': 'userregisttime'},
+//                        {'mDataProp': 'userregistip'},
+//                        {'mDataProp': 'userregistlocation', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+//                                ip2addr(oData.userregistip, function (callbackdata) {
+//                                    $(nTd).html(callbackdata);
+//                                });
+//                            }
+//                        },
+                        {'mDataProp': 'userloginprice'},
+                        {'mDataProp': 'userlasttime'},
+                        {'mDataProp': 'userlastip',"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html('<a href="javascript:void(0)" onclick="setIP('+oData.userid+')" >' + sData + '</a> <input type="hidden" id="'+oData.userid+'" value="'+sData+'">');
+                        }
+                        },
+                        {'mDataProp': 'userlastlocation', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                ip2addr(oData.userlastip, function (callbackdata) {
+                                    $(nTd).html(callbackdata);
+                                })
+                            }
+                        },
+                        {'mDataProp': 'userstate', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                var type = {'0': '冻结',
+                                    '1': '正常',
+                                    '2': '测试员'
+                                };
+                                $(nTd).html(type[sData] || '');
+                            }
+                        },
+                        {'mDataProp': 'userfrost'}
+                    ],
+                    'columnDefs': [{
+                            'orderable': false,
+                            'targets': [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13]
+                        }],
+                    postData: {
+                        'query': function () {
+                            return $('input[aria-controls=example][type=search]').val();
+                        },
+                        'query_type': function () {
+                            return $("#channeltype option:checked").val();
+                        },
+                        'userlastip':function () {
+                            return lastip;
+                        }
+                    },
+                });
+                $('input[aria-controls=example][type=search]').unbind();
+                $('input[aria-controls=example][type=search]').keyup(function (e) {
+                    if (e.keyCode === 13) {
+                        table.reload();
+                    }
+                });
+                $('#btn-query').click(function () {
+                    $('input[aria-controls=example][type=search]').focus();
+                    table.reload();
+                });
+
+            });
+
+            function todo(type) {
+                var list = [];
+                $(".check").each(function () {
+                    if ($(this).is(':checked')) {
+                        console.log($(this).val())
+                        list.push($(this).val());
+                    }
+                });
+
+                var diamlogMessage = '';
+                if (type == "shanchu") {
+                    diamlogMessage = "删除原因";
+                }
+                if (type == "1") {
+                    diamlogMessage = "冻结原因";
+                }
+                if (type == "0") {
+                    diamlogMessage = "解冻原因";
+                }
+                if (type == "add_gold") {
+                    diamlogMessage = "增加金币";
+                }
+                BootstrapDialog.show({
+                    title: '操作提示',
+                    message: diamlogMessage + '<input type="text" class="form-control">',
+                    buttons: [{
+                            label: '取消',
+                            cssClass: 'btn btn-danger',
+                            action: function (dialog) {
+                                dialog.close();
+                            }
+                        }, {
+                            label: '确定',
+                            cssClass: 'btn btn-primary',
+                            action: function (dialog) {
+                                var fruit = dialog.getModalBody().find('input').val();
+                                ajaxAction(type, list, fruit, function () {
+                                    dialog.close();
+                                });
+                            }
+                        }]
+
+                })
+
+            }
+
+            function ajaxAction(type, list, yuanyin, callback) {
+                var data = {
+                    userid: list,
+                    status: type,
+                    comment: yuanyin
+                };
+                var ajaxUrl = '';
+                if (type == "shanchu") {
+                    ajaxUrl = "player/user/del";
+                }
+                if (type == "1") {
+                    ajaxUrl = "player/user/freeze";
+                }
+                if (type == "0") {
+                    ajaxUrl = "player/user/freeze";
+                }
+                if (type == "add_gold") {
+                    ajaxUrl = "player/user/addGold";
+                    data = {
+                        user_id : list,
+                        golds: yuanyin
+                    };
+                }
+                $.post(ajaxUrl, data, function (json) {
+                    if (json.result == 0) {
+                        if (callback && typeof (callback) == 'function') {
+                            callback();
+                        }
+                        BootstrapDialog.alert('修改成功');
+                        $('#btn-query').trigger('click');
+                    } else {
+                        BootstrapDialog.alert(json.msg);
+                    }
+
+                }, 'json');
+            }
+
+            function show_user(user_id) {
+                var frameSrc = "user_detail.html?uid=" + user_id;
+                $("#iframe_userinfo").attr("src", frameSrc);
+                $('#Modal_userinfo').modal({show: true, backdrop: 'static'});
+            }
+            
+            function showInfo(){
+                show_user($(this).attr('rel'));
+            }
+
+
+
+        </script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </body>
+
+</html>

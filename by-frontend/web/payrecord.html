@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>会员中心</title>
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!--gritter css-->
+    <!--<link rel="stylesheet" type="text/css" href="js/gritter/css/jquery.gritter.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="css/daterangepicker-bs3.css" />-->
+    <style>
+        div.pay-div{margin-bottom:25px;}
+        div.pay-div input{ width: 150px; height: 30px; margin:0 25px 0 20px;}
+        div.pay-div select{min-width: 120px; height: 30px; margin-left: 20px;}
+        div.pay-div button{display:inline-block;width:100px;height:30px;padding:5px 10px;}
+        table.pay-tab{border:1px solid #e5e5e5; border-bottom: none;}
+        table.pay-tab td.rit{border-right:1px solid #e5e5e5;}
+        table.pay-tab td.bot{border-bottom:1px solid #e5e5e5;}
+        table.pay-tab tr.tr1{background-color: #f6f6f6;}
+    </style>
+</head>
+<body>
+<div class="top">
+    <ul>
+        <a href="index.html" target="_parent"><li class="down">首页<p>HOME</p></li></a>
+        <a href="gamedown.html" target="_parent"><li>游戏下载<p>DOWNLOAD</p></li></a>
+        <a href="recharge.html" target="_parent"><li>账户充值<p>RECHARGE</p></li></a>
+        <a href="newnotice.html" target="_parent"><li>新闻公告<p>NEW NOTICE</p></li></a>
+        <a href="basicdata.html" target="_parent"><li  class="down">会员中心<p>VIP</p></li></a>
+        <a href="gameStr.html" target="_parent"><li>心得攻略 <p>GAME STRATEGY</p></li></a>
+        <a href="servicehelp.html" target="_parent"><li>客服帮助<p>SERVICE</p></li></a>
+    </ul>
+</div>
+    <div class="box">
+        <div class="zbox">
+            <div class="fla-l menlef">
+                <p class="p1 cor fon2">最新游戏</p>
+                <div class="cen b-z cor5 fon3" id="new-gram">
+
+                </div>
+
+                <p class="p1 cor fon2">FAQ</p>
+                <div class="cen2 fon">
+                    <div>
+                        <a class="lists" href="###"><img src="images/sy_19.png">账户丢失了怎么办？</a>
+                        <div class="content active">请尽快联系客服，提供手机号码和绑定邮箱找回密码</div>
+                    </div>
+                    <div>
+                        <a class="lists" href="###"><img src="images/sy_19.png">游戏如何充值？</a>
+                        <div class="content">茶馆提供了多种方式充值，包括支付宝、微信、银联卡、游戏点卡等。玩家可以在游戏的商城中点击购买按钮，在弹出的窗口中选择对应的支付方式即可完成充值。</div>
+                    </div>
+                    <div>
+                        <a class="lists" href="###"><img src="images/sy_19.png">游戏无法进入怎么办？</a>
+                        <div class="content">通常情况下，游戏无法进入是由于服务器正在维护，如果服务器正常，游戏仍然无法进入，请联系客服进行检查。</div>
+                    </div>
+                    <div>
+                        <a class="lists" href="###"><img src="images/sy_19.png">如何下载安装游戏？</a>
+                        <div class="content">请通过官网的游戏下载页，选择对应的游戏版本下载安装。</div>
+                    </div>
+                    <div>
+                        <a class="lists" href="###"><img src="images/sy_19.png">电脑版和手机版是联通的吗？</a>
+                        <div class="content">茶馆的电脑板和手机版是联通的，电脑版的玩家和手机版的玩家是在同一个服务器中游戏。</div>
+                    </div>
+                    <div>
+                        <a class='lists' href="###"><img src="images/sy_19.png">官方网站充值，可以在手机版中使用吗？</a>
+                        <div class="content">在官方网站上充值的钻石，也是可以在手机版中使用的。敬请放心。</div>
+                    </div>
+                    <div>
+                        <a class="lists" href="###"><img src="images/sy_19.png">平板电脑可以玩吗？</a>
+                        <div class="content">可以通过平板电脑玩茶馆游戏，但是因为没有对平板电脑适配，因此，为了获得更好的体验，建议使用电脑版或者手机版。</div>
+                    </div>
+                    <div>
+                        <a class="lists" href="###"><img src="images/sy_19.png">我在网站上注册的账号可以登录手机版游戏吗？</a>
+                        <div class="content">可以的，网站的用户注册系统是和手机版本相同的，因此在官方网站上注册的账号，也是可以在手机版本上登录游戏的。</div>
+                    </div>
+                    <div>
+                        <a class="lists" href="###" class="no-l"><img src="images/sy_19.png">可以在手机和电脑上使用同一个账号登录游戏吗?</a>
+                        <div class="content">很抱歉，目前我们还不支持账号多端登录，此功能目前正在开发中，相信在不久的将来即会开放此功能，欢迎期待。</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="menrit fla-l">
+                <p class="men-t fon2"><span class="fon-wet cor6">会员中心</span><span class="fla-r fon6 cor7">当前位置：首页>会员中心</span></p>
+                <div class="men-m fon cor6">
+                    <ul class="pay-ul txt-cen">
+                        <a href="basicdata.html"><li>基本信息</li></a>
+                        <a href="updatedata.html"><li>修改资料</li></a>
+                        <!--<a href="payrecord.html"><li class="down">充值记录</li></a>-->
+                        <a href="updatepass.html"><li>修改密码</li></a>
+                        <a href="sethead.html"><li>设置头像</li></a>
+                    </ul>
+                    <div class="pay-div">
+                        起始日期<input type="date" class="bor" id="start">
+                        结束日期<input type="date" class="bor" id="end">
+                        状态<select class="bor" id="state">
+                                <option>全部</option>
+                                <option value="">已完成</option>
+                                <option value="">待支付</option>
+                            </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button id="query" class="btn btn-success">&nbsp;查&nbsp;询&nbsp;</button>
+                    </div>
+                    <!--<div class="row">-->
+                        <!--<div class="form-group col-md-12">-->
+                            <!--<label class="control-label col-md-2">选择日期</label>-->
+                            <!--<div class="col-md-10" style="text-align:left;">-->
+                                <!--<div class="input-group input-large custom-date-range" data-date="13/07/2013" data-date-format="mm/dd/yyyy">-->
+                                    <!--<input type="text" class="form-control dpd1" name="from">-->
+                                    <!--<span class="input-group-addon">To</span>-->
+                                    <!--<input type="text" class="form-control dpd2" name="to">-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash;<span class="help-block">Select date range</span>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <table class="pay-tab txt-cen" width="100%" cellspacing="0">
+                        <thead>
+                            <tr class="tr1">
+                                <td class="rit bot" height="40px">订单号</td>
+                                <td class="rit bot">日期</td>
+                                <td class="rit bot">充值帐号</td>
+                                <td class="rit bot">金额</td>
+                                <td class="rit bot">状态</td>
+                            </tr>
+                        </thead>
+                        <tbody id="details">
+                            <tr>
+                                <td class="rit bot" height="29px">201712613425512345</td>
+                                <td class="rit bot">2017-01-26 13:42:55</td>
+                                <td class="rit bot">abcd1234</td>
+                                <td class="rit bot">5</td>
+                                <td class="rit bot">成功</td>
+                                <td class="bot">支付宝</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<div class="pages pull-right">-->
+                        <!--<ul class="pagination">-->
+                            <!--<li><a href="#">«</a></li>-->
+                            <!--<li  class="active"><a href="#">1</a></li>-->
+                            <!--<li><a href="#">2</a></li>-->
+                            <!--<li><a href="#">3</a></li>-->
+                            <!--<li><a href="#">4</a></li>-->
+                            <!--<li><a href="#">5</a></li>-->
+                            <!--<li><a href="#">»</a></li>&nbsp;&nbsp;&nbsp;-->
+                        <!--</ul>-->
+                        <!--<div class="pull-right">-->
+                            <!--<span>共&nbsp;<input id="pagesNo" value="10">&nbsp;条</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <iframe src="bottom.html" width="100%" height="226px" frameborder="0" border="0" style="margin-top:55px;"></iframe>
+
+<!--qq咨询-->
+<div id="open">
+    <img id="open-fixed" src="images/fixed_3.png" alt="">
+</div>
+
+<div id="parent">
+    <div id="close-"><a id="close" href="###">X</a></div>
+    <div id="ins">
+        <div id="title-fixed">在线<span>QQ</span>咨询</div>
+        <div id="con-fixed">
+            <img src="images/bear_.png" alt="">
+            <div class="qq-fixed">
+                <div>联系客服</div>
+                <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2852371661&amp;site=qq&amp;menu=yes">2852371661</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/index.js"></script>
+
+<script>
+    function toDate(time) {
+        return new Date(parseInt(time) * 1000).toLocaleString().substring(0,10);
+    }
+    $(function(){
+        search();
+    });
+
+    function search(){
+
+        var start =$("#start").val();
+        var end=$("#end").val();
+        var status=$("#status").val();
+        var username=sessionStorage.username;
+        var str='';
+        $.ajax({
+            url:'Index/recharge',
+            method:'post',
+            dataType:'json',
+            data:{start:start,end:end,status:status},
+            success:function(res){
+                var data=res.data;
+
+                if(res.result==0){
+                    if(res.start!=0){
+                        toDate(res.start);
+                    }
+                    if(res.end!=0){
+                        toDate(res.end);
+                    }
+                    console.log(data);
+                    for(var i=0; i<data.length; i++){
+                        str+="<tr>"+
+                                "<td class='rit bot' height='29px'>"+data[i].order_id+"</td>"+
+                                "<td class='rit bot'>"+toDate(data[i].created_date)+"</td>"+
+                                "<td class='rit bot'>"+username+"</td>"+
+                                "<td class='rit bot'>"+(data[i].totalf_fee)/100+"</td>"+
+                                "<td class='rit bot'>"+data[i].status+"</td>"+
+                                "</tr>";
+                    }
+                    $("#details").html(str);
+                }else{
+                    alert(res.msg)
+                }
+            },
+            error:function(res){
+                alert("发送失败")
+            }
+        });
+    };
+
+    $(function(){
+        //游戏图标列表
+        $.ajax({
+            url: '/gameicon/list',
+            dataType: 'json',
+            success:function(res){
+                console.log(res);
+                if(res.result == 0){
+                    var data = res.data, html = '';
+                    for(var i = 0;i<data.length; i++){
+                        if(i<6) {
+                            html += ' <div class="mar-b">'+
+                                    '<img src="'+ data[i].img_url +'" width="120px" height="120px" class="fla-l">' +
+                                    '<div class="box-btn fla-l txt-cen">' +
+                                    '<span class="dis">'+ data[i].name +'</span>' +
+                                    '<a href="'+data[i].download_url+'" class="txt-cen fon5 cor noline">点击下载</a>' +
+                                    '</div>'+
+                                    '<div class="flex"></div>'+
+                                    '</div>';
+                        }
+                    }
+                    $('#new-gram').append(html);
+                }
+            }
+        });
+    })
+</script>
+
+<!--gritter script-->
+<!--<script type="text/javascript" src="js/gritter/js/jquery.gritter.js"></script>-->
+<!--<script src="js/gritter/js/gritter-init.js" type="text/javascript"></script>-->
+
+<!--<script type="text/javascript" src="js/daterangepicker.js"></script>-->
+<!--<script type="text/javascript" src="js/moment.min.js"></script>-->
+<!--&lt;!&ndash;pickers initialization&ndash;&gt;-->
+<!--<script src="js/pickers-init.js"></script>-->
+
+<!--<script>-->
+    <!--$(function(){-->
+        <!--function toDate(time) {-->
+            <!--return new Date(parseInt(time) * 1000).toLocaleString().substring(0,10);-->
+        <!--}-->
+        <!--var start =$("#start_date").val();-->
+        <!--var end=$("#start_date").val();-->
+        <!--var status=$("#state").selected;-->
+        <!--var username=sessionStorage.username;-->
+        <!--var str='';-->
+
+        <!--$("#query").click(function(){-->
+            <!--$.ajax({-->
+                <!--url:'Index/recharge',-->
+                <!--method:'post',-->
+                <!--dataType:'json',-->
+                <!--data:{start:start,end:end,status:status},-->
+                <!--success:function(res){-->
+                    <!--var data=res.data;-->
+                    <!--if(res.result==0){-->
+                        <!--console.log(data);-->
+                        <!--for(var i=0; i<data.length; i++){-->
+                            <!--str+="<tr>"+-->
+                                    <!--"<td class='rit bot' height='29px'>"+data[i].order_id+"</td>"+-->
+                                    <!--"<td class='rit bot'>"+toDate(data[i].created_date)+"</td>"+-->
+                                    <!--"<td class='rit bot'>"+username+"</td>"+-->
+                                    <!--"<td class='rit bot'>"+(data[i].totalf_fee)/100+"</td>"+-->
+                                    <!--"<td class='rit bot'>"+data[i].status+"</td>"+-->
+                                    <!--"</tr>";-->
+                        <!--}-->
+                        <!--$("#details").html(str);-->
+                    <!--}else{-->
+                        <!--alert(res.msg)-->
+                    <!--}-->
+                <!--},-->
+                <!--error:function(res){-->
+                    <!--alert("发送失败")-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+
+        <!--$('#query').click();-->
+
+    <!--})-->
+<!--</script>-->
+
+</body>
+</html>

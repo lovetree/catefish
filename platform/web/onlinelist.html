@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>在线列表</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+
+				<div class="header">
+
+					<h1 class="page-title">在线列表</h1>
+				</div>
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">		
+
+							<select class="input_btn_h" id="type" name="type">
+								<option value="-1">所有游戏</option>
+							</select>
+							<select class="input_btn_h" id="mod" name="mod">
+								<option value="-1">所有模式</option>
+							</select>
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+							<thead class="theadtbody">
+								<tr>
+									<th>用户账号</th>
+									<th>用户昵称</th>
+									<th>用户id</th>
+									<th>在线时长</th>
+									<th>位置</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax('system/stat/onlinelist', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{'mDataProp': 'username', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                        $(nTd).html('<a href="/player/user/info?id=' + oData.uid + '">' + sData + '</a>');
+                                    }}, {
+										'mDataProp': 'nickname'
+									}, {'mDataProp': 'wx_unionid', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                        $(nTd).html('<a href="/player/user/info?id=' + oData.uid + '">' + sData + '</a>');
+                                    }}, {
+										'mDataProp': 'ltime'
+									}, {
+										'mDataProp': 'region'
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+
+									postData: {
+										'type': function() {
+											return $('#type').val();
+										},
+                                        'mod': function() {
+                                            return $('#mod').val();
+                                        }
+									}
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+                                $("#type").append(getGameTypes());
+                                $("#mod").append(getGameModes());
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+		
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/main.js" ></script>
+			<script type="text/javascript" src="js/date.js"></script>
+	</body>
+
+</html>

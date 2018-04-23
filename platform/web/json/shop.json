@@ -1,0 +1,85 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    },
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    },
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    },
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    },
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    },
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    },
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    },
+    {
+      "sname": "1",
+      "shopmanage": "2016-12-31",
+      "shopname": "admin",
+      "shopprice": "0",
+      "shopdiscount":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shoptype": "index.html",
+      "shopmoney":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "shopstocks": "index.html"
+    }
+  ]
+}

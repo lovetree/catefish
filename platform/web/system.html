@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>游戏管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+		
+			<div class="header">
+				<h1 class="page-title">游戏管理</h1>
+			</div>
+			<ul id="myTab" class="nav nav-tabs">
+				<li>
+					<a href="#sys1" data-toggle="tab">存取条件</a>
+				</li>
+				<li>
+					<a href="#sys2" data-toggle="tab">练习初始金币</a>
+				</li>
+				<li>
+					<a href="#sys3" data-toggle="tab">银行服务</a>
+				</li>
+				<li>
+					<a href="#sys4" data-toggle="tab">登录服务</a>
+				</li>
+				<li>
+					<a href="#sys5" data-toggle="tab">注册服务</a>
+				</li>
+				<li>
+					<a href="#sys6" data-toggle="tab">充值比例</a>
+				</li>
+				<li>
+					<a href="#sys7" data-toggle="tab">注册IP限制</a>
+				</li>
+				<li>
+					<a href="#sys8" data-toggle="tab">注册赠送</a>
+				</li>
+				<li>
+					<a href="#sys9" data-toggle="tab">奖牌返率</a>
+				</li>
+				<li>
+					<a href="#sys10" data-toggle="tab">取款税率</a>
+				</li>
+				<li>
+					<a href="#sys11" data-toggle="tab">转账税率</a>
+				</li>
+				<li>
+					<a href="#sys12" data-toggle="tab">银行转账条件</a>
+				</li>
+				<li>
+					<a href="#sys13" data-toggle="tab">转账保留金币</a>
+				</li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="sys1">
+
+					<div class="container-fluid">
+
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="tab-pane fade" id="sys2">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys3">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys4">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys5">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys6">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys7">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys8">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys9">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys10">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys11">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys12">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="sys13">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="block span6">
+								<div class="control-group">
+									<label class="control-label">键值名:</label>
+									<div class="controls">
+										<input name="txtStatusName" type="text" value="EnjoinInsure" maxlength="50" id="txtStatusName" disabled="disabled" class="aspNetDisabled text">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">键值:</label>
+									<div class="controls">
+										<input name="txtStatusValue" type="text" value="0" maxlength="50" id="txtStatusValue" class="text valid" validate="{digits:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">名称:</label>
+									<div class="controls">
+										<input name="txtStatusTip" type="text" value="银行服务" maxlength="50" id="txtStatusTip" class="text valid" validate="{required:true}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">备注:</label>
+									<div class="controls">
+										<input name="txtStatusString" type="text" value="由于系统维护，暂时停止游戏系统的保险柜服务，请留意网站公告信息！" maxlength="80" id="txtStatusString" class="text valid">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">描述:</label>
+									<div class="controls">
+										<textarea name="txtStatusDescription" rows="2" cols="20" id="txtStatusDescription" class="text valid">键值：0-开启，1-关闭</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"></label>
+									<div class="controls">
+										<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+
+
+	</body>
+
+</html>

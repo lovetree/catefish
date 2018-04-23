@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>一指赢游戏官方网站</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/css.css">
+    <style>
+      .rit-box3 .content{color:#433dc1; padding-top:5px; padding-bottom:5px; margin-left:15px;}
+    </style>
+</head>
+<body>
+<!--<iframe src="subpage/top.html" height="80px" width="100%"  frameborder="0" border="0" id="iframe"></iframe>-->
+
+<div class="top">
+    <!--<div id="icon"><img src="images/favicon.ico" alt=""></div>-->
+    <ul>
+        <a href="index.html" target="_parent"><li class="down">首页<p>HOME</p></li></a>
+        <a href="gamedown.html" target="_parent"><li>游戏下载<p>DOWNLOAD</p></li></a>
+        <a href="recharge.html" target="_parent"><li>账户充值<p>RECHARGE</p></li></a>
+        <a href="newnotice.html" target="_parent"><li>新闻公告<p>NEW NOTICE</p></li></a>
+        <a href="basicdata.html" target="_parent"><li>会员中心<p>VIP</p></li></a>
+        <a href="gameStr.html" target="_parent"><li>心得攻略 <p>GAME STRATEGY</p></li></a>
+        <a href="servicehelp.html" target="_parent"><li>客服帮助<p>SERVICE</p></li></a>
+    </ul>
+</div>
+<div class="box2">
+    <div class="min">
+        <div class="lef fla-l usernologin">
+            <img src="images/sy.png">
+            <div class="bot">
+                <form>
+                    <div class="borb"><span>手机</span><input placeholder="输入账户名" id="name"></div>
+                    <div class="bort borb"><span>密码</span><input type="password" placeholder="输入密码" id="pwd"></div>
+                    <div class="bort borb"><span>验证</span><input class="inp" id="code"><span id="check" class="virefycode"></span></div>
+
+                    <div class="bort btn">
+                        <a id="login" href="javascript:login()" ><img src="images/sy_04.png" alt=""></a>
+                        <a href="userregister.html"><img class="marl" src="images/sy_05.png"></a>
+                    </div>
+                    <div class="txt-cen">
+                        <!--<a class="cor fon" href="">忘记密码？</a>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="lef fla-l lef-rel userlogin" style="display:none">
+            <img src="images/5_07.png">
+            <div class="use-img b-z">
+                <img class="user_avatar" src="" width="100px" height="100px">
+            </div>
+            <div class="bot">
+                <p class="p1 borb txt-cen fon3 user_name">游客</p>
+                <ul class="b-z bort">
+                    <li class="fla-l bor-l user_diamond">钻石：<span></span></li>
+                    <li class="fla-l bor-r user_score">金币：<span></span></li>
+                </ul>
+                <a class="txt-cen cor dis a1 fon3" href="recharge.html">游戏充值</a>
+                <div class="cor">
+                    <a class="b-z bort borb" href="basicdata.html">基本信息<span class="fla-r">></span></a>
+                    <a class="b-z bort borb" href="updatedata.html">修改资料<span class="fla-r">></span></a>
+                    <a class="b-z bort" href="payrecord.html">充值记录<span class="fla-r">></span></a>
+                    <a class="b-z borb" href="updatepass.html">修改密码<span class="fla-r">></span></a>
+                    <a class="b-z bort borb" href="sethead.html">设置头像<span class="fla-r">></span></a>
+                </div>
+                <a class="txt-cen cor a1 a2 fon logout_btn" href="javascript:logout();">退出登录</a>
+            </div>
+        </div>
+
+
+
+        <div class="rit fla-r">
+            <div class="rit-l fla-l flash3">
+                <div class="flashScroll" id="flashScroll">
+
+                </div>
+                <ul class="flash3But" id="flash3But">
+
+                </ul>
+            </div>
+            <div class="rit-r fla-r fon">
+                <p class="titl"><span class="fon2">游戏公告</span><span class="cor2 fon3">&nbsp;&nbsp;/&nbsp;&nbsp;活动中心</span><span class="cur" href="#"><span class="fla-r fon">更多 <a href="newnotice.html"><img src="images/sy_08.png"></a></span></span></p>
+                <div class="new-d" id="new-d">
+
+                </div>
+            </div>
+            <div class="flex"></div>
+            <div class="rit-cen">
+                <p><span class="fon5 fon-wet">最新游戏</span><span class="cor2 fon">&nbsp;&nbsp;/&nbsp;&nbsp;NEW GAME</span></p>
+                <div class="rit-cen-box">
+                    <div class="box-w" id="box-w">
+
+                    </div>
+                </div>
+                <img src="images/sy_13.png" class="img-l img-btn" onclick="btnlef()"><img src="images/sy_14.png" class="img-r img-btn" onclick="btnrit()">
+            </div>
+            <div class="rit-box3 fla-l">
+                <a href=""><img src="images/sy_16.png"></a>
+                <div class="fon" id="xyypp">
+                    <a href=""><img src="images/sy_19.png">聊聊鱼阵刷分效率的问题。</a>
+                    <a href=""><img src="images/sy_19.png">教你怎么捕鱼抢龙！</a>
+                    <a href=""><img src="images/sy_19.png">让你们看看怎么玩德州。</a>
+                    <a href=""><img src="images/sy_19.png">速射炮高级场刷金经验！</a>
+                    <a href=""><img src="images/sy_19.png">捕鱼快速圈钱攻略。</a>
+                    <a href=""><img src="images/sy_19.png">各类鱼分值汇总</a>
+                    <a class="bor-no" href=""><img src="images/sy_19.png">捕鱼获取大量金币方法</a>
+                </div>
+            </div>
+            <div class="rit-box3 fla-r">
+                <a href=""><img src="images/sy_17.png"></a>
+                <a href=""><img src="images/sy_18.png" class="fla-r"></a>
+                <div class="fon a-hei" id="a-hei">
+                    <div class="lists-group">
+                        <a class="lists" href="###"><img src="images/sy_19.png">如何下载安装游戏</a>
+                        <div class="content active">请通过官网的游戏下载页，选择对应的游戏版本下载安装。</div>
+                    </div>
+                    <div class="lists-gorup">
+                        <a class="lists" href="###"><img src="images/sy_19.png">可以在手机和电脑上使用同一个账号登录游戏吗?</a>
+                        <div class="content">很抱歉，目前我们还不支持账号多端登录，此功能目前正在开发中，相信在不久的将来即会开放此功能，欢迎期待。</div>
+                    </div>
+                    <div class="lists-group">
+                        <a class="lists" href="###"><img src="images/sy_19.png">游戏如何充值？</a>
+                        <div class="content">茶馆提供了多种方式充值，包括支付宝、微信、银联卡、游戏点卡等。玩家可以在游戏的商城中点击购买按钮，在弹出的窗口中选择对应的支付方式即可完成充值。</div>
+                    </div>
+                    <div class="lists-group">
+                        <a class="lists" href="###"><img src="images/sy_19.png">官方网站充值，可以在手机版中使用吗？</a>
+                        <div class="content">在官方网站上充值的钻石，也是可以在手机版中使用的。敬请放心。</div>
+                    </div>
+                    <div class="lists-group">
+                        <a class="lists" href="###"><img src="images/sy_19.png">人气值怎么兑换？</a>
+                        <div class="content">首先进入游戏平台大厅，点击玩家头像，在弹出的菜单中，点击右边的兑换按钮，切换到兑换页面，在输入框中输入要兑换的人气值，即可完成兑换。</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex"></div>
+        </div>
+    </div>
+</div>
+<div class="flex"></div>
+<img src="images/sy_02.png" id="fla-img">
+<iframe src="bottom.html" width="100%" height="226px" frameborder="0" style="margin-top:55px;"></iframe>
+
+<!--qq咨询-->
+<!-- <div id="open">
+    <img id="open-fixed" src="images/fixed_3.png" alt="">
+</div>
+
+<div id="parent">
+    <div id="close-"><a id="close" href="###">X</a></div>
+    <div id="ins">
+        <div id="title-fixed">在线<span>QQ</span>咨询</div>
+        <div id="con-fixed">
+            <img src="images/bear_.png" alt="">
+            <div class="qq-fixed">
+                <div>联系客服</div>
+                <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2852371661&amp;site=qq&amp;menu=yes">2852371661</a>
+            </div>
+        </div>
+    </div>
+</div> -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/index.js"></script>
+
+<script>
+    function logout() {
+        $.post('/Index/logout',{},function (data) {
+            if(data.result=='0') {
+                window.location.href = '/index.html';
+            }
+        },'json')
+    }
+
+    $(function(){
+        $.post('/Index/isLogin',{},function (data) {
+            console.log(data);
+            if(data.result=='0'){
+                $.post('/Index/info',{},function (userData) {
+
+                    var gold=userData.data.gold/10000;
+                    var diamond=userData.data.credit/10000;
+                    if(10000>gold>1){
+                        gold=parseFloat(userData.data.gold/10000).toFixed(2) + "万";
+                    }else if(gold>10000){
+                        gold=parseFloat(userData.data.gold/100000000).toFixed(2) + "亿";
+                    }
+                    else{
+                        gold=userData.data.gold;
+                    }
+
+                    if(10000>diamond>1){
+                        diamond=parseFloat(userData.data.credit/10000).toFixed(2) + "万";
+                    }else if(diamond>10000){
+                        diamond=parseFloat(userData.data.credit/100000000).toFixed(2) + "亿";
+                    }
+                    else{
+                        diamond=userData.data.credit;
+                    }
+
+                    $('.user_score span').html(gold);
+                    $('.user_diamond span').html(diamond);
+                    $('.user_name').html(userData.data.nickname);
+                    $('.user_avatar').attr('src',userData.data.head);
+                    $('.usernologin').css('display','none');
+                    $('.userlogin').css('display','inline');
+                },'json')
+
+            }else{
+                $('.usernologin').css('display','inline');
+                $('.userlogin').css('display','none');
+            }
+        },'json');
+
+
+
+//        心得攻略
+        $.ajax({
+            url:'news/list',
+            type:'POST',
+            dataType:'json',
+            data:{type:2},
+            success:function (reg) {
+                if(reg.result==0){
+                    var data=reg.data,html='';
+                    if(!data){
+                        return false;
+                    }
+                    var length = 0;
+                    if(data.length >= 6) {
+                        length = 6;
+                    }else {
+                        length = data.length;
+                    }
+                    for(var i=0;i<length;i++){
+                        html+='<p><a href="gameStr-detail.html?id='+data[i].id+'"><img src="images/sy_19.png">'+data[i].title+'</a></p>';
+                    }
+                    $('#xyypp').html(html);
+                }else{
+                    alert(reg.msg);
+                }
+            }
+        });
+    });
+
+    function login() {
+       var name= document.getElementById('name').value;
+       var pwd= document.getElementById('pwd').value;
+       var code= document.getElementById('code').value;
+       var check = document.getElementById('check').innerHTML;
+
+        if(code!=check){
+            alert('验证码错误');
+            code = '';
+            document.getElementById('code').focus();
+            createCode();
+            return false;
+        }else{
+            $.ajax({
+                url: 'Index/login',
+                dataType: 'json',
+                data:{name:name,pwd:pwd},
+                method:'post',
+                success:function(res){
+                    console.log(res);
+                    if(res.res==200){
+                        var userData = {
+                            user_avatar: res.data.avatar,
+                            user_name: res.data.nickname,
+                            user_account: res.data.username,
+                            user_diamond: res.data.gold,
+                            user_score: res.data.credit,
+                            last_login_time: res.data.last_time,
+                            register_time: res.data.register_time,
+                            user_id: res.data.user_id,
+                            user_email: res.data.email,
+                            phone_number: name
+                        };
+                        userData = JSON.stringify(userData);
+                        $.cookie('userData', userData , { path: '/'});
+                        console.log(res.data);
+                        window.location.href="/index.html";
+                    }else{
+                        alert("用户名或密码不存在");
+                        return false;
+                    }
+                }
+            });
+        }
+    }
+
+    //创建随机验证码
+    function createCode()
+    {
+        var seed = new Array(
+                'abcdefghijklmnopqrstuvwxyz',
+                '0123456789'
+        );               //创建需要的数据数组
+        var idx,i;
+        var result = '';   //返回的结果变量
+        for (i=0; i<4; i++) //根据指定的长度
+        {
+            idx = Math.floor(Math.random()*2); //获得随机数据的整数部分-获取一个随机整数
+            result += seed[idx].substr(Math.floor(Math.random()*(seed[idx].length)), 1);//根据随机数获取数据中一个值
+        }
+        document.getElementById('check').innerHTML = result; //返回随机结果
+    }
+
+
+    $(function(){
+        createCode();
+////        折叠扇
+//        $(".content").hide();
+//        $(".active").show();
+//        $(".lists").click(function(){
+//            $(".content").hide(500);
+//            $(this).parent().children(".content").show(500);
+//        });
+
+
+    });
+
+    $(function(){
+        //游戏图标列表
+        $.ajax({
+            url: '/gameicon/list',
+            dataType: 'json',
+            success:function(res){
+                console.log(res);
+                if(res.result == 0){
+                    var data = res.data, html = '';
+                    for(var i = 0;i<data.length; i++){
+                        if(i<6) {
+                            html += ' <div class="mar-b">'+
+                                    '<img src="'+ data[i].img_url +'" width="120px" height="120px" class="fla-l">' +
+                                    '<div class="box-btn fla-l txt-cen">' +
+                                    '<span class="dis">'+ data[i].name +'</span>' +
+                                    '<a href="'+data[i].download_url+'" class="txt-cen fon5 cor noline">点击下载</a>' +
+                                    '</div>'+
+                                    '<div class="flex"></div>'+
+                                    '</div>';
+                        }
+                    }
+                    $('#new-gram').append(html);
+                }
+            }
+        });
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>管理后台登陆</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.form.js"></script>
+        <script type="text/javascript" src="/js/mos.js"></script>
+        <script src="/skin/js/bootbox.min.js"></script>
+    </head>
+
+    <body class="">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-left">
+                    <a class="navbar-brand" href="#">后台管理系统</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row-fluid">
+            <div class="dialog">
+                <div class="block">
+
+                    <div class="block-body">
+                        <form id="myForm" method="post">
+                            <div class="form-group form-group-name">
+                                <label for="">用户名:</label>
+                                <input type="text" class="form-control" id="user" placeholder="请输入名称" name="user">
+                            </div>
+                            <div class="form-group form-group-name">
+                                <label for="">密码:</label>
+                                <input type="password" class="form-control" id="" placeholder="请输入用户密码" name="pass">
+                            </div>
+                            <!--<div id="show" style="display: none">
+                            <div class="form-group form-group-name">
+                                <label for="">验证码:</label>
+                                <div><input type="text" class="form-control" style="width: 60%;display: inline"  id="code" placeholder="请输入验证码" name="code">
+                                    <input type="button" name="" id="getcode" onclick="sendCode()" class="btn btn-default" value="获取验证码"></div>
+
+                            </div>
+                            </div>-->
+                            <label class="form-group form-group-name"><input type="submit" name="" id="btnsubmit" class="btn btn-default" value="登陆"></label>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var timeout = 60;
+            $(function () {
+                $("#myForm").submit(function () {
+                    user = $('#user').val();
+                   // code = $('#code').val();
+                   /* if(user==='admin'&&code==''){
+                        $('#show').show();
+                        showMsg('admin账户需要确认手机验证码', true);
+                    }else{
+                        $('#show').hide();
+
+                    }*/
+                    $("#myForm").ajaxSubmit({
+                        url: 'user/login',
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json.result == 0) {
+                                window.location.href = 'index.html';
+                            } else {
+                                showMsg(json.msg, true);
+                                if(user==='admin'){
+                                    $('#show').show();
+                                }
+                            }
+                        }
+                    });
+
+                    return false;
+                });
+
+            });
+            function getCode() {
+
+                setTimeout(function () {
+                    sendCode();
+                },1000)
+            }
+            function sendCode() {
+                if(timeout==60){
+                    user = $('#user').val();
+                    if(user==''){
+                        showMsg('请先输入用户名', true);
+                    }
+
+                    $.post("/user/sendsms",{user:user},function (data) {
+                        if(data.result==0){
+
+                        }else{
+                            showMsg(data.msg, true);
+                        }
+                    },'json');
+                }
+                if(timeout==0){
+                    $('#getcode').attr('disabled',false);
+                    $('#getcode').val('发送验证码');
+                    timeout=60;
+
+
+                    return false;
+                }else{
+                    $('#getcode').attr('disabled',true);
+                    $('#getcode').val('重新发送'+timeout);
+                    timeout--;
+
+                }
+                getCode();
+            }
+        </script>
+        <footer>
+            <hr>
+            <p>&copy; 2017 一指赢</p>
+        </footer>
+    </body>
+
+</html>

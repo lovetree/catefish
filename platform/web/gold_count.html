@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>标题</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">金币统计</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                            <span class="input-group-addon">日期</span>
+                            <input class="form-control input-xs input" id="j_Date1" name="startdate" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="j_Date2" name="enddate" type="text">
+                        </div>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <input type="button" onclick="javascript:window.location.reload();" value="刷新" name="btn-query" class="btn btn-default input_btn_h">
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>钻石兑换</th>
+                                <th>后台添加</th>
+                                <th>系统赠送</th>
+                                <th>系统生产</th>
+                                <!-- <th>礼物赠送</th>
+                                 <th>人气兑换</th>-->
+                                <th>系统回收</th>
+                                <th>其他兑换</th>
+                                <th>上期结余</th>
+                                <th>本期净额</th>
+                                <th>本期结余</th>
+                                <th>统计日期</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+    </div></body></html><script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">
+    var user_id ;
+    var to ;
+    var table;
+    function setuserid(id) {
+        user_id = $('#'+id).val();
+        table.reload();
+    }
+    function settoid(id) {
+        to = $('#'+id).val();
+        table.reload();
+    }
+    $(function () {
+         table = $('#example').dataTableAjax("gamemt/statistics/count", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+                {'mDataProp':'credit_gold'},
+                {'mDataProp':'admin_gold'},
+                {'mDataProp':'sys_gold'},
+                {'mDataProp':'sys_produce'},
+//                {'mDataProp':'gift_gold'},
+//                {'mDataProp':'renqi_gold'},
+                {'mDataProp':'sys_recover'},
+                {'mDataProp':'other'},
+                {'mDataProp':'pre_gold'},
+                {'mDataProp':'count'},
+                {'mDataProp':'all'},
+                {'mDataProp':'time'}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-credit_gold', data.credit_gold);
+                $(row).data('data-admin_gold', data.admin_gold);
+                $(row).data('data-sys_gold', data.sys_gold);
+                $(row).data('data-sys_produce', data.sys_produce);
+                $(row).data('data-gift_gold', data.gift_gold);
+                $(row).data('data-renqi_gold', data.renqi_gold);
+                $(row).data('data-sys_recover', data.sys_recover);
+                $(row).data('data-other', data.other);
+                $(row).data('data-pre_gold', data.pre_gold);
+                $(row).data('data-count', data.count);
+                $(row).data('data-all', data.all);
+                $(row).data('data-create_time', data.time);
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                },
+                'query_type': function () {
+                    return $("#channeltype option:checked").val();
+                },
+                'start_time': function () {
+                    return $("#j_Date1").val();
+                },
+                'end_time': function () {
+                    return $("#j_Date2").val();
+                },
+                'user_id': function () {
+                    return user_id;
+                },
+                'to_user_id': function () {
+                    return to;
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+
+
+</script>

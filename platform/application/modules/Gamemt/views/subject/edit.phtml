@@ -1,0 +1,137 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">专题名称：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="s_name" name="s_name" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['s_name'] : ''?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">选择模板：</label>
+                            <div class="col-sm-10">
+                                <select id="t_id" >
+                                    <option value="">选择模板</option>
+                                    <?php if($list):?>
+                                    <?php foreach ($list as $v):?>
+                                    <option value="<?php echo $v['id'];?>" <?php if($info && $info['t_id'] == $v['id']):?>selected<?php endif;?>><?php echo $v['t_name'];?></option>
+                                    <?php endforeach;?>
+                                    <?php endif;?>
+                                </select>
+                            </div>
+                    </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">选择专题图片：</label>
+                            <div class="col-sm-10">
+                                <?php if($info):?>
+                                <img src="<?php echo $info['s_image']?>" class="s_image"  style="max-height:100px;" />
+                                <?php else:?>
+                                <img src="/files/official.jpg" class="s_image"  style="max-height:100px;" />
+                                <?php endif;?>
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">选择背景图片：</label>
+                            <div class="col-sm-10">
+                                <?php if($info):?>
+                                <img src="<?php echo $info['s_b_image']?>" class="s_b_image"  style="max-height:100px;" />
+                                <?php else:?>
+                                <img src="/files/official.jpg" class="s_b_image"  style="max-height:100px;" />
+                                <?php endif;?>
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                s_name: {
+                    required: true
+                }
+            },
+            messages: {
+                s_name: {
+                    required: '请输入专题名称'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                if ($('#t_id').val() == ''){
+                    showMsg("请选择模板", true);
+                    return;
+                }
+                var params = {
+                    'id': $('#id').val(),
+                    's_name': $('#s_name').val(),
+                    't_id':$('#t_id').val(),
+                    's_image': $('.s_image').attr('src'),
+                    's_b_image': $('.s_b_image').attr('src')
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/subject/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.message, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

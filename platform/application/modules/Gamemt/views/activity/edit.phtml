@@ -1,0 +1,187 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动标题：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="title" name="title"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['title'] : ''?>'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动图片：</label>
+                            <div class="col-sm-10">
+                                <?php if($info):?>
+                                <img src="<?php echo $info['image']?>" class="image"  style="max-height:100px;" />
+                                <?php else:?>
+                                <img src="/files/official.jpg" class="image"  style="max-height:100px;" />
+                                <?php endif;?>
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                                上传图片的尺寸为<span style="color:red" >870X350</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">排序：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="a_sort" name="a_sort"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['a_sort'] : 0?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动时间：</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                            <i class="icon-calendar bigger-110"></i>
+                                    </span>
+                                    <?php if($info): ?>
+                                    <input class="col-sm-5" type="text" name="avttime" id="avttime" value="<?php echo str_replace('-','/',date('Y-m-d H:i',$info['start_time'])).' - '.str_replace('-','/',date('Y-m-d H:i',$info['end_time'])); ?>" readonly>
+                                    <?php else : ?>
+                                    <input class="col-sm-5" type="text" name="avttime" id="avttime" value="<?php echo date('Y/m/d').' - '.date("Y/m/d",strtotime("+7 day")); ?>" readonly>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">跳转事件：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="a_type" type="radio" value="0" class="ace" checked="checked"/>
+                                    <span class="lbl">不跳转</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="a_type" type="radio" value="1" 
+                                           class="ace" <?php echo $info && $info['a_type'] == 1 ? 'checked':''?>>
+                                    <span class="lbl">捕鱼</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="a_type" type="radio" value="2" 
+                                           class="ace" <?php echo $info && $info['a_type'] == 2 ? 'checked':''?>>
+                                    <span class="lbl">21点</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="a_type" type="radio" value="3" 
+                                           class="ace" <?php echo $info && $info['a_type'] == 3 ? 'checked':''?>>
+                                    <span class="lbl">德州</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="a_type" type="radio" value="4" 
+                                           class="ace" <?php echo $info && $info['a_type'] == 4 ? 'checked':''?>>
+                                    <span class="lbl">牛牛</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                title: {
+                    required: true
+                },
+                a_sort: {
+                    required: true,
+                    number:true
+                },
+                avttime: {
+                    required: true
+                }
+            },
+            messages: {
+                title: {
+                    required: '不可为空'
+                },
+                a_sort: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                avttime: {
+                    required: '不可为空'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    'title': $('#title').val(),
+                    'a_sort': $('#a_sort').val(),
+                    'image': $('.image').attr('src'),
+                    'a_type': $("input[name='a_type']:checked").val(),
+                    'avttime' : $('#avttime').val()
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/activity/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

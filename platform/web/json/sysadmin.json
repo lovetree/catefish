@@ -1,0 +1,85 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    },
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    },
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    },
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    },
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    },
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    },
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    },
+    {
+      "sysname": "1",
+      "sysmanage": "2016-12-31",
+      "sysstarttime": "admin",
+      "sysendtime": "0",
+      "sysmessage":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "syscontent": "index.html",
+      "sysrate":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "sysban": "index.html"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>卡线管理</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+
+        <div class="header">
+
+            <h1 class="page-title">卡线管理</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <select class="input_btn_h"  id="game_id" name="game_id">
+                            <option value="">所有游戏</option>
+                        </select>
+                        <select class="input_btn_h" id="game_mode" name="game_mode">
+                            <option value="">游戏类型</option>
+                        </select>
+                        <input type="button" id="btn-query" class="input_btn_h input-table" value="查询"/>
+                        <input type="button" id="btn-refresh" class="input_btn_h input-table" value="刷新"/>
+                        <thead class="theadtbody">
+                            <tr>
+                                <th></th>
+                                <th>用户ID</th>
+                                <th>游戏账号</th>
+                                <th>昵称</th>
+                                <th>游戏名称</th>
+                                <th>游戏模式</th>
+                                <th>进入游戏时间</th>
+                                <th>进入IP</th>
+                                <th>进入地址</th>
+                                <th>金币</th>
+                                <th>钻石</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(function () {
+                            var table = $('#example').dataTableAjax(kaxian, {
+                                'bLengthChange': false,
+                                'iDisplayLength': 10,
+                                'searching': true,
+                                'processing': true,
+                                'serverSide': true,
+                                "autoWidth": false,
+                                'ordering': false,
+                                'aoColumns': [
+                                    {'mDataProp': 'id'},
+                                    {'mDataProp': 'user_id'},
+                                    {'mDataProp': 'username'},
+                                    {'mDataProp': 'nickname'},
+                                    {'mDataProp': 'game_name'},
+                                    {'mDataProp': 'mode_name'},
+                                    {'mDataProp': 'update_time'},
+                                    {'mDataProp': 'ip'},
+                                    {'mDataProp': 'ip', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                                            ip2addr(sData, function (callbackdata) {
+                                                $(nTd).html(callbackdata);
+                                            });
+                                        }},
+                                    {'mDataProp': 'gold'},
+                                    {'mDataProp': 'credit'},
+                                    {'mDataProp': 'management', "render": function (nTd, sData, oData, iRow, iCol) {
+                                            return '<button data-ctrl-btn="xiaxian" disabled>下线</button>';
+                                        }
+                                    }
+                                ],
+                                postData: {
+                                    'game_id': function () {
+                                        return $("#channeltype option:checked").val();
+                                    },
+                                    'game_mode': function () {
+                                        return $("#channelnum option:checked").val();
+                                    },
+                                    'query': function () {
+                                        return $('input[aria-controls=example][type=search]').val();
+                                    },
+                                },
+                            });
+                            $('input[aria-controls=example][type=search]').unbind();
+                            $('input[aria-controls=example][type=search]').keyup(function (e) {
+                                if (e.keyCode === 13) {
+                                    table.reload();
+                                }
+                            });
+                            $('#btn-query').click(function () {
+                                $('input[aria-controls=example][type=search]').focus();
+                                table.reload();
+                            });
+                            $('#btn-refresh').click(function () {
+                                $('[data-input]').val('');
+                                $('input[aria-controls=example][type=search]').val('');
+                                table.reload();
+                            });
+
+                            $("#game_id").append(getGameTypes());
+                            $("#game_mode").append(getGameModes());
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer><hr></footer>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/date.js"></script>
+    </body>
+
+</html>

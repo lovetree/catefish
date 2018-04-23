@@ -1,0 +1,136 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">邮件标题：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="title" name="title" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['title'] : ""?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">邮件内容：</label>
+                            <div class="col-sm-10">
+                                <textarea id="content" style="height: 200px;" name="content" class="col-xs-10 col-sm-5"><?php echo $info ? $info['content'] : ''?></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">邮件图片：</label>
+                            <div class="col-sm-10">
+                                <?php if($info):?>
+                                <img src="<?php echo $info['image']?>" class="image"  style="max-height:100px;" />
+                                <?php else:?>
+                                <img src="/files/official.jpg" class="image"  style="max-height:100px;" />
+                                <?php endif;?>
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">玩家ID号：</label>
+                            <div class="col-sm-10">
+                                <span>为0表示系统邮件，发送给所有人，批量邮件的话，已英文逗号分隔：311505,311506</span><br>
+                                <input type="text" id="to_id" name="to_id" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['to_id'] : 0?>'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                content: {
+                    required: true
+                },
+                title: {
+                    required: true
+                },
+                to_id: {
+                    required: true
+                }
+            },
+            messages: {
+                content: {
+                    required: '不可为空'
+                },
+                title: {
+                    required: '不可为空'
+                },
+                to_id: {
+                    required: '不可为空'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    'content': $('#content').val(),
+                    'title': $('#title').val(),
+                    'to_id': $('#to_id').val(),
+                    'image':$('.image').attr('src')
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/email/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

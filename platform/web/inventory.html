@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>实卡管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+		
+			<div class="header">
+
+				<h1 class="page-title">实卡管理</h1>
+			</div>
+			<ul id="myTab" class="nav nav-tabs">
+				<li class="active">
+					<a href="#home" data-toggle="tab">
+						会员卡生成</a>
+				</li>
+				<li>
+					<a href="#ios" data-toggle="tab">类型管理</a>
+				</li>
+
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="home">
+
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">基本信息</h4>
+					</div>
+
+					<div class="control-group">
+						<label class="control-form">会员卡名称:</label>
+						<div class="controls">
+							<select style="width:200px;" name="channelType">
+								<option value="123456">123456</option>
+								<option value="498126">498126</option>
+								<option value="749812">749812</option>
+								<option value="981245">981245</option>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">生成数量:</label>
+						<div class="controls">
+							<input type="text" name="">
+
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">价格:</label>
+						<div class="controls">
+							<input type="text" name="">
+
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">赠送金币:</label>
+						<div class="controls">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">会员卡类型:</label>
+						<div class="controls">
+							<select name="channelType">
+								<option value="123456">123456</option>
+								<option value="498126">498126</option>
+								<option value="749812">749812</option>
+								<option value="981245">981245</option>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">会员等级:</label>
+						<div class="controls">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">会员卡类型:</label>
+						<div class="controls">
+							<select name="channelType">
+								<option value="123456">123456</option>
+								<option value="498126">498126</option>
+								<option value="749812">749812</option>
+								<option value="981245">981245</option>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">会员天数:</label>
+						<div class="controls">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">适用范围:</label>
+						<div class="controls">
+							<select name="channelType">
+								<option value="123456">123456</option>
+								<option value="498126">498126</option>
+								<option value="749812">749812</option>
+								<option value="981245">981245</option>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">经销商:</label>
+						<div class="controls">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">有效日期:</label>
+						<div class="controls">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">区域代理:</label>
+						<div class="controls">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">备注:</label>
+						<div class="controls">
+							<input type="text" name="">
+						</div>
+					</div>
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">卡号规则</h4>
+					</div>
+					<div class="control-group">
+						<label class="control-form">开始字符:</label>
+						<div class="controls">
+							<input type="text" name="" value="p">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">卡号长度:</label>
+						<div class="controls">
+							<input type="text" name="" value="p">
+						</div>
+					</div>
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">卡密规则</h4>
+					</div>
+					<div class="control-group">
+						<label class="control-form">密码数字类型:</label>
+						<div class="controls">
+							<select name="channelType">
+								<option value="123456">数字</option>
+								<option value="498126">含小写字母</option>
+								<option value="749812">含大写字母</option>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-form">卡号长度:</label>
+						<div class="controls">
+							<input type="text" name="" value="8">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label"><input type="reset"  name="" value="重置会员卡"></label>
+						<label class="control-label"><input type="submit" name="" value="生成会员卡"></label>
+
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="ios">
+
+					<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in " id="example">
+
+
+							<input type="button" name="btntype" id="btntype" onclick="window.location.href='inventory_new.html'"  class="input_btn_h input-table" value="查询" />
+							<input type="button" name="btndelete" id="btndelete"  class="input_btn_h input-table" value="删除" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check" id="checkAll" onclick="check_all();"></th>
+									<th>管理</th>
+									<th>实卡名称</th>
+									<th>实卡价格</th>
+									<th>赠送金币</th>
+									<th>会员等级</th>
+									<th>会员天数</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax('json/inventory.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check' id='checkbox-check' class='check' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'skmanage',
+									}, {
+										'mDataProp': 'skname',
+									}, {
+										'mDataProp': 'skprice',
+									}, {
+										'mDataProp': 'skmoney',
+									}, {
+										'mDataProp': 'skgrade',
+									}, {
+										'mDataProp': 'skday',
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										},
+										'datastart': function() {
+											return $("#j_Date1").val();
+										},
+										'dataend': function() {
+											return $("#j_Date2").val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+
+				</div>
+			</div>
+
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>

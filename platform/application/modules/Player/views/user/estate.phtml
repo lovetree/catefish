@@ -1,0 +1,131 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $id ? $id : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">钻石：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="credit" name="credit"
+                                       class="col-sm-5" value='' >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">金币：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="gold" name="gold"
+                                       class="col-sm-5" value='' >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">vip等级：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="user_level" name="user_level"
+                                       class="col-sm-5" value='' >
+                            </div>
+                        </div>
+                        <?php if($safe){?>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">保险柜金币：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="safe_gold" name="safe_gold"
+                                       class="col-sm-5" value='' >
+                            </div>
+                        </div>
+                        <?php }?>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">绿钻石：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="emerald" name="emerald"
+                                       class="col-sm-5" value='' >
+                            </div>
+                        </div>
+                        <input type="hidden" id="type" name="type" value="4">
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="/player/user/info?id=<?php echo $id ? $id : 0?>">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if($('#id').val()==0){
+            showMsg("无法获取用户信息，请检查ms_user_estate表是否有此用戶信息", function(){
+                window.history.go(-1);
+            });
+        }
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {};
+                params.id = $('#id').val();
+
+                params.credit = $("#credit").val();
+                params.gold = $("#gold").val();
+                params.emerald = $("#emerald").val();
+                params.safe_gold = $("#safe_gold").val();
+                params.type = $("#type").val();
+                params.user_level = $('#user_level').val();
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/player/user/saveestate",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                window.location.href = '/player/user/info?id=<?php echo $id ? $id : 0?>';
+                                //history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

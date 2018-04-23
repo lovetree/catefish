@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>个人信息</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.form.js"></script>
+
+    </head>
+
+    <body>
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active">
+                <a href="#User" data-toggle="tab">
+                    基本信息</a>
+            </li>
+            <li>
+                <a href="#User2" data-toggle="tab">详细信息</a>
+            </li>
+            <li>
+                <a href="#User3" data-toggle="tab">财富信息</a>
+            </li>
+            <li>
+                <a href="#User4" data-toggle="tab">积分信息</a>
+            </li>
+            <li>
+                <a href="#User5" data-toggle="tab">记录信息</a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="User">
+
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">ID号码(GameID):</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grid" id="" disabled="disabled" type="text" value="32131">
+                            </div>
+                            <label class="col-sm-1 control-label">原用户名:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="gryyhm" id="" disabled="disabled" type="text" value="dsadsa">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">用户名:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" id="" name="gryhm" type="text" placeholder="">
+                            </div>
+                            <label class="col-sm-1 control-label">用户昵称:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" id="" name="gryhnc" type="text" placeholder="">
+                            </div>
+                            <label class="col-sm-1 control-label">登陆密码:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" id="" name="grdlmm" type="text" placeholder="">
+                            </div>
+                            <label class="col-sm-1 control-label">银行密码:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" id="" name="gryhmm" type="text" placeholder="">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">经验值:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grjyz" id="" type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="col-sm-1 control-label">身份证号:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grsfzh" id="" type="text" placeholder="">
+                            </div>
+                            <label class="col-sm-1 control-label">个性签名:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grgxqm" id="" type="text" placeholder="">
+                            </div>
+                            <label class="col-sm-1 control-label">性别:</label>
+                            <div class="col-sm-1">
+                                <select name="grxb" class="form-control">
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                </select>
+                            </div>
+
+                            <label class="col-sm-1 control-label">头像:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grtx" id="" type="text" placeholder="">
+                            </div>
+                            <label class="col-sm-1 control-label">密码保护:</label>
+
+                            <div class="col-sm-1">
+                                <select name="grmmbh" id="" class="form-control">
+                                    <option value="1">已申请</option>
+                                    <option value="2">未申请</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">密保卡:</label>
+                            <div class="col-sm-1">
+                                <select name="grmbk" class="form-control">
+                                    <option value="1">已申请</option>
+                                    <option value="2">未申请</option>
+                                </select>
+                            </div>
+                            <label class="col-sm-1 control-label" for="">冻结原因:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grdjyy" id="" type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">锁定机器:</label>
+                            <div class="col-sm-2">
+                                <input type="checkbox" name="grsdjq" value="未锁定">未锁定
+                                <input type="checkbox" name="grsdjq" value="客户端锁定">客户端锁定
+                                <input type="checkbox" name="grsdjq" value="网页锁定">网页锁定
+                            </div>
+                            <label class="col-sm-1 control-label" for="">选项:</label>
+                            <div class="col-sm-3">
+                                <input type="radio" name="grxx" value="冻结账号">冻结账号
+                                <input type="radio" name="grxx" value="安全关闭">安全关闭
+                                <input type="radio" name="grxx" value="设为测试员">设为测试员
+                            </div>
+                        </div>
+                        <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                            <label class="col-sm-1 control-label" for=""><h3>登陆信息</h3></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">网站登陆次数:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grzhdlcs" id="" type="text" disabled="disabled" value="3">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">大厅登陆次数:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grdtdlcs" id="" type="text" disabled="disabled" value="3">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">在线时长共计:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grzxscgj" id="" type="text" disabled="disabled" value="15">
+                            </div>
+
+                            <label class="col-sm-1 control-label" for="">游戏时长共计:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="gryxscgj" id="" type="text" disabled="disabled" value="556">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">最后登陆时间:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grdlsj" id="" type="text" disabled="disabled" value="1325">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">最后登录地址:</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" name="grzhdldz" id="" type="text" disabled="disabled" value="深圳罗湖">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">登录机器:</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" name="grdljq" id="" type="text" disabled="disabled" value="dasdasdasdsadad">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">注册时间:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grzcsj" id="" type="text" disabled="disabled" value="2016-12-16">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">注册机器:</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" name="grzcjq" id="" type="text" disabled="disabled" placeholder="dsadasdasdsdasdas">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">注册手机:</label>
+                            <div class="col-sm-2">
+                                <input class="form-control" name="grzcsj" id="" type="text" disabled="disabled" placeholder="18812345678">
+                            </div>
+
+                        </div>
+                        <div class="form-group" style="border-bottom:1px solid #CCCCCC ;">
+                            <label class="col-sm-1 control-label" for=""><h3>权限信息</h3></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">用户身份:</label>
+                            <div class="col-sm-1">
+                                <select name="gryhsf" class="form-control">
+                                    <option value="1">普通玩家</option>
+                                    <option value="2">管理员</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">用户权限</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" name="check" class="check" id="checkAll" value="全选" onclick="check_all();">全选
+                                <input type="checkbox" name="check" class="check" value="不能进行游戏">不能进行游戏
+                                <input type="checkbox" name="check" class="check" value="不能旁观游戏">不能旁观游戏
+                                <input type="checkbox" name="check" class="check" value="不能发送私聊">不能发送私聊
+                                <input type="checkbox" name="check" class="check" value="不能大厅聊天">不能大厅聊天
+                                <input type="checkbox" name="check" class="check" value="不能游戏聊天">不能游戏聊天
+                                <input type="checkbox" name="check" class="check" value="游戏双倍积分">游戏双倍积分
+                                <input type="checkbox" name="check" class="check" value="游戏踢出用户">游戏踢出用户
+                                <input type="checkbox" name="check" class="check" value="游戏比赛用户">游戏比赛用户
+                                <input type="checkbox" name="check" class="check" value="在线送金币">在线送金币
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">管理权限</label>
+                            <div class="col-sm-10">
+                                <input type="checkbox" name="check2" class="check2" id="checkAll2" value="全选" onclick="check_all2();">全选
+                                <input type="checkbox" name="check2" class="check2" value="不能进行游戏">不能进行游戏
+                                <input type="checkbox" name="check2" class="check2" value="不能旁观游戏">不能旁观游戏
+                                <input type="checkbox" name="check2" class="check2" value="不能发送私聊">不能发送私聊
+                                <input type="checkbox" name="check2" class="check2" value="不能大厅聊天">不能大厅聊天
+                                <input type="checkbox" name="check2" class="check2" value="不能游戏聊天">不能游戏聊天
+                                <input type="checkbox" name="check2" class="check2" value="游戏双倍积分">游戏双倍积分
+                                <input type="checkbox" name="check2" class="check2" value="游戏踢出用户">游戏踢出用户
+                                <input type="checkbox" name="check2" class="check2" value="游戏比赛用户">游戏比赛用户
+                                <input type="checkbox" name="check2" class="check2" value="在线送金币">在线送金币
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for=""></label>
+                            <div class="col-sm-2">
+                                <input type="submit" name="btnsave" value="保存" id="btnsave" class="">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </form>
+
+            </div>
+            <div class="tab-pane fade in" id="User2">
+
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">ID号码(GameID):</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grid" id="" disabled="disabled" type="text" value="32131">
+                            </div>
+                            <label class="col-sm-1 control-label">原用户名:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="gryyhm" id="" disabled="disabled" type="text" value="dsadsa">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">真实姓名:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grzsxm" value="" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">QQ号码:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grqq" value="" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">电子邮箱:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="gremail" value="" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">固定电话:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grgddh" value="" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">手机号码:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grsjhm" value="" id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">邮政编码:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="gryzbm" value="" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">用户备注:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="gryhbz" value="" id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for=""></label>
+                            <div class="col-sm-2">
+                                <input type="submit" name="btnsave" value="保存" id="btnsave" class="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade in" id="User3">
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">ID号码(GameID):</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grid" id="" disabled="disabled" type="text" value="32131">
+                            </div>
+                            <label class="col-sm-1 control-label">原用户名:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="gryyhm" id="" disabled="disabled" type="text" value="dsadsa">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">携带金额:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grxdje" value="132165332" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">银行金额:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="gryhje" value="132165332" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">元宝个数:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grybgs" value="132165332" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">赢局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="gryj" value="123" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">输局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grsj" value="123" disabled="disabled" id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">和局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grhj" value="11" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">逃局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grtj" value="32" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">游戏税收:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="gryxss" value="32321" disabled="disabled" id="" class="form-control">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade in" id="User4">
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">ID号码(GameID):</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grid" id="" disabled="disabled" type="text" value="32131">
+                            </div>
+                            <label class="col-sm-1 control-label">原用户名:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="gryyhm" id="" disabled="disabled" type="text" value="dsadsa">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="">积分:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grjf" value="132165332" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">赢局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="gryj" value="123" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">输局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grsj" value="123" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">和局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grhj" value="11" disabled="disabled" id="" class="form-control">
+                            </div>
+                            <label class="col-sm-1 control-label" for="">逃局:</label>
+                            <div class="col-sm-1">
+                                <input type="text" name="grtj" value="32" disabled="disabled" id="" class="form-control">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="tab-pane fade in" id="User5">
+
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">ID号码(GameID):</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="grid" id="" disabled="disabled" type="text" value="32131">
+                            </div>
+                            <label class="col-sm-1 control-label">原用户名:</label>
+                            <div class="col-sm-1">
+                                <input class="form-control" name="gryyhm" id="" disabled="disabled" type="text" value="dsadsa">
+                            </div>
+                        </div>
+                        <div class="form-group" style="border-bottom: 1px solid #CCCCCC;">
+                            <label class="col-sm-1 control-label" for=""><h3>基本修改信息</h3></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label"><a href="">历史改昵称记录</a></label>
+                            <label class="col-sm-1 control-label"><a href="">历史改密码记录</a></label>
+                        </div>
+                        <div class="form-group" style="border-bottom: 1px solid #CCCCCC;">
+                            <label class="col-sm-1 control-label" for=""><h3>财富信息记录</h3></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label"><a href="">进出记录</a></label>
+                            <label class="col-sm-1 control-label"><a href="">游戏记录</a></label>
+                            <label class="col-sm-1 control-label"><a href="">银行记录</a></label>
+                            <label class="col-sm-1 control-label"><a href="">充值记录</a></label>
+                        </div>
+                        <div class="form-group" style="border-bottom: 1px solid #CCCCCC;">
+                            <label class="col-sm-1 control-label" for=""><h3>积分信息记录</h3></label>
+                        </div>
+                        <div class="form-group" >
+                            <label class="col-sm-1 control-label"><a href="">进出记录</a></label>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <footer><hr></footer>
+        <script type="text/javascript" src="js/date.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </body>
+
+</html>

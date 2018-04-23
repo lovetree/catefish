@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>道具管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="">
+
+
+			<div class="header">
+				<h4 class="page-title">道具管理</h4>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">
+
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="启用" />
+							<input type="button" name="btnjy" id="btnjy" class="input_btn_h input-table" value="禁用" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check" id="checkAll" onclick="check_all();"></th>
+									<th>管理</th>
+									<th>名称</th>
+									<th>现金价格</th>
+									<th>金币价格</th>
+									<th>折扣价</th>
+									<th>发行范围</th>
+									<th>适用范围</th>
+									<th>状态</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax(daoju, {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'ordering':false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check' id='checkbox-check' class='check' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'djmanage',
+										"render": function(data, type, full, meta) {
+											return '<a href="daoju_new.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'djname',
+									}, {
+										'mDataProp': 'djmoney',
+									}, {
+										'mDataProp': 'djgold',
+									}, {
+										'mDataProp': 'djdiscount',
+									}, {
+										'mDataProp': 'djscope',
+									}, {
+										'mDataProp': 'djshiyong',
+									}, {
+										'mDataProp': 'djzhuangtai',
+									}],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								//								$('input[type=button][id=btntype]').click(function() {
+								//									table.reload();
+								//								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/main.js"></script>
+	</body>
+	
+</html>

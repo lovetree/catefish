@@ -1,0 +1,227 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>标题</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">充值记录</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                            <span class="input-group-addon">日期</span>
+                            <input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" type="text">
+                        </div>
+                        <select class="input_btn_h" id="channeltype" name="channeltype">
+                            <option value="user_id">根据玩家ID</option>
+                            <option value="user_name">根据玩家账号</option>
+                            <option value="gold_above">根据玩家昵称</option>
+                        </select>
+                        <select class="input_btn_h" id="order_amount" name="order_amount">
+                            <option value="">订单金额</option>
+                            <option value="0-99">0-99元</option>
+                            <option value="100-999">100-999元</option>
+                            <option value="1000-9999">1000-9999元</option>
+                            <option value="10000">10000元以上</option>
+                        </select>
+                        <select class="input_btn_h" id="status" name="status">
+                            <option value="">全部状态</option>
+                            <option value="0">未支付</option>
+                            <option value="1">支付成功</option>
+                        </select>
+
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <input type="button" name="btntoday" id="btntoday" val="0" class="input_btn_h input-table" value="今天" data-ctrl-btn="todayAction"/>
+                        <input type="button" name="btnyes" id="btnyes" val="0" class="input_btn_h input-table" value="昨天" data-ctrl-btn="yesAction"/>
+                        <input type="button" name="btnweek" id="btnweek" val="0" class="input_btn_h input-table" value="7天" data-ctrl-btn="weekAction"/>
+                        <input type="button" name="btnexp" id="btntype" class="input_btn_h input-table" value="导出" />
+                        <input type="button" name="btnexr" id="btntype" class="input_btn_h input-table" value="按排行榜导出" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>id</th>
+                                <th>充值时间</th>
+                                <th>服务类型</th>
+                                <th>用户帐号</th>
+                                <th>游戏ID</th>
+                                <th>订单流水号</th>
+                                <th>订单金额</th>
+                                <th>实付金额</th>
+                                <th>充值方式</th>
+                                <th>充值金币</th>
+                                <th>赠送金币</th>
+                                <th>充值前金币</th>
+                                <th>充值后金币</th>
+                                <th>IP地址</th>
+                                <th>操作网管</th>
+                                <th>创建时间</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+    </div></body></html><script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">$(function () {
+        var table = $('#example').dataTableAjax("Recharge/Rclog/list", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+            {'mDataProp':'id'},
+            {'mDataProp':'recharge_time'},
+            {'mDataProp':'service_type'},
+            {'mDataProp':'username'},
+            {'mDataProp':'game_id'},
+            {'mDataProp':'order_flow'},
+            {'mDataProp':'order_amount'},
+            {'mDataProp':'payed_amount'},
+            {'mDataProp':'recharge_type'},
+            {'mDataProp':'gold_recharge'},
+            {'mDataProp':'gold_present'},
+            {'mDataProp':'gold_before'},
+            {'mDataProp':'gold_after'},
+            {'mDataProp':'ip'},
+            {'mDataProp':'operator'},
+            {'mDataProp':'created_at'}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.id);
+                $(row).data('data-recharge_time', data.recharge_time);
+                $(row).data('data-service_type', data.service_type);
+                $(row).data('data-username', data.username);
+                $(row).data('data-game_id', data.game_id);
+                $(row).data('data-order_flow', data.order_flow);
+                $(row).data('data-order_amount', data.order_amount);
+                $(row).data('data-payed_amount', data.payed_amount);
+                $(row).data('data-recharge_type', data.recharge_type);
+                $(row).data('data-gold_recharge', data.gold_recharge);
+                $(row).data('data-gold_present', data.gold_present);
+                $(row).data('data-gold_before', data.gold_before);
+                $(row).data('data-gold_after', data.gold_after);
+                $(row).data('data-ip', data.ip);
+                $(row).data('data-operator', data.operator);
+                $(row).data('data-created_at', data.created_at);
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('Recharge/Rclog/delete', {
+            msg_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+function newAction(){
+        editAction(true);
+    }
+
+function editAction(bNew){
+        var msg_id = $(this).parents('tr').data('data-id');var msg_recharge_time = $(this).parents('tr').data('data-recharge_time');var msg_service_type = $(this).parents('tr').data('data-service_type');var msg_username = $(this).parents('tr').data('data-username');var msg_game_id = $(this).parents('tr').data('data-game_id');var msg_order_flow = $(this).parents('tr').data('data-order_flow');var msg_order_amount = $(this).parents('tr').data('data-order_amount');var msg_payed_amount = $(this).parents('tr').data('data-payed_amount');var msg_recharge_type = $(this).parents('tr').data('data-recharge_type');var msg_gold_recharge = $(this).parents('tr').data('data-gold_recharge');var msg_gold_present = $(this).parents('tr').data('data-gold_present');var msg_gold_before = $(this).parents('tr').data('data-gold_before');var msg_gold_after = $(this).parents('tr').data('data-gold_after');var msg_ip = $(this).parents('tr').data('data-ip');var msg_operator = $(this).parents('tr').data('data-operator');var msg_created_at = $(this).parents('tr').data('data-created_at');
+        var dialog = $('.edit-box form').dialog({
+            title: '标题 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=msg_id]').attr('value', msg_id);$(this).find('input[name=msg_recharge_time]').attr('value', msg_recharge_time);$(this).find('input[name=msg_service_type]').attr('value', msg_service_type);$(this).find('input[name=msg_username]').attr('value', msg_username);$(this).find('input[name=msg_game_id]').attr('value', msg_game_id);$(this).find('input[name=msg_order_flow]').attr('value', msg_order_flow);$(this).find('input[name=msg_order_amount]').attr('value', msg_order_amount);$(this).find('input[name=msg_payed_amount]').attr('value', msg_payed_amount);$(this).find('input[name=msg_recharge_type]').attr('value', msg_recharge_type);$(this).find('input[name=msg_gold_recharge]').attr('value', msg_gold_recharge);$(this).find('input[name=msg_gold_present]').attr('value', msg_gold_present);$(this).find('input[name=msg_gold_before]').attr('value', msg_gold_before);$(this).find('input[name=msg_gold_after]').attr('value', msg_gold_after);$(this).find('input[name=msg_ip]').attr('value', msg_ip);$(this).find('input[name=msg_operator]').attr('value', msg_operator);$(this).find('input[name=msg_created_at]').attr('value', msg_created_at);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                      var txt=$(this).val();
+                      if($.trim(txt)==""){
+                          num++;
+                      }
+                });
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                
+                $form.ajaxSubmit({
+                    url: 'Recharge/Rclog/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

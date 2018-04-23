@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>安全日志</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+
+        <div class="header">
+
+            <h1 class="page-title">安全日志操作日志</h1>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+
+                        <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                            <span class="input-group-addon">日期</span>
+                            <input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" type="text" data-input>
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" type="text" data-input>
+                        </div>
+                        <select class="input_btn_h" name="query_type" data-input>
+                            <option value="admin_name">操作帐号</option>
+                            <option value="target_id">玩家ID</option>
+                            <option value="path">操作接口</option>
+                        </select>
+                        <input type="button" name="btntype" id="btn-query" class="input_btn_h input-table" value="查询" />
+                        <input type="button" name="btndelete" id="btn-refresh" class="input_btn_h input-table" value="刷新" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th>标识</th>
+                                <th>操作时间</th>
+                                <th>操作账号</th>
+                                <th>玩家ID</th>
+                                <th>操作事件</th>
+                                <th>操作接口</th>
+                                <!--<th>参数详情</th>-->
+                                <th>结果状态</th>
+                                <th>结果描述</th>
+                                <th>操作IP</th>
+                                <th>详细参数</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(function () {
+                            var table = $('#example').dataTableAjax(anquan, {
+                                'bLengthChange': false,
+                                'iDisplayLength': 10,
+                                'searching': true,
+                                'processing': true,
+                                'serverSide': true,
+                                "autoWidth": false,
+                                'aoColumns': [
+                                    {'mDataProp': 'id', },
+                                    {'mDataProp': 'operator_time', },
+                                    {'mDataProp': 'operator_name', },
+                                    {'mDataProp': 'target_id'},
+                                    {'mDataProp': 'action_desc'},
+                                    {'mDataProp': 'action'},
+                                    {'mDataProp': 'result_code'},
+                                    {'mDataProp': 'result_text'},
+                                    {'mDataProp': 'ip'},
+                                    {'mDataProp': 'detail', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                            var div = document.createElement('div');
+                                            div.innerHTML = sData;
+                                            div.style.textOverflow = 'ellipsis';
+                                            div.style.textAlign = 'left';
+                                            div.width = '200px';
+                                            $(nTd).html(div);
+                                        }
+                                    }
+                                ],
+                                'columnDefs': [{
+                                        'orderable': false,
+                                        'targets': [0]
+                                    }],
+                                'order': [
+                                    [2, 'desc']
+                                ],
+                                postData: {
+                                    'query': function () {
+                                        return $('input[aria-controls=example][type=search]').val();
+                                    },
+                                    'query_type': function () {
+                                        return $('select[name=query_type]').val();
+                                    },
+                                    'start_time': function () {
+                                        return $("#j_Date1").val();
+                                    },
+                                    'end_time': function () {
+                                        return $("#j_Date2").val();
+                                    }
+                                },
+                            });
+                            $('input[aria-controls=example][type=search]').unbind();
+                            $('input[aria-controls=example][type=search]').keyup(function (e) {
+                                if (e.keyCode === 13) {
+                                    table.reload();
+                                }
+                            });
+                            $('#btn-query').click(function () {
+                                $('input[aria-controls=example][type=search]').focus();
+                                table.reload();
+                            });
+                            $('#btn-refresh').click(function () {
+                                $('[data-input]').val('');
+                                $('input[aria-controls=example][type=search]').val('');
+                                table.reload();
+                            });
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+        <footer><hr></footer>
+        <script type="text/javascript" src="js/main.js" ></script>
+        <script type="text/javascript" src="js/date.js"></script>
+
+    </body>
+
+</html>

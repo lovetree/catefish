@@ -1,0 +1,141 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">礼包类型：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="type" type="radio" value="1" class="ace" checked="checked"/>
+                                    <span class="lbl">捕鱼</span>
+                                </label>
+                            </div>
+                        </div>
+                        <?php
+                        $gold = 0;
+                        $emerald = 0;
+                        if ($info){
+                            $package = json_decode($info['package'], true);
+                            foreach ($package as $v){
+                                switch ($v['source']){
+                                    case "gold":
+                                        $gold = $v['count'];
+                                        break;
+                                    case "emerald":
+                                        $emerald = $v['count'];
+                                        break;
+                                }
+                            }
+                        }
+                        ?>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">礼包金币：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="gold" name="gold" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $gold?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">礼包绿宝石：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="emerald" name="emerald" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $emerald?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                gold: {
+                    required: true,
+                    number:true
+                },
+                emerald: {
+                    required: true,
+                    number:true
+                }
+            },
+            messages: {
+                title: {
+                    required: '不可为空',
+                    number:'请输入整数'
+                },
+                a_sort: {
+                    required: '不可为空',
+                    number:'请输入整数'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {};
+                params.id = $('#id').val();
+                params.type = $("input[name='type']:checked").val();
+                params.gold = $('#gold').val();
+                params.emerald = $('#emerald').val();
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/package/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.message, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

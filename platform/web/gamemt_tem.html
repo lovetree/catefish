@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="skin/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="skin/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="skin/css/ace.min.css" />
+        <link rel="stylesheet" href="skin/css/skin.css" />
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="skin/css/font-awesome-ie7.min.css" />
+	<![endif]-->
+
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="skin/css/ace-ie.min.css" />
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script src="skin/js/html5shiv.js"></script>
+	<script src="skin/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+    <div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+	<div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">标题：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="title" name="title" class="col-xs-10 col-sm-5">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">作者：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="author" name="author" class="col-xs-10 col-sm-5">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">是否显示缩略图：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="imgshow" type="radio" value="1" class="ace" checked="checked"/>
+                                    <span class="lbl">是</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="imgshow" type="radio" value="0" class="ace" >
+                                    <span class="lbl">否</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+				<label class="col-sm-2 control-label no-padding-right">关键字类型：</label>
+				<div class="col-sm-10">
+					<div>
+						<label>
+							<input name="msgmatch" value="1" type="radio" class="ace" checked>
+							<span class="lbl">完全匹配 （用户输入的和此关键词一样才会触发!）</span>
+						</label>
+					</div>
+					<div>
+						<label>
+							<input name="msgmatch" value="0" type="radio" class="ace">
+							<span class="lbl">包含匹配 （只要用户输入的文字包含本关键词就触发!）</span>
+						</label>
+					</div>
+				</div>
+			</div>
+                        
+                        <div class="form-group">
+				<label class="col-sm-2 control-label no-padding-right">选择背景：</label>
+				<div class="col-sm-10">
+					<select id="select_bg" >
+						<option value="">选择图片</option>
+						<option value="home-default9">01</option>
+						<option value="home-default10">02</option>
+						<option value="home-default11">03</option>
+						<option value="home-default12">04</option>
+						<option value="home-default13">05</option>
+						<option value="home-default14">06</option>
+						<option value="home-default15">07</option>
+						<option value="home-default1">08</option>
+						<option value="home-default2">09</option>
+						<option value="home-default3">10</option>
+						<option value="home-default4">11</option>
+						<option value="home-default5">12</option>
+						<option value="home-default6">13</option>
+						<option value="home-default7">14</option>
+						<option value="home-default8">15</option>
+						<option value="home-default16">16</option>
+						<option value="home-default17">17</option>
+						<option value="home-default18">18</option>
+						<option value="home-default19">19</option>
+						<option value="home-default20">20</option>
+						<option value="home-default21">21</option>
+						<option value="home-default22">22</option>
+					</select>
+					以预览背景图为标准
+				</div>
+			</div>
+                        
+                        <div class="form-group">
+				<label class="col-sm-2 control-label no-padding-right">功能选择：</label>
+				<div class="col-sm-10">
+					<label>
+						<input type="checkbox" name="openbgpic" id="openbgpic" class="ace" checked>
+						<span class="lbl">开启背景图片</span>
+					</label>
+					<label>
+						<input type="checkbox" name="openbgam" id="openbgam" class="ace" checked>
+						<span class="lbl">开启背景动画</span>
+					</label>
+				</div>
+			</div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">缩略图：</label>
+                            <div class="col-sm-10">
+                                <img src="files/official.jpg" class="image"  style="max-height:100px;" />
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+				<label class="col-sm-2 control-label no-padding-right">多图片添加：</label>
+				<div class="col-sm-10">
+					<button class="btn btn-info addphoto" type="button">多图片添加</button>
+					<input type="hidden" id="goods_images" name="goods_images" value="<?php echo $info['goods_images']; ?>">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label no-padding-right"></label>
+				<div class="col-sm-10">
+					<ul class="ace-thumbnails">
+                                                
+<!--多图片的时候遍历显示在这里						<li>
+							<img alt="150x150" src="<?php echo $value; ?>" />
+							<div class="tools tools-bottom">
+								<a href="javascript:;" class="delphoto">
+									<i class="icon-remove red"></i>
+								</a>
+							</div>
+						</li>-->
+					</ul>
+
+				</div>
+			</div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">参数：</label>
+                            <div class="col-sm-10">
+                                    说明：
+                                    <br>
+                                    <div class="pakInfo">
+                                            <div>
+                                                    <input type="text" class="col-sm-5" value=""/>
+                                                    <button type="button" class="delPak btn btn-primary" onclick="javascript:delPak(this)">-</button><br><br>
+                                            </div>
+                                    </div>
+                                    <button type="button" class="addPak btn btn-primary">+</button>
+                            </div>
+			</div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">显示顺序：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="sort" name="sort" value="0" class="col-xs-10 col-sm-5">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">内容简介：</label>
+                            <div class="col-sm-10">
+                                <textarea id="desc" class="col-xs-10 col-sm-5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">详细内容：</label>
+                            <div class="col-sm-10">
+                                <div id="editer"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="skin/js/jquery-1.10.2.min.js"></script>
+<script src="skin/js/bootstrap.min.js"></script>
+<script src="skin/js/jquery.slimscroll.min.js"></script>
+<script src="skin/js/bootbox.min.js"></script>
+<script src="skin/js/plugs.js"></script>
+<script src="skin/js/ace-extra.min.js"></script>
+<script src="skin/js/ace.min.js"></script>
+</body>
+</html>
+<link rel="stylesheet" href="skin/umeditor/themes/default/css/umeditor.css" />
+<script src="skin/umeditor/umeditor.config.js"></script>
+<script src="skin/umeditor/umeditor.min.js"></script>
+<script src="skin/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    function delPak(obj){
+        $(obj).parent("div").remove();
+    };
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('.ace-thumbnails').on('click','.delphoto',function(){
+                var $this = $(this).closest('li');
+                var photo = $('#goods_images').val().split('|');
+                photo.splice($this.index(),1);
+                $('#goods_images').val(photo.join('|'));
+                $this.remove();
+        });
+        $('.addphoto').InsertImage({wid:'',callback:function(path){
+                var html = '<li><img src="'+path+'" /><div class="tools tools-bottom">';
+                html += '<a href="javascript:;" class="delphoto"><i class="icon-remove red"></i></a></div></li>';
+                $('.ace-thumbnails').append(html);
+
+                var photo = $('#goods_images').val();
+                if(photo){
+                        $('#goods_images').val(photo+'|'+path);
+                }else{
+                        $('#goods_images').val(path);
+                }
+        }});
+        $(".addPak").click(function(){
+                $(".pakInfo").append(
+                '<div><input type="text" class="col-sm-5"/><button type="button" \n\
+                class="delPak btn btn-primary" onclick="delPak(this)">-</button><br><br></div>'
+                );
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+			rules:{
+				msgkeyword:{
+					required:true
+				},
+				msgcontent:{
+					required:true
+				},
+				sitename:{
+					required:true
+				}
+			},
+			messages:{
+				msgkeyword: '请输入关键字',
+				sitename: '请输入标题',
+				msgcontent: '请输入图文简介'
+			},
+			errorElement: "span",
+			highlight:function(element, errorClass, validClass) {
+				$(element).parents('.form-group').addClass('has-error');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).parents('.form-group').removeClass('has-error');
+			},
+			submitHandler: function(form) 
+		   	{	
+		   		var key = {
+		   			'title':$('#sitename').val(),
+		   			'image':$('.msgimage').attr('src'),
+		   			'desc':$('#msgcontent').val()
+		   		}
+		   		var msgkey = {
+		   			'msgkeyword':$('#msgkeyword').val(),
+		   			'msgmatch':$("input[name='msgmatch']:checked").val(),
+		   			'msgcontent':JSON.stringify(key)
+		   		}
+		   		var conf = {
+		   			'bgimage':$('#bgimage').attr('src'),
+		   			'bganimation':$('#bganimation').val(),
+		   			'openbgpic':$('#openbgpic').is(':checked') ? 1:0,
+		   			'openbgam':$('#openbgam').is(':checked') ? 1:0
+		   		}
+		   		var params = {
+		   			'sitename':$('#sitename').val(),
+		   			'sitelogo':$('#sitelogo').attr('src'),
+		   			'sitecode':$('#sitecode').val(),
+		   			'siteconf':JSON.stringify(conf),
+		   			'msgkey': msgkey
+		   		}
+		    	$('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled','true');
+				$.ajax({
+					type: "POST",
+					url: "",
+					data: params,
+					dataType: "json",
+					success: function(msg){
+						$('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+						if(msg.status == 1){
+							showMsg(msg.message);
+						}else{
+							showMsg(msg.message,true);
+						}
+					}
+				});
+		   	} 
+		});
+    })
+</script>

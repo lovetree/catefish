@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>帐户充值</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <style>
+        table.rech{margin:37px auto;}
+        #sb{margin-bottom:50px; font-weight:bold; color:#266af9;}
+        #recharge td{width:200px; height:50px; padding-left:10px; padding-right:10px; postion:relative; text-align:center;}
+        #recharge td div{postion:absolute; top:10px; left:50px;}
+        #recharge td div p{font-size:18px; font-weight:bold; color:#266af9;}
+        #recharge td .des{font-size:18px; font-weight:bold; color:#2b542c;}
+        #recharge td button{width:100px;}
+        #recharge a{text-decoration:none;}
+        .recharge-img{
+            transform: rotateX(120deg);
+            transform: rotateY(130deg);
+            -webkit-transform: rotateX(120deg);
+            -webkit-transform: rotateY(130deg);
+        }
+    </style>
+</head>
+<body>
+<div class="top">
+    <!--<div id="icon"><img src="images/favicon.ico" alt=""></div>-->
+    <ul>
+        <a href="index.html" target="_parent"><li>首页<p>HOME</p></li></a>
+        <a href="gamedown.html" target="_parent"><li>游戏下载<p>DOWNLOAD</p></li></a>
+        <a href="recharge.html" target="_parent"><li  class="down">账户充值<p>RECHARGE</p></li></a>
+        <a href="newnotice.html" target="_parent"><li>新闻公告<p>NEW NOTICE</p></li></a>
+        <a href="basicdata.html" target="_parent"><li>会员中心<p>VIP</p></li></a>
+        <a href="gameStr.html" target="_parent"><li>心得攻略 <p>GAME STRATEGY</p></li></a>
+        <a href="servicehelp.html" target="_parent"><li>客服帮助<p>SERVICE</p></li></a>
+    </ul>
+</div>
+<div class="box">
+    <div class="zbox">
+        <div class="fla-l menlef">
+            <p class="p1 cor fon2" style="margin-bottom: 0px;" >最新游戏</p>
+            <div class="cen b-z cor5 fon3" id="new-gram">
+
+            </div>
+
+            <p style="margin-bottom:0;" class="p1 cor fon2">FAQ</p>
+            <div class="cen2 fon">
+                <div>
+                    <a class="lists" href="###"><img src="images/sy_19.png">账户丢失了怎么办？</a>
+                    <div class="content active">请尽快联系客服，提供手机号码和绑定邮箱找回密码</div>
+                </div>
+                <div>
+                    <a class="lists" href="###"><img src="images/sy_19.png">游戏如何充值？</a>
+                    <div class="content">茶馆提供了多种方式充值，包括支付宝、微信、银联卡、游戏点卡等。玩家可以在游戏的商城中点击购买按钮，在弹出的窗口中选择对应的支付方式即可完成充值。</div>
+                </div>
+                <div>
+                    <a class="lists" href="###"><img src="images/sy_19.png">游戏无法进入怎么办？</a>
+                    <div class="content">通常情况下，游戏无法进入是由于服务器正在维护，如果服务器正常，游戏仍然无法进入，请联系客服进行检查。</div>
+                </div>
+                <div>
+                    <a class="lists" href="###"><img src="images/sy_19.png">如何下载安装游戏？</a>
+                    <div class="content">请通过官网的游戏下载页，选择对应的游戏版本下载安装。</div>
+                </div>
+                <div>
+                    <a class="lists" href="###"><img src="images/sy_19.png">电脑版和手机版是联通的吗？</a>
+                    <div class="content">茶馆的电脑板和手机版是联通的，电脑版的玩家和手机版的玩家是在同一个服务器中游戏。</div>
+                </div>
+                <div>
+                    <a class='lists' href="###"><img src="images/sy_19.png">官方网站充值，可以在手机版中使用吗？</a>
+                    <div class="content">在官方网站上充值的钻石，也是可以在手机版中使用的。敬请放心。</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="menrit fla-l">
+            <p class="men-t fon2"><span class="fon-wet cor6">帐户充值</span><span class="fla-r fon6 cor7">当前位置：首页>账户充值</span></p>
+            <div class="men-m fon">
+                <p id="sb" class="fon2 txt-cen">帐户充值</p>
+                <div id="rechargeID" style="height:30px; margin-bottom:10px;padding-left:20px;text-align:left; border-radius:5px;">充值账号ID：<input  id="user_id" type="text" style="margin-right:50px;" placeholder="游戏内的ID号码"><span style="color:red">*充值比例：1元=1.8钻石</span></div>
+                <div id="rechargeID-confirm" style="height:30px; margin-bottom:20px;padding-left:20px;text-align:left; border-radius:5px;">再次输入ID：<input  id="user_id-confirm" type="text" style="margin-right:50px;" placeholder="游戏内的ID号码"><span style="color:red">*充值方式支持：支付宝、微信、银联卡、点卡等</span></div>
+                <table id="recharge" class="table table-bordered">
+                    <tr>
+                        <td>
+                            <img class="recharge-img" src="images/diam.png" alt="">
+                            <div class="des">
+                                <p>钻石</p>
+                                <!-- <div>xxx</div> -->
+                            </div>
+                            <button class="btn btn-success">$200</button>
+                        </td>
+                        <td>
+                            <img class="recharge-img" src="images/diam.png" alt="">
+                            <div class="des">
+                                <p>钻石</p>
+                                <!-- <div>xxx</div> -->
+                            </div>
+                            <button class="btn btn-success">$200</button>
+                        </td>
+                        <td>
+                            <img class="recharge-img" src="images/diam.png" alt="">
+                            <div class="des">
+                                <p>钻石</p>
+                                <!-- <div>xxx</div> -->
+                            </div>
+                            <button class="btn btn-success">$200</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="">
+                                <img class="recharge-img" src="images/diam.png" alt="">
+                                <div class="des">
+                                    <p>钻石</p>
+                                    <!-- <div>xxx</div> -->
+                                </div>
+                                <button class="btn btn-success">$200</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <img class="recharge-img" src="images/diam.png" alt="">
+                                <div class="des">
+                                    <p>钻石</p>
+                                    <!-- <div>xxx</div> -->
+                                </div>
+                                <button class="btn btn-success">$200</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <img class="recharge-img" src="images/diam.png" alt="">
+                                <div class="des">
+                                    <p>钻石</p>
+                                    <!-- <div>xxx</div> -->
+                                </div>
+                                <button class="btn btn-success">$200</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="">
+                                <img class="recharge-img" src="images/diam.png" alt="">
+                                <div class="des">
+                                    <p>钻石</p>
+                                    <!-- <div>xxx</div> -->
+                                </div>
+                                <button class="btn btn-success">$200</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <img class="recharge-img" src="images/diam.png" alt="">
+                                <div class="des">
+                                    <p>钻石</p>
+                                    <!-- <div>xxx</div> -->
+                                </div>
+                                <button class="btn btn-success">$200</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <img class="recharge-img" src="images/diam.png" alt="">
+                                <div class="des">
+                                    <p>钻石</p>
+                                    <!-- <div>xxx</div> -->
+                                </div>
+                                <button class="btn btn-success">$200</button>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<iframe src="bottom.html" width="100%" height="226px" frameborder="0" border="0" style="margin-top:55px;"></iframe>
+
+<!--qq咨询-->
+<div id="open">
+    <img id="open-fixed" src="images/fixed_3.png" alt="">
+</div>
+
+<div id="parent">
+    <div id="close-"><a id="close" href="###">X</a></div>
+    <div id="ins">
+        <div id="title-fixed">在线<span>QQ</span>咨询</div>
+        <div id="con-fixed">
+            <img src="images/bear_.png" alt="">
+            <div class="qq-fixed">
+                <div>联系客服</div>
+                <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2852371661&amp;site=qq&amp;menu=yes">2852371661</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/index.js"></script>
+
+<script>
+    $(function(){
+        var userData = $.cookie('userData');
+        if(userData!=null){
+            var userData = JSON.parse($.cookie('userData'));
+            $('#user_id').val(userData.user_id);
+        }
+    });
+
+        function recharge(id) {
+            name = $('#user_id').val();
+            nameRepeat = $("#user_id-confirm").val();
+            if(name==''){
+                alert('请输入充值账号(游戏内的ID号码)');
+                return false;
+            }else if(name != nameRepeat){
+                alert("请重复输入充值账号(游戏内的ID号码)");
+                return false;
+            }else if(nameRepeat.length !=6){
+                alert('充值账号必须是6位');
+                return false;
+            }else{
+                // goods_id 需要根据数据选择确定 name为用户输入的用户名
+                $.post("/Index/pay",{goods_id:id,user_id:name},function (data) {
+
+                    if(data.result==0){
+                        location.href = data.url;
+                    }else{
+                        alert(data.msg);
+                    }
+                },'json');
+            }
+        }
+
+        $(function () {
+            $.post("/Index/goodList",{},function (data) {
+                if(data.result==0){
+                    str = '<tr>';
+                    for(var i=0; i<data.data.length; i++){
+                        str = str +'<td onclick="recharge('+data.data[i]['id']+')"> <img src="images/diam.png" alt=""> <div class="des"> <p>'+data.data[i]['name']+'</p></div> <button class="btn btn-success"  >¥'+data.data[i]['total_price']/100+'</button>  </td>'
+                        if(i==data.data.length-1){
+                            str = str+'</tr>'
+                        }else if(i%3==2){
+                            str = str+'</tr><tr>';
+                        }
+                    }
+                    $('#recharge').html(str);
+                }
+            },'json')
+        });
+
+        $(function(){
+            //游戏图标列表
+            $.ajax({
+                url: '/gameicon/list',
+                dataType: 'json',
+                success:function(res){
+                    console.log(res);
+                    if(res.result == 0){
+                        var data = res.data, html = '';
+                        for(var i = 0;i<data.length; i++){
+                            if(i<6) {
+                                html += ' <div class="mar-b">'+
+                                        '<img src="'+ data[i].img_url +'" width="120px" height="120px" class="fla-l">' +
+                                        '<div class="box-btn fla-l txt-cen">' +
+                                        '<span class="dis">'+ data[i].name +'</span>' +
+                                        '<a href="'+data[i].download_url+'" class="txt-cen fon5 cor noline">点击下载</a>' +
+                                        '</div>'+
+                                        '<div class="flex"></div>'+
+                                        '</div>';
+                            }
+                        }
+                        $('#new-gram').append(html);
+                    }
+                }
+            });
+        })
+
+
+
+</script>
+</body>
+</html>

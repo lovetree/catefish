@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>邮件</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/j.dt.min.js"></script>
+    <script type="text/javascript" src="/js/moment.js"></script>
+    <script type="text/javascript" src="/js/mos.js"></script>
+    <script src="/skin/js/bootbox.min.js"></script>
+    <style>
+        table#tab input,table#tab textarea{
+            margin-top:5px;
+        }
+        table#tab td{ height: 70px;text-align: left !important;}
+        table#tab .pad-l{padding-left:30px;}
+        table#tab .sel{float:left; border-radius:0px; margin-bottom:5px; max-width:200px; margin-right:30px;}
+        table#tab .wid{width:100px; margin:0 10px 5px 0; float:left; vertical-align:middle;}
+        table#tab .delspan{cursor:pointer; font-size:12px; font-weight:normal;}
+        table#tab td.seltd{ border: 1px solid #ccc;}
+        table#tab div.box{ max-height:150px; overflow-y:auto; padding:10px 0 5px 10px;}
+        table#tab span.inser{border: 1px solid #ccc; font-size:12px; padding:3px 10px; float:right; cursor:pointer;}
+        table#tab textarea.tex{ height:70px; line-height:20px;  padding:5px 7px; resize:none; border-radius:0px;}
+        .theadtbody{text-align: left !important;}
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+            vertical-align: text-bottom !important;
+        }
+    </style>
+</head>
+
+<body class="" style="background: #FFFFFF;">
+<div class="header">
+    <h1 class="page-title">邮件</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6 dataTables_wrapper">
+            <table class="table display block-body collapse in" id="example">
+                <input type="button" name="btnadd" id="btnadd" onclick="window.location.reload()" class="input_btn_h input-table" value="刷新" />
+                <input type="button" name="btnadd" id="btnadd" onclick="window.location.href='/gamemt/email/edit'" class="input_btn_h input-table" value="新增" />
+                <select class="input_btn_h" id="type" name="type">
+                    <option value="id" <?php if(isset($type)&&$type=='id'): ?>selected="selected"<?php endif;?>>根据用户ID</option>
+                    <!--<option value="user_name">根据用户账号</option>-->
+                    <option value="type" <?php if(isset($type)&&$type=='type'): ?>selected="selected"<?php endif;?>>按邮件类型</option>
+                </select>
+                <label class="input_btn_seach">搜索:<input type="search" class="" placeholder="" id="search" aria-controls="example"  VALUE="<?php  if(isset($search)): echo $search; ?><?php endif ;?>"></label>
+                <input type="button" name="btnadd" id="btntype"  class="input_btn_h input-table" onclick="subSearch()" value="查询">
+                <thead class="theadtbody">
+                    <tr>
+                        <th>ID</th>
+                        <th style="width: 200px;">邮件标题</th>
+                        <th style="width: 300px;">邮件内容</th>
+                        <th>邮件来源</th>
+                        <th>来源的名称</th>
+                        <th style="width:200px;">接收邮件的玩家</th>
+                        <th>发送时间</th>
+                        <th>管理</th>
+                    </tr>
+                </thead>
+                <tbody class="theadtbody">
+                    <?php if($list):?>
+                    <?php foreach ($list as $k=>$v):?>
+                    <tr role='row' class='odd'>
+                        <td><?php echo $v['id']?></td>
+                        <td><?php echo $v['title']?></td>
+                        <td><?php echo $v['content']?></td>
+                        <td><?php
+                        if($v['from_id'] == 0){
+                            echo "系统邮件";
+                        }
+                        if($v['from_id'] != 0){
+                            echo $v['from_id'];
+                        }
+                        ?></td>
+                        <td><?php echo $v['from_name']?></td>
+                        <td><?php
+                        if($v['to_id'] == 0){
+                            echo "全体人员";
+                        }
+                        if($v['to_id'] != 0){
+                            echo $v['to_id'];
+                        }
+                        ?></td>
+                        <td><?php echo $v['created_time']?></td>
+                        <td>
+                            <button data-ctrl-btn="editAction" onclick="window.location.href='/gamemt/email/edit?id=<?php echo $v['id'];?>'">编辑</button>
+                        </td>
+                    </tr>
+                    <?php endforeach;?>
+                    <?php else:?>
+                    <tr role='row' class='odd'>
+                        <td colspan="10" style="text-align:center;" >暂无信息</td>
+                    </tr>
+                    <?php endif;?>
+                </tbody>
+            </table>
+            <?php include_once VIEW_COMMON."page.php"; ?>
+        </div>
+    </div>
+</div>
+<footer><hr></footer>
+</body>
+
+</html>
+
+<script src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="/js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="/js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/date.js"></script>
+
+<script type="text/javascript">
+    function subSearch() {
+        type = $('#type').val();
+        search = $('#search').val();
+        if(search!=''){
+
+            window.location.href = '/gamemt/email/list?query_type='+type+'&search='+search;
+        }
+    }
+
+    function deletprop(){
+        $(this).parents('p').remove();
+    }
+    
+    window.table_reload = function () {
+        $('input[aria-controls=example][type=search]').focus();
+        table.reload();
+    };
+        
+    function setActive() {
+        var msg_id = $(this).parents('tr').data('data-id');
+        var status = $(this).attr('rel');
+        $.post('system/goods/active', {
+            goods_id: msg_id,
+            status: status
+        }, function (json) {
+            if (json.result == 0) {
+                showMsg('修改成功', function(){
+                    window.location.reload();
+                });
+            } else {
+                showMsg(json.msg, true);
+            }
+        }, 'json');
+    }
+    
+    function downAction() {
+        doPost('/gamemt/broadcast/update', {'status':0});
+    }
+    
+    function deleteAction() {
+        doPost('/gamemt/broadcast/delete');
+    }
+    
+    function upAction() {
+        doPost('/gamemt/broadcast/update', {'status':1});
+    }
+    
+    function doPost(url, params={}){
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            showMsg("请选择要操作的选项", true);
+            return;
+        }
+        params['id'] = list;
+        $.post(url, params, function (json) {
+            if (json.result == 0) {
+                showMsg('修改成功', function(){
+                    window.location.reload();
+                });
+            } else {
+                showMsg(json.msg, true);
+            }
+        }, 'json');
+    }
+</script>

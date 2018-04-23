@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>管理员管理</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+        <script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+
+        <div class="header">
+            <h4 class="page-title">管理员管理</h4>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+                    <input type="button" class="input_btn_h input-table" value="新建" data-ctrl-btn='newAdmin' />
+                    <div class="filter_box">
+                        <input type="button" class="input_btn_h input-table" value="查询" data-ctrl-btn='query' />
+                    </div>
+                    <table class="table display block-body collapse in" id="example">
+                        <thead class="theadtbody">
+                            <tr>
+                                <th>ID</th>
+                                <th>帐号</th>
+                                <th>角色</th>
+                                <th>邮箱</th>
+                                <th>手机</th>
+                                <th>创建时间</th>
+                                <th>状态</th>
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(function () {
+                            var table = $('#example').dataTableAjax("admin/user/list", {
+                                'bLengthChange': false,
+                                'iDisplayLength': 10,
+                                'searching': true,
+                                'processing': true,
+                                'serverSide': true,
+                                "autoWidth": false,
+                                'ordering': false,
+                                'aoColumns': [
+                                    {'mDataProp': 'adminid'},
+                                    {'mDataProp': 'username'},
+                                    {'mDataProp': 'role_name'},
+                                    {'mDataProp': 'email'},
+                                    {'mDataProp': 'phone'},
+                                    {'mDataProp': 'created_date'},
+                                    {'mDataProp': 'status', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                            $(nTd).html(oData.status == 1 ? '正常' : sData == 0 ? '禁用' : '');
+                                        }
+                                    },
+                                    {'mDataProp': 'management', "render": function (nTd, sData, oData, iRow, iCol) {
+                                            var btn = oData.status == 1 ? '<button data-ctrl-btn="setActive" rel="0">禁用</button>' : '<button data-ctrl-btn="setActive" rel="1">启用</button>';
+                                            return btn + '&nbsp;<button data-ctrl-btn="editAdmin">编辑</button>&nbsp;<button data-ctrl-btn="roleBox">角色修改</button>&nbsp;<button data-ctrl-btn="deleteAction">删除</button>';
+                                        }
+                                    }
+                                ],
+                                createdRow: function (row, data, dataIndex) {
+                                    $(row).data('line-data', data);
+                                },
+                                postData: {
+                                    'query': function () {
+                                        return $('input[aria-controls=example][type=search]').val();
+                                    }
+                                },
+                                fnDrawCallback: function () {
+                                    $('.filter_box').children().appendTo($(this).parent().find('.dataTables_filter'));
+                                }
+                            });
+                            $('input[aria-controls=example][type=search]').unbind();
+                            $('input[aria-controls=example][type=search]').keyup(function (e) {
+                                if (e.keyCode === 13) {
+                                    table.reload();
+                                }
+                            });
+                            
+                            window.table_reload = function () {
+                                $('input[aria-controls=example][type=search]').focus();
+                                table.reload();
+                            };
+                        });
+
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <hr>
+        </footer>
+
+        <div class="info_box">
+            <form method="post" style="display: none;" class="admin_box_xj">
+                <input type="hidden" name="admin_id" class="form-control">
+                <div>账号:<input type="text" name="username" class="form-control"></div>
+                <div>密码:<input type="password" name="password" class="form-control"></div>
+                <div>手机:<input type="text" name="phone" class="form-control" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+                <div>邮箱:<input type="text" name="email" class="form-control"></div>
+                <div><input type='submit' value='提交' class="form-control"/></div>
+            </form>
+        </div>
+
+        <div class="admin_xg">
+            <form method="post" style="display: none;" class="admin_box_xg">
+                <input type="hidden" name="admin_id">
+                <input type="hidden" name="roles">
+                <input type="text" readonly class="role_show form-control"/>
+                <div class="role_list"></div>
+                <input type='submit' value='提交' class="form-control"/>
+            </form>
+        </div>
+
+
+
+        <script src="js/jquery.form.js"></script>
+        <script src="js/juicer-min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript">
+                        function popne(evn){
+                             var pone=$('form[id='+evn+'] input[name=phone]').val();
+                             var reg=/^1[0-9]{10}$/;
+                             if(reg.test(pone))
+                                 return true;
+                             else{
+                                  alert('手机号码有误，请重填！');
+                                  return false;
+                             }
+
+                        }
+                        function email(evn){
+                            var emai=$('form[id='+evn+'] input[name=email]').val();
+                            var reg=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/;
+                            if(reg.test(emai))
+                                return true;
+                            else{
+                                alert('邮箱格式有误，请重填！');
+                                return false;
+                            }
+                        }
+                        function verify(evn){
+                            var $form=$('form[id='+evn+']');
+                            var num=0;
+                            $form.find('input[type=text]').each(function(){
+                                if($.trim($(this).val())==""){
+                                    num++;
+                                }
+                            });
+                            var pass=$form.find('input[type=password]').val();
+                            if($.trim(pass)==""){
+                                num++;
+                            }
+                            if(num>0){
+                                alert('请将信息填写完整！');
+                                return false;
+                            }
+                            var pop=popne(evn);
+                            if(!pop){
+                                return false;
+                            }
+                            var ema=email(evn);
+                            if(!ema){
+                                return false;
+                            }
+                            return true;
+                        }
+                        function query() {
+                            $('input[aria-controls=example][type=search]').focus();
+                            table_reload();
+                        }
+                        function newAdmin() {
+                            var dialog = $('.info_box form').dialog({
+                                title: '新建'
+                            }, function () {
+                                $(this).attr('id', 'newAdmin');
+                            });
+                            setTimeout(function () {
+                              $('form[id=newAdmin]').submit(function () {
+                                    if(!verify('newAdmin')){
+                                        return false;
+                                    }
+                                    $('form[id=newAdmin]').ajaxSubmit({
+                                        url: 'admin/user/save',
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.result == 0) {
+                                                alert('新建成功');
+                                                dialog.close();
+                                                table_reload();
+                                            } else {
+                                                alert(data.msg);
+                                            }
+                                        }
+                                    });
+                                    return false;
+                                });
+                            }, 200);
+                        }
+
+                        function editAdmin() {
+                            var data = $(this).parents('tr').data('line-data');
+                            var dialog = $('.info_box form').dialog({
+                                title: '修改信息'
+                            }, function () {
+                                $(this).attr('id', 'editAdmin');
+                                $(this).find('input[name=admin_id]').attr('value', data.adminid);
+                                $(this).find('input[name=username]').attr('value', data.username);
+                                $(this).find('input[name=password]').attr('value', '******');
+                                $(this).find('input[name=phone]').attr('value', data.phone);
+                                $(this).find('input[name=email]').attr('value', data.email);
+                            });
+                            setTimeout(function () {
+                                $('form[id=editAdmin]').submit(function () {
+                                    if(!verify('editAdmin')){
+                                        return false;
+                                    }
+                                    $('form[id=editAdmin]').ajaxSubmit({
+                                        url: 'admin/user/save',
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            console.log(data);
+                                            if (data.result == 0) {
+                                                alert('修改成功');
+                                                dialog.close();
+                                                table_reload();
+                                            } else {
+                                                alert(data.msg);
+                                            }
+                                        }
+                                    });
+                                    return false;
+                                });
+                            }, 200);
+
+                        }
+
+                        function initEditAdmin(func) {
+                            if (window.role_list) {
+                                if (typeof (func) === 'function') {
+                                    func();
+                                }
+                            } else {
+                                $.post('admin/role/list', {
+                                    available: 1
+                                }, function (json) {
+                                    window.role_list = json.data;
+                                    var html = '';
+                                    $(".role_list").juicer('#tpl_role', json);
+                                    if (typeof (func) === 'function') {
+                                        func();
+                                    }
+                                }, 'json');
+                            }
+                        }
+
+                        function roleBox() {
+                            var data = $(this).parents('tr').data('line-data');
+                            var root_dom;
+                            initEditAdmin(function () {
+                                var dialog = $('.admin_xg form').dialog({
+                                    title: '修改角色 - ' + data.username
+                                }, function () {
+                                    $(this).attr('id', 'set_role');
+                                    $(this).find('input[name=admin_id]').attr('value', data.adminid);
+                                });
+                                setTimeout(function () {
+                                    var $form = $('form[id=set_role]');
+                                    //初始化选择
+                                    if (data.role_id) {
+                                        $(data.role_id.split(',')).each(function () {
+                                            $form.find('.role_item[rel=' + this + ']').trigger('click');
+                                        });
+                                    }
+                                    //初始化form
+                                    $form.submit(function () {
+                                        $form.ajaxSubmit({
+                                            url: 'admin/user/role',
+                                            dataType: 'json',
+                                            success: function (json) {
+                                                if (json.result == 0) {
+                                                    alert('修改成功');
+                                                    dialog.close();
+                                                    table_reload();
+                                                } else {
+                                                    alert(json.msg);
+                                                }
+                                            }
+                                        });
+                                        return false;
+                                    });
+                                }, 200);
+                            });
+
+                        }
+
+                        function setActive() {
+                            var data = $(this).parents('tr').data('line-data');
+                            var status = $(this).attr('rel');
+                            $.post('admin/user/active', {
+                                admin_id: data.adminid,
+                                status: status
+                            }, function (json) {
+                                if (json.result == 0) {
+                                    alert('修改成功');
+                                    table_reload();
+                                } else {
+                                    alert(json.msg);
+                                }
+                            }, 'json');
+                        }
+
+
+                        $(function () {
+                            $(document).on('click', '.role_item', function () {
+                                $(this).toggleClass('active');
+                                var id_list = [];
+                                var name_list = [];
+                                $(this).parent().find('li.active').each(function () {
+                                    id_list.push($(this).attr('rel')); //role_id
+                                    name_list.push($(this).text());
+                                });
+                                var $parent = $(this).parents('form');
+                                $parent.find('.role_show').val(name_list.join(','));
+                                $parent.find('input[name=roles]').val(id_list.join(','));
+                            });
+                        });
+                        
+                        function deleteAction() {
+                            var data = $(this).parents('tr').data('line-data');
+                            if (!confirm('确认删除管理员[ ' + data.username + ' ]')) {
+                                return false;
+                            }
+                            $.post('admin/user/delete', {admin_id: data.adminid}, function (json) {
+                                if (json.result == 0) {
+                                    table_reload();
+                                } else {
+                                    alert(json.msg);
+                                }
+                            }, 'json');
+                        }
+        </script>
+
+    </body>
+
+</html>
+
+
+<script type="text/template" id="tpl_role">
+    <ul class="list-group" style="height: 250px;overflow-y: auto;border: solid 1px #999;">
+    {@each data as it}
+    <li class="list-group-item role_item" rel="${it.role_id}">${it.name}</li>
+    {@/each}
+    </ul>
+</script>

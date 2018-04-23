@@ -1,0 +1,162 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>充值日报查询</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">充值日报查询</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                            <span class="input-group-addon">日期</span>
+                            <input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" type="text">
+                        </div>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <input type="button" name="btntype" id="btntoday" onclick="dateSub('today')"  class="input_btn_h input-table" value="今天" />
+                        <input type="button" name="btntype" id="btntyes" onclick="dateSub('yes')"  class="input_btn_h input-table" value="昨天" />
+                        <input type="button" name="btntype" id="btntweek" onclick="dateSub('week')"  class="input_btn_h input-table" value="本周" />
+                        <input type="button" name="btntype" id="btntlast" onclick="dateSub('last')"  class="input_btn_h input-table" value="上周" />
+                        <input type="hidden" id="date_range"  name="date_range" value="">
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>id</th>
+                                <th>总充值量</th>
+                                <th>实际付款</th>
+                                <th>优惠值</th>
+                                <th>充值卡充值</th>
+                                <th>点卡充值</th>
+                                <th>网银充值</th>
+                                <th>支付宝充值</th>
+                                <th>微信充值</th>
+                                <th>财付通充值</th>
+                                <th>其他</th>
+                                <th>统计日期</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="id"/>
+            <table id="tab" border="0" width="100%">
+                <tr><td>id：<input class="form-control" name="type" type="text" placeholder="id" ></td><td class="pad-l">微信充值：<input class="form-control" name="price" type="text" placeholder="微信充值" ></td></tr>
+
+                <tr><td>支付宝充值：<input class="form-control" name="type" type="text" placeholder="支付宝充值" ></td><td class="pad-l">网银充值：<input class="form-control" name="price" type="text" placeholder="网银充值" ></td></tr>
+
+                <tr><td>赠送卡充值：<input class="form-control" name="type" type="text" placeholder="赠送卡充值" ></td><td class="pad-l">统计日期：<input class="form-control" name="price" type="text" placeholder="统计日期" ></td></tr>
+
+                <tr><td>创建时间：<input class="form-control" name="type" type="text" placeholder="创建时间" ></td><td class="pad-l">统计日期：<input class="form-control" name="price" type="text" placeholder="统计日期" ></td></tr>
+
+            
+                <tr>
+                    <td colspan="2" style="padding-top:20px;">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div></body></html><script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">
+    var table;
+    $(function () {
+         table = $('#example').dataTableAjax("Recharge/Rcstat/list", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+            {'mDataProp':'id'},
+            {'mDataProp':'total'},
+            {'mDataProp':'actually'},
+            {'mDataProp':'coupon'},
+            {'mDataProp':'chongzhi'},
+            {'mDataProp':'dianka'},
+            {'mDataProp':'bank'},
+            {'mDataProp':'ali'},
+            {'mDataProp':'wx'},
+            {'mDataProp':'qq'},
+            {'mDataProp':'other'},
+            {'mDataProp':'stat_date'}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.id);
+            $(row).data('data-total', data.total/100);
+            $(row).data('data-actually', data.actually/100);
+            $(row).data('data-coupon', data.coupon/100);
+            $(row).data('data-chongzhi', data.chongzhi/100);
+            $(row).data('data-dianka', data.dianka/100);
+            $(row).data('data-bank', data.bank/100);
+                $(row).data('data-ali', data.ali/100);
+                $(row).data('data-wx', data.wx/100);
+                $(row).data('data-qq', data.qq/100);
+                $(row).data('data-other', data.other/100);
+                $(row).data('data-stat_date', data.stat_date);
+
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                },
+                'start_time': function () {
+                    return $("#j_Date1").val();
+                },
+                'end_time': function () {
+                    return $("#j_Date2").val();
+                },
+                'date_range':function(){
+                    return $("#date_range").val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+    function dateSub(val) {
+        $("#date_range").val(val);
+        $('input[aria-controls=example][type=search]').focus();
+        table.reload();
+    }
+
+</script>

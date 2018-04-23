@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>新增房间模块</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	</head>
+
+	<body class="">
+
+		<!-- 头部导航 -->
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-left">
+					<a class="navbar-brand" href="#">后台管理系统</a>
+				</div>
+
+				<div class="navbar-right" style="float: right;margin-right: 0;">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">admin
+        <span class="caret"></span>
+    </button>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href="member_user.html">个人信息</a>
+							</li>
+							<li>
+								<a href="#">绑定IP</a>
+							</li>
+							<li>
+								<a href="sign-in.html">安全退出</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- 左侧导航 -->
+		<div class="sidebar-nav"></div>
+		<script type="text/javascript" src="js/leftajax.js" ></script>
+			
+		<!-- 导航结束 -->
+
+		<div class="content">
+
+			<div class="header">
+
+				<h1 class="page-title">新增房间模块</h1>
+			</div>
+
+			<form class="form-horizontal" role="form">
+				<fieldset>
+					<div class="form-group">
+
+						<label class="col-sm-1 control-label" >房间名称:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name='homename' id="" type="text" placeholder="192.168.1.161">
+						</div>
+						<label class="col-sm-1 control-label" >游戏名称:</label>
+						<div class="col-sm-1">
+							<select name="gamename" id="" class="form-control">
+								<option value="11">麻将</option>
+								<option value="13">牛牛</option>
+							</select>
+						</div>
+
+						<label class="col-sm-1 control-label" >挂接类型:</label>
+						<div class="col-sm-1">
+							<select name="gjlx" id="" class="form-control">
+								<option value="11">麻将</option>
+								<option value="13">牛牛</option>
+							</select>
+						</div>
+						<label class="col-sm-1 control-label" >挂接节点:</label>
+						<div class="col-sm-1">
+							<select name="gjjd" id="ddlGameID" class="form-control">
+								<option value="11">无挂接</option>	
+							</select>
+						</div>
+						<label class="col-sm-1 control-label" >排序:</label>
+						<div class="col-sm-1">
+							<input class="form-control" id="" name="homeesc" type="text" placeholder="192.168.1.161">
+						</div>
+					</div>
+					<div class="form-group">
+
+						<label class="col-sm-1 control-label" >桌子数量:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="desknum" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" >房间类型:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="hometype" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" >服务端口:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="fwdk" id="" type="text" placeholder="">
+						</div>
+
+						<label class="col-sm-1 control-label" >数据库名称:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="sqlname" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" >数据库地址:</label>
+
+						<div class="col-sm-1">
+							<select name="sqllocation" id="" class="form-control">
+								<option value="11">N(&amp;#39;)</option>
+								<option value="13">N(')</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label" for="">单位积分:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="dwjf" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">限制积分:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="xzjf" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">最低积分:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="zdjf" id="" type="text" placeholder="">
+						</div>
+
+						<label class="col-sm-1 control-label" for="">税收比例(%):</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="ssbl" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">最小进入积分:</label>
+
+						<div class="col-sm-1">
+							<input class="form-control" name="zxjrjf" id="" type="text" placeholder="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label" for="">最小进入等级:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="zxjrdj" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">最大进入等级:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="zdjrdj" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">最大玩家数目:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="zdwjsm" id="" type="text" placeholder="">
+						</div>
+
+						<label class="col-sm-1 control-label" for="">房间规则:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="fjgz" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">分组规则:</label>
+
+						<div class="col-sm-1">
+							<input class="form-control" name="fzgz" id="" type="text" placeholder="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label" for="">最小人数:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="zxrs" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">最多人数:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="zdrs" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">分组间隔:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="fzjg" id="" type="text" placeholder="">
+						</div>
+
+						<label class="col-sm-1 control-label" for="">分组局数:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="fzjs" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">开始延时:</label>
+
+						<div class="col-sm-1">
+							<input class="form-control" name="ksys" id="" type="text" placeholder="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label" for="">附加属性:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="fjsx" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">游戏类型:</label>
+						<div class="col-sm-1">
+							<select name="gametype" class="form-control">
+								<option value="1">常规游戏</option>
+								<option value="2">热门游戏</option>
+								<option value="3">新鲜上线</option>
+								<option value="4">VIP房间</option>
+							</select>
+						</div>
+						<label class="col-sm-1 control-label" for="">禁用状态:</label>
+						<div class="col-sm-1">
+							<input id="rbtnNullity_0" type="radio" name="rbtnNullity" value="0" checked="checked">正常
+							<input id="rbtnNullity_1" type="radio" name="rbtnNullity" value="1">禁用
+						</div>
+
+						<label class="col-sm-1 control-label" for="">自定义规则:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="zdygz" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">运行机器:</label>
+
+						<div class="col-sm-1">
+							<input class="form-control" name="yxjq" id="" type="text" placeholder="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label" for="">备注:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="beizhu" id="" type="text" placeholder="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-1 control-label" for="">文件名:</label>
+						<div class="col-sm-1">
+							<input class="form-control" name="wjm" id="" type="text" placeholder="">
+						</div>
+						<label class="col-sm-1 control-label" for="">内容:</label>
+						<div class="col-sm-2">
+							<input class="form-control" name="wjnr" id="" type="text" placeholder="">
+						</div>
+					</div>	
+					<div class="form-group">
+
+						<label class="col-sm-1 control-label" for=""></label>
+						<div class="col-sm-2">
+							<input type="submit" name="btnsave" value="保存" id="btnsave" class="">
+							<input type="button" value="返回" class="" onclick="">
+						</div>
+					</div>
+				</fieldset>
+				
+			</form>
+
+			<!--<form method="post" id="form_head" action="">
+
+				<div class="container-fluid">
+					<div class="row-fluid">
+
+						<div class="block span6">
+							<label class="control-group">
+                 房间名称:
+                 <input name="txtServerName" type="text" maxlength="31" id="txtServerName" class="text" value="" placeholder="必填">
+                 </label>
+							<label class="control-group">游戏名称:
+              <select name="ddlGameID" id="ddlGameID"  class="valid">
+                  <option value="11">五星宏辉</option>
+                  <option value="13">摇骨子</option>
+                </select>
+                </label>
+							<label class="control-group">
+                挂接类型:
+              <select name="ddlKindID" id="ddlKindID"  class="valid">
+                  <option value="0">无挂接</option>
+                  <option value="11">五星宏辉----休闲游戏</option>
+                </select>
+                </label>
+							<label class="control-group">
+              挂接节点:
+              <select name="ddlNode" id="ddlNode" >
+              <option value="0">无挂接</option>
+              </select> 
+              </label>
+							<label class="control-group">
+                 排序:
+                 <input name="txtSortID" type="text" value="0" maxlength="9" id="txtSortID" class="text valid" ></label>
+							<label class="control-group">桌子数量:
+                 <input name="txtTableCount" type="text" value="0" maxlength="9" id="txtTableCount" class="text valid" ></label>
+							<label class="control-group">房间类型:
+                 <select name="ddlServerType" id="ddlServerType" class="valid">
+                  <option value="1">金币类型</option>
+                  <option value="2">点值类型</option>
+                  <option value="4">比赛类型</option>
+                  <option value="8">训练类型</option>
+                </select></label>
+							<label class="control-group">服务端口:
+                <input name="txtServerPort" type="text" value="0" maxlength="9" id="txtServerPort" class="text valid" >
+              </label>
+
+							<label class="control-group">
+                 
+                数据库名称:
+                <input name="txtDataBaseName" type="text" maxlength="20" id="txtDataBaseName" class="text"></label>
+							<label class="control-group"> 数据库地址:
+                <select name="ddlDataBaseAddr" id="ddlDataBaseAddr" class="valid">
+                  <option value="127.0.0.1">N(&amp;#39;)</option>
+                  <option value="218.241.158.223">N(')</option>
+                </select>
+              </label>
+							<label class="control-group">
+                 数据库地址:
+                      <select name="ddlDataBaseAddr" id="ddlDataBaseAddr">
+                            <option value="127.0.0.1">N(&amp;#39;)</option>
+                            <option value="218.241.158.223">N(')</option>
+
+                        </select>
+              </label>
+							<label class="control-group">
+              单位积分:
+                 <input name="txtCellScore" type="text" value="0" maxlength="18" id="txtCellScore" class="text valid" ></label>
+							<label class="control-group">限制积分:
+                <input name="txtRestrictScore" type="text" value="0" maxlength="18" id="txtRestrictScore" class="text valid" ></label>
+							<label class="control-group">最低积分：
+              <input name="txtMinTableScore" type="text" value="0" maxlength="18" id="txtMinTableScore" class="text valid" ></label>
+							<label class="control-group">税收比例:
+              <input name="txtRevenueRatio" type="text" value="0" maxlength="3" id="txtRevenueRatio" class="text valid">‰(千分比)
+              </label>
+
+							<label class="control-group">
+                 最小进入积分:
+                 <input name="txtMinEnterScore" type="text" value="0" maxlength="18" id="txtMinEnterScore" class="text valid"></label>
+							<label class="control-group">最大进入积分:
+                 <input name="txtMaxEnterScore" type="text" value="0" maxlength="18" id="txtMaxEnterScore" class="text valid"></label>
+							<label class="control-group">最小进入等级：
+                 <input name="txtMinEnterMember" type="text" value="0" maxlength="9" id="txtMinEnterMember" class="text valid"></label>
+							<label class="control-group">最大进入等级:
+                 <input name="txtMaxEnterMember" type="text" value="0" maxlength="9" id="txtMaxEnterMember" class="text valid"></label>
+							<label class="control-group">
+                最大玩家数目:
+                <input name="txtMaxPlayer" type="text" value="0" maxlength="9" id="txtMaxPlayer" class="text valid" ></label>
+							<label class="control-group">房间规则:
+                <input name="txtServerRule" type="text" value="0" maxlength="9" id="txtServerRule" class="text valid"></label>
+							<label class="control-group">分组规则:
+                <input name="txtDistributeRule" type="text" value="0" maxlength="10" id="txtDistributeRule" class="text valid"></label>
+							<label class="control-group">最小人数:
+                <input name="txtMinDistributeUser" type="text" value="0" maxlength="9" id="txtMinDistributeUser" class="text valid"></label>
+							<label class="control-group">
+                 最多人数:
+                 <input name="txtMaxDistributeUser" type="text" value="0" maxlength="9" id="txtMaxDistributeUser" class="text valid"></label>
+							<label class="control-group">分组间隔:
+                 <input name="txtDistributeTimeSpace" type="text" value="0" maxlength="10" id="txtDistributeTimeSpace" class="text valid"></label>
+							<label class="control-group">分组局数:
+                 <input name="txtDistributeDrawCount" type="text" value="0" maxlength="9" id="txtDistributeDrawCount" class="text valid"></label>
+							<label class="control-group">开始延时:
+                 <input name="txtDistributeStartDelay" type="text" value="0" maxlength="10" id="txtDistributeStartDelay" class="text valid">
+              </label>
+							<label class="control-group">
+              附加属性:游戏类型常规游戏热门游戏新鲜上线VIP房间 禁用状态 自定义规则 运行机器 备注 文件名 备注
+                 <input name="txtAttachUserRight" type="text" value="0" maxlength="10" id="txtAttachUserRight" class="text valid" ></label>
+							<label class="control-group">游戏类型:
+              <select name="ddlHotGame" id="ddlHotGame"  class="valid">
+                <option value="1">常规游戏</option>
+                <option value="2">热门游戏</option>
+                <option value="3">新鲜上线</option>
+                <option value="4">VIP房间</option>
+              </select></label>
+							<label class="control-group">禁用状态:
+              <input id="rbtnNullity_0" type="radio" name="rbtnNullity" value="0" checked="checked">正常<input id="rbtnNullity_1" type="radio" name="rbtnNullity" value="1">禁用
+              </label>
+							<label class="control-group">
+                 自定义规则:
+                 <input name="txtCustomRule" type="text" id="txtCustomRule" class="text" ></label>
+							<label class="control-group">运行机器:
+                <input name="txtServiceMachine" type="text" maxlength="32" id="txtServiceMachine" class="text" >
+              </label>
+							<label class="control-group">
+                 		备注:
+                 <input name="txtServerNote" type="text" id="txtServerNote" class="text">
+              </label>
+							<label class="control-group">
+                 文件名1:
+                 <input name="txtServerNote" type="text" id="txtServerNote" class="text" >
+                 内容:
+                 <textarea name="txtCfgContent1" rows="2" cols="20" id="txtCfgContent1"></textarea>
+              </label>
+							<label class="control-group">
+                 <label>文件名2:</label>
+							<input name="txtCfgFile2" type="text" id="txtCfgFile2"> 内容:
+							<textarea name="txtCfgContent2" rows="2" cols="20" id="txtCfgContent2"></textarea>
+							</label>
+							<label class="control-group">
+                 <label>文件名3:</label>
+							<input name="txtCfgFile3" type="text" id="txtCfgFile3"> 内容:
+							<textarea name="txtCfgContent3" rows="2" cols="20" id="txtCfgContent3"></textarea>
+							</label>
+							<div class="control-group">
+								<label class="control-label"></label>
+								<div class="controls">
+									<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+									<input type="button" value="返回" class="" onclick="">
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</form>-->
+			<footer>
+				<hr>
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+
+		</div>
+	</body>
+
+</html>

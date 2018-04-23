@@ -1,0 +1,93 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "name": "1",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    },
+    {
+      "name": "2",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    },
+    {
+      "name": "3",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    },
+    {
+      "name": "4",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    },
+    {
+      "name": "5",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    },
+    {
+      "name": "6",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    },
+    {
+      "name": "7",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    },
+    {
+      "name": "8",
+      "djmanage": "2016-12-31",
+      "djname": "admin",
+      "djmoney": "3213",
+      "djgold":"3231",
+      "djdiscount": "12321",
+      "djscope":"2321",
+      "djshiyong":"后台",
+      "djzhuangtai":"dasda"
+    }
+  ]
+}

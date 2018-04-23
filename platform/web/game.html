@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>游戏记录</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+
+
+        <div class="header">
+
+            <h1 class="page-title">游戏记录</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in " id="example">
+                        <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                            <span class="input-group-addon">日期</span>
+                            <input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" type="text">
+                        </div>
+                        <select class="input_btn_h" id="channeltype" name="channeltype">
+                            <option value="wx_unionid">根据玩家ID</option>
+                            <option value="username">根据游戏账号</option>
+                            <option value="nickname">根据玩家昵称</option>
+                        </select>
+                        <select class="input_btn_h" id="game_id" name="game_id">
+                            <option value="">所有游戏</option>
+                        </select>
+                        <div class="input-group input-large  input-daterange input-rili input-table" >
+                            <span class="input-group-addon">输赢金币</span>
+                            <input class="form-control input-xs input" id="gold1" name="gold1" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="gold2" name="gold2" type="text">
+                        </div>
+                        <div class="input-group input-large  input-daterange input-rili input-table"  style="padding-left: 10px">
+                            <span class="input-group-addon">输赢百分比</span>
+                            <input class="form-control input-xs input" id="point1" name="point1" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="point2" name="point2" type="text">
+                        </div>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th>ID</th>
+                                <th>用户ID</th>
+                                <th>用户账号</th>
+                                <th>用户昵称</th>
+                                <th>桌子编号</th>
+                                <th>椅子编号</th>
+                                <th>游戏类型</th>
+                                <th>游戏模式</th>
+                                <th>入场金币</th>
+                                <th>输赢金币</th>
+                                <th>输赢比率</th>
+                                <th>游戏时长</th>
+                                <th>创建时间</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                    <script type="text/javascript">
+                        var user_id;
+                        var table;
+                        function setuserid(id) {
+                            user_id = $('#'+id).val();
+                            table.reload();
+                        }
+                        $(function () {
+                             table = $('#example').dataTableAjax(game, {
+                                'bLengthChange': false,
+                                'iDisplayLength': 10,
+                                'searching': true,
+                                'processing': true,
+                                'serverSide': true,
+                                "autoWidth": false,
+                                'aoColumns': [
+                                    {'mDataProp': 'id'},
+                                    {'mDataProp':'wx_unionid', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                        $(nTd).html('<a href="javascript:void(0)" onclick="setuserid('+oData.user_id+')" >' + sData + '</a> <input type="hidden" id="'+oData.user_id+'" value="'+oData.user_id+'">');
+                                    }
+                                    },
+                                    {'mDataProp': 'username'},
+                                    {'mDataProp': 'nickname'},
+                                    {'mDataProp': 'table_id'},
+                                    {'mDataProp': 'chair_id'},
+                                    {'mDataProp': 'game_name'},
+                                    {'mDataProp': 'mode_name'},
+                                    {'mDataProp': 'gold'},
+                                    {'mDataProp': 'win_gold'},
+                                    {'mDataProp': 'point'},
+                                    {'mDataProp': 'duration'},
+                                    {'mDataProp': 'created_date'}
+                                ],
+
+                                postData: {
+                                    'query': function () {
+                                        return $('input[aria-controls=example][type=search]').val();
+                                    },
+                                    'query_type': function () {
+                                        return $("#channeltype option:checked").val();
+                                    },
+                                    'game_id': function () {
+                                        return $("#game_id option:checked").val();
+                                    },
+                                    'start_time': function () {
+                                        return $("#j_Date1").val();
+                                    },
+                                    'end_time': function () {
+                                        return $("#j_Date2").val();
+                                    },
+                                    'gold1': function () {
+                                        return $("#gold1").val();
+                                    },
+                                    'gold2': function () {
+                                        return $("#gold2").val();
+                                    },
+                                    'point1': function () {
+                                        return $("#point1").val();
+                                    },
+                                    'point2': function () {
+                                        return $("#point2").val();
+                                    },
+                                    'user_id': function () {
+                                        return user_id;
+                                    },
+                                    'query_type': function () {
+                                        return $("#channeltype option:checked").val();
+                                    }
+                                },
+                                columnDefs: [{
+                                    'orderable': false,
+                                    'targets': [1,2,3,4,5,6,7,8,12]
+                                }],
+                                'order': [
+                                    [0, 'desc']
+                                ]
+                            });
+                            $('input[aria-controls=example][type=search]').unbind();
+                            $('input[aria-controls=example][type=search]').keyup(function (e) {
+                                if (e.keyCode === 13) {
+                                    table.reload();
+                                }
+                            });
+                            $('input[type=button][id=btntype]').click(function () {
+                                $('input[aria-controls=example][type=search]').focus();
+                                table.reload();
+                            });
+
+                            $("#game_id").append(getGameTypes());
+                        });
+                    </script>
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+
+            <p>&copy; 2017 一指赢</p>
+        </footer>
+        <script type="text/javascript" src="js/date.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,109 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "name": "1",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    },
+    {
+      "name": "2",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    },
+    {
+      "name": "3",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    },
+    {
+      "name": "4",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    },
+    {
+      "name": "5",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    },
+    {
+      "name": "6",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    },
+    {
+      "name": "7",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    },
+    {
+      "name": "8",
+      "glmanage": "2016-12-31",
+      "glmark": "admin",
+      "glname": "3213",
+      "gltype":"3231",
+      "glparent": "12321",
+      "glsort":"2321",
+      "glcourse":"后台",
+      "glrule": "12321",
+      "gldownload":"2321",
+      "glstate":"后台"
+    }
+  ]
+}

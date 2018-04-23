@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>泡点规则</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+		
+			<div class="header">
+
+				<h1 class="page-title">泡点规则</h1>
+			</div>
+			<form method="post" id="form_head" action="">
+
+				<div class="container-fluid">
+					<div class="row-fluid">
+
+						<div class="block span6">
+							<div class="control-group">
+
+								<div class="controls">
+									<label class="control-label">代理区域:
+                 		<select name="ddlAgencyList" id="ddlAgencyList">
+                      <option selected="selected" value="-1">所有代理</option>
+                      <option value="0">dazhongyanshi</option>
+                   	 </select>
+                 	</label>
+								</div>
+							</div>
+							<div class="control-group">
+
+								<div class="controls">
+									<label class="control-label">游戏房间:
+                 	<select name="ddlGameRoom" id="ddlGameRoom">
+                        <option value="-2">积分房间</option>
+                        <option value="-1">金币房间</option>
+                      </select>
+                 	</label>
+
+								</div>
+							</div>
+							<div class="control-group">
+
+								<div class="controls">
+									<label class="control-label">游戏泡分单元时间(秒):<input name="txtCellPlayTime" type="text" value="0" maxlength="10" id="txtCellPlayTime" class="text"></label>
+								</div>
+							</div>
+							<div class="control-group">
+
+								<div class="controls">
+									<label class="control-label">游戏泡分启始时间(秒):<input name="txtStartPlayTime" type="text" value="0" maxlength="10" id="txtStartPlayTime" class="text"></label>
+								</div>
+							</div>
+							<div class="control-group">
+
+								<div class="controls">
+									<label class="control-label">在线泡分单元时间(秒):<input name="txtCellOnlineTime" type="text" value="0" maxlength="10" id="txtCellOnlineTime" class="text"></label>
+								</div>
+							</div>
+
+							<div class="control-group">
+
+								<div class="controls">
+									<label class="control-label">在线泡分起始时间(秒):<input name="txtStartOnlineTime" type="text" value="0" maxlength="10" id="txtStartOnlineTime" class="text"></label>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">游戏泡分赠送:</label>
+								<div class="controls">
+									<label class="control-label">蓝钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+									<label class="control-label">红钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+									<label class="control-label">黄钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+									<label class="control-label">紫钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+									<label class="control-label">蓝钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+									<label class="control-label">红钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+									<label class="control-label">黄钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+									<label class="control-label">紫钻会员:<input name="txtMemberGameGive0" type="text" value="0" id="txtMemberGameGive0"></label>
+								</div>
+							</div>
+							<div class="control-group">
+								<input id="ckbIsPlayPresent" type="checkbox" name="ckbIsPlayPresent" checked="checked" value="开启游戏泡分">开启游戏泡分
+								<input id="ckbIsOnlinePresent" type="checkbox" name="ckbIsOnlinePresent" checked="checked" value="开启在线泡分">开启在线泡分
+								<input id="ckbIsOnePresent" type="checkbox" name="ckbIsOnePresent" checked="checked" value="开启每局游戏泡分">开启每局游戏泡分
+							</div>
+							<div class="control-group">
+								<label class="control-label">创建时间:时间</label>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label"></label>
+								<div class="controls">
+									<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+									<input type="button" value="返回" class="" onclick="">
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</form>
+
+			<footer>
+				<hr>
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+
+		</div>
+		</div>
+
+		<script src="lib/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript">
+			$("[rel=tooltip]").tooltip();
+			$(function() {
+				$('.demo-cancel-click').click(function() {
+					return false;
+				});
+			});
+		</script>
+
+	</body>
+
+</html>

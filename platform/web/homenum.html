@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>房间统计</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+
+				<div class="header">
+
+					<h1 class="page-title">房间统计</h1>
+				</div>
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">		
+							<div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+								<span class="input-group-addon">日期</span>
+								<input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" value="" type="text">
+								<span class="input-group-addon">至</span>
+								<input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" value="" type="text">
+							</div>
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+							<thead class="theadtbody">
+								<tr>
+									<th>游戏类型</th>
+									<th>游戏模式</th>
+									<th>房间产出</th>
+									<th>房间回收</th>
+									<th>服务费总计</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax('system/stat/room', {
+									'bLengthChange': false,
+									'iDisplayLength': 50,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'game_type'
+									}, {
+										'mDataProp': 'game_mode'
+									}, {
+										'mDataProp': 'win_gold'
+									}, {
+										'mDataProp': 'lose_gold'
+									}, {
+										'mDataProp': 'service_fee'
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										},
+										'start_date': function() {
+											return $("#j_Date1").val();
+										},
+										'end_date': function() {
+											return $("#j_Date2").val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+		
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/main.js" ></script>
+			<script type="text/javascript" src="js/date.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>游戏管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="">
+
+		<!-- 头部导航 -->
+		
+
+					<div class="header">
+
+						<h3 class="page-title">游戏模块</h3>
+					</div>
+
+					<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in table-responsive" id="example">
+
+							<input type="button" name="btntype" id="btntype" onclick="window.location.href='gameadmin_new1.html';" class="input_btn_h input-table" value="新增" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check" id="checkAll" onclick="check_all();"></th>
+									<th>管理</th>
+									<th>模块标识</th>
+									<th>模块名称</th>
+									<th>服务端版本</th>
+									<th>客户端版本</th>
+									<th>数据库名</th>
+									<th>数据库地址</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax('json/gameadmin_1.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check' id='checkbox-check' class='check' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'mkmanage',
+										"render": function(data, type, full, meta) {
+											return '<a href="gameadmin_new1.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'mkmark',
+									}, {
+										'mDataProp': 'mkname',
+									}, {
+										'mDataProp': 'mkserver',
+									}, {
+										'mDataProp': 'mkslient',
+									}, {
+										'mDataProp': 'mksql',
+									}, {
+										'mDataProp': 'mksqllocation',
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+					
+					
+					<div class="header">
+
+						<h3 class="page-title">游戏类型</h3>
+					</div>
+					<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in " id="example2">
+
+							<input type="button" name="btntype" id="btntype" onclick="window.location.href='gameadmin_new2.html';" class="input_btn_h input-table" value="新增" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check2" id="checkAll2" onclick="check_all2();"></th>
+									<th>管理</th>
+									<th>类型标识</th>
+									<th>类型名称</th>
+									<th>挂接</th>
+									<th>排序</th>
+									<th>禁用状态</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example2').dataTableAjax('json/gameadmin_2.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check2' id='checkbox-check' class='check2' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'lxmanage',
+										"render": function(data, type, full, meta) {
+											return '<a href="gameadmin_new2.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'lxmark',
+									}, {
+										'mDataProp': 'lxname',
+									}, {
+										'mDataProp': 'lxhook',
+									}, {
+										'mDataProp': 'lxsort',
+									}, {
+										'mDataProp': 'lxstate',
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+					
+					<div class="header">
+
+						<h3 class="page-title">游戏管理</h3>
+					</div>
+					<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in table-responsive" id="example3">
+
+							<input type="button" name="btntype" id="btntype" onclick="window.location.href='gameadmin_new3.html';" class="input_btn_h input-table" value="新增" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check3" id="checkAll3" onclick="check_all3();"></th>
+									<th>管理</th>
+									<th>游戏标识</th>
+									<th>游戏名称</th>
+									<th>游戏类型</th>
+									<th>父节点</th>
+									<th>排序</th>
+									<th>进程名称</th>
+									<th>规则路径</th>
+									<th>下载路径</th>
+									<th>禁用状态</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example3').dataTableAjax('json/gameadmin_3.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check3' id='checkbox-check' class='check3' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'glmanage',
+										"render": function(data, type, full, meta) {
+											return '<a href="gameadmin_new3.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'glmark',
+									}, {
+										'mDataProp': 'glname',
+									}, {
+										'mDataProp': 'gltype',
+									}, {
+										'mDataProp': 'glparent',
+									}, {
+										'mDataProp': 'glsort',
+									}, {
+										'mDataProp': 'glcourse',
+									}, {
+										'mDataProp': 'glrule',
+									}, {
+										'mDataProp': 'gldownload',
+									}, {
+										'mDataProp': 'glstate',
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+					
+					
+					<div class="header">
+
+						<h3 class="page-title">游戏节点</h3>
+					</div>
+					
+					<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in table-responsive" id="example4">
+
+							<input type="button" name="btntype" id="btntype" onclick="window.location.href='gameadmin_new4.html';" class="input_btn_h input-table" value="新增" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check4" id="checkAll4" onclick="check_all4();"></th>
+									<th>管理</th>
+									<th>节点标识</th>
+									<th>节点名称</th>
+									<th>游戏名称</th>
+									<th>挂接</th>
+									<th>排序</th>
+									<th>禁用状态</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example4').dataTableAjax('json/gameadmin_4.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check4' id='checkbox-check' class='check4' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'jdmanage',
+										"render": function(data, type, full, meta) {
+											return '<a href="gameadmin_new4.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'jdmark',
+									}, {
+										'mDataProp': 'jdname',
+									}, {
+										'mDataProp': 'jdgamename',
+									}, {
+										'mDataProp': 'jdhook',
+									}, {
+										'mDataProp': 'jdsort',
+									}, {
+										'mDataProp': 'jdstate',
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+					
+					
+					<div class="header">
+
+						<h3 class="page-title">游戏自定义页</h3>
+					</div>
+					
+					<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in table-responsive" id="example5">
+
+							<input type="button" name="btntype" id="btntype" onclick="window.location.href='gameadmin_new5.html';" class="input_btn_h input-table" value="新增" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check5" id="checkAll5" onclick="check_all5();"></th>
+									<th>管理</th>
+									<th>页面标识</th>
+									<th>页面名称</th>
+									<th>游戏名称</th>
+									<th>节点名称</th>
+									<th>操作类型</th>
+									<th>排序</th>
+									<th>资源路径</th>
+									<th>禁用状态</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example5').dataTableAjax('json/gameadmin_5.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check5' id='checkbox-check' class='check5' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'ymmanage',
+										"render": function(data, type, full, meta) {
+											return '<a href="gameadmin_new5.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'ymmark',
+									}, {
+										'mDataProp': 'ymname',
+									}, {
+										'mDataProp': 'ymgamename',
+									}, {
+										'mDataProp': 'ymnod',
+									}, {
+										'mDataProp': 'ymtype',
+									}, {
+										'mDataProp': 'ymsort',
+									}, {
+										'mDataProp': 'ymresources',
+									}, {
+										'mDataProp': 'ymstate',
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+					
+					
+				<footer>
+					<hr>
+
+					<p>&copy; 2017 一指赢</p>
+				</footer>
+				<script type="text/javascript" src="js/main.js"></script>
+
+
+	</body>
+
+</html>

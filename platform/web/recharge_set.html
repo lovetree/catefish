@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>充值设置</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/tables.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <style>
+        #example{width:770px; }
+        #example td{border:0 !important;}
+        #example input{width: 100px; border: 1px solid #ccc; height: 34px; text-align: center}
+        div.btn-box{height: 60px; padding-top:30px;}
+        div.btn-box button{width:90px; height: 35px;}
+    </style>
+</head>
+<body style="background: #FFF;">
+<div class="header">
+    <h1 class="page-title">充值设置</h1>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6">
+            <form class="form-horizontal" role="form">
+                <div style="overflow-y: auto; padding-bottom:25px;">
+                    <table class="table display block-body collapse in" id="example">
+                        <tr>
+                            <td>优惠1：金币数量：<input value="50">-<input value="999"></td>
+                            <td>赠送金币：<input value="0"> %</td>
+                            <td>提现流水：<input value="2"> 倍</td>
+                        </tr>
+                        <tr>
+                            <td>套餐2：金币数量：<input value="1000">-<input value="999"></td>
+                            <td>赠送金币：<input value="3"> %</td>
+                            <td>提现流水：<input value="2"> 倍</td>
+                        </tr>
+                        <tr>
+                            <td>优惠3：金币数量：<input value="10000">-<input></td>
+                            <td>赠送金币：<input value="5"> %</td>
+                            <td>提现流水：<input value="4"> 倍</td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="line-height: 40px"><img src="images/inser-btn.jpg" id="img-btn">点击添加按钮，添加更多套餐</div>
+                <div class="btn-box text-center"><button>修改</button></div>
+            </form>
+
+            <script type="text/javascript">
+                $('#img-btn').click(function(){
+                    var count=$('table#example tr').size()+1;
+                    var html='<tr>'+
+                        '<td>优惠'+count+'：金币数量：<input>-<input></td>'+
+                        '<td>赠送金币：<input> %</td>'+
+                        '<td>提现流水：<input> 倍</td>'+
+                        '</tr>';
+                    $('table#example').append(html);
+                });
+            </script>
+
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <hr>
+    <p>&copy; 2017 一指赢</p>
+</footer>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+
+</html>

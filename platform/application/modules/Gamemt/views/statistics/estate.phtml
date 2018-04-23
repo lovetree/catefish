@@ -1,0 +1,198 @@
+<?php include_once VIEW_COMMON . "header.php"; ?>
+<style>
+    .site-stats { margin: 0; padding: 0; text-align: center; list-style: none; }
+    .site-stats li { cursor: pointer; display: inline-block; margin: 0 5px 10px; text-align: center; width: 42%; padding: 10px 0; color: #fff; position: relative; }
+    .site-stats li i { font-size: 24px; clear: both }
+    .site-stats li:hover { background: #2E363F; }
+    .site-stats li i { vertical-align: baseline; }
+    .site-stats li strong { font-weight: bold; font-size: 20px; width: 100%; float: left; margin-left: 0px; }
+    .site-stats li small { margin-left: 0px; font-size: 11px; width: 100%; float: left; }
+</style>
+<div class="col-xs-12">
+    <div class="widget-box" style="border-bottom:none;">
+        <div class="widget-header">
+            <ul class="nav">
+
+<!--                <li --><?php //echo $type == 'yesterday' ? 'class="active"' : ''; ?><!-- ><a href="/gamemt/statistics/active?type=yesterday">昨天</a></li>-->
+                <li <?php echo $type == 'seven' ? 'class="active"' : ''; ?> ><a href="/gamemt/statistics/estate?type=seven">最近7天</a></li>
+                <li <?php echo $type == 'month' ? 'class="active"' : ''; ?> ><a href="/gamemt/statistics/estate?type=month">最近30天</a></li>
+            </ul>
+            <div id="reportrange" style="background:#FAFAFC; cursor: pointer; margin-top:4px; padding: 5px 10px; border: 1px solid #ccc" class="pull-left">
+                <i class="icon-calendar"> </i>
+                <span id="reportrange-inner"></span>
+                <input type="hidden" name="reportrange" id="reportrange-input">
+                <b class="caret" style="margin-top: -3px;"> </b>
+            </div>
+        </div>
+        <div class="widget-body" style="padding:20px;">
+
+            <div id="highcharts" style=" margin:0px; height:400px;width: 100%"> </div>
+
+            <div style="margin-top: 24px; overflow:hidden;">
+                <div style="float: left;width: 100%;">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>金币总量</th>
+                                <th>钱包金币</th>
+                                <th>保险箱金币</th>
+<!--                                <th>人气存量</th>-->
+                                <th>钻石存量</th>
+                                <th>绿宝石存量</th>
+                                <th>统计日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($totalList)) : ?>
+                                <?php foreach ($totalList as $var) : ?>
+                                    <tr>
+                                        <td style="padding-left: 14px;"><?php echo($var['gold']); ?></td>
+                                        <td style="padding-left: 14px;"><?php echo($var['estate_gold']); ?></td>
+                                        <td style="padding-left: 14px;"><?php echo($var['safe_gold']); ?></td>
+<!--                                        <td style="padding-left: 14px;">--><?php //echo($var['popularity']); ?><!--</td>-->
+                                        <td style="padding-left: 14px;"><?php echo($var['credit']); ?></td>
+                                        <td style="padding-left: 14px;"><?php echo($var['emerald']); ?></td>
+                                        <td style="padding-left: 14px;"><?php echo($var['stat_date']); ?></td>
+
+                                    </tr>
+                                <?php endforeach ?>
+                            <?php else : ?>
+                                <tr><td colspan="7" style=" text-align:center;" >暂无数据</td></tr>
+                            <?php endif ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script src="/skin/js/highcharts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        <?php $t = explode('@', $type); ?>
+        $("#reportrange")
+                .daterangepicker({
+                    format: "YYYY/MM/DD",
+                    startDate: "<?php echo count($t) > 1 ? str_replace('-', '/', $t[0]) : date('Y/m/d', time()); ?>",
+                    endDate: "<?php echo count($t) > 1 ? str_replace('-', '/', $t[1]) : date('Y/m/d', time()); ?>"
+                }, function (startDate, endDate) {
+                    var range = startDate.format("YYYY/MM/DD") + " - " + endDate.format("YYYY/MM/DD");
+                    var url = window.location.href,
+                            m = GET('m'),
+                            data = url.split('?'),
+                            t;
+                    var date = range.split('-');
+                    var rel_data = trim(date[0].replace(/\//g, '-')) + '@' + trim(date[1].replace(/\//g, '-'));
+                    var real_url = data[0] + '?m=' + m + '&wid=' + GET('wid') + '&type=' + rel_data;
+                    window.location.href = real_url;
+                }
+                );
+        $("#reportrange-inner").html("<?php $t = explode('@', $type);
+        if (count($t) > 1) {
+            echo(str_replace('-', '/', $t[0]) . ' - ' . str_replace('-', '/', $t[1]));
+        } else {
+            echo(date('Y/m/d', time()) . ' - ' . date('Y/m/d', time()));
+        } ?>");
+        $('.mapInfo').mousemove(function () {
+            $($(this).parent().addClass('select'));
+            var zhName = $(this).parent().attr('name');
+            $('path').each(function () {
+                if ($(this).attr('pin_yin_name') == zhName) {
+                    $(this).trigger('mouseover', [$(this).offset().top, $(this).offset().left]);
+                }
+            })
+        })
+        $('.mapInfo').mouseout(function () {
+            $($(this).parent().removeClass('select'));
+            var zhName = $(this).parent().attr('name');
+            $('path').each(function () {
+                if ($(this).attr('pin_yin_name') == zhName) {
+                    $(this).trigger('mouseout');
+                }
+            })
+        })
+    });
+    function GET(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+    function trim(str) {
+        return str.replace(/(^\s*)|(\s*$)/g, "");
+    }
+    var dataObj = <?php echo json_encode($line_data); ?>;
+
+    function highcharts() {
+
+        var gold = [],
+            popularity =[],
+            estate_gold =[],
+            safe_gold =[],
+            credit =[],
+            emerald =[],
+                series = [],
+                xAxis = {},
+                tooltip;
+        xAxis.categories = [];
+
+        for (var i in dataObj) {
+            gold.push(parseInt(dataObj[i]['gold']));
+            estate_gold.push(parseInt(dataObj[i]['estate_gold']));
+            safe_gold.push(parseInt(dataObj[i]['safe_gold']));
+            credit.push(parseInt(dataObj[i]['credit']));
+            popularity.push(parseInt(dataObj[i]['popularity']));
+            emerald.push(parseInt(dataObj[i]['emerald']));
+            xAxis.categories.push(dataObj[i]['date']);
+        }
+        series[0] = {name: '金币总量', data: gold};
+        series[1] = {name: '钱包金币', data: estate_gold};
+        series[2] = {name: '保险箱金币', data: safe_gold};
+//        series[3] = {name: '人气', data: popularity};
+        series[3] = {name: '绿宝石', data: emerald};
+        series[4] = {name: '钻石', data: credit};
+        tooltip = {
+            formatter: function () {
+                var s = '<b>' + this.x + '</b>';
+                $.each(this.points, function (i, point) {
+                    s += '<br/><span style=" color:' + point.series.color + ';">' + point.series.name + ': ' + point.y + '</span>';
+                });
+                return s;
+            },
+            shared: true
+        }
+
+        xAxis.labels = {
+            step:<?php echo $step; ?>,
+            staggerLines: 1
+        };
+
+        $('#highcharts').highcharts({
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: null
+            },
+            credits: {
+                enabled: false
+            },
+            xAxis: xAxis,
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min: 0,
+                allowDecimals: false
+            },
+            tooltip: tooltip,
+            series: series
+        });
+    }
+    highcharts();
+</script>

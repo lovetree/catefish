@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>管理后台登陆</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/jquery.form.js"></script>
+        <script type="text/javascript" src="/js/mos.js"></script>
+        <script src="/skin/js/bootbox.min.js"></script>
+    </head>
+
+    <body class="">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-left">
+                    <a class="navbar-brand" href="#">后台管理系统</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row-fluid">
+            <div class="dialog">
+                <div class="block">
+
+                    <div class="block-body">
+                        <form id="myForm" method="post">
+                            <div class="form-group form-group-name">
+                                <label for="">用户名:</label>
+                                <input type="text" class="form-control" id="" placeholder="请输入名称" name="user">
+                            </div>
+                            <div class="form-group form-group-name">
+                                <label for="">密码:</label>
+                                <input type="password" class="form-control" id="" placeholder="请输入用户密码" name="pass">
+                            </div>
+
+                            <label class="form-group form-group-name"><input type="submit" name="" id="btnsubmit" class="btn btn-default" value="登陆"></label>
+
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $("#myForm").submit(function () {
+                    $("#myForm").ajaxSubmit({
+                        url: 'user/login',
+                        dataType: 'json',
+                        success: function (json) {
+                            if (json.result == 0) {
+                                history.go(-1);
+                            } else {
+                                showMsg(json.msg, true);
+                            }
+                        }
+                    });
+                    return false;
+                });
+
+            });
+        </script>
+        <footer>
+            <hr>
+            <p>&copy; 2017 一指赢</p>
+        </footer>
+    </body>
+
+</html>

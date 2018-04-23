@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>道具管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/tables.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/j.dt.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+
+</head>
+
+<body class="" style="background: #FFFFFF;">
+<div class="header">
+    <h1 class="page-title">道具管理</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6">
+
+            <table class="table display block-body collapse in" id="example">
+                <input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="新增" data-ctrl-btn="newAction"/>
+                <!--<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" data-ctrl-btn="deleteAction"/>-->
+                <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                <thead class="theadtbody">
+                <tr>
+                    <!--<th><input type="checkbox" id="checkAll" onclick="check_all();"></th>-->
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>编辑</th>
+                </tr>
+                </thead>
+                <tbody class="theadtbody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer><hr></footer>
+</div>
+
+<div style="display: none;" class="edit-box">
+    <form method="post">
+        <input type="hidden" name="item_id"/>
+        <div>
+            名称
+            <input type="text" class="form-control" name="name" placeholder="名称" style="margin-top:5px;">
+        </div>
+        <br/>
+        <!--<div>
+            类型
+            <input type="text" class="form-control" name="content" placeholder="类型">
+        </div>-->
+        <br/>
+        <div class="form-group">
+            <input type="submit" class="form-control" value="提交">
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>
+
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var table = $('#example').dataTableAjax(prop, {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                /*{'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.item_id + "'>");
+                   }
+                },*/
+                {'mDataProp': 'item_id'},
+                {'mDataProp': 'name'},
+                {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+                    return "<button data-ctrl-btn='editAction'>编辑</button>";
+                }}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.item_id);
+                $(row).data('data-name', data.name);
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            }
+
+        });
+
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+
+    });
+
+
+    function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('system/item/delete', {
+            item_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+    function newAction(){
+        editAction(true);
+    }
+
+    function editAction(bNew){
+        var prop_id = $(this).parents('tr').data('data-id');
+        var pname = $(this).parents('tr').data('data-name');
+        var dialog = $('.edit-box form').dialog({
+            title: '系统消息 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=item_id]').attr('value', prop_id);
+                $(this).find('input[name=name]').attr('value', pname);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            //初始化form
+            $form.submit(function () {
+                var name=$form.find('input[name=name]').val();
+                if($.trim(name)==""){
+                    alert('请填写道具名！');
+                    return false;
+                }
+                $form.ajaxSubmit({
+                    url: 'system/item/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

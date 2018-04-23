@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>用户难易度微调</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="">
+
+		<!-- 头部导航 -->
+	
+
+				<div class="header">
+
+					<h1 class="page-title">用户难易度微调</h1>
+				</div>
+
+				<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">		
+							<input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="新增" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check" id="checkAll" onclick="check_all();"></th>
+									<th>游戏ID</th>
+									<th>用户昵称</th>
+									<th>玩家目前分数</th>
+									<th>玩家单次上分数</th>
+									<th>玩家总上分值</th>
+									<th>玩家总下分值</th>
+									<th>总射击次数</th>
+									<th>分数最大值</th>
+									<th>玩家每炮分数</th>
+									<th>玩家损失分数</th>
+									<th>手动操控影响值</th>
+									<th>是否控制</th>                      
+									<th>ip地址</th>
+									<th>修改时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax('json/usereasy.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check' id='checkbox-check' class='check' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'gameid',
+										
+									}, {
+										'mDataProp': 'usernickname',
+									}, {
+										'mDataProp': 'userscorenow',
+									}, {
+										'mDataProp': 'userscoreone',
+									}, {
+										'mDataProp': 'userscoresum',
+									}, {
+										'mDataProp': 'userscoresumout',
+									}, {
+										'mDataProp': 'usershootsum',
+									}, {
+										'mDataProp': 'usergrademax',
+									},{
+										'mDataProp': 'userconnon',
+									}, {
+										'mDataProp': 'userloss',
+									}, {
+										'mDataProp': 'userinfluence',
+									}, {
+										'mDataProp': 'usercontrol',
+									}, {
+										'mDataProp': 'userip',
+									}, {
+										'mDataProp': 'usertime',
+									}, {
+										'mDataProp': 'usermanage',
+										'render': function(data, type, full, meta) {
+											return '<a data-toggle="modal" data-target="#myModal">' + data + '</a>';
+										}
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+
+			
+
+
+
+			<form action="#" name="form" method="post" enctype="multipart/form-data">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog">
+						<div class="modal-content">
+
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel">新增游戏难易度系数</h4>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label">房间标识:</label>
+								<div class="controls">
+									<textarea style="width:280px"></textarea>
+
+								</div>
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<input type="submit" class="btn btn-default" value="保存" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+
+			<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+
+</html>

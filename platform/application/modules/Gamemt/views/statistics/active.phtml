@@ -1,0 +1,193 @@
+<?php include_once VIEW_COMMON . "header.php"; ?>
+<style>
+    .site-stats { margin: 0; padding: 0; text-align: center; list-style: none; }
+    .site-stats li { cursor: pointer; display: inline-block; margin: 0 5px 10px; text-align: center; width: 42%; padding: 10px 0; color: #fff; position: relative; }
+    .site-stats li i { font-size: 24px; clear: both }
+    .site-stats li:hover { background: #2E363F; }
+    .site-stats li i { vertical-align: baseline; }
+    .site-stats li strong { font-weight: bold; font-size: 20px; width: 100%; float: left; margin-left: 0px; }
+    .site-stats li small { margin-left: 0px; font-size: 11px; width: 100%; float: left; }
+</style>
+<div class="col-xs-12">
+    <div class="widget-box" style="border-bottom:none;">
+        <div class="widget-header">
+            <ul class="nav">
+                <li <?php echo $type == 'today' || $type == '' ? 'class="active"' : ''; ?> ><a href="/gamemt/statistics/active?type=today">今天</a></li>
+<!--                <li --><?php //echo $type == 'yesterday' ? 'class="active"' : ''; ?><!-- ><a href="/gamemt/statistics/active?type=yesterday">昨天</a></li>-->
+                <li <?php echo $type == 'seven' ? 'class="active"' : ''; ?> ><a href="/gamemt/statistics/active?type=seven">最近7天</a></li>
+                <li <?php echo $type == 'month' ? 'class="active"' : ''; ?> ><a href="/gamemt/statistics/active?type=month">最近30天</a></li>
+            </ul>
+            <div id="reportrange" style="background:#FAFAFC; cursor: pointer; margin-top:4px; padding: 5px 10px; border: 1px solid #ccc" class="pull-left">
+                <i class="icon-calendar"> </i>
+                <span id="reportrange-inner"></span>
+                <input type="hidden" name="reportrange" id="reportrange-input">
+                <b class="caret" style="margin-top: -3px;"> </b>
+            </div>
+        </div>
+        <div class="widget-body" style="padding:20px;">
+            <ul class="site-stats" style="height:100%; overflow:hidden;">
+<!--                <li class="bg_lh" style="float: left;width: 160px;height: 62px;background: #368ee0">-->
+<!--                    <i class="icon-legal"  style="display: inline-block;width: 35px;float: left;height: 100%;margin-top:6px;margin-left:10px;" ></i>-->
+<!--                    <div style="display: inline-block;width: 110px;float: left;height: 100%"><small>活跃会员</small><strong style="font-weight: normal">--><?php //echo intval($totalArr['new_count']); ?><!--</strong> </div>-->
+<!--                </li>-->
+                <a href="/gamemt/statistics/user">
+                    <li class="bg_lh" style="float: left;width: 160px;height: 62px;background: #368ee0">
+                        <i class="icon-legal"  style="display: inline-block;width: 35px;float: left;height: 100%;margin-top:6px;margin-left:10px;" ></i>
+                        <div style="display: inline-block;width: 110px;float: left;height: 100%;padding-top: 7%"><small>新增会员</small><strong style="font-weight: normal"></strong> </div>
+                    </li>
+                </a>
+                <a href="/gamemt/statistics/active">
+                    <li class="bg_lh" style="float: left;width: 160px;height: 62px;background: #393">
+                        <i class="icon-pushpin"  style="display: inline-block;width: 35px;float: left;height: 100%;margin-top:6px;margin-left:10px;" ></i>
+                        <div style="display: inline-block;width: 110px;float: left;height: 100%;padding-top: 7%"><small>活跃会员</small><strong style="font-weight: normal"></strong> </div>
+                    </li>
+                </a>
+                <li class="bg_lh" style="float: left;width: 160px;height: 62px;background: #393">
+                    <i class="icon-pushpin"  style="display: inline-block;width: 35px;float: left;height: 100%;margin-top:6px;margin-left:10px;" ></i>
+                    <div style="display: inline-block;width: 110px;float: left;height: 100%"><small>总会员</small><strong style="font-weight: normal"><?php echo intval($totalArr['total_count']); ?></strong> </div>
+                </li>
+            </ul>
+            <div id="highcharts" style=" margin:0px; height:400px;width: 100%"> </div>
+
+            <div style="margin-top: 24px; overflow:hidden;">
+                <div style="float: left;width: 100%;">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="50%">日期</th>
+                                <th width="50%">活跃会员</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($totalList)) : ?>
+                                <?php foreach ($totalList as $var) : ?>
+                                    <tr>
+                                        <td style="padding-left: 14px;"><?php echo($var['date']); ?></td>
+                                        <td style="padding-left: 14px;"><?php echo($var['number']); ?></td>
+                                    </tr>
+                                <?php endforeach ?>
+                            <?php else : ?>
+                                <tr><td colspan="2" style=" text-align:center;" >暂无数据</td></tr>
+                            <?php endif ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script src="/skin/js/highcharts.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        <?php $t = explode('@', $type); ?>
+        $("#reportrange")
+                .daterangepicker({
+                    format: "YYYY/MM/DD",
+                    startDate: "<?php echo count($t) > 1 ? str_replace('-', '/', $t[0]) : date('Y/m/d', time()); ?>",
+                    endDate: "<?php echo count($t) > 1 ? str_replace('-', '/', $t[1]) : date('Y/m/d', time()); ?>"
+                }, function (startDate, endDate) {
+                    var range = startDate.format("YYYY/MM/DD") + " - " + endDate.format("YYYY/MM/DD");
+                    var url = window.location.href,
+                            m = GET('m'),
+                            data = url.split('?'),
+                            t;
+                    var date = range.split('-');
+                    var rel_data = trim(date[0].replace(/\//g, '-')) + '@' + trim(date[1].replace(/\//g, '-'));
+                    var real_url = data[0] + '?m=' + m + '&wid=' + GET('wid') + '&type=' + rel_data;
+                    window.location.href = real_url;
+                }
+                );
+        $("#reportrange-inner").html("<?php $t = explode('@', $type);
+        if (count($t) > 1) {
+            echo(str_replace('-', '/', $t[0]) . ' - ' . str_replace('-', '/', $t[1]));
+        } else {
+            echo(date('Y/m/d', time()) . ' - ' . date('Y/m/d', time()));
+        } ?>");
+        $('.mapInfo').mousemove(function () {
+            $($(this).parent().addClass('select'));
+            var zhName = $(this).parent().attr('name');
+            $('path').each(function () {
+                if ($(this).attr('pin_yin_name') == zhName) {
+                    $(this).trigger('mouseover', [$(this).offset().top, $(this).offset().left]);
+                }
+            })
+        })
+        $('.mapInfo').mouseout(function () {
+            $($(this).parent().removeClass('select'));
+            var zhName = $(this).parent().attr('name');
+            $('path').each(function () {
+                if ($(this).attr('pin_yin_name') == zhName) {
+                    $(this).trigger('mouseout');
+                }
+            })
+        })
+    });
+    function GET(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+    function trim(str) {
+        return str.replace(/(^\s*)|(\s*$)/g, "");
+    }
+    var dataObj = <?php echo json_encode($line_data); ?>;
+
+    function highcharts() {
+
+        var data_tri = [],
+                series = [],
+                xAxis = {},
+                tooltip;
+        xAxis.categories = [];
+
+        for (var i in dataObj) {
+            data_tri.push(parseInt(dataObj[i]['number']));
+            xAxis.categories.push(dataObj[i]['date']);
+        }
+        series[0] = {name: '活跃会员数量', data: data_tri};
+        tooltip = {
+            formatter: function () {
+                var s = '<b>' + this.x + '</b>';
+                $.each(this.points, function (i, point) {
+                    s += '<br/><span style=" color:' + point.series.color + ';">' + point.series.name + ': ' + point.y + '</span>';
+                });
+                return s;
+            },
+            shared: true
+        }
+
+        xAxis.labels = {
+            step:<?php echo $step; ?>,
+            staggerLines: 1
+        };
+
+        $('#highcharts').highcharts({
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: null
+            },
+            credits: {
+                enabled: false
+            },
+            xAxis: xAxis,
+            yAxis: {
+                title: {
+                    text: null
+                },
+                min: 0,
+                allowDecimals: false
+            },
+            tooltip: tooltip,
+            series: series
+        });
+    }
+    highcharts();
+</script>

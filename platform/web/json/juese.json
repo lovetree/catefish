@@ -1,0 +1,61 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "name": "1",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    },
+    {
+      "name": "2",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    },
+    {
+      "name": "3",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    },
+    {
+      "name": "4",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    },
+    {
+      "name": "5",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    },
+    {
+      "name": "6",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    },
+    {
+      "name": "7",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    },
+    {
+      "name": "8",
+      "management": "配置权限",
+      "creattime":"2016-12-12",
+      "role": "超级管理员",
+      "area": "dazhongdaili"
+    }
+  ]
+}

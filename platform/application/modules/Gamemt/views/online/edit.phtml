@@ -1,0 +1,166 @@
+<?php include_once VIEW_COMMON . "header.php"; ?>
+<style>
+    .agent{
+        width:400px;
+        border: 1px #eeeeee solid;
+        padding:10px 5px;
+        margin:5px 0px;
+        background-color: #eeeeee;
+    }
+    .form-group.has-error .error{
+        float: none !important;
+    }
+</style>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" id="form">
+                            <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right"></label>
+                                <div class="col-sm-10">
+                                    <div class="agentlist">
+                                        <?php if (empty($info['online_rule'])) : ?>
+                                            <div class='agent'>
+                                                <label>奖励次数</label>
+                                                <input type="text" class="input" name='times' /><br>
+                                                <label>在线时长</label>
+                                                <input type="text" class="input" name='time' />分钟<br>
+                                                <label>奖励金币</label>
+                                                <input type="text" class="input" name='coin' />
+                                            </div>
+                                        <?php else : ?>
+                                            <?php
+                                            $rule = json_decode($info['online_rule'], true);
+                                            ?>	
+                                            <?php foreach ($rule as $key => $v) : ?>
+                                                <div class='agent'>
+                                                    <label>奖励次数</label>
+                                                    <input type="text" class="input" name='times' value="<?php echo $v['times'];?>"/><br>
+                                                    <label>在线时长</label>
+                                                    <input type="text" class="input" name='time' value="<?php echo $v['time'];?>"/>分钟<br>
+                                                    <label>奖励金币</label>
+                                                    <input type="text" class="input" name='coin' value="<?php echo $v['coin'];?>"/>
+                                                </div>
+                                            <?php endforeach; ?>    
+                                        <?php endif; ?>
+                                    </div>
+                                    <button type="button" class='addComm btn btn-primary'>+</button>
+                                    <button type="button" class='delComm btn btn-primary'>-</button>
+                                    <div class="form-group" style="margin-top:20px;">
+                                        <div class="col-md-10">
+                                            <button class="btn btn-primary" type="submit" id="save">
+                                                <i class="icon-ok"></i>
+                                                保存
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON . "footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        
+        $('.addComm').click(function () {
+            var html = '<div class="agent">\n\
+            <label>奖励次数</label>&nbsp;<input type="text" class="input" name="times" />\n\
+            <br><label>在线时长</label>&nbsp;<input type="text" class="input" name="time" />分钟\n\
+            <br><label>奖励金币</label>&nbsp;<input type="text" class="input" name="coin" /></div>';
+            $(".agentlist").append(html);
+        });
+
+        $('.delComm').click(function () {
+            var commissionArr = $(".agent");
+            var length = commissionArr.length;
+            commissionArr[length - 1].remove();
+        });
+        
+        $("#form").validate({
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {};
+                params.id = $("#id").val();
+                var all = true;
+                
+                params.times = [];
+                $("input[name='times']").each(function () {
+                    if (this.value == ''){
+                        all = false;
+                    }
+                    if (isNaN(this.value)){
+                        all = false;
+                    }
+                    params.times.push(this.value);
+                });
+                
+                params.time = [];
+                $("input[name='time']").each(function () {
+                    if (this.value == ''){
+                        all = false;
+                    }
+                    if (isNaN(this.value)){
+                        all = false;
+                    }
+                    params.time.push(this.value);
+                });
+                
+                params.coin = [];
+                $("input[name='coin']").each(function () {
+                    if (this.value == ''){
+                        all = false;
+                    }
+                    if (isNaN(this.value)){
+                        all = false;
+                    }
+                    params.coin.push(this.value);
+                });
+                
+                if (all == false){
+                    showMsg("请完善正确的信息", true);
+                    return;
+                }
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/online/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                window.location.reload();
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

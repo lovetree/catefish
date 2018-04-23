@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>积分管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+		<script type="text/javascript" src="js/date.js"></script>
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+		
+			<div class="header">
+
+				<h1 class="page-title">积分管理</h1>
+			</div>
+
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in " id="example">
+
+							<select class="input_btn_h" name="channelType">
+						<option value="123456">根据用户账号</option>
+						<option value="498126">根据游戏ID</option>
+					</select>
+					<select class="input_btn_h" name="channelType">
+						<option value="123456">根据游戏</option>
+						<option value="498126">498126</option>
+						<option value="498126">498126</option>
+					</select>
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+							<input type="button" name="refresh" id="refresh" class="input_btn_h input-table" value="刷新" />
+							<thead class="theadtbody">
+								<tr>
+									<th>用户标识</th>
+									<th>游戏ID</th>
+									<th>用户账号</th>
+									<th>积分</th>
+									<th>赢局</th>
+									<th>输局</th>
+									<th>和局</th>
+									<th>逃局</th>
+									<th>登陆次数</th>
+									<th>游戏时长</th>
+									<th>在线时长</th>
+									<th>最后登陆时间</th>
+									<th>最后登录地址</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax('json/jifen.php', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'aoColumns': [{
+										'mDataProp': 'jfmark',
+									}, {
+										'mDataProp': 'jfgameid',
+									}, {
+										'mDataProp': 'jfuser',
+									}, {
+										'mDataProp': 'jf',
+									}, {
+										'mDataProp': 'jfwin',
+									}, {
+										'mDataProp': 'jflose',
+									}, {
+										'mDataProp': 'jfhe',
+									}, {
+										'mDataProp': 'jftao',
+									}, {
+										'mDataProp': 'jflogin',
+									}, {
+										'mDataProp': 'jfgametime',
+									}, {
+										'mDataProp': 'jflinetime',
+									}, {
+										'mDataProp': 'jflasttime',
+									}, {
+										'mDataProp': 'jflastlocation',
+									}],
+									'columnDefs': [{
+										'orderable': false,
+										'targets': [0]
+									}],
+									'order': [
+										[2, 'desc']
+									],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>充值日报记录</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+		
+			<div class="header">
+
+				<h1 class="page-title">充值日报记录</h1>
+			</div>
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">
+
+							<div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+								<span class="input-group-addon">日期</span>
+								<input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" value="2016-12-01" type="text">
+								<span class="input-group-addon">至</span>
+								<input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" value="2016-12-20" type="text">
+							</div>
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询">
+							<thead class="theadtbody">
+								<tr>
+									<th>日期</th>
+									<th>网银充值统计</th>
+									<th>实物卡充值统计</th>
+									<th>虚拟卡充值统计</th>
+									<th>赠送卡充值统计</th>
+									<th>当前总额统计</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax(chongzhinewsday, {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'ordering':false,
+									'aoColumns': [{
+										'mDataProp': 'cztime',
+									}, {
+										'mDataProp': 'czservice',
+									}, {
+										'mDataProp': 'czaccount',
+									}, {
+										'mDataProp': 'czgameid',
+									}, {
+										'mDataProp': 'czcard',
+									}, {
+										'mDataProp': 'czordernumber',
+									}],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										},
+										'datastart': function() {
+											return $("#j_Date1").val();
+										},
+										'dataend': function() {
+											return $("#j_Date2").val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/date.js"></script>
+			<script type="text/javascript" src="js/main.js" ></script>
+
+	</body>
+
+</html>

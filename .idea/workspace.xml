@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="9dcc2dbb-eb35-4810-895a-0b760032c57d" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Notice.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/controllers/Notice.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2300">
+              <caret line="115" column="13" lean-forward="false" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
+              <folding>
+                <element signature="n#deleteAction#0;n#NoticeController#0;n#!!top" expanded="false" />
+                <element signature="n#updateAction#0;n#NoticeController#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Notice.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/models/Notice.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="133" column="34" lean-forward="true" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Game.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="740">
+              <caret line="120" column="32" lean-forward="false" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
+              <folding>
+                <element signature="e#89#113#0#PHP" expanded="false" />
+                <element signature="n#ranklistAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#214#333#0#PHP" expanded="false" />
+                <element signature="e#255#332#0#PHP" expanded="false" />
+                <element signature="e#209#372#0#PHP" expanded="false" />
+                <element signature="e#470#1253#0#PHP" expanded="false" />
+                <element signature="e#499#601#0#PHP" expanded="false" />
+                <element signature="e#614#737#0#PHP" expanded="false" />
+                <element signature="e#750#875#0#PHP" expanded="false" />
+                <element signature="e#888#1015#0#PHP" expanded="false" />
+                <element signature="e#1028#1129#0#PHP" expanded="false" />
+                <element signature="e#1142#1243#0#PHP" expanded="false" />
+                <element signature="e#1263#1350#0#PHP" expanded="false" />
+                <element signature="e#1443#1467#0#PHP" expanded="false" />
+                <element signature="n#ranklist2Action#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#1779#1887#0#PHP" expanded="false" />
+                <element signature="e#2057#2082#0#PHP" expanded="false" />
+                <element signature="n#listAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#2247#2308#0#PHP" expanded="false" />
+                <element signature="n#broadcastAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#2410#2522#0#PHP" expanded="false" />
+                <element signature="e#2451#2521#0#PHP" expanded="false" />
+                <element signature="e#2405#2561#0#PHP" expanded="false" />
+                <element signature="e#2717#2768#0#PHP" expanded="false" />
+                <element signature="e#3468#3494#0#PHP" expanded="false" />
+                <element signature="n#carouselAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#3594#3739#0#PHP" expanded="false" />
+                <element signature="e#3635#3738#0#PHP" expanded="false" />
+                <element signature="e#3589#3778#0#PHP" expanded="false" />
+                <element signature="e#3852#3908#0#PHP" expanded="false" />
+                <element signature="e#3983#4041#0#PHP" expanded="false" />
+                <element signature="e#4181#4204#0#PHP" expanded="false" />
+                <element signature="n#activityAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#4360#4381#0#PHP" expanded="false" />
+                <element signature="n#rechargeAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#4481#4582#0#PHP" expanded="false" />
+                <element signature="e#4522#4581#0#PHP" expanded="false" />
+                <element signature="e#4476#4621#0#PHP" expanded="false" />
+                <element signature="e#4866#4955#0#PHP" expanded="false" />
+                <element signature="e#5035#5056#0#PHP" expanded="false" />
+                <element signature="n#exchangeAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#5156#5291#0#PHP" expanded="false" />
+                <element signature="e#5197#5290#0#PHP" expanded="false" />
+                <element signature="e#5151#5330#0#PHP" expanded="false" />
+                <element signature="e#5496#5574#0#PHP" expanded="false" />
+                <element signature="e#5617#5640#0#PHP" expanded="false" />
+                <element signature="n#exchangeLogAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#5823#5846#0#PHP" expanded="false" />
+                <element signature="n#roomlistAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#5927#6026#0#PHP" expanded="false" />
+                <element signature="e#6084#6126#0#PHP" expanded="false" />
+                <element signature="n#addsafegAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#6241#6267#0#PHP" expanded="false" />
+                <element signature="n#unreadActiveAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="n#updateReadtimeAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#6840#6863#0#PHP" expanded="false" />
+                <element signature="n#bindAgentAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#6964#7060#0#PHP" expanded="false" />
+                <element signature="e#7005#7059#0#PHP" expanded="false" />
+                <element signature="e#6959#7099#0#PHP" expanded="false" />
+                <element signature="e#7109#7397#0#PHP" expanded="false" />
+                <element signature="e#7254#7397#0#PHP" expanded="false" />
+                <element signature="n#hornAction#0;n#GameController#0;n#!!top" expanded="false" />
+                <element signature="e#7588#7718#0#PHP" expanded="false" />
+                <element signature="e#7629#7717#0#PHP" expanded="false" />
+                <element signature="e#7583#7757#0#PHP" expanded="false" />
+                <element signature="e#8000#8026#0#PHP" expanded="false" />
+                <element signature="n#arenaAction#0;n#GameController#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameAPI/application/models/Game.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7280">
+              <caret line="364" column="49" lean-forward="false" selection-start-line="364" selection-start-column="49" selection-end-line="364" selection-end-column="49" />
+              <folding>
+                <marker date="1504948293631" expanded="true" signature="561:637" ph="select user_... ms_user_info" />
+                <marker date="1504948293631" expanded="true" signature="29096:29221" ph="select title... ms_activity" />
+                <marker date="1504948293631" expanded="true" signature="29811:29936" ph="select count... ms_activity" />
+                <marker date="1504948293631" expanded="true" signature="30016:30123" ph="select count... ms_activity" />
+                <marker date="1504948293631" expanded="true" signature="30611:30663" ph="select id, a... ms_agent" />
+                <marker date="1504948293631" expanded="true" signature="30884:30943" ph="select agent... ms_user_info" />
+                <marker date="1504948293631" expanded="true" signature="32149:32835" ph="select main_... ms_match_rule" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vip.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Vip.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/views/active/edit.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="42" column="79" lean-forward="false" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/views/activity/edit.phtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="31" column="3" lean-forward="true" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GameAPI/application/models/Task.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3280">
+              <caret line="290" column="80" lean-forward="false" selection-start-line="290" selection-start-column="80" selection-end-line="290" selection-end-column="80" />
+              <folding>
+                <element signature="n#_getTaskDay#0;n#TaskModel#0;n#!!top" expanded="false" />
+                <element signature="n#_getTaskRule#0;n#TaskModel#0;n#!!top" expanded="false" />
+                <element signature="n#task#0;n#TaskModel#0;n#!!top" expanded="false" />
+                <marker date="1504924353541" expanded="true" signature="156:285" ph="select id,t_... ms_task_rule" />
+                <marker date="1504924353541" expanded="true" signature="10681:10744" ph="create table... if" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/models/Task.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2200">
+              <caret line="143" column="5" lean-forward="false" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
+              <folding>
+                <element signature="e#448#1029#0#PHP" expanded="false" />
+                <element signature="e#1166#1717#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>每日qian</find>
+      <find>每日qia</find>
+      <find>每日qi</find>
+      <find>每日q</find>
+      <find>每日</find>
+      <find>_1000803</find>
+      <find>baid</find>
+      <find>请求A平台加减积分失败</find>
+      <find>ba</find>
+      <find>UPGRADE_VIP</find>
+      <find>cmd=push</find>
+      <find>push</find>
+      <find>phppushtouser</find>
+      <find>b</find>
+      <find>baidu</find>
+      <find>setUserInfo</find>
+      <find>y</find>
+      <find>u</find>
+      <find>userInter</find>
+      <find>userInte</find>
+      <find>userInt</find>
+      <find>userIn</find>
+      <find>userI</find>
+      <find>user</find>
+      <find>userin</find>
+      <find>userint</find>
+      <find>realname</find>
+      <find>PK_TASK_RULE</find>
+      <find>forzen</find>
+      <find>RK_NOTICE_LIST</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>一指赢</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>E:\project\202\php\project\GameAPI</dir>
+      <dir>E:\project\一指赢\php\project\platform\application</dir>
+      <dir>E:\project\一指赢\php\project\GameAPI\application\modules</dir>
+      <dir>E:\project\一指赢\php\project\GameAPIsendEmail</dir>
+      <dir>E:\project\一指赢\php\project\platform</dir>
+      <dir>E:\project\一指赢\php\project</dir>
+      <dir>E:\project\一指赢\php\project\GameAPI</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/platform/application/modules/System/models/Goods.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/Vip.php" />
+        <option value="$USER_HOME$/Desktop/111/TokenFilter.php" />
+        <option value="$PROJECT_DIR$/platform/loginlog.html" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Gamemt/views/statistics/estate.phtml" />
+        <option value="$PROJECT_DIR$/platform/web/gold_count.html" />
+        <option value="$PROJECT_DIR$/platform/web/arena_new.html" />
+        <option value="$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Shop.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/Online.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Online.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Gamemt/controllers/Email.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/Shop.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/Aibei.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/Sign.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Share.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/function/function.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/views/user/edit.phtml" />
+        <option value="$PROJECT_DIR$/platform/web/onlinelist.html" />
+        <option value="$PROJECT_DIR$/platform/web/money.html" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/controllers/Gold.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/models/Gold.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/controllers/Gamerecourd.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/models/GameRecourd.php" />
+        <option value="$PROJECT_DIR$/platform/web/Player_Phoneblack.html" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/models/Phoneblack.php" />
+        <option value="$PROJECT_DIR$/platform/web/orders.html" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Recharge/controllers/Order.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Recharge/models/Order.php" />
+        <option value="$PROJECT_DIR$/platform/web/user.html" />
+        <option value="$PROJECT_DIR$/platform/web/feedback.html" />
+        <option value="$PROJECT_DIR$/platform/application/modules/System/controllers/Feedback.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/System/models/Feedback.php" />
+        <option value="$PROJECT_DIR$/platform/web/loginlog.html" />
+        <option value="$PROJECT_DIR$/platform/web/safe_log.html" />
+        <option value="$PROJECT_DIR$/platform/web/emerald.html" />
+        <option value="$PROJECT_DIR$/platform/web/credit_log.html" />
+        <option value="$PROJECT_DIR$/platform/web/gold_stream.html" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/controllers/User.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Player/models/User.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/System/models/Stat.php" />
+        <option value="$PROJECT_DIR$/platform/web/game.html" />
+        <option value="$PROJECT_DIR$/platform/application/library/Dao/Connection.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Gamemt/models/Statistics.php" />
+        <option value="$PROJECT_DIR$/platform/conf/nav.conf.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/User.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/User.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Gamemt/views/task/edit.phtml" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/Task.php" />
+        <option value="$PROJECT_DIR$/GameAPI/application/models/Game.php" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Gamemt/views/active/edit.phtml" />
+        <option value="$PROJECT_DIR$/platform/application/modules/Gamemt/views/activity/edit.phtml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource ProjectPane="true" />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.jetbrains.php.config.library.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PHP Runtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.SyntheticLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.jetbrains.php.config.library.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PHP Runtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.SyntheticLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="superglobals" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.jetbrains.php.config.library.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PHP Runtime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.SyntheticLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="redis" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gamemt" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Gamemt" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../血战/php/project" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\project\一指赢\php\project\platform\web" />
+      <recent name="E:\project\一指赢\php\project\platform" />
+      <recent name="E:\project\一指赢\php\project\platform\web\js" />
+      <recent name="E:\project\一指赢\php\project\platform\web\css" />
+      <recent name="E:\project\一指赢\php\project\platform\application\modules\System\models" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9dcc2dbb-eb35-4810-895a-0b760032c57d" name="Default" comment="" />
+      <created>1499044751536</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1499044751536</updated>
+      <workItem from="1499044784683" duration="6645000" />
+      <workItem from="1499130418682" duration="6021000" />
+      <workItem from="1499139871926" duration="13768000" />
+      <workItem from="1499217531128" duration="15474000" />
+      <workItem from="1499303315912" duration="24089000" />
+      <workItem from="1499389559770" duration="24919000" />
+      <workItem from="1499649086549" duration="5622000" />
+      <workItem from="1499739082777" duration="9037000" />
+      <workItem from="1499824332158" duration="15050000" />
+      <workItem from="1499907963411" duration="18748000" />
+      <workItem from="1499941204270" duration="5241000" />
+      <workItem from="1499994516225" duration="13102000" />
+      <workItem from="1500080938628" duration="13165000" />
+      <workItem from="1500121399251" duration="532000" />
+      <workItem from="1500253970564" duration="698000" />
+      <workItem from="1500261423384" duration="10807000" />
+      <workItem from="1500280780883" duration="5469000" />
+      <workItem from="1500341695540" duration="25221000" />
+      <workItem from="1500427533397" duration="18887000" />
+      <workItem from="1500513368548" duration="19784000" />
+      <workItem from="1500548209672" duration="5945000" />
+      <workItem from="1500599246342" duration="29502000" />
+      <workItem from="1500858485788" duration="18597000" />
+      <workItem from="1500945833005" duration="9700000" />
+      <workItem from="1500967466893" duration="8088000" />
+      <workItem from="1501032386811" duration="14165000" />
+      <workItem from="1501119342607" duration="11992000" />
+      <workItem from="1501204214252" duration="4791000" />
+      <workItem from="1501310632798" duration="9287000" />
+      <workItem from="1501465095129" duration="7368000" />
+      <workItem from="1501549616468" duration="7667000" />
+      <workItem from="1501636912563" duration="7835000" />
+      <workItem from="1501723594802" duration="15831000" />
+      <workItem from="1501825325727" duration="9538000" />
+      <workItem from="1502077370099" duration="737000" />
+      <workItem from="1502090453222" duration="5131000" />
+      <workItem from="1502155705731" duration="2756000" />
+      <workItem from="1502163051888" duration="4246000" />
+      <workItem from="1502186152804" duration="1312000" />
+      <workItem from="1502242648596" duration="3759000" />
+      <workItem from="1502349516358" duration="7232000" />
+      <workItem from="1502413513495" duration="1685000" />
+      <workItem from="1502500214345" duration="910000" />
+      <workItem from="1502508586575" duration="1304000" />
+      <workItem from="1502672850081" duration="1540000" />
+      <workItem from="1502759628287" duration="1224000" />
+      <workItem from="1502846051491" duration="635000" />
+      <workItem from="1502864905366" duration="3447000" />
+      <workItem from="1502937284424" duration="1187000" />
+      <workItem from="1503023601695" duration="3593000" />
+      <workItem from="1503311129684" duration="5417000" />
+      <workItem from="1503383606552" duration="596000" />
+      <workItem from="1503457927758" duration="4606000" />
+      <workItem from="1503537857028" duration="7100000" />
+      <workItem from="1503625620261" duration="1216000" />
+      <workItem from="1503709044496" duration="5125000" />
+      <workItem from="1503883475427" duration="883000" />
+      <workItem from="1504179339352" duration="589000" />
+      <workItem from="1504235315242" duration="15178000" />
+      <workItem from="1504581407490" duration="531000" />
+      <workItem from="1504667102919" duration="4825000" />
+      <workItem from="1504920235124" duration="8027000" />
+      <workItem from="1505445924091" duration="1487000" />
+      <workItem from="1505524391322" duration="93000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="508956000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="0" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="50" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Player/controllers/Phoneblack.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="32" column="47" lean-forward="true" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/Player_Phoneblack.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="134" column="72" lean-forward="false" selection-start-line="134" selection-start-column="62" selection-end-line="134" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Player/models/Phoneblack.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="65" column="70" lean-forward="true" selection-start-line="65" selection-start-column="70" selection-end-line="65" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Recharge/controllers/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="69" column="27" lean-forward="true" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="57" column="52" lean-forward="true" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/Player_white.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/orders.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="95" column="96" lean-forward="false" selection-start-line="95" selection-start-column="86" selection-end-line="95" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/loginlog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="79" column="48" lean-forward="false" selection-start-line="79" selection-start-column="48" selection-end-line="79" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/System/models/Feedback.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="24" column="50" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/System/controllers/Feedback.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/feedback.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="82" column="34" lean-forward="true" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Recharge/models/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="61" column="49" lean-forward="true" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/safe_log.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="84" column="100" lean-forward="true" selection-start-line="84" selection-start-column="100" selection-end-line="84" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/credit_log.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="82" column="66" lean-forward="true" selection-start-line="82" selection-start-column="66" selection-end-line="82" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/library/Dao/Varien.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="55" column="20" lean-forward="false" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/System/models/Stat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="358" column="18" lean-forward="true" selection-start-line="358" selection-start-column="18" selection-end-line="358" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/emerald.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/point_log.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-660">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/gold_stream.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="102" column="37" lean-forward="true" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/System/controllers/Stat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="140" column="30" lean-forward="false" selection-start-line="140" selection-start-column="30" selection-end-line="140" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/onlinelist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="712">
+          <caret line="78" column="60" lean-forward="true" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Player/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="143" column="31" lean-forward="false" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Player/controllers/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/game.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="104" column="63" lean-forward="true" selection-start-line="104" selection-start-column="63" selection-end-line="104" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Player/controllers/Gamerecourd.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Player/models/GameRecourd.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/controllers/Statistics.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="148" column="24" lean-forward="false" selection-start-line="148" selection-start-column="24" selection-end-line="148" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/library/Dao/Connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8240">
+          <caret line="414" column="40" lean-forward="false" selection-start-line="414" selection-start-column="40" selection-end-line="414" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/money.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1340">
+          <caret line="67" column="51" lean-forward="false" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/models/Statistics.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3020">
+          <caret line="700" column="58" lean-forward="false" selection-start-line="700" selection-start-column="58" selection-end-line="700" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/conf/nav.conf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="50" column="63" lean-forward="false" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/models/Shop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12440">
+          <caret line="622" column="41" lean-forward="false" selection-start-line="622" selection-start-column="41" selection-end-line="622" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/modules/V2/controllers/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="68" column="31" lean-forward="false" selection-start-line="68" selection-start-column="31" selection-end-line="68" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/function/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="362" column="12" lean-forward="false" selection-start-line="362" selection-start-column="12" selection-end-line="362" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1220">
+          <caret line="787" column="0" lean-forward="false" selection-start-line="787" selection-start-column="0" selection-end-line="787" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="168" column="41" lean-forward="false" selection-start-line="168" selection-start-column="41" selection-end-line="168" selection-end-column="41" />
+          <folding>
+            <element signature="n#baseInfoAction#0;n#UserController#0;n#!!top" expanded="false" />
+            <element signature="n#editAction#0;n#UserController#0;n#!!top" expanded="false" />
+            <element signature="n#exploitsAction#0;n#UserController#0;n#!!top" expanded="false" />
+            <element signature="n#feedbackAction#0;n#UserController#0;n#!!top" expanded="false" />
+            <marker date="1504681370907" expanded="true" signature="12420:12483" ph="select id fr... ms_user" />
+            <marker date="1504681370907" expanded="true" signature="12950:13012" ph="select gold,... ms_user_estate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/web/Recharge_Rcstat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Recharge/controllers/Rcstat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="9" lean-forward="false" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding>
+            <element signature="n#countAction#0;n#TaskController#0;n#!!top" expanded="false" />
+            <element signature="n#dayAction#0;n#TaskController#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/views/task/edit.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="772">
+          <caret line="210" column="9" lean-forward="true" selection-start-line="210" selection-start-column="9" selection-end-line="210" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/library/EasyBack.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="278" column="13" lean-forward="true" selection-start-line="278" selection-start-column="13" selection-end-line="278" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/controllers/Notice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2300">
+          <caret line="115" column="13" lean-forward="false" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
+          <folding>
+            <element signature="n#deleteAction#0;n#NoticeController#0;n#!!top" expanded="false" />
+            <element signature="n#updateAction#0;n#NoticeController#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/models/Task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2200">
+          <caret line="143" column="5" lean-forward="false" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
+          <folding>
+            <element signature="e#448#1029#0#PHP" expanded="false" />
+            <element signature="e#1166#1717#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/models/Task.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3280">
+          <caret line="290" column="80" lean-forward="false" selection-start-line="290" selection-start-column="80" selection-end-line="290" selection-end-column="80" />
+          <folding>
+            <element signature="n#_getTaskDay#0;n#TaskModel#0;n#!!top" expanded="false" />
+            <element signature="n#_getTaskRule#0;n#TaskModel#0;n#!!top" expanded="false" />
+            <element signature="n#task#0;n#TaskModel#0;n#!!top" expanded="false" />
+            <marker date="1504924353541" expanded="true" signature="156:285" ph="select id,t_... ms_task_rule" />
+            <marker date="1504924353541" expanded="true" signature="10681:10744" ph="create table... if" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Game.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="120" column="32" lean-forward="false" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
+          <folding>
+            <element signature="e#89#113#0#PHP" expanded="false" />
+            <element signature="n#ranklistAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#214#333#0#PHP" expanded="false" />
+            <element signature="e#255#332#0#PHP" expanded="false" />
+            <element signature="e#209#372#0#PHP" expanded="false" />
+            <element signature="e#470#1253#0#PHP" expanded="false" />
+            <element signature="e#499#601#0#PHP" expanded="false" />
+            <element signature="e#614#737#0#PHP" expanded="false" />
+            <element signature="e#750#875#0#PHP" expanded="false" />
+            <element signature="e#888#1015#0#PHP" expanded="false" />
+            <element signature="e#1028#1129#0#PHP" expanded="false" />
+            <element signature="e#1142#1243#0#PHP" expanded="false" />
+            <element signature="e#1263#1350#0#PHP" expanded="false" />
+            <element signature="e#1443#1467#0#PHP" expanded="false" />
+            <element signature="n#ranklist2Action#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#1779#1887#0#PHP" expanded="false" />
+            <element signature="e#2057#2082#0#PHP" expanded="false" />
+            <element signature="n#listAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#2247#2308#0#PHP" expanded="false" />
+            <element signature="n#broadcastAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#2410#2522#0#PHP" expanded="false" />
+            <element signature="e#2451#2521#0#PHP" expanded="false" />
+            <element signature="e#2405#2561#0#PHP" expanded="false" />
+            <element signature="e#2717#2768#0#PHP" expanded="false" />
+            <element signature="e#3468#3494#0#PHP" expanded="false" />
+            <element signature="n#carouselAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#3594#3739#0#PHP" expanded="false" />
+            <element signature="e#3635#3738#0#PHP" expanded="false" />
+            <element signature="e#3589#3778#0#PHP" expanded="false" />
+            <element signature="e#3852#3908#0#PHP" expanded="false" />
+            <element signature="e#3983#4041#0#PHP" expanded="false" />
+            <element signature="e#4181#4204#0#PHP" expanded="false" />
+            <element signature="n#activityAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#4360#4381#0#PHP" expanded="false" />
+            <element signature="n#rechargeAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#4481#4582#0#PHP" expanded="false" />
+            <element signature="e#4522#4581#0#PHP" expanded="false" />
+            <element signature="e#4476#4621#0#PHP" expanded="false" />
+            <element signature="e#4866#4955#0#PHP" expanded="false" />
+            <element signature="e#5035#5056#0#PHP" expanded="false" />
+            <element signature="n#exchangeAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#5156#5291#0#PHP" expanded="false" />
+            <element signature="e#5197#5290#0#PHP" expanded="false" />
+            <element signature="e#5151#5330#0#PHP" expanded="false" />
+            <element signature="e#5496#5574#0#PHP" expanded="false" />
+            <element signature="e#5617#5640#0#PHP" expanded="false" />
+            <element signature="n#exchangeLogAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#5823#5846#0#PHP" expanded="false" />
+            <element signature="n#roomlistAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#5927#6026#0#PHP" expanded="false" />
+            <element signature="e#6084#6126#0#PHP" expanded="false" />
+            <element signature="n#addsafegAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#6241#6267#0#PHP" expanded="false" />
+            <element signature="n#unreadActiveAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="n#updateReadtimeAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#6840#6863#0#PHP" expanded="false" />
+            <element signature="n#bindAgentAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#6964#7060#0#PHP" expanded="false" />
+            <element signature="e#7005#7059#0#PHP" expanded="false" />
+            <element signature="e#6959#7099#0#PHP" expanded="false" />
+            <element signature="e#7109#7397#0#PHP" expanded="false" />
+            <element signature="e#7254#7397#0#PHP" expanded="false" />
+            <element signature="n#hornAction#0;n#GameController#0;n#!!top" expanded="false" />
+            <element signature="e#7588#7718#0#PHP" expanded="false" />
+            <element signature="e#7629#7717#0#PHP" expanded="false" />
+            <element signature="e#7583#7757#0#PHP" expanded="false" />
+            <element signature="e#8000#8026#0#PHP" expanded="false" />
+            <element signature="n#arenaAction#0;n#GameController#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/models/Game.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7280">
+          <caret line="364" column="49" lean-forward="false" selection-start-line="364" selection-start-column="49" selection-end-line="364" selection-end-column="49" />
+          <folding>
+            <marker date="1504948293631" expanded="true" signature="561:637" ph="select user_... ms_user_info" />
+            <marker date="1504948293631" expanded="true" signature="29096:29221" ph="select title... ms_activity" />
+            <marker date="1504948293631" expanded="true" signature="29811:29936" ph="select count... ms_activity" />
+            <marker date="1504948293631" expanded="true" signature="30016:30123" ph="select count... ms_activity" />
+            <marker date="1504948293631" expanded="true" signature="30611:30663" ph="select id, a... ms_agent" />
+            <marker date="1504948293631" expanded="true" signature="30884:30943" ph="select agent... ms_user_info" />
+            <marker date="1504948293631" expanded="true" signature="32149:32835" ph="select main_... ms_match_rule" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/views/active/edit.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="42" column="79" lean-forward="false" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/views/activity/edit.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="31" column="3" lean-forward="true" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameAPI/application/modules/V1/controllers/Vip.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redis_key.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="31" column="108" lean-forward="false" selection-start-line="31" selection-start-column="108" selection-end-line="31" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform/application/modules/Gamemt/models/Notice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="133" column="34" lean-forward="true" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

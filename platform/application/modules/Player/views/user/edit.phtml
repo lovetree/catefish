@@ -1,0 +1,276 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">用户id号：</label>
+                            <div class="col-sm-10 mt5">
+                                <span class=""><?php echo $info ? $info['wx_unionid'] : ''?></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">用户账号：</label>
+                            <div class="col-sm-10 mt5">
+                                <span class=""><?php echo $info ? $info['username'] : ''?></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">用户性别：</label>
+                            <div class="col-sm-10 mt5">
+                                <span class=""><?php echo $userInfo ? ($userInfo['gender']==1?'男':'女') : ''?></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">认证实名：</label>
+                            <div class="col-sm-10 mt5">
+                                <?php if($_SESSION['SES_LOGIN']['username']=='admin'){ ?>
+                                        <input type="text" id="realname" name="realname"
+                                           class="col-sm-5" value='<?php echo $userInfo ? $userInfo['realname'] : ''?>'>
+                                <?php }else{ ?>
+                                        <span class="" ><?php echo $userInfo ? $userInfo['realname'] : ''?></span>
+                                 
+                                <?php }?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">身份证号：</label>
+                            <div class="col-sm-10 mt5">
+                                <?php if($_SESSION['SES_LOGIN']['username']=='admin'){ ?>
+                                        <input type="text" id="idcard" name="idcard"
+                                           class="col-sm-5" value='<?php echo $userInfo ? $userInfo['idcard'] : ''?>'>
+                                <?php }else{ ?>
+                                        <span class="" ><?php echo $userInfo ? $userInfo['idcard'] : ''?></span>
+                                 
+                                <?php }?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">注册IP：</label>
+                            <div class="col-sm-10 mt5">
+                                <span class="" ><?php echo $userInfo ? $userInfo['reg_ip'] : ''?></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">注册地址：</label>
+                            <div class="col-sm-10 mt5">
+                                <span class="" id="address"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">注册时间：</label>
+                            <div class="col-sm-10 mt5">
+                                <span class=""><?php echo $info ? date('Y-m-d H:i:s',$info['created_at']) : ''?></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">用户昵称：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="nickname" name="nickname"
+                                       class="col-sm-5" value='<?php echo $userInfo ? $userInfo['nickname'] : ''?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">手机号：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="phone" name="phone"
+                                       class="col-sm-5" value='<?php echo $info ? $info['phone'] : ''?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">钻石：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="credit" name="credit"
+                                       class="col-sm-5" value='<?php echo $estate ? $estate['credit'] : ''?>' readonly>
+                            </div>
+                        </div>`
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">金币：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="gold" name="gold"
+                                       class="col-sm-5" value='<?php echo $estate ? $estate['gold'] : ''?>' readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">保险柜金币：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="gold" name="gold"
+                                       class="col-sm-5" value='<?php echo $safe ? $safe['safe_gold'] : ''?>' readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">绿钻石：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="emerald" name="emerald"
+                                       class="col-sm-5" value='<?php echo $estate ? $estate['emerald'] : ''?>' readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">vip等级：</label>
+                            <div class="col-sm-10 mt5">
+                                <input type="text" id="user_level" name="user_level"
+                                       class="col-sm-5" value='<?php echo $userInfo ? $userInfo['user_level'] : ''?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">用户图像：</label>
+                            <div class="col-sm-10 mt5">
+                                <span class="">
+                                    <img src="<?php echo $userInfo ? $userInfo['avatar']:""?>" style="width:80px;height: 80px;">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">重置登录密码：</label>
+                            <div class="col-sm-10">
+                                <a href="/player/user/repwd?id=<?php echo $info ? $info['id'] : 0?>">前往重置</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">重置保险箱密码：</label>
+                            <div class="col-sm-10">
+                                <a href="/player/user/resafe?id=<?php echo $info ? $info['id'] : 0?>">前往重置</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">冻结账户：</label>
+                            <div class="col-sm-10">
+                                <?php if($info['status']==0){?>
+                                    <a href="javascript:void(0)" onclick="savestock()">解冻 </a>
+                                <?php }else{?>
+
+                                    <a href="/player/user/stock?id=<?php echo $info ? $info['id'] : 0?>">前往冻结</a>
+                                <?php }?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">修改用户资产：</label>
+                            <div class="col-sm-10">
+                                <a href="/player/user/estate?id=<?php echo $info ? $info['id'] : 0?>">前往修改</a>
+                            </div>
+                        </div>
+
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="/player/user/info?id=<?php echo $info ? $info['id'] : 0?>">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    function savestock() {
+        id = '<?php echo $info ? $info['id'] : 0?>';
+        $.ajax({
+            type: "POST",
+            url: "/player/user/savestock",
+            data: {id:id,status:1},
+            dataType: "json",
+            success: function (msg) {
+
+                if (msg.result == 0) {
+                    showMsg("成功", function () {
+                        window.location.reload();
+                        //history.go(-1);
+                    });
+                } else {
+                    showMsg(msg.message, true);
+                }
+            }
+        });
+    }
+    function ip2addr(ip, callback) {
+        var self = this;
+        var url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=' + ip;
+        $.getScript(url, function () {
+            var addr = remote_ip_info.country + '-' + remote_ip_info.province + '-' + remote_ip_info.city;
+            if (typeof (callback) == 'function')
+                callback.call(self, addr);
+        });
+    }
+    $(function () {
+        ip = "<?php echo $userInfo ? $userInfo['reg_ip'] : ''?>";
+        ip2addr(ip, function (callbackdata) {
+            $('#address').html(callbackdata);
+        })
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {};
+                params.id = $('#id').val();
+                params.nickname = $("#nickname").val();
+                params.realname = $('#realname').val();
+                params.idcard = $('#idcard').val();
+                params.phone = $("#phone").val();
+                params.credit = $("#credit").val();
+                params.gold = $("#gold").val();
+                params.emerald = $("#emerald").val();
+                params.user_level = $("#user_level").val();
+
+
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/player/user/ajaxInfo",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                window.location.reload();
+                                //history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.message, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

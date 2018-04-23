@@ -1,0 +1,109 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "zsnumber": "1",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    },
+    {
+      "zsnumber": "2",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    },
+    {
+      "zsnumber": "3",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    },
+    {
+      "zsnumber": "4",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    },
+    {
+      "zsnumber": "5",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    },
+    {
+      "zsnumber": "6",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    },
+    {
+      "zsnumber": "7",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    },
+    {
+      "zsnumber": "8",
+      "zsuserid": "2016-12-31",
+      "zsgameid": "admin",
+      "zsusername": "3213",
+      "zsnickname":"3231",
+      "zstime": "12321",
+      "zsmoney":"2321",
+      "zsgametime":"后台",
+      "zslinetime":"2321",
+      "zsstarttime":"后台",
+      "zsendtime":"后台"
+    }
+  ]
+}

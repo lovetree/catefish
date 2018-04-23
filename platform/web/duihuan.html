@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>兑换管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+
+			<div class="header">
+
+				<h1 class="page-title">兑换管理</h1>
+			</div>
+
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">
+							<select class="input_btn_h" id="channeltype" name="channeltype">
+								<option value="1">根据用户账号</option>
+								<option value="2">根据游戏ID</option>
+								<option value="3">按用户金币大于等于</option>
+								<option value="4">按用户金币小于等于</option>
+								<option value="5">按银行金币大于等于</option>
+								<option value="6">按银行金币小于等于</option>
+							</select>
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+						
+							<thead class="theadtbody">
+								<tr>
+									<th>游戏ID</th>
+									<th>用户账号</th>
+									<th>用户昵称</th>
+									<th>金币</th>
+									<th>银行</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax(money, {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'ordering': false,
+									'aoColumns': [{
+										'mDataProp': 'gameid',
+									}, {
+										'mDataProp': 'username',
+										'render': function(data, type, full, meta) {
+											return '<a href="member_user.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'usernickname',
+									}, {
+										'mDataProp': 'money',
+									}, {
+										'mDataProp': 'bank',
+									}, {
+										'mDataProp': 'moneybank',
+									}, {
+										'mDataProp': 'medal',
+									}, {
+										'mDataProp': 'experience',
+									}, {
+										'mDataProp': 'revenue',
+									}, {
+										'mDataProp': 'gameoffice',
+									}, {
+										'mDataProp': 'win',
+									}, {
+										'mDataProp': 'lose',
+									}, {
+										'mDataProp': 'he',
+									}, {
+										'mDataProp': 'tao',
+									}, {
+										'mDataProp': 'loginprice',
+									}, {
+										'mDataProp': 'gametime',
+									}, {
+										'mDataProp': 'linetime',
+									}, {
+										'mDataProp': 'ingame',
+									}, {
+										'mDataProp': 'inroom',
+									}, {
+										'mDataProp': 'lastlogintime',
+									}, {
+										'mDataProp': 'lastloginlocation',
+									}],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										},
+										'selected': function() {
+											return $("#channeltype option:checked").val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+
+			<footer>
+				<hr>
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+
+</html>

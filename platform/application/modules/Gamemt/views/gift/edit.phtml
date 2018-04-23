@@ -1,0 +1,190 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">礼物名称：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" name="name"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['name'] : ''?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">单位：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="unit" name="unit"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['unit'] : ''?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">礼物图标：</label>
+                            <div class="col-sm-10">
+                                <?php if($info):?>
+                                <img src="<?php echo $info['icon']?>" class="icon"  style="max-height:100px;" />
+                                <?php else:?>
+                                <img src="/files/official.jpg" class="icon"  style="max-height:100px;" />
+                                <?php endif;?>
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">排序：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="g_sort" name="g_sort"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['g_sort'] : 0?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">价格(金币)：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="gold" name="gold"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['gold'] : 0?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">人气：</label>
+                            <div class="col-sm-10">
+                                <span>正数表示增加人气，负数表示减少人气</span><br>
+                                <input type="text" id="popularity" name="popularity"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['popularity'] : ""?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">类型值：</label>
+                            <div class="col-sm-10">
+                                <span>对应cocos前端的特效id，不可重复添加</span><br>
+                                <input type="text" id="g_type" name="g_type"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['g_type'] : ""?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                unit: {
+                    required: true
+                },
+                g_sort: {
+                    required: true,
+                    number:true
+                },
+                gold: {
+                    required: true,
+                    number:true
+                },
+                popularity: {
+                    required: true,
+                    number:true
+                },
+                g_type: {
+                    required: true,
+                    number:true
+                }
+            },
+            messages: {
+                name: {
+                    required: '不可为空'
+                },
+                unit: {
+                    required: '不可为空'
+                },
+                g_sort: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                gold: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                popularity: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                g_type: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    'name': $('#name').val(),
+                    'unit': $('#unit').val(),
+                    'g_sort': $('#g_sort').val(),
+                    'icon': $('.icon').attr('src'),
+                    'gold' : $('#gold').val(),
+                    'popularity' : $('#popularity').val(),
+                    'g_type' : $('#g_type').val()
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/gift/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

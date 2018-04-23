@@ -1,0 +1,101 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "name": "1",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    },
+    {
+      "name": "2",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    },
+    {
+      "name": "3",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    },
+    {
+      "name": "4",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    },
+    {
+      "name": "5",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    },
+    {
+      "name": "6",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    },
+    {
+      "name": "7",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    },
+    {
+      "name": "8",
+      "ymmanage": "2016-12-31",
+      "ymmark": "admin",
+      "ymname": "3213",
+      "ymgamename":"3231",
+      "ymnod": "12321",
+      "ymtype":"2321",
+      "ymsort":"后台",
+      "ymresources":"2321",
+      "ymstate":"后台"
+    }
+  ]
+}

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>新增会员信息</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" media="all" href="lib/bootstrap/css/daterangepicker-bs3.css" />
+       
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
+        <link href="lib/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
+        <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
+
+        <script type="text/javascript" src="lib/jquery-1.8.3.min.js"></script>     
+        <script type="text/javascript" src="lib/bootstrap/js/bootstrap1.min.js"></script>
+        <script type="text/javascript" src="lib/moment.js"></script>
+
+        <script type="text/javascript" src="lib/daterangepicker.js"></script>
+
+        <style type="text/css">
+            #line-chart {
+                height: 300px;
+                width: 800px;
+                margin: 0px auto;
+                margin-top: 1em;
+            }
+            
+            .brand {
+                font-family: georgia, serif;
+            }
+            
+            .brand .first {
+                color: #ccc;
+                font-style: italic;
+            }
+            
+            .brand .second {
+                color: #fff;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body class="">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav pull-right">
+
+                    <li id="fat-menu" class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-user"></i>admin
+                            <i class="icon-caret-down"></i>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a tabindex="-1" href="#">个人信息</a>
+                            </li>
+                            <li class="divider"></li>
+
+                            <li class="divider visible-phone"></li>
+                            <li>
+                                <a tabindex="-1" href="sign-in.html">安全退出</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="hidden-phone visible-tablet visible-desktop" role="button">后台首页</a>
+                    </li>
+                </ul>
+                <a class="brand" href="index.html"><span class="first"></span> <span class="second">后台管理系统</span></a>
+            </div>
+        </div>
+
+        <div class="sidebar-nav">
+            <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>游戏用户<i class="icon-chevron-up"></i></a>
+            <ul id="dashboard-menu" class="nav nav-list collapse in">
+                <li>
+                    <a href="member_user.html">用户管理</a>
+                </li>
+                <li>
+                    <a href="money.html">金币管理</a>
+                </li>
+                <li>
+                    <a href="game.html">游戏记录</a>
+                </li>
+                <li>
+                    <a href="winorlose.html">输赢排行榜</a>
+                </li>
+                <li>
+                    <a href="winorlose.html">比赛排行榜</a>
+                </li>
+                <li>
+                    <a href="jifen.html">积分管理</a>
+                </li>
+                <li>
+                    <a href="inventory.html">魅力管理</a>
+                </li>
+                <li>
+                    <a href="#">奖牌管理</a>
+                </li>
+                <li>
+                    <a href="bank.html">银行记录</a>
+                </li>
+                <li>
+                    <a href="rotary.html">转盘中奖记录</a>
+                </li>
+                <li>
+                    <a href="#">赠送记录</a>
+                </li>
+                <li>
+                    <a href="blacklist.html">手机黑名单</a>
+                </li>
+                <li>
+                    <a href="#">限制IP地址</a>
+                </li>
+                <li>
+                    <a href="#">限制机器码</a>
+                </li>
+                <li>
+                    <a href="kaxian.html">卡线管理</a>
+                </li>
+                <li>
+                    <a href="#">游戏难易度微调</a>
+                </li>
+                <li>
+                    <a href="#">用户难易度微调</a>
+                </li>
+            </ul>
+
+            <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>充值系统<i class="icon-chevron-up"></i></a>
+            <ul id="accounts-menu" class="nav nav-list collapse">
+                <li>
+                    <a href="members.html">会员卡管理</a>
+                </li>
+                <li>
+                    <a href="#">库存统计</a>
+                </li>
+                <li>
+                    <a href="brand.html">实卡生成</a>
+                </li>
+                <li>
+                    <a href="brand.html">充值记录</a>
+                </li>
+                <li>
+                    <a href="brand.html">订单管理</a>
+                </li>
+                <li>
+                    <a href="brand.html">易宝管理</a>
+                </li>
+                <li>
+                    <a href="brand">充值日报查询</a>
+                </li>
+                <li>
+                    <a href="brand">实卡销售网点</a>
+                </li>
+            </ul>
+            <a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-cog"></i>系统维护 <i class="icon-chevron-up"></i></a>
+            <ul id="error-menu" class="nav nav-list collapse">
+                <li>
+                    <a href="#">机器管理</a>
+                </li>
+                <li>
+                    <a href="#">游戏管理</a>
+                </li>
+                <li>
+                    <a href="#">房间管理</a>
+                </li>
+                <li>
+                    <a href="#">系统信息</a>
+                </li>
+                <li>
+                    <a href="#">系统设置</a>
+                </li>
+                <li>
+                    <a href="#">泡点设置</a>
+                </li>
+                <li>
+                    <a href="#">推广工具</a>
+                </li>
+                <li>
+                    <a href="#">道具管理</a>
+                </li>
+                <li>
+                    <a href="#">在线统计</a>
+                </li>
+            </ul>
+
+            <a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>网站系统<i class="icon-chevron-up"></i></a>
+            <ul id="legal-menu" class="nav nav-list collapse">
+                <li>
+                    <a href="#">新闻管理</a>
+                </li>
+                <li>
+                    <a href="#">规则管理</a>
+                </li>
+                <li>
+                    <a href="#">问题管理</a>
+                </li>
+                <li>
+                    <a href="#">比赛管理</a>
+                </li>
+                <li>
+                    <a href="#">回馈管理</a>
+                </li>
+                <li>
+                    <a href="#">商城管理</a>
+                </li>
+            </ul>
+
+            <a href="#ht-menu" class="nav-header" data-toggle="collapse"><i class="icon-comment"></i>后台系统<i class="icon-chevron-up"></i></a>
+            <ul id="ht-menu" class="nav nav-list collapse">
+                <li>
+                    <a href="#">管理员管理</a>
+                </li>
+                <li>
+                    <a href="#">管理系统设置</a>
+                </li>
+                <li>
+                    <a href="#">系统统计</a>
+                </li>
+                <li>
+                    <a href="#">房间统计</a>
+                </li>
+                <li>
+                    <a href="#">综合统计</a>
+                </li>
+            </ul>
+
+            <a href="#note-menu" class="nav-header" data-toggle="collapse"><i class="icon-exclamation-sign"></i>操作日志<i class="icon-chevron-up"></i></a>
+            <ul id="note-menu" class="nav nav-list collapse">
+                <li>
+                    <a href="#">安全日志</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="content">
+
+            <div class="header">
+
+                <h1 class="page-title">新增会员信息</h1>
+            </div>
+            <ul id="myTab" class="nav nav-tabs">
+
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <form class="form-horizontal" role="form">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">基本信息</h4>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">用户名:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">用户昵称:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">登陆密码:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">确认登陆密码:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">性别:</label>
+                            <div class="controls">
+                                <select style="width:200px;" name="channelType">
+                                    <option value="123456">男</option>
+                                    <option value="498126">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">个性签名:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">头像:</label>
+                            <div class="controls">
+                                <input type="file" name="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">选项:</label>
+                            <div class="controls">
+                                <input type="checkbox" name="check" value="冻结账号">冻结账号
+                                <input type="checkbox" name="check" value="安全关闭">安全关闭
+                                <input type="checkbox" name="check" value="设为测试员">设为测试员
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">锁定机器:</label>
+                            <div class="controls">
+                                <input type="checkbox" name="check" value="未锁定">未锁定
+                                <input type="checkbox" name="check" value="客户端锁定">客户端锁定
+                                <input type="checkbox" name="check" value="网页锁定">网页锁定
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">经验值:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">会员级别:</label>
+                            <div class="controls">
+                                <select style="width:200px;" name="channelType">
+                                    <option value="123456">普通会员</option>
+                                    <option value="498126">蓝钻会员</option>
+                                    <option value="498126">黄钻会员</option>
+                                    <option value="498126">白钻会员</option>
+                                    <option value="498126">红钻会员</option>
+                                    <option value="498126">紫钻会员</option>
+                                    <option value="498126">绿钻会员</option>
+                                    <option value="498126">VIP房卡</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">详细信息</h4>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">真实姓名:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">QQ号码:</label>
+                            <div class="controls">
+                                <input type="text" name="">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">电子邮箱:</label>
+                            <div class="controls">
+                                <input type="text" name="" value="p">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">固定电话:</label>
+                            <div class="controls">
+                                <input type="text" name="" value="p">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">手机号码:</label>
+                            <div class="controls">
+                                <input type="text" name="" value="p">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">邮政编码:</label>
+                            <div class="controls">
+                                <input type="text" name="" value="8">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">居住地址:</label>
+                            <div class="controls">
+                                <input type="text" name="" value="8">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">用户备注:</label>
+                            <div class="controls">
+                                <input type="text" name="" value="8">
+                            </div>
+                        </div>
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">权限信息</h4>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">用户权限:</label>
+                            <div class="controls">
+
+                                <label>
+                                <input type="checkbox" name="check_user" value="全选" onclick="check_all(this,'check_user');">全选
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="不能进行游戏">不能进行游戏
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="不能旁观游戏">不能旁观游戏
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="不能发送私聊">不能发送私聊
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="不能大厅聊天">不能大厅聊天
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="不能游戏聊天">不能游戏聊天
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="游戏双倍积分">游戏双倍积分
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="游戏踢出用户">游戏踢出用户
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="游戏比赛用户">游戏比赛用户
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check_user" value="在线送金币">在线送金币
+                                </label>
+                                
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">用户身份:</label>
+                            <div class="controls">
+                                <select style="width:200px;" name="channelType">
+                                    <option value="123456">普通玩家</option>
+                                    <option value="498126">管理员</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">管理权限:</label>
+                            <div class="controls">
+                                <label>
+                                <input type="checkbox" name="check" value="全选" onclick="check_main(this,'check_user');">全选
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="不能进行游戏">不能进行游戏
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="不能旁观游戏">不能旁观游戏
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="不能发送私聊">不能发送私聊
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="不能大厅聊天">不能大厅聊天
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="不能游戏聊天">不能游戏聊天
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="游戏双倍积分">游戏双倍积分
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="游戏踢出用户">游戏踢出用户
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="游戏比赛用户">游戏比赛用户
+                                </label>
+                                <label>
+                                <input type="checkbox" name="check" value="在线送金币">在线送金币
+                                </label>
+                                
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"><input type="reset"  name="" value="重置"></label>
+                            <label class="control-label"><input type="submit" name="" value="保存"></label>
+
+                        </div>
+
+                    </form>
+                    <script type="text/javascript">
+                        function check_all(obj) {
+                            var checkboxs = document.getElementsByName('check_user');
+                            for(var i = 0; i < checkboxs.length; i += 1) {
+                                checkboxs[i].checked = obj.checked;
+                            }
+                        }
+
+                        function check_main(obj) {
+                            var checkboxs = document.getElementsByName('check');
+                            for(var i = 0; i < checkboxs.length; i += 1) {
+                                checkboxs[i].checked = obj.checked;
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="tab-pane fade" id="ios">
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                            <div class="block span6">
+
+                                <div id="tablewidget1" class="block-body collapse in">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+
+                                                <th>游戏ID</th>
+                                                <th>用户账号</th>
+                                                <th>昵称</th>
+                                                <th>性别</th>
+                                                <th>经验值</th>
+                                                <th>已兑魅力</th>
+                                                <th>会员级别</th>
+                                                <th>管理级别</th>
+                                                <th>注册时间</th>
+                                                <th>注册IP</th>
+                                                <th>注册地址</th>
+                                                <th>登陆次数</th>
+                                                <th>最后登陆时间</th>
+                                                <th>最后登陆IP</th>
+                                                <th>最后登陆地址</th>
+                                                <th>状态</th>
+                                                <th>冻结原因</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                                <td>Mark</td>
+                                                <td>Tompson</td>
+                                                <td>the_mark7</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <script>
+                        $(function() {
+                            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+                                var activeTab = $(e.target).text();
+                                var previousTab = $(e.relatedTarget).text();
+                                $(".active-tab span").html(activeTab);
+                                $(".previous-tab span").html(previousTab);
+                            });
+                        });
+                    </script>
+
+                    <footer>
+                        <hr>
+
+                        <p>&copy; 2017 一指赢</p>
+                    </footer>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="lib/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript">
+            $("[rel=tooltip]").tooltip();
+            $(function() {
+                $('.demo-cancel-click').click(function() {
+                    return false;
+                });
+            });
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>房间管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="" style="background:#FFFFFF">
+
+		
+			<div class="header">
+
+				<h1 class="page-title">房间管理</h1>
+			</div>
+			
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in" id="example">		
+							<input type="button" name="btnadd" id="btnadd" onclick="window.location.href='homeadmin_new.html'" class="input_btn_h input-table" value="新增" />
+							<input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" />
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+							<thead class="theadtbody">
+								<tr>
+									<th><input type="checkbox" name="check" id="checkAll" onclick="check_all();"></th>
+									<th>管理</th>
+									<th>房间标识</th>
+									<th>房间名称</th>
+									<th>游戏名称</th>
+									<th>挂接类型</th>
+									<th>挂接节点</th>
+									<th>游戏类型</th>
+									<th>排序</th>
+									<th>桌子数量</th>
+									<th>房间类型</th>
+									<th>服务端口</th>
+									<th>数据库名称</th>                      
+									<th>数据库地址</th>
+									<th>单位积分</th>
+									<th>税收比例</th>
+									<th>限制积分</th>
+									<th>最低积分</th>
+									<th>最小进入积分</th>
+									<th>最大进入积分</th>
+									<th>最小进入等级</th>
+									<th>最大进入等级</th>
+									<th>最大人数</th>
+									<th>房间规则</th>
+									<th>运行机器</th>
+									<th>冻结状态</th>
+									<th>创建时间</th>
+									<th>修改时间</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							$(function() {
+								var table = $('#example').dataTableAjax(homeadmin, {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									"autoWidth": false,
+									'ordering':false,
+									'aoColumns': [{
+										'mDataProp': 'name',
+										"fnCreatedCell": function(nTd, sData, oData, iRow, iCol) {
+											$(nTd).html("<input type='checkbox' name='check' id='checkbox-check' class='check' value='" + sData + "'>");
+										}
+									}, {
+										'mDataProp': 'homeroom',
+										'render': function(data, type, full, meta) {
+											return '<a href="homeadmin_new.html">' + data + '</a>';
+										}
+									}, {
+										'mDataProp': 'homemanage',
+									}, {
+										'mDataProp': 'homename',
+									}, {
+										'mDataProp': 'homegamename',
+									}, {
+										'mDataProp': 'homegjtype',
+									}, {
+										'mDataProp': 'homegjnode',
+									}, {
+										'mDataProp': 'homegametype',
+									},{
+										'mDataProp': 'homesort',
+									}, {
+										'mDataProp': 'homedesk',
+									}, {
+										'mDataProp': 'hometype',
+									}, {
+										'mDataProp': 'homeport',
+									}, {
+										'mDataProp': 'homesqlname',
+									}, {
+										'mDataProp': 'homelocation',
+									}, {
+										'mDataProp': 'homeunit',
+									}, {
+										'mDataProp': 'homerevenue',
+									}, {
+										'mDataProp': 'homeastrict',
+									}, {
+										'mDataProp': 'homelowest',
+									}, {
+										'mDataProp': 'homeminintegral',
+									}, {
+										'mDataProp': 'homemaxintegral',
+									}, {
+										'mDataProp': 'homemingrade',
+									}, {
+										'mDataProp': 'homemaxgrade',
+									}, {
+										'mDataProp': 'homemaxpeople',
+									}, {
+										'mDataProp': 'homerule',
+									}, {
+										'mDataProp': 'homerobot',
+									}, {
+										'mDataProp': 'homefrozen',
+									}, {
+										'mDataProp': 'homecreattime',
+									}, {
+										'mDataProp': 'homecorrecte',
+									}],
+									postData: {
+										'query': function() {
+											return $('input[aria-controls=example][type=search]').val();
+										}
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+								$('input[type=button][id=btntype]').click(function() {
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+
+			</div>
+			
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>

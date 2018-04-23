@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>标题</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">钻石流水</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                            <span class="input-group-addon">日期</span>
+                            <input class="form-control input-xs input" id="j_Date1" name="startdate" type="text">
+                            <span class="input-group-addon">至</span>
+                            <input class="form-control input-xs input" id="j_Date2" name="enddate" type="text">
+                        </div>
+                        <select class="input_btn_h" id="channeltype" name="channeltype">
+                            <option value="">所有</option>
+                            <option value="1">充值</option>
+                            <option value="2">兑换金币</option>
+                            <option value="3">兑换绿宝石</option>
+                            <option value="4">后台改动</option>
+                            <option value="5">钻石抢装</option>
+                        </select>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <input type="button" onclick="javascript:window.location.reload();" value="刷新" name="btn-query" class="btn btn-default input_btn_h">
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>用户id</th>
+                                <th>用户昵称</th>
+                                <th>改变钻石</th>
+                                <th>改变后钻石 </th>
+                                <th>类型</th>
+                                <th>时间</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+    </div></body></html><script src="js/jquery.form.js"></script><script type="text/javascript" src="js/bootstrap.minv3.js"></script><script type="text/javascript" src="js/bootstrap-dialog.min.js"></script><script type="text/javascript" src="js/main.js"></script><script type="text/javascript" src="js/date.js"></script><script type="text/javascript">
+    var user_id ;
+    var to ;
+    var table;
+    function setuserid(id) {
+        user_id = $('#'+id).val();
+        table.reload();
+    }
+    function settoid(id) {
+        to = $('#'+id).val();
+        table.reload();
+    }
+    $(function () {
+         table = $('#example').dataTableAjax("gamemt/statistics/creditlog", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+                {'mDataProp':'wx_unionid', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    $(nTd).html('<a href="javascript:void(0)" onclick="setuserid('+oData.user_id+')" >' + sData + '</a> <input type="hidden" id="'+oData.user_id+'" value="'+oData.user_id+'">');
+                    }
+                },
+                {'mDataProp':'nickname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    $(nTd).html('<a href="/player/user/info?id='+oData.user_id+'">'+oData.nickname+'</a>');
+                    }
+                },
+                {'mDataProp':'credit_change'},
+                {'mDataProp':'credit_after'},
+                {'mDataProp':'type_name'},
+                {'mDataProp':'time'},
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-user_id', data.user_id);
+                $(row).data('data-nickname', data.nickname);
+                $(row).data('data-credit_change', data.credit_change);
+                 $(row).data('data-credit_after', data.credit_after);
+                $(row).data('data-type_name', data.type);
+                $(row).data('data-time', data.time);
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                },
+                'user_id': function () {
+                    return user_id;
+                },
+                'type': function () {
+                    return $("#channeltype option:checked").val();
+                },
+                'start_time': function () {
+                    return $("#j_Date1").val();
+                },
+                'end_time': function () {
+                    return $("#j_Date2").val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+
+
+</script>

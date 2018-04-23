@@ -1,0 +1,213 @@
+<?php
+<!DOCTYPE html><html lang="en"><head>
+        <meta charset="utf-8">
+        <title>标题</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+    </head>
+<body class="" style="background: #FFFFFF;"><div class="header">
+            <h1 class="page-title">跑马灯消息</h1>
+        </div><div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">		
+                        <input type="button" name="btnadd" id="btnadd" class="input_btn_h input-table" value="新增" data-ctrl-btn="newAction"/>
+                        <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除" data-ctrl-btn="deleteAction"/>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>id</th>
+                                <th>邀请日期</th>
+                                <th>玩家ID</th>
+                                <th>推广者奖励</th>
+                                <th>累计奖励</th>
+                                <th>邀请方式</th>
+                                <th>被推广者ID</th>
+                                <th>被推广者奖励</th>
+                                <th>状态</th>
+
+                                <th>管理</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div><footer><hr></footer></div><div style="display: none;" class="edit-box">
+        <form method="post">
+            <input type="hidden" name="id"/>
+            <table id="tab" border="0" width="100%">
+                <tr><td>玩家ID：<input class="form-control" name="type" type="text" placeholder="玩家ID" ></td><td class="pad-l">推广者奖励：<input class="form-control" name="price" type="text" placeholder="推广者奖励" ></td></tr>
+
+<tr><td>累计奖励：<input class="form-control" name="type" type="text" placeholder="累计奖励" ></td><td class="pad-l">邀请方式：<input class="form-control" name="price" type="text" placeholder="邀请方式" ></td></tr>
+
+<tr><td>被推广者ID：<input class="form-control" name="type" type="text" placeholder="被推广者ID" ></td><td class="pad-l">被推广者奖励：<input class="form-control" name="price" type="text" placeholder="被推广者奖励" ></td></tr>
+
+<tr><td>状态：<input class="form-control" name="type" type="text" placeholder="状态" ></td><td class="pad-l">被推广者奖励：<input class="form-control" name="price" type="text" placeholder="被推广者奖励" ></td></tr>
+
+            
+                <tr>
+                    <td colspan="2" style="padding-top:20px;">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" value="提交">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div></body></html>
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript">
+$(function () {
+        var table = $('#example').dataTableAjax("Gamemt/Invite/list", {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                },
+            			{'mDataProp':'id'},
+			{'mDataProp':'invite_date'},
+			{'mDataProp':'user_id'},
+			{'mDataProp':'prize_for_tg'},
+			{'mDataProp':'prize_total'},
+			{'mDataProp':'invite_way'},
+			{'mDataProp':'btg_user_id'},
+			{'mDataProp':'prize_for_btg'},
+			{'mDataProp':'status'},
+
+                {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+                        return '&nbsp;<button data-ctrl-btn="editAction">编辑</button>';
+                    }}
+            ],
+            createdRow: function (row, data, dataIndex) {
+                			$(row).data('data-id', data.id);
+			$(row).data('data-invite_date', data.invite_date);
+			$(row).data('data-user_id', data.user_id);
+			$(row).data('data-prize_for_tg', data.prize_for_tg);
+			$(row).data('data-prize_total', data.prize_total);
+			$(row).data('data-invite_way', data.invite_way);
+			$(row).data('data-btg_user_id', data.btg_user_id);
+			$(row).data('data-prize_for_btg', data.prize_for_btg);
+			$(row).data('data-status', data.status);
+
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            table_reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+    });
+
+function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('Gamemt/Invite/delete', {
+            msg_id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+function newAction(){
+        editAction(true);
+    }
+
+function editAction(bNew){
+        var msg_id = $(this).parents('tr').data('data-id');var msg_invite_date = $(this).parents('tr').data('data-invite_date');var msg_user_id = $(this).parents('tr').data('data-user_id');var msg_prize_for_tg = $(this).parents('tr').data('data-prize_for_tg');var msg_prize_total = $(this).parents('tr').data('data-prize_total');var msg_invite_way = $(this).parents('tr').data('data-invite_way');var msg_btg_user_id = $(this).parents('tr').data('data-btg_user_id');var msg_prize_for_btg = $(this).parents('tr').data('data-prize_for_btg');var msg_status = $(this).parents('tr').data('data-status');
+        var dialog = $('.edit-box form').dialog({
+            title: '标题 - ' + (bNew ? '新增' : '修改'),
+            nl2br: false
+        }, function () {
+            $(this).attr('id', 'edit_message');
+            if(!bNew){
+                $(this).find('input[name=msg_id]').attr('value', msg_id);$(this).find('input[name=msg_invite_date]').attr('value', msg_invite_date);$(this).find('input[name=msg_user_id]').attr('value', msg_user_id);$(this).find('input[name=msg_prize_for_tg]').attr('value', msg_prize_for_tg);$(this).find('input[name=msg_prize_total]').attr('value', msg_prize_total);$(this).find('input[name=msg_invite_way]').attr('value', msg_invite_way);$(this).find('input[name=msg_btg_user_id]').attr('value', msg_btg_user_id);$(this).find('input[name=msg_prize_for_btg]').attr('value', msg_prize_for_btg);$(this).find('input[name=msg_status]').attr('value', msg_status);
+            }
+        });
+        setTimeout(function () {
+            var $form = $('form[id=edit_message]');
+            $form.find('[widget-date]').each(function(){
+                var id = 'widget-date-' +  $(this).attr('widget-date');
+                $(this).attr('id', id);
+                new Calender({id: id});
+            });
+            //初始化form
+            $form.submit(function () {
+                var num=0;
+                $form.find('input[type=text]').each(function(){
+                      var txt=$(this).val();
+                      if($.trim(txt)==""){
+                          num++;
+                      }
+                });
+                if(num>0){
+                    alert('请将信息填写完整！');
+                    return false;
+                }
+                
+                $form.ajaxSubmit({
+                    url: 'Gamemt/Invite/save',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.result == 0) {
+                            alert(bNew ? '创建成功' : '修改成功');
+                            dialog.close();
+                            table_reload();
+                        } else {
+                            alert(json.msg);
+                        }
+                    }
+                });
+                return false;
+            });
+        }, 200);
+    }
+
+</script>

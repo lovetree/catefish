@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>银行记录</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/tables.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/j.dt.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
+
+</head>
+
+<body class="" style="background: #FFFFFF;">
+<div class="header">
+    <h1 class="page-title">银行记录</h1>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid row-fluid_money">
+        <form method="post" action="#" id=""></form>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6">
+
+            <table class="table display block-body collapse in" id="example">
+                <div class="input-group input-large date-picker input-daterange input-rili input-table" data-date-format="yyyy-mm-dd ">
+                    <span class="input-group-addon">日期</span>
+                    <input class="form-control input-xs input" id="j_Date1" style="min-width: 85px" name="startdate" type="text">
+                    <span class="input-group-addon">至</span>
+                    <input class="form-control input-xs input" id="j_Date2" style="min-width: 85px" name="enddate" type="text">
+                </div>
+                <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="今天">
+                <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="昨天">
+                <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="本周">
+                <thead class="theadtbody">
+                <tr>
+                    <th>时间</th>
+                    <th>交易类型</th>
+                    <th>交易前现金</th>
+                    <th>交易后现金</th>
+                    <th>交易前银行</th>
+                    <th>交易后银行</th>
+                    <th>交易金币</th>
+                    <th>服务费</th>
+                    <th>操作场所</th>
+                    <th>操作地址</th>
+                    <th>游戏</th>
+                    <th>房间</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody class="theadtbody"></tbody>
+            </table>
+            <script type="text/javascript">
+                $(function () {
+                    var table = $('#example').dataTableAjax(orders, {
+                        'bLengthChange': false,
+                        'iDisplayLength': 10,
+                        'searching': true,
+                        'processing': true,
+                        'serverSide': true,
+                        "autoWidth": false,
+                        'ordering': false,
+                        'aoColumns': [
+                            {'mDataProp': 'created_date'},
+                            {'mDataProp': 'order_id'},
+                            {'mDataProp': 'username', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).html(sData + '&nbsp;(ID: ' + oData.user_id + ')');
+                            }
+                            },
+                            {'mDataProp': 'goods_id', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).html(oData.goods_detail.name + '&nbsp;(ID: ' + sData + ')');
+                            }
+                            },
+                            {'mDataProp': 'actually_fee'},
+                            {'mDataProp': 't_cash_fee'},
+                            {'mDataProp': 't_cash_fee_type'},
+                            {'mDataProp': 'status', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                                var status = '';
+                                switch (parseInt(sData)) {
+                                    case 0:
+                                        status = '待支付';
+                                        break;
+                                    case 1:
+                                        status = '已支付';
+                                        break;
+                                    case 2:
+                                        status = '已退款';
+                                        break;
+
+                                }
+                                $(nTd).html(status);
+                            }
+                            },
+                            {'mDataProp': 'pay_channel'},
+                            {'mDataProp': 'pay_time'},
+                            {'mDataProp': 'ip', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                                ip2addr(sData, function (callbackdata) {
+                                    $(nTd).html(callbackdata + '(' + sData + ')');
+                                });
+                            }
+                            }
+                        ],
+                        postData: {
+                            'query': function () {
+                                return $('input[aria-controls=example][type=search]').val();
+                            },
+                            'query_type': function () {
+                                return $("#channeltype option:checked").val();
+                            },
+                            'start_time': function () {
+                                return $("#j_Date1").val();
+                            },
+                            'end_time': function () {
+                                return $("#j_Date2").val();
+                            }
+                        },
+                    });
+                    $('input[aria-controls=example][type=search]').unbind();
+                    $('input[aria-controls=example][type=search]').keyup(function (e) {
+                        if (e.keyCode === 13) {
+                            table.reload();
+                        }
+                    });
+                    $('input[type=button][id=btntype]').click(function () {
+                        table_reload();
+                    });
+
+                    window.table_reload = function () {
+                        $('input[aria-controls=example][type=search]').focus();
+                        table.reload();
+                    };
+                });
+            </script>
+
+        </div>
+    </div>
+
+</div>
+<footer>
+    <hr>
+
+    <p>&copy; 2017 一指赢</p>
+</footer>
+
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

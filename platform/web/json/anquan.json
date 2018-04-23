@@ -1,0 +1,85 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "czmark": "1",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    },
+    {
+      "czmark": "2",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"超级管理员",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    },
+    {
+      "czmark": "3",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    },
+    {
+      "czmark": "4",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"超级管理员",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    },
+    {
+      "czmark": "5",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    },
+    {
+      "czmark": "6",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    },
+    {
+      "czmark": "7",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"查询条件 WHERE 1=1 and IsAndroid = 0 玩家信息",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    },
+    {
+      "czmark": "8",
+      "cztime": "2016-12-31",
+      "czaccount": "admin",
+      "czid": "0",
+      "czevent":"超级管理员",
+      "czpage": "index.html",
+      "czip":"192.168.0.1",
+      "cztype":"后台"
+    }
+  ]
+}

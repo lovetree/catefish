@@ -1,0 +1,9 @@
+*{margin:0px; padding:0px; font-family:"Microsoft YaHei","微软雅黑",Helvetica, Arial,Tahoma;}
+li{list-style:none;}
+.top{background-color:#2c2d3c; height:80px; max-width: 1920px;}
+.top ul{width:1200px; margin:0 auto; font-family:"方圆准圆体"; position:relative; z-index: 999;}
+.top ul a{color:#fff;}
+.top ul li{width:180px; height: 80px; float:left; text-align:center; line-height:25px; padding-top:17px; box-sizing:border-box; cursor:pointer;}
+.top ul li:hover{background-color:#ffb01c;}
+.top ul li p{font-size:12px;}
+.top ul li.down{background-color:#ffb01c;}

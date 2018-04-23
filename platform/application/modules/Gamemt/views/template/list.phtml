@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>活动管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/tables.css" />
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/j.dt.min.js"></script>
+    <script type="text/javascript" src="/js/moment.js"></script>
+    <script type="text/javascript" src="/js/mos.js"></script>
+    <script src="/skin/js/bootbox.min.js"></script>
+    <style>
+        table#tab input,table#tab textarea{
+            margin-top:5px;
+        }
+        table#tab td{ height: 70px;text-align: left !important;}
+        table#tab .pad-l{padding-left:30px;}
+        table#tab .sel{float:left; border-radius:0px; margin-bottom:5px; max-width:200px; margin-right:30px;}
+        table#tab .wid{width:100px; margin:0 10px 5px 0; float:left; vertical-align:middle;}
+        table#tab .delspan{cursor:pointer; font-size:12px; font-weight:normal;}
+        table#tab td.seltd{ border: 1px solid #ccc;}
+        table#tab div.box{ max-height:150px; overflow-y:auto; padding:10px 0 5px 10px;}
+        table#tab span.inser{border: 1px solid #ccc; font-size:12px; padding:3px 10px; float:right; cursor:pointer;}
+        table#tab textarea.tex{ height:70px; line-height:20px;  padding:5px 7px; resize:none; border-radius:0px;}
+        .theadtbody{text-align: left !important;}
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+            vertical-align: text-bottom !important;
+        }
+    </style>
+</head>
+
+<body class="" style="background: #FFFFFF;">
+<div class="header">
+    <h1 class="page-title">活动管理</h1>
+</div>
+<ul id="myTab" class="nav nav-tabs">
+    <li>
+        <a href="#User">活动管理</a>
+    </li>
+    <li>
+        <a href="/gamemt/subject/list">专题管理</a>
+    </li>
+    <li class="active">
+        <a href="/gamemt/template/list">模板管理</a>
+    </li>
+</ul>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6 dataTables_wrapper">
+            <table class="table display block-body collapse in" id="example">
+                <input type="button" name="btnadd" id="btnadd" onclick="window.location.reload()" class="input_btn_h input-table" value="刷新" />
+                <input type="button" name="btndelete" id="btndOn" class="input_btn_h input-table" value="上线" data-ctrl-btn="upAction"/>
+                <input type="button" name="btndelete" id="btndDown" class="input_btn_h input-table" value="下线" data-ctrl-btn="downAction"/>
+                <thead class="theadtbody">
+                    <tr>
+                        <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                        <th>ID</th>
+                        <th>模板名称</th>
+                        <th>模板类型</th>
+                        <th>最后编辑时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="theadtbody">
+                    <?php if($list):?>
+                    <?php foreach ($list as $k=>$v):?>
+                    <tr role='row' class='odd'>
+                        <td><input type='checkbox' name='line-check' class='check' value='<?php echo $v['id']?>'></td>
+                        <td><?php echo $v['id']?></td>
+                        <td><?php echo $v['t_name']?></td>
+                        <td>
+                            <?php if($v['t_type'] == 1):?>
+                            返现类活动
+                            <?php elseif($v['t_type'] == 2):?>
+                            充值类活动
+                            <?php endif;?>
+                        </td>
+                        <td><?php echo $v['u_time']?></td>
+                        <td><?php echo $v['status'] == 1 ? '上线':'下线';?></td>
+                        <td>
+                            <button class="model_click" mid="<?php echo $v['id']?>" mtitle="<?php echo $v['t_name']?>" data-ctrl-btn="editAction">改名</button>
+                        </td>
+                    </tr>
+                    <?php endforeach;?>
+                    <?php else:?>
+                    <tr role='row' class='odd'>
+                        <td colspan="7" style="text-align:center;" >暂无信息</td>
+                    </tr>
+                    <?php endif;?>
+                </tbody>
+            </table>
+            <?php include_once VIEW_COMMON."page.php"; ?>
+        </div>
+    </div>
+    <script>
+        $(".model_click").click(function(){
+            $("#mid").val($(this).attr("mid"));
+            $("#t_name").val($(this).attr("mtitle"));
+            $('#Modal_MM').modal({show: true, backdrop: 'static'});
+        });
+        function clickModel(){
+            var t_title = $("#t_name").val();
+            var id = $("#mid").val();
+            if (id == null){
+                showMsg("id号不合法", true);
+                return;
+            }
+            $('#save').html('保存...').removeAttr('disabled');
+            var params = {};
+            params.id = id;
+            params.t_name = t_title;
+            $.ajax({
+                type: "POST",
+                url: "/gamemt/template/save",
+                data: params,
+                dataType: "json",
+                success: function (msg) {
+                    if (msg.result == 0) {
+                        showMsg("成功", function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        showMsg(msg.message, true);
+                    }
+                }
+            });
+        }
+    </script>
+    <div class="modal fade" id="Modal_MM">
+        <div class="modal-dialog" >  
+            <div class="modal-content">  
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>  
+                    <h4 class="modal-title" id="NoPermissionModalLabel">编辑</h4>  
+                </div>  
+                <div class="modal-body" style='padding: 0;margin: 0;'> 
+                    <fieldset>
+                        <input id="mid" type="hidden" />
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">模板名称:</label>
+                            <div class="col-sm-8">
+                                <input class="form-control"  id="t_name" type="text" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>  
+                <div class="modal-footer">  
+                    <button id="save" onclick="javascript:clickModel()" class="btn btn-primary"  type="button">提交</button> 
+                    <button class="btn btn-default"  type="button" data-dismiss="modal" aria-hidden="true" >关闭</button>  
+                </div>  
+            </div>  
+        </div>  
+    </div>
+</div>
+<footer><hr></footer>
+</body>
+
+</html>
+
+<script src="/js/jquery.form.js"></script>
+<script type="text/javascript" src="/js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="/js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/date.js"></script>
+
+<script type="text/javascript">
+    function deletprop(){
+        $(this).parents('p').remove();
+    }
+    
+    window.table_reload = function () {
+        $('input[aria-controls=example][type=search]').focus();
+        table.reload();
+    };
+        
+    function setActive() {
+        var msg_id = $(this).parents('tr').data('data-id');
+        var status = $(this).attr('rel');
+        $.post('system/goods/active', {
+            goods_id: msg_id,
+            status: status
+        }, function (json) {
+            if (json.result == 0) {
+                showMsg('修改成功', function(){
+                    window.location.reload();
+                });
+            } else {
+                showMsg(json.msg, true);
+            }
+        }, 'json');
+    }
+    
+    function downAction() {
+        doPost('/gamemt/template/update', {'status':0});
+    }
+    
+    function deleteAction() {
+        doPost('/gamemt/template/delete');
+    }
+    
+    function upAction() {
+        doPost('/gamemt/template/update', {'status':1});
+    }
+    
+    function doPost(url, params={}){
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            showMsg("请选择要操作的选项", true);
+            return;
+        }
+        params['id'] = list;
+        $.post(url, params, function (json) {
+            if (json.result == 0) {
+                showMsg('修改成功', function(){
+                    window.location.reload();
+                });
+            } else {
+                showMsg(json.msg, true);
+            }
+        }, 'json');
+    }
+</script>

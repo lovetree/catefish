@@ -1,0 +1,226 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种kind值：</label>
+                            <div class="col-sm-10">
+                                <span class="red">鱼种kind值一旦添加，不可修改，kind值不可重复添加</span><br>
+                                <input type="text" id="kind" name="kind" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['kind'] : ""?>' <?php echo $info ? "readonly" : ""?>>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种名称：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="name" name="name" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['name'] : ""?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种宝石：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="saphire" name="saphire" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['saphire'] : 0?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种速度：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="speed" name="speed" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['speed'] : 1?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种金币倍速：</label>
+                            <div class="col-sm-10">
+                                <span class="red">固定值输入整数，区间值已英文逗号分隔，如倍速30到50之间：30,50</span><br>
+                                <input type="text" id="multiple" name="multiple" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['multiple'] : 1?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种血量：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="hp" name="hp" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['hp'] : 1?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种血量倍速：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="localmultiple" name="localmultiple" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['localmultiple'] : 1?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种波动值：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="hpvar" name="hpvar" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['hpvar'] : 1?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">鱼种捕捉概率：</label>
+                            <div class="col-sm-10">
+                                <span class="red">取值：0-1000之间</span><br>
+                                <input type="text" id="captureProbability" name="captureProbability" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['captureProbability'] : 1?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                kind: {
+                    required: true,
+                    number:true
+                },
+                name: {
+                    required: true
+                },
+                saphire: {
+                    required: true,
+                    number:true
+                },
+                speed: {
+                    required: true,
+                    number:true
+                },
+                multiple: {
+                    required: true
+                },
+                hp: {
+                    required: true,
+                    number:true
+                },
+                localmultiple: {
+                    required: true,
+                    number:true
+                },
+                hpvar: {
+                    required: true,
+                    number:true
+                },
+                captureProbability: {
+                    required: true,
+                    number:true
+                }
+            },
+            messages: {
+                kind: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                name: {
+                    required: '不可为空'
+                },
+                saphire: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                speed: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                multiple: {
+                    required: '不可为空'
+                },
+                hp: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                localmultiple: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                hpvar: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                captureProbability: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    'kind': $('#kind').val(),
+                    'name': $('#name').val(),
+                    'saphire': $('#saphire').val(),
+                    'speed': $('#speed').val(),
+                    'hp': $('#hp').val(),
+                    'multiple': $('#multiple').val(),
+                    'localmultiple': $('#localmultiple').val(),
+                    'hpvar': $('#hpvar').val(),
+                    'captureProbability': $('#captureProbability').val()
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/fish/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

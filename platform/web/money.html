@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>金币管理</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+
+
+        <!-- 导航结束 -->
+
+
+        <div class="header">
+
+            <h1 class="page-title">金币管理</h1>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+
+                    <table class="table display block-body collapse in" id="example">
+                        <select class="input_btn_h" id="channeltype" name="channeltype">
+                            <option value="wx_unionid">根据用户ID</option>
+                            <!--<option value="user_name">根据用户账号</option>-->
+                            <option value="gold_above">按用户金币大于等于</option>
+                            <option value="gold_below">按用户金币小于等于</option>
+                        </select>
+                        <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+
+                        <thead class="theadtbody">
+                            <tr>
+                                <th>玩家ID</th>
+                                <th>玩家账号</th>
+                                <th>玩家昵称</th>
+                                <th>金币</th>
+                                <th>保险柜金币</th>
+                                <th>钻石</th>
+                                <th>赢局</th>
+                                <th>输局</th>
+                                <th>更新时间</th>
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+                    </table>
+                    <script type="text/javascript">
+                        $(function () {
+                            var table = $('#example').dataTableAjax("Player/Gold/list", {
+                                'bLengthChange': false,
+                                'iDisplayLength': 10,
+                                'searching': true,
+                                'processing': true,
+                                'serverSide': true,
+                                "autoWidth": false,
+                                'aoColumns': [
+                                    {'mDataProp': 'wx_unionid'},
+                                    {'mDataProp': 'username'},
+                                    {'mDataProp': 'nickname'},
+                                    {'mDataProp': 'gold'},
+                                    {'mDataProp': 'sgold'},
+                                    {'mDataProp': 'credit'},
+                                    {'mDataProp': 'win_num'},
+                                    {'mDataProp': 'lose_num'},
+                                    {'mDataProp': 'update_date'}
+                                ],
+                                postData: {
+                                    'query': function () {
+                                        return $('input[aria-controls=example][type=search]').val();
+                                    },
+                                    'query_type': function () {
+                                        return $("#channeltype option:checked").val();
+                                    }
+                                },
+                                columnDefs: [{
+                                    'orderable': false,
+                                    'targets': [0,1,2,6,7,8]
+                                }],
+                                'order': [
+                                    [8, 'desc']
+                                ]
+                            });
+                            $('input[aria-controls=example][type=search]').unbind();
+                            $('input[aria-controls=example][type=search]').keyup(function (e) {
+                                if (e.keyCode === 13) {
+                                    table.reload();
+                                }
+                            });
+                            $('input[type=button][id=btntype]').click(function () {
+                                $('input[aria-controls=example][type=search]').focus();
+                                table.reload();
+                            });
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <hr>
+            <p>&copy; 2017 一指赢</p>
+        </footer>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </body>
+
+</html>

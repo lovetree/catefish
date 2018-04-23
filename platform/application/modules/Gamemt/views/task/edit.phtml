@@ -1,0 +1,211 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">任务类型：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="t_type" type="radio" value="1" class="ace" checked="checked"/>
+                                    <span class="lbl">日常</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                              <!--  <label >
+                                    <input name="t_type" type="radio" value="2" 
+                                           class="ace" <?php /*echo $info && $info['t_type'] == 2 ? 'checked':''*/?>>
+                                    <span class="lbl">推广</span>
+                                </label>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">任务来源：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="source" type="radio" value="1" class="ace" checked="checked"/>
+                                    <span class="lbl">捕鱼</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="2" 
+                                           class="ace" <?php echo $info && $info['source'] == 2 ? 'checked':''?>>
+                                    <span class="lbl">商城购买</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="2" 
+                                           class="ace" <?php echo $info && $info['source'] == 3 ? 'checked':''?>>
+                                    <span class="lbl">炮台解锁</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="source" type="radio" value="2" 
+                                           class="ace" <?php echo $info && $info['source'] == 4 ? 'checked':''?>>
+                                    <span class="lbl">分享</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">奖励值：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="reward" name="reward" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['reward'] : 0?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">奖励类型：</label>
+                            <div class="col-sm-10">
+                                <label>
+                                    <input name="reward_type" type="radio" value="gold" class="ace" checked="checked"/>
+                                    <span class="lbl">金币</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="reward_type" type="radio" value="credit" 
+                                           class="ace" <?php echo $info && $info['reward_type'] == 'credit' ? 'checked':''?>>
+                                    <span class="lbl">钻石</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="reward_type" type="radio" value="emerald" 
+                                           class="ace" <?php echo $info && $info['reward_type'] == 'emerald' ? 'checked':''?>>
+                                    <span class="lbl">绿宝石</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="reward_type" type="radio" value="frozen" 
+                                           class="ace" <?php echo $info && $info['reward_type'] == 'frozen' ? 'checked':''?>>
+                                    <span class="lbl">冰封道具</span>
+                                </label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input name="reward_type" type="radio" value="eagleeye" 
+                                           class="ace" <?php echo $info && $info['reward_type'] == 'eagleeye' ? 'checked':''?>>
+                                    <span class="lbl">鹰眼道具</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">达标次数：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="conditions" name="conditions" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['conditions'] : 1?>'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">排序：</label>
+                            <div class="col-sm-10">
+                                <span>值越小越靠前</span><br>
+                                <input type="text" id="t_sort" name="t_sort" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['t_sort'] : 0?>'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                reward: {
+                    required: true,
+                    number:true
+                },
+                conditions: {
+                    required: true,
+                    number:true
+                },
+                t_sort: {
+                    required: true,
+                    number:true
+                }
+            },
+            messages: {
+                reward: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                conditions: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                },
+                t_sort: {
+                    required: '不可为空',
+                    number: '请输入整数'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {
+                    'id': $('#id').val(),
+                    't_type': $("input[name='t_type']:checked").val(),
+                    'source': $("input[name='source']:checked").val(),
+                    'reward': $('#reward').val(),
+                    'reward_type': $("input[name='reward_type']:checked").val(),
+                    'conditions' : $('#conditions').val(),
+                    't_sort' : $('#t_sort').val()
+                };
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/task/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.msg, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

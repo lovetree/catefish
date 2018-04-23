@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>游戏下载</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <style>
+        .men-m p.p1{line-height: 32px;}
+
+        .down p.fon2{margin-bottom:24px;}
+        .down .mar-d{margin-right:60px;}
+        .down .p2-mar{margin:13px 0 32px 0;}
+        .down .rad{border-radius:10px;}
+        .down .rit-btn{background-color:#ffb01c; margin-left: 19px;}
+    </style>
+</head>
+<body>
+<div class="top">
+    <!--<div id="icon"><img src="images/favicon.ico" alt=""></div>-->
+    <ul>
+        <a href="index.html" target="_parent"><li>首页<p>HOME</p></li></a>
+        <a href="gamedown.html" target="_parent"><li class="down">游戏下载<p>DOWNLOAD</p></li></a>
+        <a href="recharge.html" target="_parent"><li>账户充值<p>RECHARGE</p></li></a>
+        <a href="newnotice.html" target="_parent"><li>新闻公告<p>NEW NOTICE</p></li></a>
+        <a href="basicdata.html" target="_parent"><li>会员中心<p>VIP</p></li></a>
+        <a href="gameStr.html" target="_parent"><li>心得攻略 <p>GAME STRATEGY</p></li></a>
+        <a href="servicehelp.html" target="_parent"><li>客服帮助<p>SERVICE</p></li></a>
+    </ul>
+</div>
+    <div class="box">
+        <div class="zbox">
+            <div class="fla-l menlef">
+                <p class="p1 cor fon2">最新游戏</p>
+                <div class="cen b-z cor5 fon3">
+                    <div class="mar-b ">
+                        <img src="images/0_03.png" width="120px" height="120px" class="fla-l">
+                        <div class="box-btn fla-l txt-cen">
+                            <span class="dis">西湖牛牛</span>
+                            <a href="" class="txt-cen fon5 cor noline">点击下载</a>
+                        </div>
+                        <div class="flex"></div>
+                    </div>
+                    <div class="mar-b">
+                        <img src="images/0_05.png" width="120px" height="120px" class="fla-l">
+                        <div class="box-btn fla-l txt-cen">
+                            <span class="dis">西湖牛牛</span>
+                            <a href="" class="txt-cen fon5 cor noline">点击下载</a>
+                        </div>
+                        <div class="flex"></div>
+                    </div>
+                    <div class="mar-b">
+                        <img src="images/0_07.png" width="120px" height="120px" class="fla-l">
+                        <div class="box-btn fla-l txt-cen">
+                            <span class="dis">西湖牛牛</span>
+                            <a href="" class="txt-cen fon5 cor noline">点击下载</a>
+                        </div>
+                        <div class="flex"></div>
+                    </div>
+                    <div class="mar-b">
+                        <img src="images/0_09.png" width="120px" height="120px" class="fla-l">
+                        <div class="box-btn fla-l txt-cen">
+                            <span class="dis">西湖牛牛</span>
+                            <a href="" class="txt-cen fon5 cor noline">点击下载</a>
+                        </div>
+                        <div class="flex"></div>
+                    </div>
+                </div>
+
+                <p class="p1 cor fon2">FAQ</p>
+                <div class="cen2 fon">
+                    <a href=""><img src="images/sy_19.png">如何下载安装游戏</a>
+                    <a href=""><img src="images/sy_19.png">游戏可以手机平板和电脑同时玩吗？</a>
+                    <a href=""><img src="images/sy_19.png">我在网站充值了钻石可以在游戏中使...</a>
+                    <a href=""><img src="images/sy_19.png">游戏商城中购买问题</a>
+                    <a href=""><img src="images/sy_19.png">积分怎么兑换</a>
+                    <a href=""><img src="images/sy_19.png">防沉迷生效时间</a>
+                    <a href=""><img src="images/sy_19.png">游戏商城中购买问题</a>
+                    <a href=""><img src="images/sy_19.png">积分怎么兑换</a>
+                    <a href="" class="no-l"><img src="images/sy_19.png">防沉迷生效时间</a>
+                </div>
+            </div>
+
+            <div class="menrit fla-l">
+                <p class="men-t fon2"><span class="fon-wet cor6">游戏下载</span><span class="fla-r fon6 cor7">当前位置：首页>游戏下载</span></p>
+                <div class="men-m down fon5">
+                    <p class="fon2"><?php echo $platform; ?></p>
+                    <div class="fla-l">
+                        <p class="p1 cor6">版本：<?php echo $version; ?></p>
+                        <p class="p1 cor6">大小：<?php echo $packagesize; ?>M</p>
+                        <p class="p1 cor6">语言：<?php echo $lan; ?></p>
+                        <p class="p1 cor6">平台: <?php echo $platform; ?></p>
+                        <p class="p1 cor6">MD5: <?php echo $MD5; ?></p>
+                        <p class="p1 cor6">更新: <?php echo $uptime; ?></p>
+                    </div>
+                    <img src="images/3_03.png" class="fla-r mar-d" width="199px" height="200px">
+                    <div class="flex"></div>
+                    <p class="fon5 p2-mar">电脑版下载地址：</p>
+                    <a href="<?php echo $download1; ?>" class="btn-sy dis txt-cen cor rad">电信下载</a><a href="<?php echo $download2; ?>" class="btn-sy dis txt-cen cor rad rit-btn">联通下载</a>
+                    <p class="fon5 p2-mar" style="margin-top:70px;">电脑版下载地址：</p>
+                    <div>
+                        <img src="<?php echo $download1; ?>" style="margin-right:48px;"><img src="<?php echo $download1; ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <iframe src="bottom.html" width="100%" height="226px" frameborder="0" border="0" style="margin-top:55px;"></iframe>
+
+<!--qq咨询-->
+<div id="open">
+    <img id="open-fixed" src="images/fixed_3.png" alt="">
+</div>
+
+<div id="parent">
+    <div id="close-"><a id="close" href="###">X</a></div>
+    <div id="ins">
+        <div id="title-fixed">在线<span>QQ</span>咨询</div>
+        <div id="con-fixed">
+            <img src="images/bear_.png" alt="">
+            <div class="qq-fixed">
+                <div>王经理</div>
+                <a target="_blank" rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2852371661&amp;site=qq&amp;menu=yes">2852371661</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

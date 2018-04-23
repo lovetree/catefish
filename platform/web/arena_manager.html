@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>竞技场管理</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/tables.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/j.dt.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <style>
+        table#tab input, table#tab textarea {
+            margin-top: 5px;
+        }
+
+        table#tab td {
+            height: 70px;
+        }
+
+        table#tab .pad-l {
+            padding-left: 30px;
+        }
+
+        table#tab .sel {
+            float: left;
+            border-radius: 0px;
+            margin-bottom: 5px;
+            max-width: 200px;
+            margin-right: 30px;
+        }
+
+        table#tab .wid {
+            width: 100px;
+            margin: 0 10px 5px 0;
+            float: left;
+            vertical-align: middle;
+        }
+
+        table#tab .delspan {
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        table#tab td.seltd {
+            border: 1px solid #ccc;
+        }
+
+        table#tab div.box {
+            max-height: 150px;
+            overflow-y: auto;
+            padding: 10px 0 5px 10px;
+        }
+
+        table#tab span.inser {
+            border: 1px solid #ccc;
+            font-size: 12px;
+            padding: 3px 10px;
+            float: right;
+            cursor: pointer;
+        }
+
+        table#tab textarea.tex {
+            height: 70px;
+            line-height: 20px;
+            padding: 5px 7px;
+            resize: none;
+            border-radius: 0px;
+        }
+    </style>
+</head>
+
+<body class="" style="background: #FFFFFF;">
+<div class="header">
+    <h1 class="page-title">竞技场管理</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="block span6">
+            <table class="table display block-body collapse in" id="example">
+                <input type="button" onclick="javascript:window.location.reload();" class="input_btn_h input-table"
+                       value="刷新" data-ctrl-btn="newAction"/>
+                <input type="button" name="btnadd" id="btnadd" onclick="window.location.href='arena_new.html'" class="input_btn_h input-table" value="新增" />
+                <input type="button" name="btndelete" id="btndelete" class="input_btn_h input-table" value="删除"
+                       data-ctrl-btn="deleteAction"/>
+                <input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询"/>
+                <thead class="theadtbody">
+                <tr>
+                    <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>游戏类型</th>
+                    <th>游戏模式</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                   <!-- <th>是否循环</th>
+                    <th>开始日期</th>-->
+                    <th>奖励</th>
+                    <th>比赛人数</th>
+                    <th>进入次数</th>
+                    <th>解锁炮数</th>
+                    <th>初赛费用</th>
+                    <th>复赛费用</th>
+                    <th>状态</th>
+                    <th>是否显示</th>
+                </tr>
+                </thead>
+                <tbody class="theadtbody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer>
+    <hr>
+</footer>
+
+</body>
+
+</html>
+
+<script src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+    var dialog = "";
+    $(function () {
+        var table = $('#example').dataTableAjax('system/arena/list', {
+            'bLengthChange': false,
+            'iDisplayLength': 10,
+            'searching': true,
+            'processing': true,
+            'serverSide': true,
+            "autoWidth": false,
+            'ordering': false,
+            'aoColumns': [
+                {
+                    'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    if (oData.status != 1) {
+                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.id + "'>");
+                    }
+                }
+                },
+                {'mDataProp': 'id'},
+                {'mDataProp': 'name'},
+                {
+                    'mDataProp': 'game_type', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    if (oData.game_type == 3) {
+                        $(nTd).html("捕鱼星球");
+                    }
+                    else
+                    {
+                        $(nTd).html(oData.game_type);
+                    }
+                }
+                },
+                {
+                    'mDataProp': 'game_mode', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                        switch (oData.game_mode)
+                        {
+                            case "101": $(nTd).html("金币场1"); break;
+                            case "102": $(nTd).html("金币场2"); break;
+                            case "103": $(nTd).html("金币场3"); break;
+                            case "104": $(nTd).html("金币场4"); break;
+                            case "105": $(nTd).html("金币场5"); break;
+                            case "106": $(nTd).html("金币场6"); break;
+                            case "107": $(nTd).html("金币场7"); break;
+                            case "108": $(nTd).html("金币场8"); break;
+                            case "109": $(nTd).html("金币场9"); break;
+                            case "110": $(nTd).html("金币场10"); break;
+                            case "111": $(nTd).html("宝石场1"); break;
+                            case "112": $(nTd).html("宝石场2"); break;
+                            case "113": $(nTd).html("宝石场3"); break;
+                            case "114": $(nTd).html("宝石场4"); break;
+                            case "115": $(nTd).html("宝石场5"); break;
+                            case "116": $(nTd).html("宝石场6"); break;
+                            case "117": $(nTd).html("宝石场7"); break;
+                            case "118": $(nTd).html("宝石场8"); break;
+                            case "119": $(nTd).html("宝石场9"); break;
+                            case "120": $(nTd).html("宝石场10"); break;
+                            default: $(nTd).html(oData.game_mode);
+
+                        }
+                }
+                },
+                {'mDataProp': 'match_start_time'},
+                {'mDataProp': 'match_end_time'},
+                /*{
+                    'mDataProp': 'is_loop', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                    if (oData.is_loop == 1) {
+                        $(nTd).html("每日重复");
+                    }
+                    else
+                    {
+                        $(nTd).html("不每日重复");
+                    }
+                }
+                },
+                {'mDataProp': 'date'},*/
+                {
+                    'mDataProp': 'award', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                    var str = "";
+                    if (sData) {
+                        var award=JSON.parse(sData);
+                        $.each(award, function (index, obj) {
+                            var detail=obj.split(',');
+                            var txt = '第' + detail[0] + "-" + detail[1] + '名，奖金' + detail[2];
+                            if (index > 0) {
+                                txt = "<br>" + txt;
+                            }
+                            str = str + txt;
+                        });
+                        $(nTd).html(str);
+                    }
+                }
+                },
+                {'mDataProp': 'match_number'},
+                {'mDataProp': 'rematch_times'},
+                {'mDataProp': 'bullet_number'},
+                {'mDataProp': 'first_match_fee'},
+                {'mDataProp': 'repeat_match_fee'},
+                {
+                    'mDataProp': 'status', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                    switch (sData) {
+                        case '0':
+                            $(nTd).html("停止");
+                            break;
+                        case '1':
+                            $(nTd).html("进行中");
+                            break;
+                        case '2':
+                            $(nTd).html("失效");
+                            break;
+                    }
+                }
+                },
+                {
+                    'mDataProp': 'effect', fnCreatedCell: function (nTd, sData, oData, iRow, iCol) {
+                    $(nTd).text(sData == 1 ? '显示' : '不显示');
+                }
+                }
+            ],
+            createdRow: function (row, data, dataIndex) {
+                $(row).data('data-id', data.id);
+                $(row).data('data-name', data.name);
+                $(row).data('data-game_mode', data.game_mode);
+                $(row).data('data-match_start_time', data.match_start_time);
+                $(row).data('data-match_end_time', data.match_end_time);
+               // $(row).data('data-is_loop', data.is_loop);
+               // $(row).data('data-date', data.date);
+                $(row).data('data-award', data.award);
+                $(row).data('data-status', data.status);
+                $(row).data('data-effect', data.effect);
+            },
+            postData: {
+                'query': function () {
+                    return $('input[aria-controls=example][type=search]').val();
+                }
+            },
+        });
+        $('input[aria-controls=example][type=search]').unbind();
+        $('input[aria-controls=example][type=search]').keyup(function (e) {
+            if (e.keyCode === 13) {
+                table.reload();
+            }
+        });
+        $('input[type=button][id=btntype]').click(function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        });
+
+        window.table_reload = function () {
+            $('input[aria-controls=example][type=search]').focus();
+            table.reload();
+        };
+
+    });
+
+    function setShow() {
+        var msg_id = $(this).parents('tr').data('data-id');
+        var isshow = $(this).attr('rel');
+        $.post('system/Arena/show', {
+            id: msg_id,
+            isshow: isshow
+        }, function (json) {
+            if (json.result == 0) {
+                alert('修改成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+
+    function deleteAction() {
+        var list = [];
+        $('input[name=line-check]:checked').each(function () {
+            list.push(this.value);
+        });
+        if (list.length == 0) {
+            return;
+        }
+        $.post('system/Arena/delete', {
+            id: list
+        }, function (json) {
+            if (json.result == 0) {
+                alert('删除成功');
+                table_reload();
+            } else {
+                alert(json.msg);
+            }
+        }, 'json');
+    }
+</script>

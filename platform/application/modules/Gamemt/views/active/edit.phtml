@@ -1,0 +1,225 @@
+<?php include_once VIEW_COMMON."header.php"; ?>
+<div class="main-container" id="main-container" style="margin-left: 0px;">
+    <div class="main-container-inner">
+        <div class="main-content">
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="form-horizontal" id="form">
+                        <input type="hidden" id="id" value="<?php echo $info ? $info['id'] : 0?>">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动标题：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="title" name="title" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['title'] : ''?>'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">游戏类型：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="game_type" name="game_type"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['game_type'] : ''?>'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">游戏模式：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="game_mode" name="game_mode"
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['game_mode'] : ''?>'>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动图片：</label>
+                            <div class="col-sm-10">
+                                <?php if($info):?>
+                                <img src="<?php echo $info['image']?>" class="image"  style="max-height:100px;" />
+                                <?php else:?>
+                                <img src="/files/official.jpg" class="image"  style="max-height:100px;" />
+                                <?php endif;?>
+                                <button class="btn btn-info inimage" type="button">选择图片</button>
+                                上传图片的尺寸为<span style="color:red" >870X350</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">链接内容：</label>
+                            <div class="col-sm-10">
+                                <div>
+                                    <label>
+                                        <input name="link_type" value="1" type="radio" class="ace" <?php echo !$info || $info['link_type'] == 1 ? "checked":""?>>
+                                        <span class="lbl">活动专题</span>
+                                        <select id="s_id" >
+                                            <option value="">选择专题</option>
+                                            <?php if($s_list):?>
+                                            <?php foreach ($s_list as $v):?>
+                                            <option value="<?php echo $v['id'];?>" <?php if($info && $info['link_type'] == 1 && $info['link'] == $v['id']):?>selected<?php endif;?>><?php echo $v['s_name'];?></option>
+                                            <?php endforeach;?>
+                                            <?php endif;?>
+					</select>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input name="link_type" value="2" type="radio" class="ace" <?php echo $info && $info['link_type'] == 2 ? "checked":""?>>
+                                        <span class="lbl">网页</span>
+                                        <input type="text" id="link" name="link" value='<?php echo $info && $info['link_type'] == 2 ? $info['link']:''?>'>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input name="link_type" value="3" type="radio" class="ace" <?php echo $info && $info['link_type'] == 3 ? "checked":""?>>
+                                        <span class="lbl">游戏</span>
+                                        <select id="y_id" >
+						<option value="">选择游戏</option>
+					</select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动权重：</label>
+                            <div class="col-sm-10">
+                                <input type="text" id="a_sort" name="a_sort" 
+                                       class="col-xs-10 col-sm-5" value='<?php echo $info ? $info['a_sort'] : ''?>'>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">活动时间：</label>
+                            <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                            <i class="icon-calendar bigger-110"></i>
+                                    </span>
+                                    <input class="col-sm-4" type="text" name="avttime" id="avttime" 
+                                           value="<?php echo $info ? date('Y-m-d H:i',$info['start_time']) .'-' . date('Y-m-d H:i',$info['end_time']):''?>" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-primary" type="submit" id="save">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+                                <a class="btn" href="javascript:history.go(-1);">
+                                    <i class="icon-undo"></i>
+                                    取消
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php include_once VIEW_COMMON."footer.php"; ?>
+<link rel="stylesheet" href="/skin/umeditor/themes/default/css/umeditor.css" />
+<script src="/skin/umeditor/umeditor.config.js"></script>
+<script src="/skin/umeditor/umeditor.min.js"></script>
+<script src="/skin/js/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="/skin/css/daterangepicker.css" />
+<script src="/skin/js/moment.min.js"></script>
+<script src="/skin/js/daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cnt = UM.getEditor('editer', ace.editorConfig);
+        $('#avttime').daterangepicker({
+            singleDatePicker: true,
+            timePicker: !0,
+            format: "YYYY/MM/DD HH:mm"
+        });
+        $('.inimage').InsertImage();
+        $("#form").validate({
+            rules: {
+                title: {
+                    required: true
+                },
+                a_sort: {
+                    required: true,
+                    number:true
+                }
+            },
+            messages: {
+                title: {
+                    required: '请输入活动标题'
+                },
+                a_sort: {
+                    required: '请输入权重',
+                    number:'请输入整数'
+                }
+            },
+            errorElement: "span",
+            highlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parents('.form-group').removeClass('has-error');
+            },
+            submitHandler: function (form)
+            {
+                var params = {};
+                var link_type = $("input[name='link_type']:checked").val();
+                params.link_type = link_type;
+                if (link_type == 1){
+                    if ($('#s_id').val() == ''){
+                        showMsg("请选择专题", true);
+                        return;
+                    }
+                    params.link = $('#s_id').val();
+                }
+                if (link_type == 2){
+                    if ($('#link').val() == ''){
+                        showMsg('请输入网页地址', true);
+                        return;
+                    }
+                    params.link = $('#link').val();
+                }
+                if (link_type == 3){
+                    if ($('#y_id').val() == ''){
+                        showMsg("请选择游戏", true);
+                        return;
+                    }
+                    params.link = $('#y_id').val();
+                }
+                
+                params.title = $('#title').val();
+                params.image = $('.image').attr('src');
+                params.id = $('#id').val();
+                params.times = $('#avttime').val();
+                params.a_sort = $('#a_sort').val();
+                params.game_type = $('#game_type').val();
+                params.game_mode = $('#game_mode').val();
+                if ($('#avttime').val() == ''){
+                    showMsg("请选择时间", true);
+                    return;
+                }
+                
+                $('#save').html('<i class="icon-ok"></i>保存中...').attr('disabled', 'true');
+                $.ajax({
+                    type: "POST",
+                    url: "/gamemt/active/save",
+                    data: params,
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#save').html('<i class="icon-ok"></i> 保存').removeAttr('disabled');
+                        if (msg.result == 0) {
+                            showMsg("成功", function () {
+                                history.go(-1);
+                            });
+                        } else {
+                            showMsg(msg.message, true);
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>

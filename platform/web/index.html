@@ -1,0 +1,113 @@
+<!DOCTYPE>
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <title>一指赢运营后台</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+        <style>
+            .navbar-default .navbar-toggle {
+                border-color: #000;
+                background-color: #000 !important;
+                float: left;
+                margin-top: 0px !important;
+            }
+            .sidebar-nav{width: 100%;}
+        </style>
+    </head>
+
+    <body class="">
+        <!-- 头部导航 -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-left">
+                    <a class="navbar-brand" id="titlid" href="#">后台管理系统</a>
+                    <!--min-->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--end-->
+                </div>
+
+                <div class="navbar-right" style="float: right;margin-right: 0;">
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span data-ctrl-var="admin_name"></span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a data-ctrl-btn="logout">安全退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </nav>
+        <!-- 左侧导航 -->
+        <div class="sidebar-nav" id="sidebar-nav"></div>
+        <script src="js/leftajax.js"></script>
+        <!-- 导航结束 -->
+        <div class="content">
+            <iframe src="index_.html" name="right" height="900" id="iframepage" frameborder="0" scrolling="auto" ></iframe>
+        </div>
+    </body>
+
+    
+    <script type="text/javascript" src="js/main.js"></script>
+    <!--<script type="text/javascript" src="js/metisMenu.min.js"></script>-->
+    <script>
+        $(function(){
+            if($(window).width()<768){
+                $('#titlid').hide();
+                $('div#sidebar-nav').addClass('collapse');
+            }
+        });
+
+        function logout(){
+            $.post('user/logout', function(json){
+                if(json.result == 0){
+                    window.location.href = 'sign-in.html';
+                }
+            }, 'json');
+        }
+
+       /* $('#sidebar-nav .nav-header').click(function(){
+            alert();
+            $(this).siblings('a').addClass('collapsed');
+            $(this).siblings('ul').removeClass('in');
+        });*/
+
+        $(window).resize(function() {
+            if ($(this).width() < 768) {
+                $('#titlid').hide();
+                $('div#sidebar-nav').addClass('collapse');
+            } else{
+                $('#titlid').show();
+                $('div#sidebar-nav').removeClass('collapse');
+            }
+        });
+
+    </script>
+    
+</html>
+
+
+        

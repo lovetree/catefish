@@ -1,0 +1,85 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "name": "1",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    },
+    {
+      "name": "2",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    },
+    {
+      "name": "3",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    },
+    {
+      "name": "4",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    },
+    {
+      "name": "5",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    },
+    {
+      "name": "6",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    },
+    {
+      "name": "7",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    },
+    {
+      "name": "8",
+      "jdmanage": "2016-12-31",
+      "jdmark": "admin",
+      "jdname": "3213",
+      "jdgamename":"3231",
+      "jdhook": "12321",
+      "jdsort":"2321",
+      "jdstate":"后台"
+    }
+  ]
+}

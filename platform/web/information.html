@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>基本信息</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <style>
+        table td{height: 45px;}
+        .fon{font-size: 16px; line-height: 18px;}
+        .cor2{color:#f77043;}
+        .cor3{color:#949494; font-size: 12px;}
+        table a:visited,table a:active{text-decoration: none;}
+        span.span{background-color:#afd9ee; display: inline-block; height:16px; width:4px; vertical-align: middle;}
+        a.th-btn{display: inline-block; color: #333; border:1px solid #ccc; padding:5px 15px; cursor:pointer;}
+        div.bin-box p{line-height: 35px; margin-top: 22px;}
+        div.box-min{padding-left: 15px; padding-right: 15px; margin-bottom:15px; line-height: 30px;}
+        #sex label{vertical-align: middle;}
+        #sex input{vertical-align: middle; margin:0px; margin-right:6px;}
+        #sex label{font-weight: normal;}
+        .mar-l2{margin-left: 20px !important;}
+        .dis-none{display: none;}
+        .mar-b2{margin-bottom:0px !important;}
+    </style>
+</head>
+
+<body style="background: #FFF;">
+<div class="header">
+    <h1 class="page-title">基本信息</h1>
+</div>
+<form method="post" id="form_head" action="">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="block span6">
+                <table style="margin-bottom:10px;">
+                    <tr>
+                        <td class="fon" colspan="2"><span class="span"></span> 资金信息</td>
+                    </tr>
+                    <tr>
+                        <td width="175px">业绩余额：20元</td>
+                        <td rowspan="2"><a href="#" class="th-btn">兑换现金</a></td>
+                    </tr>
+                    <tr>
+                        <td>金币余额：20元</td>
+                        <td></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td class="fon" colspan="2"><span class="span"></span> 个人资料</td>
+                    </tr>
+                    <tr>
+                        <td width="90px">&nbsp;昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</td>
+                        <td id="name"><span>冰雨</span><input class="form-control dis-none"></td>
+                    </tr>
+                    <tr>
+                        <td>*真实姓名：</td>
+                        <td>付宇琛</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;身份证号：</td>
+                        <td>454454********1235</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
+                        <td id="sex">
+                            <span>男</span>
+                            <div class="dis-none">
+                                <input type="radio" name="sex" id="radi1"><label for="radi1">男</label>
+                                <input type="radio" class="mar-l2" name="sex" id="radi2"><label for="radi2">女</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;微&nbsp;&nbsp;信&nbsp;&nbsp;号：</td>
+                        <td>未绑定 &nbsp;&nbsp;<a href="#" class="th-btn">立即绑定</a></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="cor3" style="line-height: 22px">*绑定微信号后，方能使用微信全部功能并同步账号数据</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="height: 50px">
+                            <a href="#" class="th-btn" id="upa-btn">修改资料</a>
+                            <a href="#" class="th-btn mar-l2" id="off-btn">取消修改</a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="bin-box">
+                    <p class="fon"><span class="span"></span> 安全信息</p>
+                    <div class="row box-min">
+                        <div class="col-sm-1">*绑定邮箱：&nbsp;&nbsp;未绑定</div>
+                        <a href="#" class="col-sm-1">修改邮箱</a>
+                    </div>
+                    <div class="row box-min">
+                        <div class="col-sm-1">*绑定手机：&nbsp;&nbsp;未绑定</div>
+                        <a href="#" class="col-sm-1">修改手机</a>
+                    </div>
+                    <div class="row box-min">
+                        <div class="col-sm-2">*绑定支付宝：&nbsp;&nbsp;未绑定<span class="cor2">（绑定后不可更改）</span></div>
+                    </div>
+                    <div class="row box-min mar-b2">
+                        <div class="col-sm-1">*提款密码：&nbsp;&nbsp;未绑定</div>
+                        <a href="#" class="col-sm-1">设置提现密码</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<footer>
+    <hr>
+    <p>&copy; 2017 一指赢</p>
+</footer>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+    $('#upa-btn').click(function(){
+        var name=$('#name span').text();
+        var sex=$('#sex span').text();
+        $('#name input').val(name).show();
+        $('#sex div').show();
+        $('#name span,#sex span').hide();
+        if(sex=='男'){
+            $('#radi1').attr('checked','true');
+        }else if(sex=='女'){
+            $('#radi2').attr('checked','true');
+        }
+    });
+    $('#off-btn').click(function(){
+        $('#name input,#sex div').hide();
+        $('#name span,#sex span').show();
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>数据清理</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/tables.css">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+        <script type="text/javascript" src="js/j.dt.min.js"></script>
+        <script type="text/javascript" src="js/moment.js"></script>
+        <script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+    </head>
+
+    <body class="" style="background: #FFFFFF;">
+
+        <div class="header">
+            <h4 class="page-title" >数据清理</h4>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="block span6">
+                    <form method="post"></form>
+                    <table class="table display block-body collapse in" id="example">
+                        <select class="input_btn_h" id="checktime">
+                            <option value="month">本月前</option>
+                            <option value="months">三个月前</option>
+                            <option value="year">半年前</option>
+                            <option value="all">全部</option>
+                        </select>
+                        <input type="button" name="btntype" id="btntype" onclick="todo('1')" class="input_btn_h input-table" value="清理" />
+                        <thead class="theadtbody">
+                            <tr>
+                                <th><input type="checkbox" id="checkAll" onclick="check_all();"></th>
+                                <th>数据类型</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="theadtbody"></tbody>
+
+                    </table>
+                    <script type="text/javascript">
+                        $(function () {
+                            var table = $('#example').dataTableAjax("admin/role/cleanlist", {
+                                'bLengthChange': false,
+                                'iDisplayLength': 50,
+                                'searching': true,
+                                'processing': true,
+                                'serverSide': true,
+                                "autoWidth": false,
+                                'ordering': false,
+                                'aoColumns': [
+                                    {'mDataProp': 'sysname', "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                        $(nTd).html("<input type='checkbox' name='line-check' class='check' value='" + oData.type + "'>");
+                                        }
+                                    },
+                                    {
+                                        'mDataProp': 'type',
+                                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                            $(nTd).html(oData.type);
+                                        }
+                                    }
+                                ],
+                                createdRow: function (row, data, dataIndex) {
+                                    $(row).data('line-data', data);
+                                },
+                                postData: {
+                                    'query': function () {
+                                        return $('input[aria-controls=example][type=search]').val();
+                                    }
+                                }
+                            });
+                            $('input[aria-controls=example][type=search]').unbind();
+                            $('input[aria-controls=example][type=search]').keyup(function (e) {
+                                if (e.keyCode === 13) {
+                                    table.reload();
+                                }
+                            });
+
+                            window.table_reload = function () {
+                                $('input[aria-controls=example][type=search]').focus();
+                                table.reload();
+                            };
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+        </div>
+
+        <footer><hr></footer>
+
+        <script src="js/jquery.form.js"></script>
+        <script src="js/juicer-min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript">
+                        function todo(type) {
+                            BootstrapDialog.show({
+                                title: '清理数据',
+                                message: $("#juese_box_xj").clone().show().get(0).outerHTML,
+                                buttons: [{
+                                        label: '取消',
+                                        cssClass: 'btn btn-danger',
+                                        action: function (dialog) {
+                                            dialog.close();
+                                        }
+                                    }, {
+                                        label: '确定',
+                                        cssClass: 'btn btn-primary',
+                                        action: function (dialog) {
+                                            checktime = $('#checktime').val();
+                                            tabels = '';
+                                            $('input:checkbox[name=line-check]:checked').each(function (i) {
+                                                if(i==0){
+                                                    tabels=$(this).val();
+                                                }else{
+                                                    tabels+=(','+$(this).val());
+                                                }
+                                            });
+                                            if($.trim(checktime)==""){
+                                                alert('请选择清理时间段！');
+                                                return false;
+                                            }
+                                            ajaxActionjsxj.call(dialog, checktime,tabels);
+                                        }
+                                    }]
+                            })
+
+                        }
+
+                        function ajaxActionjsxj(checktime,tables) {
+
+                            var self = this;
+                            var ajaxUrl = 'admin/role/doclean';
+                            $.post(ajaxUrl, {
+                                checktime: checktime,
+                                tables:tables
+                            },
+                                    function (data) {
+                                        //							  BootstrapDialog.alert(data);
+                                        if (data.result == 0) {
+                                            alert("清理成功！");
+                                            self && self.close();
+                                            table_reload();
+                                        } else {
+                                            alert(data.msg);
+                                        }
+                                    },
+                                    'json');
+                        }
+
+        </script>
+        <div class="juese_xj">
+            <form method="get" style="display: none;" id="juese_box_xj" action="" ><span style="color: red;">本次操作将不可逆删除数据,请谨慎确认</span></form>
+        </div>
+
+        <div class="juese_xjs" style="display: none;">
+            <form method="post">
+                <input type="hidden" name="role_id">
+                <input type="hidden" name="perms">
+                <div>
+                    <input type='text' name='role_name' class="form-control"/>
+                </div>
+                <div class="perms_list"></div>
+                <input type='submit' value='提交' class="form-control"/>
+            </form>
+        </div>
+
+    </body>
+
+</html>

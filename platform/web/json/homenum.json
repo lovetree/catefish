@@ -1,0 +1,69 @@
+{
+	"total": 20,
+  "data": [
+    {
+      "gametype": "1",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    },
+    {
+      "gametype": "2",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    },
+    {
+      "gametype": "3",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    },
+    {
+      "gametype": "4",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    },
+    {
+      "gametype": "5",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    },
+    {
+      "gametype": "6",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    },
+    {
+      "gametype": "7",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    },
+    {
+      "gametype": "8",
+      "hometype": "2016-12-31",
+      "moneysum": "admin",
+      "servicesum": "3213",
+      "daymoneysum":"3231",
+      "dayservicesum": "12321"
+    }
+  ]
+}

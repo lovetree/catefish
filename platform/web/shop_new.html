@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>商城管理</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+
+	</head>
+
+	<body class="">
+
+		<!-- 头部导航 -->
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-left">
+					<a class="navbar-brand" href="#">后台管理系统</a>
+				</div>
+
+				<div class="navbar-right" style="float: right;margin-right: 0;">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">admin
+        <span class="caret"></span>
+    </button>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href="member_user.html">个人信息</a>
+							</li>
+							<li>
+								<a href="#">绑定IP</a>
+							</li>
+							<li>
+								<a href="sign-in.html">安全退出</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- 左侧导航 -->
+		<div class="sidebar-nav">
+			<a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>游戏用户</a>
+			<ul id="dashboard-menu" class="nav nav-list collapse in">
+				<li>
+					<a href="user.html">用户管理</a>
+				</li>
+				<li>
+					<a href="money.html">金币管理</a>
+				</li>
+				<li>
+					<a href="game.html">游戏记录</a>
+				</li>
+				<li>
+					<a href="winorlose.html">输赢排行榜</a>
+				</li>
+				<li>
+					<a href="winorlose.html">比赛排行榜</a>
+				</li>
+				<li>
+					<a href="jifen.html">积分管理</a>
+				</li>
+				<li>
+					<a href="inventory.html">魅力管理</a>
+				</li>
+				<li>
+					<a href="rotary.html">奖牌管理</a>
+				</li>
+				<li>
+					<a href="bank.html">银行记录</a>
+				</li>
+				<li>
+					<a href="rotary.html">转盘中奖记录</a>
+				</li>
+				<li>
+					<a href="giving.html">赠送记录</a>
+				</li>
+				<li>
+					<a href="blacklist.html">手机黑名单</a>
+				</li>
+				<li>
+					<a href="#">限制IP地址</a>
+				</li>
+				<li>
+					<a href="#">限制机器码</a>
+				</li>
+				<li>
+					<a href="kaxian.html">卡线管理</a>
+				</li>
+				<li>
+					<a href="gameeasy.html">游戏难易度微调</a>
+				</li>
+				<li>
+					<a href="usereasy.html">用户难易度微调</a>
+				</li>
+			</ul>
+
+			<a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>充值系统</a>
+			<ul id="accounts-menu" class="nav nav-list collapse">
+				<li>
+					<a href="members.html">会员卡管理</a>
+				</li>
+				<li>
+					<a href="sum.html">库存统计</a>
+				</li>
+				<li>
+					<a href="inventory.html">实卡生成</a>
+				</li>
+				<li>
+					<a href="chongzhinews.html">充值记录</a>
+				</li>
+				<li>
+					<a href="#">订单管理</a>
+				</li>
+				<li>
+					<a href="#">易宝管理</a>
+				</li>
+				<li>
+					<a href="#">充值日报查询</a>
+				</li>
+				<li>
+					<a href="cardshop.html">实卡销售网点</a>
+				</li>
+			</ul>
+			<!-- <span class="label label-info">0</span> -->
+			<a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-cog"></i>系统维护</a>
+			<ul id="error-menu" class="nav nav-list collapse">
+				<li>
+					<a href="robot.html">机器管理</a>
+				</li>
+				<li>
+					<a href="gameadmin.html">游戏管理</a>
+				</li>
+				<li>
+					<a href="homeadmin.html">房间管理</a>
+				</li>
+				<li>
+					<a href="sysadmin.html">系统信息</a>
+				</li>
+				<li>
+					<a href="system.html">系统设置</a>
+				</li>
+				<li>
+					<a href="paodian.html">泡点设置</a>
+				</li>
+				<li>
+					<a href="tuiguang.html">推广工具</a>
+				</li>
+				<li>
+					<a href="daoju.html">道具管理</a>
+				</li>
+				<li>
+					<a href="#">在线统计</a>
+				</li>
+			</ul>
+
+			<a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>网站系统</a>
+			<ul id="legal-menu" class="nav nav-list collapse">
+				<li>
+					<a href="news.html">新闻管理</a>
+				</li>
+				<li>
+					<a href="rules.html">规则管理</a>
+				</li>
+				<li>
+					<a href="problem.html">问题管理</a>
+				</li>
+				<li>
+					<a href="gamesys.html">比赛管理</a>
+				</li>
+				<li>
+					<a href="feedback.html">回馈管理</a>
+				</li>
+				<li>
+					<a href="shop.html">商城管理</a>
+				</li>
+			</ul>
+
+			<a href="#ht-menu" class="nav-header" data-toggle="collapse"><i class="icon-comment"></i>后台系统</a>
+			<ul id="ht-menu" class="nav nav-list collapse">
+				<li>
+					<a href="admin.html">管理员管理</a>
+				</li>
+				<li>
+					<a href="admin_news.html">管理系统设置</a>
+				</li>
+				<li>
+					<a href="">系统统计</a>
+				</li>
+				<li>
+					<a href="#">房间统计</a>
+				</li>
+				<li>
+					<a href="zonghenum.html">综合统计</a>
+				</li>
+			</ul>
+
+			<a href="#note-menu" class="nav-header" data-toggle="collapse"><i class="icon-exclamation-sign"></i>操作日志</a>
+			<ul id="note-menu" class="nav nav-list collapse">
+				<li>
+					<a href="anquan.html">安全日志</a>
+				</li>
+
+			</ul>
+		</div>
+		<!-- 导航结束 -->
+		<div class="content">
+			<form method="post" id="form_head" action="">
+
+				<div class="container-fluid">
+					<div class="header">
+
+						<h1 class="page-title">商城物品管理</h1>
+					</div>
+					<div class="row-fluid">
+
+						<div class="block span6">
+							<div class="control-group">
+								<label>商品名称:</label>
+								<div class="controls">
+									<input name="txtName" type="text" id="txtName" class="text">
+								</div>
+							</div>
+							<div class="control-group">
+								<label>商品原价:</label>
+								<div class="controls">
+									<input name="txtCash" type="text" id="txtCash" class="text" onkeyup="">
+								</div>
+							</div>
+							<div class="control-group">
+								<label>商品会员折扣:</label>
+								<div class="controls">
+									<input name="txtDiscount" type="text" id="txtDiscount" class="text">%(100%即无折扣)
+								</div>
+							</div>
+							<div class="control-group">
+								<label>商品类型:</label>
+								<div class="controls">
+									<select name="ddlType" id="ddlType" class="valid">
+										<option selected="selected" value="1">会员卡</option>
+										<option value="2">道具</option>
+										<option value="3">靓号</option>
+										<option value="4">实物</option>
+
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label>赠送金币:</label>
+								<div class="controls">
+									<input name="txtGiveGold" type="number" id="txtGiveGold" class="text">
+								</div>
+							</div>
+							<div class="control-group">
+								<label>商品库存:</label>
+								<div class="controls">
+									<input name="txtKC" type="text" value="1" id="txtKC" class="valid">
+								</div>
+							</div>
+							<div class="control-group">
+								<label>商品图片:</label>
+								<div class="controls">
+
+									<input type="file" name="fileUpload" id="fileUpload" size="23" class="text" class="input_btn_h">
+
+								</div>
+								<!--<script type="text/javascript">
+                                    
+                                        function uploadMsg() {
+                                            showInfo("正在上传文件中...");
+                                        }
+
+                                    function checkedUpload() {
+                                        var sFile = $("#fileUpload").val();
+
+                                        if(sFile.length == 0) {
+                                            showError("请选择需要上传的文件");
+                                            return false;
+                                        }
+
+                                        return true;
+                                    }
+
+                                    /*
+                                     * 设置文件上传信息
+                                     */
+                                    function setUploadFilePath(inImgInstalledUrl, uploadPath) {
+                                        parent.document.getElementById(inImgInstalledUrl).value = uploadPath;
+                                        setUploadFileView(uploadPath);
+                                    }
+
+                                    /*
+                                     * 设置文件浏览
+                                     */
+                                    function setUploadFileView(uploadPath) {
+                                        var uploadArray = uploadPath.split('/');
+                                        document.getElementById("pnFileName").innerHTML = "文件名：" + uploadArray[uploadArray.length - 1];
+                                        /*$("#pnFileName").text("文件名：" + uploadArray[uploadArray.length - 1]);     */
+                                    }
+                              
+                                </script>-->
+							</div>
+							<div class="control-group">
+								<label>游戏介绍:</label>
+								<div class="controls">
+									<textarea name="Newstest"></textarea>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label"></label>
+								<div class="controls">
+									<input type="submit" name="btnSave1" value="保存" id="btnSave1" class="">
+									<input type="button" value="返回" class="" onclick="">
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</form>
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+		</div>
+
+	</body>
+
+</html>

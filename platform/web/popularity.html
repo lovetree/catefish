@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>人气排行榜</title>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/theme.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/tables.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/j.dt.min.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+
+	</head>
+
+	<body class="" style="background: #FFFFFF;">
+
+
+			<div class="header">
+
+				<h1 class="page-title">人气排行榜</h1>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="block span6">
+
+						<table class="table display block-body collapse in " id="example">
+							<select class="input_btn_h" id="channeltype" name="channeltype">
+								<option value="userid">根据玩家ID</option>
+								<option value="username">根据游戏账号</option>
+								<option value="nickname">根据玩家昵称</option>
+							</select>
+							<input type="button" name="btntype" id="btntype" class="input_btn_h input-table" value="查询" />
+							<thead class="theadtbody">
+								<tr>
+									<th>用户ID</th>
+									<th>用户账号</th>
+									<th>昵称</th>
+									<th>人气值</th>
+									<th>管理</th>
+								</tr>
+							</thead>
+							<tbody class="theadtbody"></tbody>
+						</table>
+						<script type="text/javascript">
+							var table;
+							$(function() {
+								 table = $('#example').dataTableAjax('player/popularity/list', {
+									'bLengthChange': false,
+									'iDisplayLength': 10,
+									'searching': true,
+									'processing': true,
+									'serverSide': true,
+									'ordering': false,
+									'aoColumns': [
+									    {
+										'mDataProp': 'user_id'
+										},
+										{
+										'mDataProp': 'username'
+										},
+										{
+										'mDataProp': 'nickname'
+										},
+										{
+										'mDataProp': 'popularity'
+										},
+                                        {'mDataProp': 'manager', "render": function (nTd, sData, oData, iRow, iCol) {
+
+                                            return '&nbsp;<button data-ctrl-btn="stocksAction">设置人气值</button>';
+                                        }}
+										],
+                                    createdRow: function (row, data, dataIndex) {
+
+                                        $(row).data('data-id', data.user_id);
+                                        $(row).data('data-popularity', data.popularity);
+                                    },
+									postData: {
+                                        'query': function () {
+                                            return $('input[aria-controls=example][type=search]').val();
+
+                                        },
+                                        'query_type': function () {
+                                            return $("#channeltype option:checked").val();
+                                        },
+									},
+								});
+								$('input[aria-controls=example][type=search]').unbind();
+								$('input[aria-controls=example][type=search]').keyup(function(e) {
+									if(e.keyCode === 13) {
+										table.reload();
+									}
+								});
+
+                                $('input[type=button][id=btntype]').unbind();
+								$('input[type=button][id=btntype]').click(function() {
+                                    $('input[aria-controls=example][type=search]').focus();
+									table.reload();
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<hr>
+
+				<p>&copy; 2017 一指赢</p>
+			</footer>
+			<script type="text/javascript" src="js/bootstrap.minv3.js"></script>
+			<script type="text/javascript" src="js/date.js"></script>
+			<script type="text/javascript" src="js/main.js"></script>
+			<script type="text/javascript" src="js/bootstrap-dialog.min.js"></script>
+			<script type="text/javascript" src="js/date.js"></script>
+	</body>
+<script>
+    function stocksAction(){
+        var id = $(this).parents('tr').data('data-id');
+        var popu = $(this).parents('tr').data('data-popularity');
+        BootstrapDialog.show({
+            title: '设置人气值',
+            message: '人气值：<input type="text" class="form-control" value="'+popu+'">',
+            buttons: [{
+                label: '取消',
+                cssClass: 'btn btn-danger',
+                action: function (dialog) {
+                    dialog.close();
+                }
+            }, {
+                label: '确定',
+                cssClass: 'btn btn-primary',
+                action: function (dialog) {
+                    var stock = dialog.getModalBody().find('input').val();
+                    $.post('player/popularity/setpopu', {id:id,popularity:stock}, function(res){
+                        if(res.result == 0){
+                            alert("修改成功");
+                        }
+                        dialog.close();
+                        table.reload();
+                    }, 'json');
+                }
+            }]
+
+        });
+    }
+</script>
+</html>
